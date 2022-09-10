@@ -35,7 +35,7 @@ from widgets.right import RightWidget
 from utils.format import format_loading_bar
 from utils.format import format_button
 
-# TODO: Re-organize the code, split into modules
+# TODO: Make executable and release v0.0.1-alpha
 # TODO: Make ads traffic filter work 
 
 # with open("easylist.txt", "r", encoding="utf-8") as _:
@@ -103,7 +103,7 @@ class SplitWindowYoutubeBrowser(QtWidgets.QMainWindow):
         self.worker.signals.finished.connect(self._thread_complete)
 
         self.threadpool.start(self.worker)
-        
+
     def _thread_complete(self):
         self.progress_bar.setTextVisible(True)
         self.progress_bar.setFormat("Done")
@@ -167,7 +167,7 @@ class SplitWindowYoutubeBrowser(QtWidgets.QMainWindow):
         """
         if self.progress_bar is not None:
             self.progress_bar.setTextVisible(False)
-            self.progress_bar = format_loading_bar(self.progress_bar)
+            self.progress_bar = format_loading_bar(self.progress_bar, width=self._left_width * 0.35)
             self.progress_bar.setValue(num)
             if num == 100:
                 self.progress_bar.setTextVisible(True)
@@ -175,6 +175,7 @@ class SplitWindowYoutubeBrowser(QtWidgets.QMainWindow):
                 self.progress_bar.setStyleSheet(
                     "QProgressBar {background-color: #006400; border: 0px solid #006400; border-radius: 5px; text-align: center;}"
                 )
+
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication([])
