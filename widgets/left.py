@@ -2,9 +2,9 @@ from PySide2 import QtWidgets
 from PySide2 import QtCore
 from PySide2 import QtGui
 
-from utils.format import _format_button
-from utils.format import _format_loading_bar
-from utils.format import _format_button_transparent
+from utils.format import format_button
+from utils.format import format_loading_bar
+from utils.format import format_button_transparent
 
 class LeftWidget(QtWidgets.QWidget):
     def __init__(self, parent=None):
@@ -26,7 +26,7 @@ class LeftWidget(QtWidgets.QWidget):
         self.settings_button.setMinimumWidth(self.settings_button.iconSize().width() + 10)
         self.settings_button.setMaximumWidth(self.settings_button.iconSize().width() + 10)
 
-        self.settings_button = _format_button_transparent(self.settings_button)
+        self.settings_button = format_button_transparent(self.settings_button)
 
         self.settings_button.clicked.connect(self.parent._show_settings)
         self.left_layout.addWidget(self.settings_button, 0, 4, QtCore.Qt.AlignTop | QtCore.Qt.AlignRight)
@@ -35,19 +35,19 @@ class LeftWidget(QtWidgets.QWidget):
         self.button2 = QtWidgets.QPushButton("Add Video to Queue")
         self.button3 = QtWidgets.QPushButton("Download Playlist")
         self.button4 = QtWidgets.QPushButton("Download Queue")
-        self.button1 = _format_button(self.button1, self.parent._left_width * 0.6)
-        self.button2 = _format_button(self.button2, self.parent._left_width * 0.6)
-        self.button3 = _format_button(self.button3, self.parent._left_width * 0.6)
-        self.button4 = _format_button(self.button4, self.parent._left_width * 0.6)
+        self.button1 = format_button(self.button1, self.parent._left_width * 0.6)
+        self.button2 = format_button(self.button2, self.parent._left_width * 0.6)
+        self.button3 = format_button(self.button3, self.parent._left_width * 0.6)
+        self.button4 = format_button(self.button4, self.parent._left_width * 0.6)
         self.queue_label = QtWidgets.QLabel("Download Queue")
 
         # create a loading bar
         self.loading_bar_single = QtWidgets.QProgressBar()
         self.loading_bar_playlist = QtWidgets.QProgressBar()
         self.loading_bar_queue = QtWidgets.QProgressBar()
-        self.loading_bar_single = _format_loading_bar(self.loading_bar_single, width=self.parent._left_width * 0.35)
-        self.loading_bar_playlist = _format_loading_bar(self.loading_bar_playlist, width=self.parent._left_width * 0.35)
-        self.loading_bar_queue = _format_loading_bar(self.loading_bar_queue, width=self.parent._left_width * 0.35)
+        self.loading_bar_single = format_loading_bar(self.loading_bar_single, width=self.parent._left_width * 0.35)
+        self.loading_bar_playlist = format_loading_bar(self.loading_bar_playlist, width=self.parent._left_width * 0.35)
+        self.loading_bar_queue = format_loading_bar(self.loading_bar_queue, width=self.parent._left_width * 0.35)
 
         self._create_video_queue_widget()
 

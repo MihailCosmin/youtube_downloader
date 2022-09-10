@@ -3,7 +3,7 @@ from PySide2 import QtWidgets
 from PySide2 import QtCore
 from PySide2 import QtGui
 
-def _format_button(button, width: int = 80, height: int = 30):
+def format_button(button, width: int = 80, height: int = 30):
     button.setFixedHeight(height)
     button.setFixedWidth(width)
     button.move(0, 0)
@@ -24,12 +24,12 @@ def _format_button(button, width: int = 80, height: int = 30):
     button.leaveEvent = lambda event: button.setStyleSheet("QPushButton {background-color: #000000; color: #ffffff; border: 1px solid #ffffff; border-radius: 5px;}")
     return button
 
-def _format_button_transparent(button):
+def format_button_transparent(button):
     button.setWindowOpacity(0.0)
     button.setStyleSheet("QPushButton {border: 0px solid #ffffff;}")
     return button
 
-def _format_loading_bar(bar, height: int = 26, width: int = 52):
+def format_loading_bar(bar, height: int = 26, width: int = 52):
     bar.setMinimum(0)
     bar.setMaximum(100)
     bar.setValue(0)

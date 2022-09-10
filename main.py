@@ -29,9 +29,13 @@ sys.path.append(exe)
 from thr.thread import Worker
 from ytb.youtube import YoutubeDLP
 from widgets.center import CenterWidget
+from widgets.settings import SettingsWidget
 from widgets.left import LeftWidget
+from widgets.right import RightWidget
+from utils.format import format_loading_bar
+from utils.format import format_button
 
-# TODO: Make loading bars work
+# TODO: Re-organize the code, split into modules
 # TODO: Make ads traffic filter work 
 
 # with open("easylist.txt", "r", encoding="utf-8") as _:
@@ -64,10 +68,15 @@ class SplitWindowYoutubeBrowser(QtWidgets.QMainWindow):
         self.setWindowTitle("Youtube Downloader")
         self.resize(QtWidgets.QApplication.primaryScreen().size())
 
-        self._create_central_widget()       
-        self._create_left_widget()
-        self._create_right_widget()
-        self._create_settings_widget()
+        self.central_widget = CenterWidget()
+        self.setCentralWidget(self.central_widget)
+        self.layout = QtWidgets.QHBoxLayout(self.central_widget)
+        self.layout.setSpacing(0)
+
+        self.left_widget = LeftWidget(parent=self)
+        self.right_widget = RightWidget(parent=self)
+        self.settings_widget = SettingsWidget(parent=self)
+        self.settings_widget.hide()
 
         self.ydl = YoutubeDLP()
 
@@ -75,109 +84,6 @@ class SplitWindowYoutubeBrowser(QtWidgets.QMainWindow):
         self.layout.addWidget(self.right_widget)
 
         self.showMaximized()
-
-    def _create_central_widget(self):
-        self.central_widget = CenterWidget()
-        self.setCentralWidget(self.central_widget)
-        self.layout = QtWidgets.QHBoxLayout(self.central_widget)
-        self.layout.setSpacing(0)
-
-    def _create_left_widget(self):
-        self.left_widget = LeftWidget(parent=self)
-
-    def _create_right_widget(self):
-        self.right_widget = QtWidgets.QWidget()
-        self.right_layout = QtWidgets.QVBoxLayout(self.right_widget)
-        self.right_layout.setContentsMargins(10, 0, 0, 0)
-
-        self.right_widget.setMinimumWidth(self._right_width)
-        self.right_widget.setMaximumWidth(self._right_width)
-
-        self.webview = self._youtube_browser_widget()
-        self.right_layout.addWidget(self.webview)
-
-    def _create_settings_widget(self):
-        self.settings_widget = QtWidgets.QWidget()
-        self.settings_layout = QtWidgets.QVBoxLayout(self.settings_widget)
-        self.settings_top_widget = QtWidgets.QWidget()
-        self.settings_top_layout = QtWidgets.QHBoxLayout(self.settings_top_widget)       
-        self.settings_layout.addWidget(self.settings_top_widget)
-        self.settings_top_widget.setStyleSheet("QWidget {border: 1px solid #ffffff; border-radius: 5px;}")
-        self.settings_top_widget.setGraphicsEffect(QtWidgets.QGraphicsDropShadowEffect(blurRadius=5, xOffset=2, yOffset=2))
-
-        self.settings_layout.setStretch(0, 9)
-
-        self.settings_widget.setMinimumWidth(self._right_width)
-        self.settings_widget.setMaximumWidth(self._right_width)
-
-        self.settings_bottom_widget = QtWidgets.QWidget()
-        self.settings_bottom_layout = QtWidgets.QHBoxLayout(self.settings_bottom_widget)
-        self.settings_layout.addWidget(self.settings_bottom_widget)
-        self.settings_bottom_layout.addSpacerItem(QtWidgets.QSpacerItem(0, 0, QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Minimum))
-
-        self.apply_button = QtWidgets.QPushButton("Apply")
-        self._format_button(self.apply_button)
-        self.settings_bottom_layout.addWidget(self.apply_button)
-        self.apply_button.clicked.connect(self._show_browswer)
-
-        self.close_button = QtWidgets.QPushButton("Close")
-        self._format_button(self.close_button)
-        self.settings_bottom_layout.addWidget(self.close_button)
-        self.close_button.clicked.connect(self._show_browswer)
-
-        self.apply_button.move(self._right_width - self.apply_button.width() - 10, 0)
-        self.close_button.move(self._right_width - self.close_button.width() - 10, 30)
-
-        self.settings_widget.hide()
-
-    def _format_button(self, button, width: int = 80, height: int = 30):
-        button.setFixedHeight(height)
-        button.setFixedWidth(width)
-        button.move(0, 0)
-        button.raise_()
-        button.setFlat(True)
-        button.setStyleSheet("QPushButton {background-color: #000000; color: #ffffff; border: 1px solid #ffffff; border-radius: 5px;}")
-        button.setGraphicsEffect(QtWidgets.QGraphicsDropShadowEffect(blurRadius=5, xOffset=2, yOffset=2))
-        button.setWindowFlags(QtCore.Qt.FramelessWindowHint)
-        button.setWindowOpacity(0.5)
-        button.setMouseTracking(True)
-
-        # on hover 
-        button.enterEvent = lambda event: button.setWindowOpacity(1)
-        button.leaveEvent = lambda event: button.setWindowOpacity(0.5)
-
-        # on hover make text green
-        button.enterEvent = lambda event: button.setStyleSheet("QPushButton {background-color: #000000; color: #00ff00; border: 1px solid #ffffff; border-radius: 5px;}")
-        button.leaveEvent = lambda event: button.setStyleSheet("QPushButton {background-color: #000000; color: #ffffff; border: 1px solid #ffffff; border-radius: 5px;}")
-
-    def _format_loading_bar(self, bar, height: int = 26):
-        bar.setMinimum(0)
-        bar.setMaximum(100)
-        bar.setValue(0)
-        bar.setTextVisible(False)
-        bar.setMinimumHeight(height)
-        bar.setFixedWidth(self._left_width * 0.35)
-        bar.setStyleSheet("QProgressBar {border: 1px solid #ffffff; border-radius: 5px; text-align: right;}")
-        bar.setStyleSheet("QProgressBar::chunk {background-color: #000000; width: 10px;}")
-        bar.setAlignment(QtCore.Qt.AlignCenter)
-
-    def _format_button_transparent(self, button):
-        button.setWindowOpacity(0.0)
-        button.setStyleSheet("QPushButton {border: 0px solid #ffffff;}")
-
-    def _show_settings(self):
-        self.webview.hide()
-        self.right_layout.addWidget(self.settings_widget)
-        self.settings_widget.show()
-
-    def _show_browswer(self):
-        self.settings_widget.hide()
-        self.webview.show()
-
-    def _youtube_browser_widget(self):
-        browser = QtWebEngineWidgets.QWebEngineView()
-        browser.load(QtCore.QUrl("https://www.youtube.com"))
-        return browser
 
     def _download_queue(self, progress_bar=None):
         self.progress_bar = progress_bar
@@ -202,23 +108,6 @@ class SplitWindowYoutubeBrowser(QtWidgets.QMainWindow):
         self.progress_bar.setTextVisible(True)
         self.progress_bar.setFormat("Done")
         self.progress_bar.setStyleSheet("QProgressBar {background-color: #006400; border: 0px solid #006400; border-radius: 5px; text-align: center;}")
-
-    def _add_current_url_to_queue(self):
-        if self._get_current_url() is not None and \
-                self._get_current_url() not in self.queue and \
-                self._get_current_url() != "about:blank" and \
-                self._get_current_url() != "https://www.youtube.com/" and \
-                "https://www.youtube.com/feed/" not in self._get_current_url():
-            self.queue.append(self._get_current_url())
-            button = QtWidgets.QPushButton(self._get_current_url())
-            button.setLayoutDirection(QtCore.Qt.LeftToRight)
-            button.clicked.connect(lambda: self._remove_checklist_button(button))
-
-            self.checklists_layout.addWidget(
-                button
-            )
-
-            self.checklists_layout.setAlignment(button, QtCore.Qt.AlignLeft)
 
     def _download_single_queue(self, progress_callback):
         total = len(self.queue)
@@ -278,12 +167,14 @@ class SplitWindowYoutubeBrowser(QtWidgets.QMainWindow):
         """
         if self.progress_bar is not None:
             self.progress_bar.setTextVisible(False)
-            self._format_loading_bar(self.progress_bar)
+            self.progress_bar = format_loading_bar(self.progress_bar)
             self.progress_bar.setValue(num)
             if num == 100:
                 self.progress_bar.setTextVisible(True)
                 self.progress_bar.setFormat("Done")
-                self.progress_bar.setStyleSheet("QProgressBar {background-color: #006400; border: 0px solid #006400; border-radius: 5px; text-align: center;}")
+                self.progress_bar.setStyleSheet(
+                    "QProgressBar {background-color: #006400; border: 0px solid #006400; border-radius: 5px; text-align: center;}"
+                )
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication([])
