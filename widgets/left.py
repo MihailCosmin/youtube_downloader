@@ -28,7 +28,7 @@ class LeftWidget(QtWidgets.QWidget):
 
         self.settings_button = format_button_transparent(self.settings_button)
 
-        self.settings_button.clicked.connect(self.parent._show_settings)
+        self.settings_button.clicked.connect(self.parent.settings_widget._show_settings)
         self.left_layout.addWidget(self.settings_button, 0, 4, QtCore.Qt.AlignTop | QtCore.Qt.AlignRight)
         self.button1 = QtWidgets.QPushButton("Download Current Video")
         self.button1.setMinimumWidth(self.parent._left_width - 10)
@@ -64,10 +64,10 @@ class LeftWidget(QtWidgets.QWidget):
 
         self.queue_label.setStyleSheet("QLabel {border: 0px solid #ffffff;}")
 
-        self.button1.clicked.connect(lambda: self._download_single_video(self._get_current_url(), progress_bar=self.loading_bar_single))
+        self.button1.clicked.connect(lambda: self.parent._download_single_video(self._get_current_url(), progress_bar=self.loading_bar_single))
         self.button2.clicked.connect(self._add_current_url_to_queue)
-        self.button3.clicked.connect(lambda: self._download_playlist(progress_bar=self.loading_bar_playlist))
-        self.button4.clicked.connect(lambda: self._download_queue(progress_bar=self.loading_bar_queue))
+        self.button3.clicked.connect(lambda: self.parent._download_playlist(progress_bar=self.loading_bar_playlist))
+        self.button4.clicked.connect(lambda: self.parent._download_queue(progress_bar=self.loading_bar_queue))
         self.loading_bar_single.hide()
         self.loading_bar_playlist.hide()
         self.loading_bar_queue.hide()
@@ -75,7 +75,7 @@ class LeftWidget(QtWidgets.QWidget):
     def _create_video_queue_widget(self, ):
         self.checklists_widget = QtWidgets.QWidget()
         self.checklists_layout = QtWidgets.QVBoxLayout()
-        self.checklists_layout.setStretch(0, 9)       
+        self.checklists_layout.setStretch(0, 9)
         self.checklists_layout.setAlignment(QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
         self.checklists_widget.setLayout(self.checklists_layout)
         self.checklists_widget.setStyleSheet("QWidget {background-color: #ffffff; border: 1px solid #ffffff; border-radius: 5px;}")
@@ -100,18 +100,18 @@ class LeftWidget(QtWidgets.QWidget):
             self.parent.queue.append(self.parent._get_current_url())
             button = QtWidgets.QPushButton(self.parent._get_current_url())
             button.setLayoutDirection(QtCore.Qt.LeftToRight)
-            button.clicked.connect(lambda: self._remove_checklist_button(button))
+            button.clicked.connect(lambda: self.remove_checklist_button(button))
 
             self.checklists_layout.addWidget(
                 button
             )
 
             self.checklists_layout.setAlignment(button, QtCore.Qt.AlignLeft)
-            
+
             # on button hover change font color to red
             self.checklists_layout.itemAt(self.checklists_layout.count() - 1).widget().setStyleSheet("QPushButton:hover {color: red;}")
 
-    def _remove_checklist_button(self, button):
+    def remove_checklist_button(self, button):
         self.checklists_layout.removeWidget(button)
         self.parent.queue.remove(button.text())
         button.deleteLater()

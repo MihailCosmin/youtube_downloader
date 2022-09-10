@@ -43,3 +43,8 @@ class SettingsWidget(QtWidgets.QWidget):
     def _show_browser(self):
         self.parent.settings_widget.hide()
         self.parent.webview.show()
+
+    def _show_settings(self):
+        self.parent.webview.hide()
+        self.parent.right_widget.right_layout.addWidget(self.parent.settings_widget)
+        self.parent.settings_widget.show()

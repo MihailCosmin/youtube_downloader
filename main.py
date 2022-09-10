@@ -73,10 +73,10 @@ class SplitWindowYoutubeBrowser(QtWidgets.QMainWindow):
         self.layout = QtWidgets.QHBoxLayout(self.central_widget)
         self.layout.setSpacing(0)
 
-        self.left_widget = LeftWidget(parent=self)
-        self.right_widget = RightWidget(parent=self)
         self.settings_widget = SettingsWidget(parent=self)
         self.settings_widget.hide()
+        self.left_widget = LeftWidget(parent=self)
+        self.right_widget = RightWidget(parent=self)
 
         self.ydl = YoutubeDLP()
 
