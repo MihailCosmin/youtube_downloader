@@ -1,22 +1,19 @@
-from os.path import join
 from os.path import dirname
 from os.path import realpath
 from os.path import splitext
 from os.path import basename
-from os.path import expanduser
 
 import sys
 from sys import executable
 
-from PySide2 import QtGui
-from PySide2 import QtCore
 from PySide2 import QtWidgets
-from PySide2 import QtWebEngineCore
-from PySide2 import QtWebEngineWidgets
 
 from PySide2.QtCore import QThreadPool
 
-from adblockparser import AdblockRules
+# from PySide2 import QtWebEngineCore
+# from PySide2 import QtWebEngineWidgets
+
+# from adblockparser import AdblockRules
 
 exe = ''
 if splitext(basename(__file__))[1] == '.pyw'\
@@ -36,6 +33,9 @@ from utils.format import format_loading_bar
 from utils.format import format_button
 
 # TODO: Make executable and release v0.0.1-alpha
+
+# TODO: Check files.txt
+
 # TODO: Make ads traffic filter work 
 
 # with open("easylist.txt", "r", encoding="utf-8") as _:
