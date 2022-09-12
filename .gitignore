@@ -8,6 +8,7 @@ __pycache__/
 
 # Distribution / packaging
 .Python
+exe.win-amd64-3.9/
 build/
 develop-eggs/
 dist/

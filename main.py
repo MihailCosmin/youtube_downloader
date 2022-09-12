@@ -36,7 +36,7 @@ from utils.format import format_button
 
 # TODO: Check files.txt
 
-# TODO: Make ads traffic filter work 
+# TODO: Make ads traffic filter work
 
 # with open("easylist.txt", "r", encoding="utf-8") as _:
 #     raw_rules = _.readlines()
