@@ -1,9 +1,17 @@
 from os import walk
 from os import system
+from os import listdir
 from os import remove
+from os import chmod
+from os.path import dirname
 from os.path import join
 
+from stat import S_IWRITE
+
+from time import sleep
+
 from shutil import rmtree
+from shutil import move
 
 system("python setup.py build")
 
@@ -16,22 +24,54 @@ with open('files.txt', 'r', encoding="utf-8") as _:
 
 build_list = [file.replace("\n", "") for file in build_list]
 
-for root, dirs, files in walk(r"C:\Users\munte\Downloads\Sync\Projects\yt_dlp_gui\build"):
+missing_dir = False
+
+root_dir = dirname(__file__)
+for root, dirs, files in walk(join(root_dir, "build")):
     for dir_ in dirs:
-        missing_dir = join(root, dir_).replace(r"C:\Users\munte\Downloads\Sync\Projects\yt_dlp_gui\build", "").split("\\")[1]
-        missing_dir += "\\"
+        if not missing_dir:
+            missing_dir = join(root, dir_).replace(join(root_dir, "build"), "").split("\\")[1]
+            missing_dir += "\\"
+            print("will try to move lib")
+            for _ in listdir(join(root_dir, "build", "lib")):
+                move(
+                    join(root_dir, "build", "lib", _),
+                    join(root_dir, "build", missing_dir.replace("\\", ""), "lib", _),
+                )
+            print("Moved lib")
+
         if missing_dir not in build_list:
             build_list.append(missing_dir)
         if dir_ != missing_dir.replace("\\", ""):
-            dir_2 = join(root, dir_).replace(join(r"C:\Users\munte\Downloads\Sync\Projects\yt_dlp_gui\build", missing_dir), "").strip()
+            dir_2 = join(root, dir_).replace(join(root_dir, "build", missing_dir), "").strip()
             if dir_2 not in build_list:
-                # print(f"{dir_2} not in {build_list}")
-                rmtree(join(root, dir_))
+                try:
+                    rmtree(join(root, dir_))
+                except PermissionError:
+                    try:
+                        chmod(join(root, dir_), S_IWRITE)
+                        sleep(1)
+                        remove(join(root, dir_))
+                    except PermissionError:
+                        rmtree(join(root, dir_))
+                print(f"Removed {join(root, dir_)}")
+
     for file in files:
-        missing_dir = join(root, file).replace(r"C:\Users\munte\Downloads\Sync\Projects\yt_dlp_gui\build", "").split("\\")[1]
-        missing_dir += "\\"
-        file2 = join(root, file).replace(join(r"C:\Users\munte\Downloads\Sync\Projects\yt_dlp_gui\build", missing_dir), "").strip()
+        if not missing_dir:
+            missing_dir = join(root, file).replace(join(root_dir, "build"), "").split("\\")[1]
+            missing_dir += "\\"
+        file2 = join(root, file).replace(join(root_dir, "build", missing_dir), "").strip()
+        print(f"file2 {file2}")
         if file2 not in build_list:
-            remove(join(root, file))
+            try:
+                remove(join(root, file))
+            except PermissionError:
+                try:
+                    chmod(join(root, file), S_IWRITE)
+                    sleep(1)
+                    remove(join(root, file))
+                except PermissionError:
+                    rmtree(join(root, file))
+            print(f"Removed {join(root, file)}")
 
 print("Finished clean-up")

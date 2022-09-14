@@ -23,7 +23,7 @@ elif splitext(basename(__file__))[1] == '.exe':
     exe = dirname(executable)
 sys.path.append(exe)
 
-from thr.thread import Worker
+from utils.thread import Worker
 from ytb.youtube import YoutubeDLP
 from widgets.center import CenterWidget
 from widgets.settings import SettingsWidget
