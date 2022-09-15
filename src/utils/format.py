@@ -9,7 +9,7 @@ def format_button(button, width: int = 80, height: int = 30):
     button.move(0, 0)
     button.raise_()
     button.setFlat(True)
-    button.setStyleSheet("QPushButton {background-color: #000000; color: #ffffff; border: 1px solid #ffffff; border-radius: 5px;}")
+    # button.setStyleSheet("QPushButton {background-color: #000000; color: #ffffff; border: 1px solid #ffffff; border-radius: 5px;}")
     button.setGraphicsEffect(QtWidgets.QGraphicsDropShadowEffect(blurRadius=5, xOffset=2, yOffset=2))
     button.setWindowFlags(QtCore.Qt.FramelessWindowHint)
     button.setWindowOpacity(0.5)
@@ -20,8 +20,8 @@ def format_button(button, width: int = 80, height: int = 30):
     button.leaveEvent = lambda event: button.setWindowOpacity(0.5)
 
     # on hover make text green
-    button.enterEvent = lambda event: button.setStyleSheet("QPushButton {background-color: #000000; color: #00ff00; border: 1px solid #ffffff; border-radius: 5px;}")
-    button.leaveEvent = lambda event: button.setStyleSheet("QPushButton {background-color: #000000; color: #ffffff; border: 1px solid #ffffff; border-radius: 5px;}")
+    #button.enterEvent = lambda event: button.setStyleSheet("QPushButton {background-color: #000000; color: #00ff00; border: 1px solid #ffffff; border-radius: 5px;}")
+    #button.leaveEvent = lambda event: button.setStyleSheet("QPushButton {background-color: #000000; color: #ffffff; border: 1px solid #ffffff; border-radius: 5px;}")
     return button
 
 def format_button_transparent(button):
@@ -36,8 +36,8 @@ def format_loading_bar(bar, height: int = 26, width: int = 52):
     bar.setTextVisible(False)
     bar.setMinimumHeight(height)
     bar.setFixedWidth(width)
-    bar.setStyleSheet("QProgressBar {border: 1px solid #ffffff; border-radius: 5px; text-align: right;}")
-    bar.setStyleSheet("QProgressBar::chunk {background-color: #000000; width: 10px;}")
+    #bar.setStyleSheet("QProgressBar {border: 1px solid #ffffff; border-radius: 5px; text-align: right;}")
+    #bar.setStyleSheet("QProgressBar::chunk {background-color: #000000; width: 10px;}")
     bar.setAlignment(QtCore.Qt.AlignCenter)
 
     return bar

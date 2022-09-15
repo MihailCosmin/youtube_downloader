@@ -14,7 +14,7 @@ class SettingsWidget(QtWidgets.QWidget):
         self.settings_top_widget = QtWidgets.QWidget()
         self.settings_top_layout = QtWidgets.QHBoxLayout(self.settings_top_widget)
         self.settings_layout.addWidget(self.settings_top_widget)
-        self.settings_top_widget.setStyleSheet("QWidget {border: 1px solid #ffffff; border-radius: 5px;}")
+        # self.settings_top_widget.setStyleSheet("QWidget {border: 1px solid #ffffff; border-radius: 5px;}")
         self.settings_top_widget.setGraphicsEffect(QtWidgets.QGraphicsDropShadowEffect(blurRadius=5, xOffset=2, yOffset=2))
 
         self.settings_layout.setStretch(0, 9)

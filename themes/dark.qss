@@ -1,0 +1,59 @@
+/* /////////////////////////////////////////////////////////////////////////////////////////////////
+
+SET APP STYLESHEET - FULL STYLES HERE
+DARK THEME - DRACULA COLOR BASED
+
+# BY: WANDERSON M.PIMENTA
+# PROJECT MADE WITH: Qt Designer and PySide6
+# V: 1.0.0
+#
+# This project can be used freely for all uses, as long as they maintain the
+# respective credits only in the Python scripts, any information in the visual
+# interface (GUI) can be modified without any implication.
+#
+# There are limitations on Qt licenses if you want to use your products
+# commercially, I recommend reading them on the official website:
+# https://doc.qt.io/qtforpython/licenses.html
+
+///////////////////////////////////////////////////////////////////////////////////////////////// */
+
+/* /////////////////////////////////////////////////////////////////////////////////////////////////
+Right Side - Youtube Browser */
+#webview {	
+	border-left: 22px solid transparent;
+	background-color: rgb(40, 44, 52);
+	border: 1px solid rgb(44, 49, 58);
+	text-align: left;
+	padding-left: 44px;
+}
+
+/* /////////////////////////////////////////////////////////////////////////////////////////////////
+Left Side - Download Options */
+#left_widget .QWidget {
+	background-color: rgb(40, 44, 52);
+	border: 1px solid rgb(44, 49, 58);
+	text-align: left;
+	padding-left: 44px;
+	color: rgb(0, 0, 0);
+}
+
+#main_window .QWidget {
+	background-color: rgb(40, 44, 52);
+	border: 1px solid rgb(44, 49, 58);
+	text-align: left;
+	padding-left: 44px;
+	color: white;
+}
+
+
+#left_widget .QPushButton{
+	background-color: #000000;
+	color: #ffffff;
+	border: 1px solid #ffffff;
+	border-radius: 5px;
+}
+
+#left_widget .QPushButton:hover {
+	background-color: rgb(40, 44, 52);
+	color: red;
+}

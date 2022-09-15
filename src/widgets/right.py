@@ -18,7 +18,7 @@ class RightWidget(QtWidgets.QWidget):
 
         self.parent.webview = self._youtube_browser_widget()
         self.right_layout.addWidget(self.parent.webview)
-    
+
     def _youtube_browser_widget(self):
         browser = QtWebEngineWidgets.QWebEngineView()
         browser.load(QtCore.QUrl("https://www.youtube.com"))

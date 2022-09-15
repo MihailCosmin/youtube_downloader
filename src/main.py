@@ -10,10 +10,10 @@ from PySide2 import QtWidgets
 
 from PySide2.QtCore import QThreadPool
 
-# from PySide2 import QtWebEngineCore
-# from PySide2 import QtWebEngineWidgets
+from PySide2 import QtWebEngineCore
+from PySide2 import QtWebEngineWidgets
 
-# from adblockparser import AdblockRules
+from adblockparser import AdblockRules
 
 exe = ''
 if splitext(basename(__file__))[1] == '.pyw'\
@@ -38,20 +38,21 @@ from utils.format import format_button
 
 # TODO: Make ads traffic filter work
 
-# with open("easylist.txt", "r", encoding="utf-8") as _:
-#     raw_rules = _.readlines()
-#     rules = AdblockRules(raw_rules)
+with open("easylist_clean.txt", "r", encoding="utf-8") as _:
+    raw_rules = _.readlines()
+    rules = AdblockRules(raw_rules)
 
-# class WebEngineUrlRequestInterceptor(QtWebEngineCore.QWebEngineUrlRequestInterceptor):
-#     def interceptRequest(self, info):
-#         url = info.requestUrl().toString()
-#         if rules.should_block(url):
-#             print("block::::::::::::::::::::::", url)
-#             info.block(True)
+class WebEngineUrlRequestInterceptor(QtWebEngineCore.QWebEngineUrlRequestInterceptor):
+    def interceptRequest(self, info):
+        url = info.requestUrl().toString()
+        if rules.should_block(url):
+            print("block::::::::::::::::::::::", url)
+            info.block(True)
 
 class SplitWindowYoutubeBrowser(QtWidgets.QMainWindow):
     def __init__(self):
         super().__init__()
+
         self._height = QtWidgets.QApplication.primaryScreen().size().height()
         self._left_width = round(QtWidgets.QApplication.primaryScreen().size().width() * 0.1, 0) + 100
         self._right_width = round(QtWidgets.QApplication.primaryScreen().size().width() * 0.9, 0) - 140
@@ -62,8 +63,8 @@ class SplitWindowYoutubeBrowser(QtWidgets.QMainWindow):
         self.progress_bar = None
 
         # Traffic filter
-        # self.interceptor = WebEngineUrlRequestInterceptor()
-        # QtWebEngineWidgets.QWebEngineProfile.defaultProfile().setRequestInterceptor(self.interceptor)
+
+        self.setObjectName(u"main_window")
 
         self.setWindowTitle("Youtube Downloader")
         self.resize(QtWidgets.QApplication.primaryScreen().size())
@@ -76,12 +77,25 @@ class SplitWindowYoutubeBrowser(QtWidgets.QMainWindow):
         self.settings_widget = SettingsWidget(parent=self)
         self.settings_widget.hide()
         self.left_widget = LeftWidget(parent=self)
+        self.left_widget.setObjectName(u"left_widget")
+        
+        #set left widget background
+        # self.left_widget.setStyleSheet("background-color: #1e1e1e;")
+
+        # set left widget style
+        # self.left_widget.setStyleSheet("background-color: #000000; border: 0px solid #000000; border-radius: 0px;")
+
         self.right_widget = RightWidget(parent=self)
 
         self.ydl = YoutubeDLP()
 
         self.layout.addWidget(self.left_widget)
         self.layout.addWidget(self.right_widget)
+
+
+        with open("themes/dark.qss", "r", encoding="utf-8") as _:
+            stylesheet = _.read()
+        self.setStyleSheet(stylesheet)
 
         self.showMaximized()
 
@@ -90,7 +104,7 @@ class SplitWindowYoutubeBrowser(QtWidgets.QMainWindow):
         self.progress_bar.show()
         self.progress_bar.setTextVisible(True)
         self.progress_bar.setFormat("Download starting...")
-        self.progress_bar.setStyleSheet("QProgressBar {text-align: center;}")
+        #self.progress_bar.setStyleSheet("QProgressBar {text-align: center;}")
         self.progress_bar.setValue(0)
 
         self.worker = Worker(
@@ -107,7 +121,7 @@ class SplitWindowYoutubeBrowser(QtWidgets.QMainWindow):
     def _thread_complete(self):
         self.progress_bar.setTextVisible(True)
         self.progress_bar.setFormat("Done")
-        self.progress_bar.setStyleSheet("QProgressBar {background-color: #006400; border: 0px solid #006400; border-radius: 5px; text-align: center;}")
+        # self.progress_bar.setStyleSheet("QProgressBar {background-color: #006400; border: 0px solid #006400; border-radius: 5px; text-align: center;}")
 
     def _download_single_queue(self, progress_callback):
         total = len(self.queue)
@@ -121,7 +135,7 @@ class SplitWindowYoutubeBrowser(QtWidgets.QMainWindow):
         self.progress_bar.show()
         self.progress_bar.setTextVisible(True)
         self.progress_bar.setFormat("Download starting...")
-        self.progress_bar.setStyleSheet("QProgressBar {text-align: center;}")
+        #self.progress_bar.setStyleSheet("QProgressBar {text-align: center;}")
         self.progress_bar.setValue(0)
         self.worker = Worker(
             self.ydl.download_video,
@@ -138,7 +152,7 @@ class SplitWindowYoutubeBrowser(QtWidgets.QMainWindow):
         self.progress_bar.show()
         self.progress_bar.setTextVisible(True)
         self.progress_bar.setFormat("Download starting...")
-        self.progress_bar.setStyleSheet("QProgressBar {text-align: center;}")
+        #self.progress_bar.setStyleSheet("QProgressBar {text-align: center;}")
         self.progress_bar.setValue(0)
         self.worker = Worker(
             self.ydl.download_playlist,
@@ -172,12 +186,14 @@ class SplitWindowYoutubeBrowser(QtWidgets.QMainWindow):
             if num == 100:
                 self.progress_bar.setTextVisible(True)
                 self.progress_bar.setFormat("Done")
-                self.progress_bar.setStyleSheet(
-                    "QProgressBar {background-color: #006400; border: 0px solid #006400; border-radius: 5px; text-align: center;}"
-                )
+                # self.progress_bar.setStyleSheet(
+                #     "QProgressBar {background-color: #006400; border: 0px solid #006400; border-radius: 5px; text-align: center;}"
+                # )
 
 
 if __name__ == "__main__":
     app = QtWidgets.QApplication([])
+    interceptor = WebEngineUrlRequestInterceptor()
+    QtWebEngineWidgets.QWebEngineProfile.defaultProfile().setUrlRequestInterceptor(interceptor)
     window = SplitWindowYoutubeBrowser()
     app.exec_()
