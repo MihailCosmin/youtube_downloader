@@ -1,6 +1,6 @@
-from PySide2 import QtWidgets
-from PySide2 import QtCore
-from PySide2 import QtGui
+from PySide6 import QtWidgets
+from PySide6 import QtCore
+from PySide6 import QtGui
 
 from utils.format import format_button
 from utils.format import format_loading_bar
@@ -67,7 +67,7 @@ class LeftWidget(QtWidgets.QWidget):
 
         # self.queue_label.setStyleSheet("QLabel {border: 0px solid #ffffff;}")
 
-        self.button1.clicked.connect(lambda: self.parent._download_single_video(self._get_current_url(), progress_bar=self.loading_bar_single))
+        self.button1.clicked.connect(lambda: self.parent._download_single_video(self.parent._get_current_url(), progress_bar=self.loading_bar_single))
         self.button2.clicked.connect(self._add_current_url_to_queue)
         self.button3.clicked.connect(lambda: self.parent._download_playlist(progress_bar=self.loading_bar_playlist))
         self.button4.clicked.connect(lambda: self.parent._download_queue(progress_bar=self.loading_bar_queue))

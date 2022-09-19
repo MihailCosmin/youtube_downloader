@@ -3,10 +3,10 @@ from sys import exc_info
 from traceback import print_exc
 from traceback import format_exc
 
-from PySide2.QtCore import Slot
-from PySide2.QtCore import Signal
-from PySide2.QtCore import QObject
-from PySide2.QtCore import QRunnable
+from PySide6.QtCore import Slot
+from PySide6.QtCore import Signal
+from PySide6.QtCore import QObject
+from PySide6.QtCore import QRunnable
 
 class WorkerSignals(QObject):
     '''

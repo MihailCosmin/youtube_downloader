@@ -6,14 +6,11 @@ from os.path import basename
 import sys
 from sys import executable
 
-from PySide2 import QtWidgets
+from PySide6.QtWidgets import QApplication
+from PySide6.QtWidgets import QMainWindow
+from PySide6.QtWidgets import QHBoxLayout
 
-from PySide2.QtCore import QThreadPool
-
-from PySide2 import QtWebEngineCore
-from PySide2 import QtWebEngineWidgets
-
-from adblockparser import AdblockRules
+from PySide6.QtCore import QThreadPool
 
 exe = ''
 if splitext(basename(__file__))[1] == '.pyw'\
@@ -30,57 +27,34 @@ from widgets.settings import SettingsWidget
 from widgets.left import LeftWidget
 from widgets.right import RightWidget
 from utils.format import format_loading_bar
-from utils.format import format_button
 
-# TODO: Make executable and release v0.0.1-alpha
-
-# TODO: Check files.txt
-
-# TODO: Make ads traffic filter work
-
-with open("easylist_clean.txt", "r", encoding="utf-8") as _:
-    raw_rules = _.readlines()
-    rules = AdblockRules(raw_rules)
-
-class WebEngineUrlRequestInterceptor(QtWebEngineCore.QWebEngineUrlRequestInterceptor):
-    def interceptRequest(self, info):
-        url = info.requestUrl().toString()
-        if rules.should_block(url):
-            print("block::::::::::::::::::::::", url)
-            info.block(True)
-
-class SplitWindowYoutubeBrowser(QtWidgets.QMainWindow):
+class SplitWindowYoutubeBrowser(QMainWindow):
     def __init__(self):
         super().__init__()
 
-        self._height = QtWidgets.QApplication.primaryScreen().size().height()
-        self._left_width = round(QtWidgets.QApplication.primaryScreen().size().width() * 0.1, 0) + 100
-        self._right_width = round(QtWidgets.QApplication.primaryScreen().size().width() * 0.9, 0) - 140
+        self._height = QApplication.primaryScreen().size().height()
+        self._left_width = round(QApplication.primaryScreen().size().width() * 0.1, 0) + 100
+        self._right_width = round(QApplication.primaryScreen().size().width() * 0.9, 0) - 140
 
         self.queue = []
         self.worker = None
         self.threadpool = QThreadPool()
         self.progress_bar = None
 
-        # Traffic filter
-
         self.setObjectName(u"main_window")
 
         self.setWindowTitle("Youtube Downloader")
-        self.resize(QtWidgets.QApplication.primaryScreen().size())
+        self.resize(QApplication.primaryScreen().size())
 
         self.central_widget = CenterWidget()
         self.setCentralWidget(self.central_widget)
-        self.layout = QtWidgets.QHBoxLayout(self.central_widget)
+        self.layout = QHBoxLayout(self.central_widget)
         self.layout.setSpacing(0)
 
         self.settings_widget = SettingsWidget(parent=self)
         self.settings_widget.hide()
         self.left_widget = LeftWidget(parent=self)
         self.left_widget.setObjectName(u"left_widget")
-        
-        #set left widget background
-        # self.left_widget.setStyleSheet("background-color: #1e1e1e;")
 
         # set left widget style
         # self.left_widget.setStyleSheet("background-color: #000000; border: 0px solid #000000; border-radius: 0px;")
@@ -111,7 +85,7 @@ class SplitWindowYoutubeBrowser(QtWidgets.QMainWindow):
             self._download_single_queue,
             progress=True,
             console=False,
-
+ 
         )
         self.worker.signals.progress.connect(self._progress_bar_update)
         self.worker.signals.finished.connect(self._thread_complete)
@@ -119,6 +93,7 @@ class SplitWindowYoutubeBrowser(QtWidgets.QMainWindow):
         self.threadpool.start(self.worker)
 
     def _thread_complete(self):
+        self.progress_bar.setValue(100)
         self.progress_bar.setTextVisible(True)
         self.progress_bar.setFormat("Done")
         # self.progress_bar.setStyleSheet("QProgressBar {background-color: #006400; border: 0px solid #006400; border-radius: 5px; text-align: center;}")
@@ -192,8 +167,6 @@ class SplitWindowYoutubeBrowser(QtWidgets.QMainWindow):
 
 
 if __name__ == "__main__":
-    app = QtWidgets.QApplication([])
-    interceptor = WebEngineUrlRequestInterceptor()
-    QtWebEngineWidgets.QWebEngineProfile.defaultProfile().setUrlRequestInterceptor(interceptor)
+    app = QApplication([])
     window = SplitWindowYoutubeBrowser()
-    app.exec_()
+    app.exec()
