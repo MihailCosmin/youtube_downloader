@@ -19,18 +19,18 @@ DARK THEME - DRACULA COLOR BASED
 
 /* /////////////////////////////////////////////////////////////////////////////////////////////////
 Right Side - Youtube Browser */
-#webview {	
+/* [objectName^="webview"] {	
 	border-left: 22px solid transparent;
 	background-color: rgb(40, 44, 52);
 	border: 1px solid rgb(44, 49, 58);
 	text-align: left;
 	padding-left: 44px;
-}
+} */
 
 /* /////////////////////////////////////////////////////////////////////////////////////////////////
 Left Side - Download Options */
-#left_widget .QWidget {
-	background-color: rgb(40, 44, 52);
+[objectName^="left_widget"]  {
+	background-color: red; /* rgb(40, 44, 52); */
 	border: 1px solid rgb(44, 49, 58);
 	text-align: left;
 	padding-left: 44px;
@@ -56,4 +56,30 @@ Left Side - Download Options */
 #left_widget .QPushButton:hover {
 	background-color: rgb(40, 44, 52);
 	color: red;
+}
+
+QFrame[objectName^="left_menu_frame"] {
+	background-color: rgb(40, 44, 52);
+	border: 1px solid rgb(44, 49, 58);
+	text-align: left;
+	color: white;
+}
+
+QFrame[objectName^="left_menu_frame"] QPushButton {
+	background-color: rgb(50, 54, 62); /* background-color: transparent; */
+	text-align: center;
+}
+
+QFrame[objectName^="left_menu_frame"] QPushButton:hover {
+	background-color: rgb(60, 64, 72); /* background-color: transparent; */
+	text-align: center;
+	color: palette(light);
+}
+
+/* /////////////////////////////////////////////////////////////////////////////////////////////////
+QMainWindow Options */
+QMainWindow {
+	background-color: rgb(40, 44, 52);
+	border: 1px solid rgb(44, 49, 58);
+	text-align: left;
 }

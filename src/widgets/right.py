@@ -5,6 +5,9 @@ from PySide6 import QtWebEngineCore
 
 from PySide6 import QtWidgets
 from PySide6 import QtCore
+from PySide6.QtCore import QByteArray
+
+from PySide6.QtWebEngineCore import QWebEngineHttpRequest
 
 from adblockparser import AdblockRules
 
@@ -51,16 +54,21 @@ class RightWidget(QtWidgets.QWidget):
         self.right_layout.setContentsMargins(10, 0, 0, 0)
 
         self.setMinimumWidth(self.parent._right_width)
-        self.setMaximumWidth(self.parent._right_width)
+        self.setMaximumWidth(self.parent._right_width + self.parent._left_width)
 
         self.parent.webview = self._youtube_browser_widget()
+        self.parent.webview.setObjectName = u"webview"
         self.right_layout.addWidget(self.parent.webview)
 
     def _youtube_browser_widget(self):
         browser = QtWebEngineWidgets.QWebEngineView()
         self._adblock()
-        # browser.load(QtCore.QUrl("https://www.youtube.com"))
-        browser.load(QtCore.QUrl("https://www.yewtu.be"))
+        url = QWebEngineHttpRequest()
+        url.setHeader(QByteArray(b'cookie'), QByteArray(b'CONSENT=YES+'))
+        url.setUrl("https://www.youtube.com/?theme=dark&themeRefresh=1")
+        browser.load(url)
+        # browser.load(QtCore.QUrl("https://www.youtube.com/?theme=dark&themeRefresh=1"))
+        # browser.load(QtCore.QUrl("https://www.yewtu.be"))
         return browser
 
     def _adblock(self):

@@ -1,3 +1,4 @@
+from PySide6.QtWidgets import QWidget
 from PySide6 import QtWidgets
 from PySide6 import QtCore
 from PySide6 import QtGui
@@ -6,13 +7,18 @@ from utils.format import format_button
 from utils.format import format_loading_bar
 from utils.format import format_button_transparent
 
-class LeftWidget(QtWidgets.QWidget):
+class LeftWidget(QWidget):
+    """_summary_
+
+    Args:
+        QWidget (_type_): _description_
+    """
     def __init__(self, parent=None):
-        super().__init__()
+        super().__init__(parent)
         self.parent = parent
         self.left_layout = QtWidgets.QGridLayout()
         self.left_layout.setObjectName(u"left_layout")
-        
+
         self.setLayout(self.left_layout)
 
         self.left_layout.setAlignment(QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)

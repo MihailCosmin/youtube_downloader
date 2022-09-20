@@ -9,8 +9,16 @@ from sys import executable
 from PySide6.QtWidgets import QApplication
 from PySide6.QtWidgets import QMainWindow
 from PySide6.QtWidgets import QHBoxLayout
+from PySide6.QtWidgets import QVBoxLayout
+from PySide6.QtWidgets import QPushButton
+from PySide6.QtWidgets import QWidget
+from PySide6.QtWidgets import QFrame
+
+from PySide6.QtGui import QIcon
 
 from PySide6.QtCore import QThreadPool
+from PySide6.QtCore import QEasingCurve
+from PySide6.QtCore import QPropertyAnimation
 
 exe = ''
 if splitext(basename(__file__))[1] == '.pyw'\
@@ -28,13 +36,23 @@ from widgets.left import LeftWidget
 from widgets.right import RightWidget
 from utils.format import format_loading_bar
 
+
+# class QPropertyAnimation2(QPropertyAnimation):
+#     def __init__(self, *args, **kwargs):
+#         super().__init__()
+
 class SplitWindowYoutubeBrowser(QMainWindow):
     def __init__(self):
         super().__init__()
 
         self._height = QApplication.primaryScreen().size().height()
-        self._left_width = round(QApplication.primaryScreen().size().width() * 0.1, 0) + 100
-        self._right_width = round(QApplication.primaryScreen().size().width() * 0.9, 0) - 140
+        self._left_bar_width = 50
+        self._left_width = round(
+            (QApplication.primaryScreen().size().width() - self._left_bar_width) * 0.1,
+            0)
+        self._right_width = round(
+            (QApplication.primaryScreen().size().width() - self._left_bar_width) * 0.9,
+            0)
 
         self.queue = []
         self.worker = None
@@ -63,15 +81,59 @@ class SplitWindowYoutubeBrowser(QMainWindow):
 
         self.ydl = YoutubeDLP()
 
+        # add a frame 
+        self.left_menu_frame = QFrame()
+        self.left_menu_frame.setObjectName(u"left_menu_frame")
+
+        self.left_menu_frame.setMaximumWidth(self._left_bar_width)
+        self.left_menu_frame.setMinimumWidth(self._left_bar_width)
+        self.left_frame_layout = QVBoxLayout(self.left_menu_frame)
+
+        self.left_menu_frame.settings_button = QPushButton("")
+        self.left_menu_frame.settings_button.setIcon(QIcon("icons/icon_settings.png"))
+        self.left_menu_frame.settings_button.setIconSize(self.left_menu_frame.settings_button.iconSize() * 2)
+        self.left_menu_frame.settings_button.clicked.connect(self.toggle_settings)
+        self.left_frame_layout.addWidget(self.left_menu_frame.settings_button)
+
+        self.left_menu_frame.downloads_button = QPushButton("")
+        self.left_menu_frame.downloads_button.setIcon(QIcon("icons/cil-vertical-align-bottom.png"))
+        self.left_menu_frame.downloads_button.setIconSize(self.left_menu_frame.settings_button.iconSize() * 2)
+        self.left_menu_frame.downloads_button.clicked.connect(self.toggle_downloads)
+        self.left_frame_layout.addWidget(self.left_menu_frame.downloads_button)
+
+        # left_frame_layout alignment to top
+        self.left_frame_layout.addStretch()
+
+        self.layout.addWidget(self.left_menu_frame)
+
         self.layout.addWidget(self.left_widget)
         self.layout.addWidget(self.right_widget)
-
 
         with open("themes/dark.qss", "r", encoding="utf-8") as _:
             stylesheet = _.read()
         self.setStyleSheet(stylesheet)
 
         self.showMaximized()
+
+    def toggle_settings(self):
+        pass
+
+    def toggle_downloads(self):
+        if self.left_widget.width() != 0:
+            self.left_widget.setMinimumWidth(0)
+            self.animation = QPropertyAnimation(self.left_widget, b"maximumWidth")
+            self.animation.setDuration(500)
+            self.animation.setStartValue(self.left_widget.width())
+            self.animation.setEndValue(0)
+            self.animation.setEasingCurve(QEasingCurve.InOutQuart)
+            self.animation.start()
+        else:
+            self.animation = QPropertyAnimation(self.left_widget, b"minimumWidth")
+            self.animation.setDuration(500)
+            self.animation.setStartValue(0)
+            self.animation.setEndValue(self._left_width)
+            self.animation.setEasingCurve(QEasingCurve.InOutQuart)
+            self.animation.start()
 
     def _download_queue(self, progress_bar=None):
         self.progress_bar = progress_bar
