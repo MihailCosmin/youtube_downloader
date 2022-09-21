@@ -10,7 +10,7 @@ if (platform == "win32"):
 
 executables = [Executable("src/main.py", base=base, icon="icons/yt_dlp_gui.png")]
 
-packages = ["ctypes", "imp", "PySide2", "yt_dlp"]
+packages = ["ctypes", "imp", "PySide6", "yt_dlp"]
 excludes = ["PyQt5", "PyQt4", "reportlab", "matplotlib", "numba", "scipy", "sqlalchemy", "sqlite3", "soupsieve", "llvmlite", "black", "bs4", "jupyter", "tornado", "pygments"]
 options = {
     'build_exe': {
