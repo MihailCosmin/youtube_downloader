@@ -13,8 +13,8 @@ class TitleBar(QWidget):
     clickPos = None
     def __init__(self, parent):
         
-        TODO: Add the title bar QFrame Here
-        TODO: Connect the title bar handle to the move event
+        # TODO: Add the title bar QFrame Here
+        # TODO: Connect the title bar handle to the move event
         
         super(TitleBar, self).__init__(parent)
         self.setAutoFillBackground(True)
