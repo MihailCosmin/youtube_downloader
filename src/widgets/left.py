@@ -92,6 +92,7 @@ class LeftWidget(QWidget):
         self.checklists_widget.setFixedWidth(self.parent._left_width)
 
         self.checklists_scroll = QtWidgets.QScrollArea()
+        self.checklists_scroll.setObjectName(u"checklists_scroll")
         self.checklists_scroll.setWidget(self.checklists_widget)
         self.checklists_scroll.setWidgetResizable(True)
         self.checklists_scroll.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)

@@ -31,7 +31,7 @@ Right Side - Youtube Browser */
 Left Side - Download Options */
 [objectName^="left_widget"]  {
 	background-color: red; /* rgb(40, 44, 52); */
-	border: 1px solid rgb(44, 49, 58);
+	border: 1px solid rgb(2, 2, 2);
 	text-align: left;
 	padding-left: 44px;
 	color: rgb(0, 0, 0);
@@ -59,27 +59,83 @@ Left Side - Download Options */
 }
 
 QFrame[objectName^="left_menu_frame"] {
-	background-color: rgb(40, 44, 52);
-	border: 1px solid rgb(44, 49, 58);
+	background-color: rgb(38, 38, 38);
+	border: 1px solid rgb(38, 38, 38);
+    border-radius: 0px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
 	text-align: left;
 	color: white;
 }
 
 QFrame[objectName^="left_menu_frame"] QPushButton {
-	background-color: rgb(50, 54, 62); /* background-color: transparent; */
+	background-color: rgb(38, 38, 38); /* background-color: transparent; */
 	text-align: center;
 }
 
 QFrame[objectName^="left_menu_frame"] QPushButton:hover {
-	background-color: rgb(60, 64, 72); /* background-color: transparent; */
+	background-color: rgb(48, 48, 48); /* background-color: transparent; */
 	text-align: center;
 	color: palette(light);
+}
+
+QFrame#title_handle_bar {
+	background-color: rgb(38, 38, 38);
+	border: 1px solid rgb(38, 38, 38);
+	text-align: left;
+	color: white;
+}
+
+QFrame#title_bar {
+	background-color: rgb(38, 38, 38);
+	border: 1px solid rgb(38, 38, 38);
+	text-align: left;
+	color: white;
+	min-height: 30px;
+	max-height: 30px;
+}
+
+QScrollArea#left_scroll_area {
+	background-color: rgb(38, 38, 38);
+	border: 1px solid rgb(38, 38, 38);
+	text-align: left;
+	color: white;
+}
+
+QPushButton#exit_button {
+    background: transparent;
+    image: url("./src/images/icons/exit.svg");
+}
+
+QPushButton#exit_button:hover {
+    background: transparent;
+    image: url("./src/images/icons/exit_hover.svg");
+}
+
+QPushButton#minimize_button {
+    background: transparent;
+    image: url("./src/images/icons/minimize.svg");
+}
+
+QPushButton#minimize_button:hover {
+    background: transparent;
+    image: url("./src/images/icons/minimize_hover.svg");
+}
+
+QPushButton#maximize_button {
+    background: transparent;
+    image: url("./src/images/icons/maximize.svg");
+}
+
+QPushButton#maximize_button:hover {
+    background: transparent;
+    image: url("./src/images/icons/maximize_hover.svg");
 }
 
 /* /////////////////////////////////////////////////////////////////////////////////////////////////
 QMainWindow Options */
 QMainWindow {
-	background-color: rgb(40, 44, 52);
-	border: 1px solid rgb(44, 49, 58);
+	background-color: rgb(2, 2, 2);
+	border: 1px solid rgb(2, 2, 2);
 	text-align: left;
 }
