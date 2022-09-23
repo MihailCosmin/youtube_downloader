@@ -132,6 +132,26 @@ QPushButton#maximize_button:hover {
     image: url("./src/images/icons/maximize_hover.svg");
 }
 
+QPushButton#settings_button {
+    background: transparent;
+    image: url("./src/images/icons/settings2.svg");
+}
+
+QPushButton#settings_button:hover {
+    background: transparent;
+    image: url("./src/images/icons/settings2_hover.svg");
+}
+
+QPushButton#downloads_button {
+    background: transparent;
+    image: url("./src/images/icons/download.svg");
+}
+
+QPushButton#downloads_button:hover {
+    background: transparent;
+    image: url("./src/images/icons/download_hover.svg");
+}
+
 /* /////////////////////////////////////////////////////////////////////////////////////////////////
 QMainWindow Options */
 QMainWindow {

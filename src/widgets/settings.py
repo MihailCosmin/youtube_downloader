@@ -19,8 +19,10 @@ class SettingsWidget(QtWidgets.QWidget):
 
         self.settings_layout.setStretch(0, 9)
 
-        self.setMinimumWidth(self.parent._right_width)
-        self.setMaximumWidth(self.parent._right_width)
+        # self.setMinimumWidth(self.parent._right_width)
+        # self.setMaximumWidth(self.parent._right_width + self.parent._left_width)
+        self.setMinimumWidth(0)
+        self.setMaximumWidth(0)
 
         self.settings_bottom_widget = QtWidgets.QWidget()
         self.settings_bottom_layout = QtWidgets.QHBoxLayout(self.settings_bottom_widget)
@@ -39,6 +41,8 @@ class SettingsWidget(QtWidgets.QWidget):
 
         self.apply_button.move(self.parent._right_width - self.apply_button.width() - 10, 0)
         self.close_button.move(self.parent._right_width - self.close_button.width() - 10, 30)
+        
+        #self.settings_layout.addWidget(self.parent.settings_widget)
 
     def _show_browser(self):
         self.parent.settings_widget.hide()

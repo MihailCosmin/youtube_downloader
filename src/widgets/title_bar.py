@@ -1,108 +1,52 @@
-from email.headerregistry import HeaderRegistry
 from PySide6.QtWidgets import QWidget
 from PySide6.QtWidgets import QHBoxLayout
-from PySide6.QtWidgets import QToolButton
-from PySide6.QtWidgets import QLabel
-from PySide6.QtWidgets import QStyle
-
-from PySide6.QtGui import QPalette
-from PySide6.QtCore import QSize
-from PySide6.QtCore import Qt
+from PySide6.QtWidgets import QPushButton
+from PySide6.QtWidgets import QFrame
 
 class TitleBar(QWidget):
-    clickPos = None
+    """TitleBar
+
+    Args:
+        QWidget (_type_): QWidget
+    """
     def __init__(self, parent):
-        
-        # TODO: Add the title bar QFrame Here
-        # TODO: Connect the title bar handle to the move event
-        
-        super(TitleBar, self).__init__(parent)
-        self.setAutoFillBackground(True)
-        
-        self.setBackgroundRole(QPalette.Shadow)
-        layout = QHBoxLayout(self)
-        layout.setContentsMargins(1, 1, 1, 1)
-        layout.addStretch()
+        super().__init__(parent)
 
-        self.title = QLabel("My Own Bar", self, alignment=Qt.AlignCenter)
-        # if setPalette() was used above, this is not required
-        self.title.setForegroundRole(QPalette.Light)
+        self.parent = parent
 
-        style = self.style()
-        ref_size = self.fontMetrics().height()
-        ref_size += style.pixelMetric(style.PM_ButtonMargin) * 2
-        self.setMaximumHeight(ref_size + 2)
+        self.layout = QHBoxLayout()
+        self.layout.setContentsMargins(0, 0, 0, 0)
+        self.setLayout(self.layout)
 
-        btn_size = QSize(ref_size, ref_size)
-        for target in ('min', 'normal', 'max', 'close'):
-            btn = QToolButton(self, focusPolicy=Qt.NoFocus)
-            layout.addWidget(btn)
-            btn.setFixedSize(btn_size)
+        self.title_bar_layout = QHBoxLayout()
+        self.title_bar_layout.setContentsMargins(0, 0, 0, 0)
+        self.title_bar = QFrame()
+        self.title_bar.setLayout(self.title_bar_layout)
+        self.title_bar.setObjectName(u"title_bar")
 
-            iconType = getattr(style, 
-                'SP_TitleBar{}Button'.format(target.capitalize()))
-            btn.setIcon(style.standardIcon(iconType))
+        self.title_handle_bar = QFrame()
+        self.title_handle_bar.setObjectName(u"title_handle_bar")
 
-            if target == 'close':
-                colorNormal = 'red'
-                colorHover = 'orangered'
-            else:
-                colorNormal = 'palette(mid)'
-                colorHover = 'palette(light)'
-            btn.setStyleSheet('''
-                QToolButton {{
-                    background-color: {};
-                }}
-                QToolButton:hover {{
-                    background-color: {}
-                }}
-            '''.format(colorNormal, colorHover))
+        self.minimize_button = QPushButton()
+        self.maximize_button = QPushButton()
+        self.exit_button = QPushButton()
 
-            signal = getattr(self, target + 'Clicked')
-            btn.clicked.connect(signal)
+        self.minimize_button.setObjectName(u"minimize_button")
+        self.maximize_button.setObjectName(u"maximize_button")
+        self.exit_button.setObjectName(u"exit_button")
 
-            setattr(self, target + 'Button', btn)
+        self.minimize_button.setMaximumWidth(20)
+        self.maximize_button.setMaximumWidth(20)
+        self.exit_button.setMaximumWidth(20)
 
-        self.normalButton.hide()
+        self.minimize_button.clicked.connect(self.parent.showMinimized)
+        self.maximize_button.clicked.connect(self.parent.toggleMaximizeRestore)
+        self.exit_button.clicked.connect(self.parent.close)
 
-        self.updateTitle(parent.windowTitle())
-        parent.windowTitleChanged.connect(self.updateTitle)
+        self.title_bar_layout.addWidget(self.title_handle_bar)
+        self.title_bar_layout.addWidget(self.minimize_button)
+        self.title_bar_layout.addWidget(self.maximize_button)
+        self.title_bar_layout.addWidget(self.exit_button)
 
-    def updateTitle(self, title=None):
-        if title is None:
-            title = self.window().windowTitle()
-        width = self.title.width()
-        width -= self.style().pixelMetric(QStyle.PM_LayoutHorizontalSpacing) * 2
-        self.title.setText(self.fontMetrics().elidedText(
-            title, Qt.ElideRight, width))
-
-    def windowStateChanged(self, state):
-        self.normalButton.setVisible(state == Qt.WindowMaximized)
-        self.maxButton.setVisible(state != Qt.WindowMaximized)
-
-    def mousePressEvent(self, event):
-        if event.button() == Qt.LeftButton:
-            self.clickPos = event.windowPos().toPoint()
-
-    def mouseMoveEvent(self, event):
-        if self.clickPos is not None:
-            self.window().move(event.globalPos() - self.clickPos)
-
-    def mouseReleaseEvent(self, QMouseEvent):
-        self.clickPos = None
-
-    def closeClicked(self):
-        self.window().close()
-
-    def maxClicked(self):
-        self.window().showMaximized()
-
-    def normalClicked(self):
-        self.window().showNormal()
-
-    def minClicked(self):
-        self.window().showMinimized()
-
-    def resizeEvent(self, event):
-        self.title.resize(self.minButton.x(), self.height())
-        self.updateTitle()
+        self.layout.addWidget(self.title_bar)
+        self.title_handle_bar.mouseMoveEvent = self.parent.mouseMoveEvent

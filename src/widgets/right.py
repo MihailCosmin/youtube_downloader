@@ -4,13 +4,10 @@ from PySide6 import QtWebEngineWidgets
 from PySide6 import QtWebEngineCore
 
 from PySide6 import QtWidgets
-from PySide6 import QtCore
 from PySide6.QtCore import QByteArray
 
 from PySide6.QtWebEngineCore import QWebEngineHttpRequest
 from PySide6.QtWebEngineCore import QWebEnginePage
-
-from PySide6.QtNetwork import QNetworkCookie
 
 from adblockparser import AdblockRules
 
@@ -58,36 +55,18 @@ class RightWidget(QtWidgets.QWidget):
 
         self.setMinimumWidth(self.parent._right_width)
         self.setMaximumWidth(self.parent._right_width + self.parent._left_width)
-        
         self.parent.webview = self._youtube_browser_widget()
         self.parent.webview.setObjectName = u"webview"
         self.right_layout.addWidget(self.parent.webview)
-        
-    #     print(f"Cookie Store: {self.cookies}")
-
-    # def onCookieAdded(self, cookie):
-    #     for c in self.cookies:
-    #         if c.hasSameIdentifier(cookie):
-    #             return
-    #     self.cookies.append(QNetworkCookie(cookie))
 
 
     def _youtube_browser_widget(self):
         browser = QtWebEngineWidgets.QWebEngineView()
-        
-        # self.parent._profile = QtWebEngineCore.QWebEngineProfile.defaultProfile()
         self.parent._profile = QtWebEngineCore.QWebEngineProfile("F_Youtube", browser)
-        # self.parent._profile.setCachePath("cache/")
-        # self.parent._profile.setPersistentStoragePath("cache/")
         self.parent._profile.setPersistentCookiesPolicy(QtWebEngineCore.QWebEngineProfile.ForcePersistentCookies)
+        self.parent.webpage = QWebEnginePage(self.parent._profile, browser)
+        browser.setPage(self.parent.webpage)
 
-        # cookie_store = self.parent._profile.cookieStore()
-        # cookie_store.cookieAdded.connect(self.onCookieAdded)
-        # self.cookies = []
-        
-        webpage = QWebEnginePage(self.parent._profile, browser)
-        browser.setPage(webpage)
-        
         self._adblock()
         url = QWebEngineHttpRequest()
         url.setHeader(
@@ -110,5 +89,7 @@ class RightWidget(QtWidgets.QWidget):
     def _adblock(self):
         # TODO: Make ads traffic filter work
         # https://github.com/qutebrowser/qutebrowser/issues/6480
+        # https://bugreports.qt.io/browse/QTBUG-51185
+        # https://forum.qt.io/topic/131378/enabling-extensions-on-pyqt
         self.parent._interceptor = WebEngineUrlRequestInterceptor(parent=self.parent)
         self.parent._profile.setUrlRequestInterceptor(self.parent._interceptor)

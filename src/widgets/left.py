@@ -28,16 +28,6 @@ class LeftWidget(QWidget):
         self.setMinimumWidth(self.parent._left_width)
         self.setMaximumWidth(self.parent._left_width)
 
-        self.settings_button = QtWidgets.QPushButton("")
-        self.settings_button.setIcon(QtGui.QIcon("icons/settings.png"))
-
-        self.settings_button.setMinimumWidth(self.settings_button.iconSize().width() + 10)
-        self.settings_button.setMaximumWidth(self.settings_button.iconSize().width() + 10)
-
-        self.settings_button = format_button_transparent(self.settings_button)
-
-        self.settings_button.clicked.connect(self.parent.settings_widget._show_settings)
-        self.left_layout.addWidget(self.settings_button, 0, 4, QtCore.Qt.AlignTop | QtCore.Qt.AlignRight)
         self.button1 = QtWidgets.QPushButton("Download Current Video")
         self.button1.setMinimumWidth(self.parent._left_width - 10)
         self.button2 = QtWidgets.QPushButton("Add Video to Queue")
