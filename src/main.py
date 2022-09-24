@@ -80,6 +80,7 @@ class SplitWindowYoutubeBrowser(QMainWindow):
         self.main_layout.setContentsMargins(0, 0, 0, 0)
 
         self.settings_widget = SettingsWidget(parent=self)
+        self.settings_widget.setObjectName(u"settings_widget")
         self.left_widget = LeftWidget(parent=self)
         self.left_widget.setObjectName(u"left_widget")
 

@@ -166,3 +166,9 @@ QMainWindow {
 	border: 1px solid rgb(2, 2, 2);
 	text-align: left;
 }
+
+/* /////////////////////////////////////////////////////////////////////////////////////////////////
+Settings Options */
+#settings_widget * {
+	color: white;
+}

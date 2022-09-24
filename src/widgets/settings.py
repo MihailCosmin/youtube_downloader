@@ -32,8 +32,12 @@ class SettingsWidget(QtWidgets.QWidget):
         self.settings_layout.addWidget(self.settings_widget1)
         self.settings_layout.addWidget(self.settings_widget2)
         self.settings_layout.addWidget(self.settings_widget3)
+        
+        self._settings_widget3()
 
     
     def _settings_widget3(self):
-        # add 
+        # add label at the top
+        self.settings_label = QtWidgets.QLabel("Appearance")
+        self.settings_layout1.addWidget(self.settings_label, 0, 0, 1, 2, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
 
