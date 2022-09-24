@@ -63,7 +63,6 @@ class SplitWindowYoutubeBrowser(QMainWindow):
         self.setObjectName(u"main_window")
 
         self.setWindowTitle("Youtube Downloader")
-        #self.resize(QApplication.primaryScreen().size())
         self.setMaximumWidth(QApplication.primaryScreen().size().width())
         print(f"width 0: {self.width()}")
 
@@ -73,6 +72,7 @@ class SplitWindowYoutubeBrowser(QMainWindow):
         self.main_layout = QVBoxLayout(self.central_widget)
 
         self.app_layout = QHBoxLayout()
+        self.app_layout.setContentsMargins(0, 10, 0, 10)
         self.main_layout.addWidget(self.title_bar)
         self.main_layout.addLayout(self.app_layout)
         self.setLayout(self.main_layout)
@@ -80,7 +80,6 @@ class SplitWindowYoutubeBrowser(QMainWindow):
         self.main_layout.setContentsMargins(0, 0, 0, 0)
 
         self.settings_widget = SettingsWidget(parent=self)
-        #self.settings_widget.hide()
         self.left_widget = LeftWidget(parent=self)
         self.left_widget.setObjectName(u"left_widget")
 
@@ -110,49 +109,31 @@ class SplitWindowYoutubeBrowser(QMainWindow):
 
     def toggle_settings(self):
         if self.settings_widget.width() != 0:
-            # TODO: Fix this shit
-            print("Will close settings")
             self.settings_widget.setMinimumWidth(0)
-            self.animation = QPropertyAnimation(self.settings_widget, b"maximumWidth")
-            self.animation.setDuration(500)
-            self.animation.setStartValue(QApplication.primaryScreen().size().width())
-            self.animation.setEndValue(0)
-            self.animation.setEasingCurve(QEasingCurve.InOutQuart)
-            self.animation.start()
-            self.webview.show()
-            # self.settings_widget.setMaximumWidth(0)
+            self.settings_widget.setMaximumWidth(0)
             self.central_widget.setMaximumWidth(QApplication.primaryScreen().size().width())
             self.central_widget.setMinimumWidth(QApplication.primaryScreen().size().width())
             self.setMaximumWidth(QApplication.primaryScreen().size().width())
             self.setMinimumWidth(QApplication.primaryScreen().size().width())
-            print(f"width central_widget 1: {self.central_widget.width()}")
-            print(f"width left_menu_frame 1: {self.left_menu_frame.width()}")
-            print(f"width right_widget 1: {self.right_widget.width()}")
-            print(f"width settings_widget 1: {self.settings_widget.width()}")
-            print(f"width webview 1: {self.webview.width()}")
-            print(f"width left_widget 1: {self.left_widget.width()}")
-            print(f"width self 1: {self.width()}")
+            self.animation = QPropertyAnimation(self.webview, b"maximumWidth")
+            self.animation.setDuration(400)
+            self.animation.setStartValue(0)
+            self.animation.setEndValue(QApplication.primaryScreen().size().width())
+            self.animation.setEasingCurve(QEasingCurve.BezierSpline)
+            self.animation.start()
         else:
-            print(f"width central_widget 2: {self.central_widget.width()}")
-            print(f"width left_menu_frame 2: {self.left_menu_frame.width()}")
-            print(f"width right_widget 2: {self.right_widget.width()}")
-            print(f"width settings_widget 2: {self.settings_widget.width()}")
-            print(f"width webview 2: {self.webview.width()}")
-            print(f"width left_widget 2: {self.left_widget.width()}")
-            print(f"width self 2: {self.width()}")
-            print("Will open settings")
-            self.webview.hide()
+            self.webview.setMaximumWidth(0)
+            self.webview.setMinimumWidth(0)
+            self.setMaximumWidth(QApplication.primaryScreen().size().width())
+            self.setMinimumWidth(QApplication.primaryScreen().size().width())
             self.left_widget.setMaximumWidth(0)
             self.left_widget.setMinimumWidth(0)
-            # self.settings_widget.setMaximumWidth(self._right_width + self._left_width)
-            # self.settings_widget.setMinimumWidth(self._right_width + self._left_width)
             self.animation = QPropertyAnimation(self.settings_widget, b"minimumWidth")
             self.animation.setDuration(500)
             self.animation.setStartValue(0)
             self.animation.setEndValue(self._right_width + self._left_width)
             self.animation.setEasingCurve(QEasingCurve.InOutQuart)
             self.animation.start()
-            print(f"width 2: {self.settings_widget.width()}")
 
     def toggle_downloads(self):
         if self.left_widget.width() != 0:

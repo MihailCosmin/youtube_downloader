@@ -38,6 +38,11 @@ class LeftWidget(QWidget):
         self.button3 = format_button(self.button3, self.parent._left_width * 0.6)
         self.button4 = format_button(self.button4, self.parent._left_width * 0.6)
 
+        self.button1.setObjectName(u"button1")
+        self.button2.setObjectName(u"button2")
+        self.button3.setObjectName(u"button3")
+        self.button4.setObjectName(u"button4")
+
         self.queue_label = QtWidgets.QLabel("Download Queue")
 
         # create a loading bar
@@ -74,6 +79,7 @@ class LeftWidget(QWidget):
     def _create_video_queue_widget(self, ):
         self.checklists_widget = QtWidgets.QWidget()
         self.checklists_layout = QtWidgets.QVBoxLayout()
+        self.checklists_widget.setObjectName(u"checklists_widget")
         self.checklists_layout.setStretch(0, 9)
         self.checklists_layout.setAlignment(QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
         self.checklists_widget.setLayout(self.checklists_layout)
@@ -86,7 +92,6 @@ class LeftWidget(QWidget):
         self.checklists_scroll.setWidget(self.checklists_widget)
         self.checklists_scroll.setWidgetResizable(True)
         self.checklists_scroll.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
-        # self.checklists_scroll.setStyleSheet("QScrollArea {border: 0px solid #ffffff;}")
         self.checklists_scroll.setFixedHeight(self.parent._height * 0.85 - 30 * 4 - 10)
         self.checklists_scroll.setFixedWidth(self.parent._left_width * 0.95)
         self.left_layout.addWidget(self.checklists_scroll, 5, 0, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
@@ -100,6 +105,11 @@ class LeftWidget(QWidget):
             self.parent.queue.append(self.parent._get_current_url())
             button = QtWidgets.QPushButton(self.parent._get_current_url())
             button.setLayoutDirection(QtCore.Qt.LeftToRight)
+            
+            # button.setStyleSheet("QPushButton {border: 0px solid #ffffff;}")
+            # make button transparent
+            button.setStyleSheet("QPushButton {background-color: transparent;}")
+            
             button.clicked.connect(lambda: self.remove_checklist_button(button))
 
             self.checklists_layout.addWidget(
@@ -109,7 +119,9 @@ class LeftWidget(QWidget):
             self.checklists_layout.setAlignment(button, QtCore.Qt.AlignLeft)
 
             # on button hover change font color to red
-            #self.checklists_layout.itemAt(self.checklists_layout.count() - 1).widget().setStyleSheet("QPushButton:hover {color: red;}")
+            # self.checklists_layout.itemAt(self.checklists_layout.count() - 1).widget().setStyleSheet("QPushButton:hover {color: red;}")
+
+
 
     def remove_checklist_button(self, button):
         self.checklists_layout.removeWidget(button)

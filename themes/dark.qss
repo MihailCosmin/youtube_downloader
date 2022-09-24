@@ -45,16 +45,23 @@ Left Side - Download Options */
 	color: white;
 }
 
-
-#left_widget .QPushButton{
+#left_widget .QPushButton#button1,#button2,#button3,#button4{
 	background-color: #000000;
 	color: #ffffff;
 	border: 1px solid #ffffff;
 	border-radius: 5px;
 }
 
-#left_widget .QPushButton:hover {
+#left_widget .QPushButton#button1:hover,#button2:hover,#button3:hover,#button4:hover {
 	background-color: rgb(40, 44, 52);
+	color: red;
+}
+
+#checklists_widget > QPushButton {
+	color: #ffffff;
+}
+
+#checklists_widget > QPushButton:hover {
 	color: red;
 }
 

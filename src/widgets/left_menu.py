@@ -19,7 +19,6 @@ class LeftMenu(QFrame):
         self.settings_button.setObjectName(u"settings_button")
         self.settings_button.setIconSize(self.settings_button.iconSize() * 2)
         self.settings_button.clicked.connect(self.parent.toggle_settings)
-        # self.settings_button.clicked.connect(self.parent.settings_widget._show_settings)
         self.left_frame_layout.addWidget(self.settings_button)
 
         self.downloads_button = QPushButton("")
@@ -28,5 +27,4 @@ class LeftMenu(QFrame):
         self.downloads_button.clicked.connect(self.parent.toggle_downloads)
         self.left_frame_layout.addWidget(self.downloads_button)
 
-        # left_frame_layout alignment to top
         self.left_frame_layout.addStretch()
