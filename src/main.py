@@ -236,6 +236,12 @@ class SplitWindowYoutubeBrowser(QMainWindow):
                 self.progress_bar.setTextVisible(True)
                 self.progress_bar.setFormat("Done")
 
+    def change_theme(self, theme: str):
+        print(f"Changing theme to {theme}")
+        with open(f"themes/{theme}.qss", "r", encoding="utf-8") as _:
+            stylesheet = _.read()
+        self.setStyleSheet(stylesheet)
+
     def mousePressEvent(self, event):
         self.dragPos = event.globalPosition().toPoint()
 

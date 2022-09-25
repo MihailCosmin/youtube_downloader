@@ -172,3 +172,24 @@ Settings Options */
 #settings_widget * {
 	color: white;
 }
+
+QComboBox {
+	background-color: rgb(40, 44, 52);
+	border: 1px solid rgb(44, 49, 58);
+	text-align: left;
+	color: white;
+}
+
+QComboBox QAbstractItemView::item {
+	background-color: rgb(40, 44, 52);
+	border: 1px solid rgb(44, 49, 58);
+	text-align: left;
+	color: white;
+}
+
+QComboBox QAbstractItemView::item:selected {
+	background-color: rgb(40, 44, 52);
+	border: 1px solid rgb(44, 49, 58);
+	text-align: left;
+	color: red;
+}
