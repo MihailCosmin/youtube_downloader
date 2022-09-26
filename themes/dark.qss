@@ -193,3 +193,18 @@ QComboBox QAbstractItemView::item:selected {
 	text-align: left;
 	color: red;
 }
+
+QLineEdit {
+	background-color: rgb(30, 34, 42);
+	border: 1px solid rgb(34, 39, 48);
+	text-align: left;
+	color: white;
+}
+
+#download_location_button {
+	background-color: #000000;
+	color: #ffffff;
+	border: 1px solid #ffffff;
+	border-radius: 5px;
+	width: 50px;
+}
