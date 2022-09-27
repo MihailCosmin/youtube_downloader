@@ -3,8 +3,61 @@ from os.path import expanduser
 
 import yt_dlp
 
-class YoutubeDLP:
-    def __init__(self):
+class YoutubeDLP():
+    """YoutubeDLP
+    https://github.com/yt-dlp/yt-dlp/blob/master/yt_dlp/options.py
+    
+    Options:
+        throttled-rate: str
+        limit-rate: str
+        retries: int
+        file-access-retries: int
+        fragment-retries: int
+        retry-sleep: int
+        skip-unavailable-fragments: bool
+        abort-on-unavailable-fragment: bool
+        keep-fragments: bool
+        no-keep-fragments: bool
+        buffer-size: str
+        resize-buffer: bool
+        no-resize-buffer: bool
+        http-chunk-size: str
+        test: bool
+        playlist-reverse: bool
+        no-playlist-reverse: bool
+        playlist-random: bool
+        lazy-playlist: bool
+        no-lazy-playlist: bool
+        xattr-set-filesize: bool
+        hls-prefer-native: bool
+        hls-prefer-ffmpeg: bool
+        hls-use-mpegts: bool
+        download-sections: bool
+        downloader: dict
+        downloader-args: dict
+        
+    Workarounds:
+        encoding: str
+        legacy-server-connect: bool
+        no-check-certificates: bool
+        prefer-insecure: bool
+        user-agent: str
+        referer: str
+        add-header: str
+        bidi-workaround: bool
+        sleep-requests: bool
+        sleep-interval: int
+        sleep-interval: int
+        sleep-subtitles: int
+
+    Verbosity:
+        quiet: bool
+        no_warnings: bool
+
+    Filesystem:
+        output (outtmpl): str
+    """
+    def __init__(self, config: dict = None):
         self.dl_ops = {
             'outtmpl': join(expanduser("~/OneDrive/Desktop"), '%(title)s-%(id)s.%(ext)s'),
             'quiet': True,
@@ -18,10 +71,7 @@ class YoutubeDLP:
         self.batch_start = 0
         self.batch_number = 1
 
-    def get_dl_ops(self):
-        return self.dl_ops
-
-    def set_dl_ops(self, dl_ops):
+    def _set_dl_ops(self, dl_ops):
         for key in dl_ops:
             self.dl_ops[key] = dl_ops[key]
 
@@ -41,7 +91,7 @@ class YoutubeDLP:
             if d['status'] == 'finished':
                 self.emit_bool = False
 
-        self.set_dl_ops(
+        self._set_dl_ops(
             {
                 'noplaylist': True,
                 'progress_hooks': [my_hook]
@@ -70,7 +120,7 @@ class YoutubeDLP:
             if d['status'] == 'finished' and self.batch_number % 2 != 0:
                 self.emit_bool = True
 
-        self.set_dl_ops(
+        self._set_dl_ops(
             {
                 'noplaylist': False,
                 'progress_hooks': [my_hook]
@@ -86,3 +136,13 @@ class YoutubeDLP:
 
     def check_if_url_is_playlist(self, url):
         return self.ydl.extract_info(url, download=False).get('entries') is not None
+
+    def update_dl_ops(self, key: str, value: str):
+        if key == "download_location":
+            key = "outtmpl"
+            value = join(expanduser(value), '%(title)s-%(id)s.%(ext)s')
+        if key == "file_pattern":
+            key = "outtmpl"
+            value = join(self.dl_ops["outtmpl"].split("%")[0], value)
+        print(f"Updating {key} to {value}")
+        self.dl_ops[key] = value

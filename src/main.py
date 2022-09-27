@@ -2,9 +2,15 @@ from os.path import dirname
 from os.path import realpath
 from os.path import splitext
 from os.path import basename
+from os.path import isfile
+from os.path import sep
+from os.path import expanduser
 
 import sys
 from sys import executable
+
+from json import dump
+from json import load
 
 from PySide6.QtWidgets import QApplication
 from PySide6.QtWidgets import QMainWindow
@@ -37,9 +43,14 @@ from widgets.right import RightWidget
 from widgets.title_bar import TitleBar
 from widgets.left_menu import LeftMenu
 
+from utils.common import clean_path
+
 class SplitWindowYoutubeBrowser(QMainWindow):
     def __init__(self):
         super().__init__()
+
+        self.config = {}
+        self._init_config()
 
         self._height = QApplication.primaryScreen().size().height()
         self._left_bar_width = 50
@@ -95,12 +106,34 @@ class SplitWindowYoutubeBrowser(QMainWindow):
         self.app_layout.addWidget(self.settings_widget)
         self.app_layout.addWidget(self.right_widget)
 
-        with open("themes/dark.qss", "r", encoding="utf-8") as _:
+
+        print(f"Will set theme to: {self.config['theme'][0]}")
+        with open(f"themes/{self.config['theme'][0]}.qss", "r", encoding="utf-8") as _:
             stylesheet = _.read()
         self.setStyleSheet(stylesheet)
         self.setWindowFlags(Qt.FramelessWindowHint)
 
         self.showMaximized()
+
+    def _init_config(self):
+        if not isfile("src/config/config.json"):
+            self.config = {
+                "download_location": (clean_path(expanduser("~/Downloads")), True),
+                "theme": ("Dark", False),
+                "accent": ("Red", False),
+            }
+            with open("src/config/config.json", "w", encoding="utf-8") as _:
+                dump(self.config, _, indent=4)
+        else:
+            with open("src/config/config.json", "r", encoding="utf-8") as _:
+                self.config = load(_)
+
+    def update_config(self, key: str, value: str, youtube: bool):
+        self.config[key] = (value, youtube)
+        if youtube:
+            self.ydl.update_dl_ops(key, value)
+        with open("src/config/config.json", "w", encoding="utf-8") as _:
+            dump(self.config, _, indent=4)
 
     def toggleMaximizeRestore(self):
         if self.isMaximized():
@@ -241,6 +274,12 @@ class SplitWindowYoutubeBrowser(QMainWindow):
         with open(f"themes/{theme}.qss", "r", encoding="utf-8") as _:
             stylesheet = _.read()
         self.setStyleSheet(stylesheet)
+
+    def change_accent(self, accent: str):
+        pass
+
+    def change_download_location(self, location: str):
+        pass
 
     def mousePressEvent(self, event):
         self.dragPos = event.globalPosition().toPoint()

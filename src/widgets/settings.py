@@ -1,6 +1,11 @@
+
+from typing import Callable
+
 from PySide6 import QtWidgets
 from PySide6 import QtCore
 from PySide6 import QtGui
+
+from utils.common import clean_path
 
 class SettingsWidget(QtWidgets.QWidget):
     def __init__(self, parent=None):
@@ -59,7 +64,14 @@ class SettingsWidget(QtWidgets.QWidget):
         self.settings_layout1_1.addWidget(self.theme_combo, 2, 1, 1, 1, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
         self.settings_layout1_1.setAlignment(QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
 
-        self.theme_combo.currentTextChanged.connect(lambda: self.parent.change_theme(self.theme_combo.currentText()))
+        # self.theme_combo.currentTextChanged.connect(lambda: (self.theme_combo.currentText()))
+        self.theme_combo.currentTextChanged.connect(
+            lambda: self._change_setting(
+                "change_theme",
+                "theme",
+                self.theme_combo.currentText()
+            )
+        )
 
         self.accent_label = QtWidgets.QLabel("Accent Color")
         self.accent_label.setObjectName(u"accent_label")
@@ -76,20 +88,29 @@ class SettingsWidget(QtWidgets.QWidget):
         self.settings_layout1_1.addWidget(self.accent_label, 3, 0, 1, 1, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
         self.settings_layout1_1.addWidget(self.accent_combo, 3, 1, 1, 1, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
 
-        self.theme_combo.currentTextChanged.connect(lambda: self.parent.change_accent(self.accent_combo.currentText()))
+        # self.theme_combo.currentTextChanged.connect(lambda: self.parent.change_accent(self.accent_combo.currentText()))
+
+        self.theme_combo.currentTextChanged.connect(
+            lambda: self._change_setting(
+                "change_accent",
+                "accent",
+                self.accent_combo.currentText()
+            )
+        )
 
         self.download_location_label = QtWidgets.QLabel("Download Location")
         self.download_location_label.setObjectName(u"download_location_label")
         self.download_location = QtWidgets.QLineEdit()
         self.download_location.setObjectName(u"download_location")
 
-        self.download_location.setMinimumWidth(self.settings_widget1_2.width() * 0.6)
+        self.download_location.setMinimumWidth(self.settings_widget1_2.width() * 0.55)
         self.download_location.setMaximumWidth(self.settings_widget1_2.width() * 0.8)
         self.download_location.setReadOnly(True)
 
         self.download_location_button = QtWidgets.QPushButton(" . . . ")
         self.download_location_button.setObjectName(u"download_location_button")
-        self.download_location_button.clicked.connect(self.set_download_location)
+        
+        self.download_location_button.clicked.connect(self._set_download_location)
 
         self.settings_layout1_2.addWidget(self.download_location_label, 2, 0, 1, 2, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
         self.settings_layout1_2.addWidget(self.download_location, 2, 2, 1, 6, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
@@ -98,20 +119,37 @@ class SettingsWidget(QtWidgets.QWidget):
         self.settings_layout1_2.addItem(QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding))
 
     def _settings_widget2(self):
+        self.youtube_dl_label = QtWidgets.QLabel("Youtube-dl Options")
         self.settings_widget2_1 = QtWidgets.QWidget()
         self.settings_layout2_1 = QtWidgets.QGridLayout(self.settings_widget2_1)
         self.settings_layout2.addWidget(self.settings_widget2_1)
+        self.settings_layout2_1.addWidget(self.youtube_dl_label, 0, 0, 1, 2, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
+        
+        # create labels for every individual youtbe-dl option
+        # TODO: Create a dictionary with option names and descriptions, types and default values
+        # TODO: Create a function to create the labels and widgets based on the dictionary
+
+        
 
     def _settings_widget3(self):
         self.settings_widget3_1 = QtWidgets.QWidget()
         self.settings_layout3_1 = QtWidgets.QGridLayout(self.settings_widget3_1)
         self.settings_layout3.addWidget(self.settings_widget3_1)
 
-    def set_download_location(self):
+    def _set_download_location(self):
         location = QtWidgets.QFileDialog.getExistingDirectory(self, "Select Directory")
-        print(f"location: {location}")
         self.download_location.setText(location)
+        location = clean_path(location)
+        self._change_setting(
+            "change_download_location",
+            "download_location",
+            location,
+            True
+        )
 
+    def _change_setting(self, func: str, key: str, value: str, youtube: bool = False):
+        getattr(self.parent, func)(value)
+        self.parent.update_config(key, value, youtube)
 
 class LineWidget(QtWidgets.QFrame):
     def __init__(self, parent=None):

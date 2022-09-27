@@ -129,5 +129,9 @@ dmypy.json
 # Pyre type checker
 .pyre/
 
-# Other Files
+# Other files
 accepted_urls.txt
+
+# Other dirs
+config/
+data/
