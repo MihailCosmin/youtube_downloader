@@ -208,3 +208,17 @@ QLineEdit {
 	border-radius: 5px;
 	width: 50px;
 }
+
+QToolTip {
+	background-color: rgb(40, 44, 52);
+	border: 1px solid rgb(44, 49, 58);
+	text-align: left;
+	color: white;
+}
+
+QScrollBar {
+	background-color: rgb(40, 44, 52);
+	border: 1px solid rgb(44, 49, 58);
+	text-align: left;
+	color: white;
+}

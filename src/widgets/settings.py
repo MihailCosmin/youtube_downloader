@@ -1,5 +1,4 @@
-
-from typing import Callable
+from json import load
 
 from PySide6 import QtWidgets
 from PySide6 import QtCore
@@ -46,6 +45,7 @@ class SettingsWidget(QtWidgets.QWidget):
 
         self.line1 = LineWidget()
         self.line2 = LineWidget()
+        self.line3 = LineWidget()
         self.settings_layout1_1.addWidget(self.line1, 1, 0, 1, 2)
 
         self.settings_layout1.setSpacing(20)
@@ -109,7 +109,7 @@ class SettingsWidget(QtWidgets.QWidget):
 
         self.download_location_button = QtWidgets.QPushButton(" . . . ")
         self.download_location_button.setObjectName(u"download_location_button")
-        
+
         self.download_location_button.clicked.connect(self._set_download_location)
 
         self.settings_layout1_2.addWidget(self.download_location_label, 2, 0, 1, 2, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
@@ -119,17 +119,61 @@ class SettingsWidget(QtWidgets.QWidget):
         self.settings_layout1_2.addItem(QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding))
 
     def _settings_widget2(self):
-        self.youtube_dl_label = QtWidgets.QLabel("Youtube-dl Options")
+        self.youtube_dl_label = QtWidgets.QLabel("Youtube-dl Options (Advanced)")
         self.settings_widget2_1 = QtWidgets.QWidget()
+
+        # self.settings_widget2_1.setMinimumHeight(self.parent.height)
+        # self.settings_widget2_1.setMaximumHeight(self.parent.height)
+
+        self.settings_widget2_1.setMaximumWidth(self.settings_widget1_2.width() * 0.9)
+
+        # add settings_widget2_1 to a scroll area
+        self.scroll_area = QtWidgets.QScrollArea()
+        self.scroll_area.setWidgetResizable(True)
+        self.scroll_area.setWidget(self.settings_widget2_1)
+        self.scroll_area.setFrameShape(QtWidgets.QFrame.NoFrame)
+        self.scroll_area.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.scroll_area.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAsNeeded)
+
+        # self.scroll_area.setMinimumWidth(self.settings_widget1_2.width() * 0.9)
+        self.scroll_area.setMaximumWidth(self.settings_widget1_2.width() * 0.9)
+        self.scroll_area.setMinimumWidth(self.parent.right_width * 0.333)
+        # self.scroll_area.setMaximumWidth(self.parent.right_width * 0.4)
+
+        self.scroll_area.setMinimumHeight(self.parent.height * 0.9)
+        self.scroll_area.setMaximumHeight(self.parent.height * 0.9)
+
         self.settings_layout2_1 = QtWidgets.QGridLayout(self.settings_widget2_1)
-        self.settings_layout2.addWidget(self.settings_widget2_1)
+        # self.settings_layout2.addWidget(self.settings_widget2_1)
+        self.settings_layout2.addWidget(self.scroll_area)
         self.settings_layout2_1.addWidget(self.youtube_dl_label, 0, 0, 1, 2, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
-        
+        self.settings_layout2_1.addWidget(self.line3, 1, 0, 1, 2)
+
         # create labels for every individual youtbe-dl option
         # TODO: Create a dictionary with option names and descriptions, types and default values
         # TODO: Create a function to create the labels and widgets based on the dictionary
 
-        
+        with open("src/ytb/yt-dlp-options2.json", "r", encoding="utf-8") as _:
+            options = load(_)
+
+        for index, (key, value) in enumerate(options.items()):
+            # create label widgets for each key in the options dictionary
+            label = QtWidgets.QLabel(key)
+            label.setObjectName(f"{key}_label")
+            label.setToolTip(value["description"])
+            label.setWordWrap(True)
+            label.setMinimumWidth(self.settings_widget2_1.width() * 0.3)
+
+            self.settings_layout2_1.addWidget(label, index + 2, 0, 1, 2, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
+
+            # create line edit widgets for each key in the options dictionary
+            line_edit = QtWidgets.QLineEdit()
+            line_edit.setObjectName(f"{key}_line_edit")
+            line_edit.setMinimumWidth(self.settings_widget2_1.width() * 0.55)
+            line_edit.setMaximumWidth(self.settings_widget2_1.width() * 0.8)
+            line_edit.setText(value["default"])
+            self.settings_layout2_1.addWidget(line_edit, index + 2, 2, 1, 6, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
+
 
     def _settings_widget3(self):
         self.settings_widget3_1 = QtWidgets.QWidget()

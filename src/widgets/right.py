@@ -53,8 +53,8 @@ class RightWidget(QtWidgets.QWidget):
         self.setLayout(self.right_layout)
         self.right_layout.setContentsMargins(10, 0, 0, 0)
 
-        self.setMinimumWidth(self.parent._right_width)
-        self.setMaximumWidth(self.parent._right_width + self.parent._left_width)
+        self.setMinimumWidth(self.parent.right_width)
+        self.setMaximumWidth(self.parent.right_width + self.parent.left_width)
         self.parent.webview = self._youtube_browser_widget()
         self.parent.webview.setObjectName = u"webview"
         self.right_layout.addWidget(self.parent.webview)

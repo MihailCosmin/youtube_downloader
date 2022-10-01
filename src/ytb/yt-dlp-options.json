@@ -7,9 +7,9 @@
             "help"
         ],
         "other_values": {
-            "dest=": "print_help",
-            "action=": "store_true",
-            "help=": "Print this help text and exit"
+            "dest": "print_help",
+            "action": "store_true",
+            "help": "Print this help text and exit"
         }
     },
     "1": {
@@ -19,8 +19,8 @@
             "version"
         ],
         "other_values": {
-            "action=": "version",
-            "help=": "Print program version and exit"
+            "action": "version",
+            "help": "Print program version and exit"
         }
     },
     "2": {
@@ -31,8 +31,8 @@
             "update"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "update_self"
+            "action": "store_true",
+            "dest": "update_self"
         }
     },
     "3": {
@@ -42,8 +42,8 @@
             "no-update"
         ],
         "other_values": {
-            "action=": "store_false",
-            "dest=": "update_self"
+            "action": "store_false",
+            "dest": "update_self"
         }
     },
     "4": {
@@ -54,9 +54,9 @@
             "ignore-errors"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "ignoreerrors",
-            "help=": "Ignore download and postprocessing errors. The download will be considered successful even if the postprocessing fails"
+            "action": "store_true",
+            "dest": "ignoreerrors",
+            "help": "Ignore download and postprocessing errors. The download will be considered successful even if the postprocessing fails"
         }
     },
     "5": {
@@ -66,9 +66,9 @@
             "no-abort-on-error"
         ],
         "other_values": {
-            "action=": "store_const",
-            "dest=": "ignoreerrors",
-            "const=": "only_download"
+            "action": "store_const",
+            "dest": "ignoreerrors",
+            "const": "only_download"
         }
     },
     "6": {
@@ -79,8 +79,8 @@
             "no-ignore-errors"
         ],
         "other_values": {
-            "action=": "store_false",
-            "dest=": "ignoreerrors"
+            "action": "store_false",
+            "dest": "ignoreerrors"
         }
     },
     "7": {
@@ -90,9 +90,9 @@
             "dump-user-agent"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "dump_user_agent",
-            "help=": "Display the current user-agent and exit"
+            "action": "store_true",
+            "dest": "dump_user_agent",
+            "help": "Display the current user-agent and exit"
         }
     },
     "8": {
@@ -102,9 +102,9 @@
             "list-extractors"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "list_extractors",
-            "help=": "List all supported extractors and exit"
+            "action": "store_true",
+            "dest": "list_extractors",
+            "help": "List all supported extractors and exit"
         }
     },
     "9": {
@@ -114,9 +114,9 @@
             "extractor-descriptions"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "list_extractor_descriptions",
-            "help=": "Output descriptions of all supported extractors and exit"
+            "action": "store_true",
+            "dest": "list_extractor_descriptions",
+            "help": "Output descriptions of all supported extractors and exit"
         }
     },
     "10": {
@@ -127,10 +127,10 @@
             "ies"
         ],
         "other_values": {
-            "action=": "callback",
-            "dest=": "allowed_extractors",
-            "metavar=": "NAMES",
-            "type=": "str"
+            "action": "callback",
+            "dest": "allowed_extractors",
+            "metavar": "NAMES",
+            "type": "str"
         }
     },
     "11": {
@@ -140,8 +140,8 @@
             "force-generic-extractor"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "force_generic_extractor"
+            "action": "store_true",
+            "dest": "force_generic_extractor"
         }
     },
     "12": {
@@ -151,8 +151,8 @@
             "default-search"
         ],
         "other_values": {
-            "dest=": "default_search",
-            "metavar=": "PREFIX"
+            "dest": "default_search",
+            "metavar": "PREFIX"
         }
     },
     "13": {
@@ -163,8 +163,8 @@
             "no-config"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "ignoreconfig"
+            "action": "store_true",
+            "dest": "ignoreconfig"
         }
     },
     "14": {
@@ -174,8 +174,8 @@
             "no-config-locations"
         ],
         "other_values": {
-            "action=": "store_const",
-            "dest=": "config_locations"
+            "action": "store_const",
+            "dest": "config_locations"
         }
     },
     "15": {
@@ -185,9 +185,9 @@
             "config-locations"
         ],
         "other_values": {
-            "dest=": "config_locations",
-            "metavar=": "PATH",
-            "action=": "append"
+            "dest": "config_locations",
+            "metavar": "PATH",
+            "action": "append"
         }
     },
     "16": {
@@ -197,10 +197,10 @@
             "flat-playlist"
         ],
         "other_values": {
-            "action=": "store_const",
-            "dest=": "extract_flat",
-            "const=": "in_playlist",
-            "help=": "Do not extract the videos of a playlist, only list them"
+            "action": "store_const",
+            "dest": "extract_flat",
+            "const": "in_playlist",
+            "help": "Do not extract the videos of a playlist, only list them"
         }
     },
     "17": {
@@ -210,9 +210,9 @@
             "no-flat-playlist"
         ],
         "other_values": {
-            "action=": "store_false",
-            "dest=": "extract_flat",
-            "help=": "Extract the videos of a playlist"
+            "action": "store_false",
+            "dest": "extract_flat",
+            "help": "Extract the videos of a playlist"
         }
     },
     "18": {
@@ -222,8 +222,8 @@
             "live-from-start"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "live_from_start"
+            "action": "store_true",
+            "dest": "live_from_start"
         }
     },
     "19": {
@@ -233,8 +233,8 @@
             "no-live-from-start"
         ],
         "other_values": {
-            "action=": "store_false",
-            "dest=": "live_from_start"
+            "action": "store_false",
+            "dest": "live_from_start"
         }
     },
     "20": {
@@ -244,8 +244,8 @@
             "wait-for-video"
         ],
         "other_values": {
-            "dest=": "wait_for_video",
-            "metavar=": "MIN[-MAX]"
+            "dest": "wait_for_video",
+            "metavar": "MIN[-MAX]"
         }
     },
     "21": {
@@ -255,8 +255,8 @@
             "no-wait-for-video"
         ],
         "other_values": {
-            "dest=": "wait_for_video",
-            "action=": "store_const"
+            "dest": "wait_for_video",
+            "action": "store_const"
         }
     },
     "22": {
@@ -266,8 +266,8 @@
             "mark-watched"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "mark_watched"
+            "action": "store_true",
+            "dest": "mark_watched"
         }
     },
     "23": {
@@ -277,8 +277,8 @@
             "no-mark-watched"
         ],
         "other_values": {
-            "action=": "store_false",
-            "dest=": "mark_watched"
+            "action": "store_false",
+            "dest": "mark_watched"
         }
     },
     "24": {
@@ -289,8 +289,8 @@
             "no-colours"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "no_color"
+            "action": "store_true",
+            "dest": "no_color"
         }
     },
     "25": {
@@ -300,8 +300,8 @@
             "compat-options"
         ],
         "other_values": {
-            "metavar=": "OPTS",
-            "dest=": "compat_opts"
+            "metavar": "OPTS",
+            "dest": "compat_opts"
         }
     },
     "26": {
@@ -311,10 +311,10 @@
             "alias"
         ],
         "other_values": {
-            "metavar=": "ALIASES OPTIONS",
-            "dest=": "_",
-            "type=": "str",
-            "action=": "callback"
+            "metavar": "ALIASES OPTIONS",
+            "dest": "_",
+            "type": "str",
+            "action": "callback"
         }
     },
     "27": {
@@ -324,8 +324,8 @@
             "proxy"
         ],
         "other_values": {
-            "dest=": "proxy",
-            "metavar=": "URL"
+            "dest": "proxy",
+            "metavar": "URL"
         }
     },
     "28": {
@@ -335,9 +335,9 @@
             "socket-timeout"
         ],
         "other_values": {
-            "dest=": "socket_timeout",
-            "metavar=": "SECONDS",
-            "help=": "Time to wait before giving up, in seconds"
+            "dest": "socket_timeout",
+            "metavar": "SECONDS",
+            "help": "Time to wait before giving up, in seconds"
         }
     },
     "29": {
@@ -347,9 +347,9 @@
             "source-address"
         ],
         "other_values": {
-            "metavar=": "IP",
-            "dest=": "source_address",
-            "help=": "Client-side IP address to bind to"
+            "metavar": "IP",
+            "dest": "source_address",
+            "help": "Client-side IP address to bind to"
         }
     },
     "30": {
@@ -360,10 +360,10 @@
             "force-ipv4"
         ],
         "other_values": {
-            "action=": "store_const",
-            "const=": "0.0.0.0",
-            "dest=": "source_address",
-            "help=": "Make all connections via IPv4"
+            "action": "store_const",
+            "const": "0.0.0.0",
+            "dest": "source_address",
+            "help": "Make all connections via IPv4"
         }
     },
     "31": {
@@ -374,10 +374,10 @@
             "force-ipv6"
         ],
         "other_values": {
-            "action=": "store_const",
-            "const=": "::",
-            "dest=": "source_address",
-            "help=": "Make all connections via IPv6"
+            "action": "store_const",
+            "const": "::",
+            "dest": "source_address",
+            "help": "Make all connections via IPv6"
         }
     },
     "32": {
@@ -387,8 +387,8 @@
             "geo-verification-proxy"
         ],
         "other_values": {
-            "dest=": "geo_verification_proxy",
-            "metavar=": "URL"
+            "dest": "geo_verification_proxy",
+            "metavar": "URL"
         }
     },
     "33": {
@@ -398,8 +398,8 @@
             "cn-verification-proxy"
         ],
         "other_values": {
-            "dest=": "cn_verification_proxy",
-            "metavar=": "URL"
+            "dest": "cn_verification_proxy",
+            "metavar": "URL"
         }
     },
     "34": {
@@ -409,8 +409,8 @@
             "geo-bypass"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "geo_bypass"
+            "action": "store_true",
+            "dest": "geo_bypass"
         }
     },
     "35": {
@@ -420,9 +420,9 @@
             "no-geo-bypass"
         ],
         "other_values": {
-            "action=": "store_false",
-            "dest=": "geo_bypass",
-            "help=": "Do not bypass geographic restriction via faking X-Forwarded-For HTTP header"
+            "action": "store_false",
+            "dest": "geo_bypass",
+            "help": "Do not bypass geographic restriction via faking X-Forwarded-For HTTP header"
         }
     },
     "36": {
@@ -432,9 +432,9 @@
             "geo-bypass-country"
         ],
         "other_values": {
-            "metavar=": "CODE",
-            "dest=": "geo_bypass_country",
-            "help=": "Force bypass geographic restriction with explicitly provided two-letter ISO 3166-2 country code"
+            "metavar": "CODE",
+            "dest": "geo_bypass_country",
+            "help": "Force bypass geographic restriction with explicitly provided two-letter ISO 3166-2 country code"
         }
     },
     "37": {
@@ -444,9 +444,9 @@
             "geo-bypass-ip-block"
         ],
         "other_values": {
-            "metavar=": "IP_BLOCK",
-            "dest=": "geo_bypass_ip_block",
-            "help=": "Force bypass geographic restriction with explicitly provided IP block in CIDR notation"
+            "metavar": "IP_BLOCK",
+            "dest": "geo_bypass_ip_block",
+            "help": "Force bypass geographic restriction with explicitly provided IP block in CIDR notation"
         }
     },
     "38": {
@@ -456,8 +456,8 @@
             "playlist-start"
         ],
         "other_values": {
-            "dest=": "playliststart",
-            "metavar=": "NUMBER"
+            "dest": "playliststart",
+            "metavar": "NUMBER"
         }
     },
     "39": {
@@ -467,8 +467,8 @@
             "playlist-end"
         ],
         "other_values": {
-            "dest=": "playlistend",
-            "metavar=": "NUMBER"
+            "dest": "playlistend",
+            "metavar": "NUMBER"
         }
     },
     "40": {
@@ -479,8 +479,8 @@
             "playlist-items"
         ],
         "other_values": {
-            "dest=": "playlist_items",
-            "metavar=": "ITEM_SPEC"
+            "dest": "playlist_items",
+            "metavar": "ITEM_SPEC"
         }
     },
     "41": {
@@ -490,8 +490,8 @@
             "match-title"
         ],
         "other_values": {
-            "dest=": "matchtitle",
-            "metavar=": "REGEX"
+            "dest": "matchtitle",
+            "metavar": "REGEX"
         }
     },
     "42": {
@@ -501,8 +501,8 @@
             "reject-title"
         ],
         "other_values": {
-            "dest=": "rejecttitle",
-            "metavar=": "REGEX"
+            "dest": "rejecttitle",
+            "metavar": "REGEX"
         }
     },
     "43": {
@@ -512,9 +512,9 @@
             "min-filesize"
         ],
         "other_values": {
-            "metavar=": "SIZE",
-            "dest=": "min_filesize",
-            "help=": "Do not download any videos smaller than SIZE, e.g. 50k or 44.6M"
+            "metavar": "SIZE",
+            "dest": "min_filesize",
+            "help": "Do not download any videos smaller than SIZE, e.g. 50k or 44.6M"
         }
     },
     "44": {
@@ -524,9 +524,9 @@
             "max-filesize"
         ],
         "other_values": {
-            "metavar=": "SIZE",
-            "dest=": "max_filesize",
-            "help=": "Do not download any videos larger than SIZE, e.g. 50k or 44.6M"
+            "metavar": "SIZE",
+            "dest": "max_filesize",
+            "help": "Do not download any videos larger than SIZE, e.g. 50k or 44.6M"
         }
     },
     "45": {
@@ -536,8 +536,8 @@
             "date"
         ],
         "other_values": {
-            "metavar=": "DATE",
-            "dest=": "date"
+            "metavar": "DATE",
+            "dest": "date"
         }
     },
     "46": {
@@ -547,8 +547,8 @@
             "datebefore"
         ],
         "other_values": {
-            "metavar=": "DATE",
-            "dest=": "datebefore"
+            "metavar": "DATE",
+            "dest": "datebefore"
         }
     },
     "47": {
@@ -558,8 +558,8 @@
             "dateafter"
         ],
         "other_values": {
-            "metavar=": "DATE",
-            "dest=": "dateafter"
+            "metavar": "DATE",
+            "dest": "dateafter"
         }
     },
     "48": {
@@ -569,8 +569,8 @@
             "min-views"
         ],
         "other_values": {
-            "metavar=": "COUNT",
-            "dest=": "min_views"
+            "metavar": "COUNT",
+            "dest": "min_views"
         }
     },
     "49": {
@@ -580,8 +580,8 @@
             "max-views"
         ],
         "other_values": {
-            "metavar=": "COUNT",
-            "dest=": "max_views"
+            "metavar": "COUNT",
+            "dest": "max_views"
         }
     },
     "50": {
@@ -591,9 +591,9 @@
             "match-filters"
         ],
         "other_values": {
-            "metavar=": "FILTER",
-            "dest=": "match_filter",
-            "action=": "append"
+            "metavar": "FILTER",
+            "dest": "match_filter",
+            "action": "append"
         }
     },
     "51": {
@@ -603,9 +603,9 @@
             "no-match-filter"
         ],
         "other_values": {
-            "metavar=": "FILTER",
-            "dest=": "match_filter",
-            "action=": "store_const"
+            "metavar": "FILTER",
+            "dest": "match_filter",
+            "action": "store_const"
         }
     },
     "52": {
@@ -615,9 +615,9 @@
             "no-playlist"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "noplaylist",
-            "help=": "Download only the video, if the URL refers to a video and a playlist"
+            "action": "store_true",
+            "dest": "noplaylist",
+            "help": "Download only the video, if the URL refers to a video and a playlist"
         }
     },
     "53": {
@@ -627,9 +627,9 @@
             "yes-playlist"
         ],
         "other_values": {
-            "action=": "store_false",
-            "dest=": "noplaylist",
-            "help=": "Download the playlist, if the URL refers to a video and a playlist"
+            "action": "store_false",
+            "dest": "noplaylist",
+            "help": "Download the playlist, if the URL refers to a video and a playlist"
         }
     },
     "54": {
@@ -639,9 +639,9 @@
             "age-limit"
         ],
         "other_values": {
-            "metavar=": "YEARS",
-            "dest=": "age_limit",
-            "help=": "Download only videos suitable for the given age"
+            "metavar": "YEARS",
+            "dest": "age_limit",
+            "help": "Download only videos suitable for the given age"
         }
     },
     "55": {
@@ -651,9 +651,9 @@
             "download-archive"
         ],
         "other_values": {
-            "metavar=": "FILE",
-            "dest=": "download_archive",
-            "help=": "Download only videos not listed in the archive file. Record the IDs of all downloaded videos in it"
+            "metavar": "FILE",
+            "dest": "download_archive",
+            "help": "Download only videos not listed in the archive file. Record the IDs of all downloaded videos in it"
         }
     },
     "56": {
@@ -663,7 +663,7 @@
             "no-download-archive"
         ],
         "other_values": {
-            "dest=": "download_archive"
+            "dest": "download_archive"
         }
     },
     "57": {
@@ -673,9 +673,9 @@
             "max-downloads"
         ],
         "other_values": {
-            "dest=": "max_downloads",
-            "metavar=": "NUMBER",
-            "help=": "Abort after downloading NUMBER files"
+            "dest": "max_downloads",
+            "metavar": "NUMBER",
+            "help": "Abort after downloading NUMBER files"
         }
     },
     "58": {
@@ -685,9 +685,9 @@
             "break-on-existing"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "break_on_existing",
-            "help=": "Stop the download process when encountering a file that is in the archive"
+            "action": "store_true",
+            "dest": "break_on_existing",
+            "help": "Stop the download process when encountering a file that is in the archive"
         }
     },
     "59": {
@@ -697,9 +697,9 @@
             "break-on-reject"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "break_on_reject",
-            "help=": "Stop the download process when encountering a file that has been filtered out"
+            "action": "store_true",
+            "dest": "break_on_reject",
+            "help": "Stop the download process when encountering a file that has been filtered out"
         }
     },
     "60": {
@@ -710,9 +710,9 @@
             "break-on-existing, --break-on-reject, --max-downloads, and autonumber resets per input URL"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "break_per_url",
-            "help=": "--break-on-existing, --break-on-reject, --max-downloads, and autonumber resets per input URL"
+            "action": "store_true",
+            "dest": "break_per_url",
+            "help": "--break-on-existing, --break-on-reject, --max-downloads, and autonumber resets per input URL"
         }
     },
     "61": {
@@ -723,9 +723,9 @@
             "break-on-existing and similar options terminates the entire download queue"
         ],
         "other_values": {
-            "action=": "store_false",
-            "dest=": "break_per_url",
-            "help=": "--break-on-existing and similar options terminates the entire download queue"
+            "action": "store_false",
+            "dest": "break_per_url",
+            "help": "--break-on-existing and similar options terminates the entire download queue"
         }
     },
     "62": {
@@ -735,9 +735,9 @@
             "skip-playlist-after-errors"
         ],
         "other_values": {
-            "metavar=": "N",
-            "dest=": "skip_playlist_after_errors",
-            "help=": "Number of allowed failures until the rest of the playlist is skipped"
+            "metavar": "N",
+            "dest": "skip_playlist_after_errors",
+            "help": "Number of allowed failures until the rest of the playlist is skipped"
         }
     },
     "63": {
@@ -747,8 +747,8 @@
             "include-ads"
         ],
         "other_values": {
-            "dest=": "include_ads",
-            "action=": "store_true"
+            "dest": "include_ads",
+            "action": "store_true"
         }
     },
     "64": {
@@ -758,8 +758,8 @@
             "no-include-ads"
         ],
         "other_values": {
-            "dest=": "include_ads",
-            "action=": "store_false"
+            "dest": "include_ads",
+            "action": "store_false"
         }
     },
     "65": {
@@ -770,9 +770,9 @@
             "username"
         ],
         "other_values": {
-            "dest=": "username",
-            "metavar=": "USERNAME",
-            "help=": "Login with this account ID"
+            "dest": "username",
+            "metavar": "USERNAME",
+            "help": "Login with this account ID"
         }
     },
     "66": {
@@ -783,9 +783,9 @@
             "password"
         ],
         "other_values": {
-            "dest=": "password",
-            "metavar=": "PASSWORD",
-            "help=": "Account password. If this option is left out, yt-dlp will ask interactively"
+            "dest": "password",
+            "metavar": "PASSWORD",
+            "help": "Account password. If this option is left out, yt-dlp will ask interactively"
         }
     },
     "67": {
@@ -796,9 +796,9 @@
             "twofactor"
         ],
         "other_values": {
-            "dest=": "twofactor",
-            "metavar=": "TWOFACTOR",
-            "help=": "Two-factor authentication code"
+            "dest": "twofactor",
+            "metavar": "TWOFACTOR",
+            "help": "Two-factor authentication code"
         }
     },
     "68": {
@@ -809,9 +809,9 @@
             "netrc"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "usenetrc",
-            "help=": "Use .netrc authentication data"
+            "action": "store_true",
+            "dest": "usenetrc",
+            "help": "Use .netrc authentication data"
         }
     },
     "69": {
@@ -821,9 +821,9 @@
             "netrc-location"
         ],
         "other_values": {
-            "dest=": "netrc_location",
-            "metavar=": "PATH",
-            "help=": "Location of .netrc authentication data; either the path or its containing directory. Defaults to ~/.netrc"
+            "dest": "netrc_location",
+            "metavar": "PATH",
+            "help": "Location of .netrc authentication data; either the path or its containing directory. Defaults to ~/.netrc"
         }
     },
     "70": {
@@ -833,8 +833,8 @@
             "video-password"
         ],
         "other_values": {
-            "dest=": "videopassword",
-            "metavar=": "PASSWORD"
+            "dest": "videopassword",
+            "metavar": "PASSWORD"
         }
     },
     "71": {
@@ -844,8 +844,8 @@
             "ap-mso"
         ],
         "other_values": {
-            "dest=": "ap_mso",
-            "metavar=": "MSO"
+            "dest": "ap_mso",
+            "metavar": "MSO"
         }
     },
     "72": {
@@ -855,9 +855,9 @@
             "ap-username"
         ],
         "other_values": {
-            "dest=": "ap_username",
-            "metavar=": "USERNAME",
-            "help=": "Multiple-system operator account login"
+            "dest": "ap_username",
+            "metavar": "USERNAME",
+            "help": "Multiple-system operator account login"
         }
     },
     "73": {
@@ -867,9 +867,9 @@
             "ap-password"
         ],
         "other_values": {
-            "dest=": "ap_password",
-            "metavar=": "PASSWORD",
-            "help=": "Multiple-system operator account password. If this option is left out, yt-dlp will ask interactively"
+            "dest": "ap_password",
+            "metavar": "PASSWORD",
+            "help": "Multiple-system operator account password. If this option is left out, yt-dlp will ask interactively"
         }
     },
     "74": {
@@ -879,9 +879,9 @@
             "ap-list-mso"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "ap_list_mso",
-            "help=": "List all supported multiple-system operators"
+            "action": "store_true",
+            "dest": "ap_list_mso",
+            "help": "List all supported multiple-system operators"
         }
     },
     "75": {
@@ -891,9 +891,9 @@
             "client-certificate"
         ],
         "other_values": {
-            "dest=": "client_certificate",
-            "metavar=": "CERTFILE",
-            "help=": "Path to client certificate file in PEM format. May include the private key"
+            "dest": "client_certificate",
+            "metavar": "CERTFILE",
+            "help": "Path to client certificate file in PEM format. May include the private key"
         }
     },
     "76": {
@@ -903,9 +903,9 @@
             "client-certificate-key"
         ],
         "other_values": {
-            "dest=": "client_certificate_key",
-            "metavar=": "KEYFILE",
-            "help=": "Path to private key file for client certificate"
+            "dest": "client_certificate_key",
+            "metavar": "KEYFILE",
+            "help": "Path to private key file for client certificate"
         }
     },
     "77": {
@@ -915,9 +915,9 @@
             "client-certificate-password"
         ],
         "other_values": {
-            "dest=": "client_certificate_password",
-            "metavar=": "PASSWORD",
-            "help=": "Password for client certificate private key, if encrypted. "
+            "dest": "client_certificate_password",
+            "metavar": "PASSWORD",
+            "help": "Password for client certificate private key, if encrypted. "
         }
     },
     "78": {
@@ -928,9 +928,9 @@
             "write-srt"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "writesubtitles",
-            "help=": "Write subtitle file"
+            "action": "store_true",
+            "dest": "writesubtitles",
+            "help": "Write subtitle file"
         }
     },
     "79": {
@@ -941,8 +941,8 @@
             "no-write-srt"
         ],
         "other_values": {
-            "action=": "store_false",
-            "dest=": "writesubtitles"
+            "action": "store_false",
+            "dest": "writesubtitles"
         }
     },
     "80": {
@@ -953,8 +953,8 @@
             "write-automatic-subs"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "writeautomaticsub"
+            "action": "store_true",
+            "dest": "writeautomaticsub"
         }
     },
     "81": {
@@ -965,8 +965,8 @@
             "no-write-automatic-subs"
         ],
         "other_values": {
-            "action=": "store_false",
-            "dest=": "writeautomaticsub"
+            "action": "store_false",
+            "dest": "writeautomaticsub"
         }
     },
     "82": {
@@ -976,8 +976,8 @@
             "all-subs"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "allsubtitles"
+            "action": "store_true",
+            "dest": "allsubtitles"
         }
     },
     "83": {
@@ -987,9 +987,9 @@
             "list-subs"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "listsubtitles",
-            "help=": "List available subtitles of each video. Simulate unless --no-simulate is used"
+            "action": "store_true",
+            "dest": "listsubtitles",
+            "help": "List available subtitles of each video. Simulate unless --no-simulate is used"
         }
     },
     "84": {
@@ -999,11 +999,11 @@
             "sub-format"
         ],
         "other_values": {
-            "action=": "store",
-            "dest=": "subtitlesformat",
-            "metavar=": "FORMAT",
-            "default=": "best",
-            "help=": "Subtitle format; accepts formats preference, e.g. \"srt\" or \"ass/srt/best\""
+            "action": "store",
+            "dest": "subtitlesformat",
+            "metavar": "FORMAT",
+            "default": "best",
+            "help": "Subtitle format; accepts formats preference, e.g. \"srt\" or \"ass/srt/best\""
         }
     },
     "85": {
@@ -1014,10 +1014,10 @@
             "srt-langs"
         ],
         "other_values": {
-            "action=": "callback",
-            "dest=": "subtitleslangs",
-            "metavar=": "LANGS",
-            "type=": "str"
+            "action": "callback",
+            "dest": "subtitleslangs",
+            "metavar": "LANGS",
+            "type": "str"
         }
     },
     "86": {
@@ -1028,8 +1028,8 @@
             "concurrent-fragments"
         ],
         "other_values": {
-            "dest=": "concurrent_fragment_downloads",
-            "metavar=": "N"
+            "dest": "concurrent_fragment_downloads",
+            "metavar": "N"
         }
     },
     "87": {
@@ -1041,9 +1041,9 @@
             "rate-limit"
         ],
         "other_values": {
-            "dest=": "ratelimit",
-            "metavar=": "RATE",
-            "help=": "Maximum download rate in bytes per second, e.g. 50K or 4.2M"
+            "dest": "ratelimit",
+            "metavar": "RATE",
+            "help": "Maximum download rate in bytes per second, e.g. 50K or 4.2M"
         }
     },
     "88": {
@@ -1053,9 +1053,9 @@
             "throttled-rate"
         ],
         "other_values": {
-            "dest=": "throttledratelimit",
-            "metavar=": "RATE",
-            "help=": "Minimum download rate in bytes per second below which throttling is assumed and the video data is re-extracted, e.g. 100K"
+            "dest": "throttledratelimit",
+            "metavar": "RATE",
+            "help": "Minimum download rate in bytes per second below which throttling is assumed and the video data is re-extracted, e.g. 100K"
         }
     },
     "89": {
@@ -1066,8 +1066,8 @@
             "retries"
         ],
         "other_values": {
-            "dest=": "retries",
-            "metavar=": "RETRIES"
+            "dest": "retries",
+            "metavar": "RETRIES"
         }
     },
     "90": {
@@ -1077,8 +1077,8 @@
             "file-access-retries"
         ],
         "other_values": {
-            "dest=": "file_access_retries",
-            "metavar=": "RETRIES"
+            "dest": "file_access_retries",
+            "metavar": "RETRIES"
         }
     },
     "91": {
@@ -1088,8 +1088,8 @@
             "fragment-retries"
         ],
         "other_values": {
-            "dest=": "fragment_retries",
-            "metavar=": "RETRIES"
+            "dest": "fragment_retries",
+            "metavar": "RETRIES"
         }
     },
     "92": {
@@ -1099,10 +1099,10 @@
             "retry-sleep"
         ],
         "other_values": {
-            "dest=": "retry_sleep",
-            "metavar=": "[TYPE:]EXPR",
-            "type=": "str",
-            "action=": "callback"
+            "dest": "retry_sleep",
+            "metavar": "[TYPE:]EXPR",
+            "type": "str",
+            "action": "callback"
         }
     },
     "93": {
@@ -1113,8 +1113,8 @@
             "no-abort-on-unavailable-fragment"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "skip_unavailable_fragments"
+            "action": "store_true",
+            "dest": "skip_unavailable_fragments"
         }
     },
     "94": {
@@ -1125,8 +1125,8 @@
             "no-skip-unavailable-fragments"
         ],
         "other_values": {
-            "action=": "store_false",
-            "dest=": "skip_unavailable_fragments"
+            "action": "store_false",
+            "dest": "skip_unavailable_fragments"
         }
     },
     "95": {
@@ -1136,9 +1136,9 @@
             "keep-fragments"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "keep_fragments",
-            "help=": "Keep downloaded fragments on disk after downloading is finished"
+            "action": "store_true",
+            "dest": "keep_fragments",
+            "help": "Keep downloaded fragments on disk after downloading is finished"
         }
     },
     "96": {
@@ -1148,8 +1148,8 @@
             "no-keep-fragments"
         ],
         "other_values": {
-            "action=": "store_false",
-            "dest=": "keep_fragments"
+            "action": "store_false",
+            "dest": "keep_fragments"
         }
     },
     "97": {
@@ -1159,9 +1159,9 @@
             "buffer-size"
         ],
         "other_values": {
-            "dest=": "buffersize",
-            "metavar=": "SIZE",
-            "default=": "1024"
+            "dest": "buffersize",
+            "metavar": "SIZE",
+            "default": "1024"
         }
     },
     "98": {
@@ -1171,8 +1171,8 @@
             "resize-buffer"
         ],
         "other_values": {
-            "action=": "store_false",
-            "dest=": "noresizebuffer"
+            "action": "store_false",
+            "dest": "noresizebuffer"
         }
     },
     "99": {
@@ -1182,9 +1182,9 @@
             "no-resize-buffer"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "noresizebuffer",
-            "help=": "Do not automatically adjust the buffer size"
+            "action": "store_true",
+            "dest": "noresizebuffer",
+            "help": "Do not automatically adjust the buffer size"
         }
     },
     "100": {
@@ -1194,8 +1194,8 @@
             "http-chunk-size"
         ],
         "other_values": {
-            "dest=": "http_chunk_size",
-            "metavar=": "SIZE"
+            "dest": "http_chunk_size",
+            "metavar": "SIZE"
         }
     },
     "101": {
@@ -1205,8 +1205,8 @@
             "test"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "test"
+            "action": "store_true",
+            "dest": "test"
         }
     },
     "102": {
@@ -1216,8 +1216,8 @@
             "playlist-reverse"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "playlist_reverse"
+            "action": "store_true",
+            "dest": "playlist_reverse"
         }
     },
     "103": {
@@ -1227,8 +1227,8 @@
             "no-playlist-reverse"
         ],
         "other_values": {
-            "action=": "store_false",
-            "dest=": "playlist_reverse"
+            "action": "store_false",
+            "dest": "playlist_reverse"
         }
     },
     "104": {
@@ -1238,9 +1238,9 @@
             "playlist-random"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "playlist_random",
-            "help=": "Download playlist videos in random order"
+            "action": "store_true",
+            "dest": "playlist_random",
+            "help": "Download playlist videos in random order"
         }
     },
     "105": {
@@ -1250,9 +1250,9 @@
             "lazy-playlist"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "lazy_playlist",
-            "help=": "Process entries in the playlist as they are received. This disables n_entries, --playlist-random and --playlist-reverse"
+            "action": "store_true",
+            "dest": "lazy_playlist",
+            "help": "Process entries in the playlist as they are received. This disables n_entries, --playlist-random and --playlist-reverse"
         }
     },
     "106": {
@@ -1262,8 +1262,8 @@
             "no-lazy-playlist"
         ],
         "other_values": {
-            "action=": "store_false",
-            "dest=": "lazy_playlist"
+            "action": "store_false",
+            "dest": "lazy_playlist"
         }
     },
     "107": {
@@ -1273,9 +1273,9 @@
             "xattr-set-filesize"
         ],
         "other_values": {
-            "dest=": "xattr_set_filesize",
-            "action=": "store_true",
-            "help=": "Set file xattribute ytdl.filesize with expected file size"
+            "dest": "xattr_set_filesize",
+            "action": "store_true",
+            "help": "Set file xattribute ytdl.filesize with expected file size"
         }
     },
     "108": {
@@ -1285,8 +1285,8 @@
             "hls-prefer-native"
         ],
         "other_values": {
-            "dest=": "hls_prefer_native",
-            "action=": "store_true"
+            "dest": "hls_prefer_native",
+            "action": "store_true"
         }
     },
     "109": {
@@ -1296,8 +1296,8 @@
             "hls-prefer-ffmpeg"
         ],
         "other_values": {
-            "dest=": "hls_prefer_native",
-            "action=": "store_false"
+            "dest": "hls_prefer_native",
+            "action": "store_false"
         }
     },
     "110": {
@@ -1307,8 +1307,8 @@
             "hls-use-mpegts"
         ],
         "other_values": {
-            "dest=": "hls_use_mpegts",
-            "action=": "store_true"
+            "dest": "hls_use_mpegts",
+            "action": "store_true"
         }
     },
     "111": {
@@ -1318,8 +1318,8 @@
             "no-hls-use-mpegts"
         ],
         "other_values": {
-            "dest=": "hls_use_mpegts",
-            "action=": "store_false"
+            "dest": "hls_use_mpegts",
+            "action": "store_false"
         }
     },
     "112": {
@@ -1329,9 +1329,9 @@
             "download-sections"
         ],
         "other_values": {
-            "metavar=": "REGEX",
-            "dest=": "download_ranges",
-            "action=": "append"
+            "metavar": "REGEX",
+            "dest": "download_ranges",
+            "action": "append"
         }
     },
     "113": {
@@ -1342,10 +1342,10 @@
             "external-downloader"
         ],
         "other_values": {
-            "dest=": "external_downloader",
-            "metavar=": "[PROTO:]NAME",
-            "type=": "str",
-            "action=": "callback"
+            "dest": "external_downloader",
+            "metavar": "[PROTO:]NAME",
+            "type": "str",
+            "action": "callback"
         }
     },
     "114": {
@@ -1356,10 +1356,10 @@
             "external-downloader-args"
         ],
         "other_values": {
-            "metavar=": "NAME:ARGS",
-            "dest=": "external_downloader_args",
-            "type=": "str",
-            "action=": "callback"
+            "metavar": "NAME:ARGS",
+            "dest": "external_downloader_args",
+            "type": "str",
+            "action": "callback"
         }
     },
     "115": {
@@ -1369,8 +1369,8 @@
             "encoding"
         ],
         "other_values": {
-            "dest=": "encoding",
-            "metavar=": "ENCODING"
+            "dest": "encoding",
+            "metavar": "ENCODING"
         }
     },
     "116": {
@@ -1380,9 +1380,9 @@
             "legacy-server-connect"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "legacy_server_connect",
-            "help=": "Explicitly allow HTTPS connection to servers that do not support RFC 5746 secure renegotiation"
+            "action": "store_true",
+            "dest": "legacy_server_connect",
+            "help": "Explicitly allow HTTPS connection to servers that do not support RFC 5746 secure renegotiation"
         }
     },
     "117": {
@@ -1392,9 +1392,9 @@
             "no-check-certificates"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "no_check_certificate",
-            "help=": "Suppress HTTPS certificate validation"
+            "action": "store_true",
+            "dest": "no_check_certificate",
+            "help": "Suppress HTTPS certificate validation"
         }
     },
     "118": {
@@ -1405,8 +1405,8 @@
             "prefer-unsecure"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "prefer_insecure"
+            "action": "store_true",
+            "dest": "prefer_insecure"
         }
     },
     "119": {
@@ -1416,8 +1416,8 @@
             "user-agent"
         ],
         "other_values": {
-            "metavar=": "UA",
-            "dest=": "user_agent"
+            "metavar": "UA",
+            "dest": "user_agent"
         }
     },
     "120": {
@@ -1427,8 +1427,8 @@
             "referer"
         ],
         "other_values": {
-            "metavar=": "URL",
-            "dest=": "referer"
+            "metavar": "URL",
+            "dest": "referer"
         }
     },
     "121": {
@@ -1438,11 +1438,11 @@
             "add-header"
         ],
         "other_values": {
-            "metavar=": "FIELD:VALUE",
-            "dest=": "headers",
-            "type=": "str",
-            "action=": "callback",
-            "help=": "Specify a custom HTTP header and its value, separated by a colon \":\". You can use this option multiple times"
+            "metavar": "FIELD:VALUE",
+            "dest": "headers",
+            "type": "str",
+            "action": "callback",
+            "help": "Specify a custom HTTP header and its value, separated by a colon \":\". You can use this option multiple times"
         }
     },
     "122": {
@@ -1452,9 +1452,9 @@
             "bidi-workaround"
         ],
         "other_values": {
-            "dest=": "bidi_workaround",
-            "action=": "store_true",
-            "help=": "Work around terminals that lack bidirectional text support. Requires bidiv or fribidi executable in PATH"
+            "dest": "bidi_workaround",
+            "action": "store_true",
+            "help": "Work around terminals that lack bidirectional text support. Requires bidiv or fribidi executable in PATH"
         }
     },
     "123": {
@@ -1464,9 +1464,9 @@
             "sleep-requests"
         ],
         "other_values": {
-            "metavar=": "SECONDS",
-            "dest=": "sleep_interval_requests",
-            "help=": "Number of seconds to sleep between requests during data extraction"
+            "metavar": "SECONDS",
+            "dest": "sleep_interval_requests",
+            "help": "Number of seconds to sleep between requests during data extraction"
         }
     },
     "124": {
@@ -1477,8 +1477,8 @@
             "min-sleep-interval"
         ],
         "other_values": {
-            "metavar=": "SECONDS",
-            "dest=": "sleep_interval"
+            "metavar": "SECONDS",
+            "dest": "sleep_interval"
         }
     },
     "125": {
@@ -1488,9 +1488,9 @@
             "max-sleep-interval"
         ],
         "other_values": {
-            "metavar=": "SECONDS",
-            "dest=": "max_sleep_interval",
-            "help=": "Maximum number of seconds to sleep. Can only be used along with --min-sleep-interval"
+            "metavar": "SECONDS",
+            "dest": "max_sleep_interval",
+            "help": "Maximum number of seconds to sleep. Can only be used along with --min-sleep-interval"
         }
     },
     "126": {
@@ -1500,9 +1500,9 @@
             "sleep-subtitles"
         ],
         "other_values": {
-            "metavar=": "SECONDS",
-            "dest=": "sleep_interval_subtitles",
-            "help=": "Number of seconds to sleep before each subtitle download"
+            "metavar": "SECONDS",
+            "dest": "sleep_interval_subtitles",
+            "help": "Number of seconds to sleep before each subtitle download"
         }
     },
     "127": {
@@ -1513,9 +1513,9 @@
             "quiet"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "quiet",
-            "help=": "Activate quiet mode. If used with --verbose, print the log to stderr"
+            "action": "store_true",
+            "dest": "quiet",
+            "help": "Activate quiet mode. If used with --verbose, print the log to stderr"
         }
     },
     "128": {
@@ -1525,9 +1525,9 @@
             "no-warnings"
         ],
         "other_values": {
-            "dest=": "no_warnings",
-            "action=": "store_true",
-            "help=": "Ignore warnings"
+            "dest": "no_warnings",
+            "action": "store_true",
+            "help": "Ignore warnings"
         }
     },
     "129": {
@@ -1538,9 +1538,9 @@
             "simulate"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "simulate",
-            "help=": "Do not download the video and do not write anything to disk"
+            "action": "store_true",
+            "dest": "simulate",
+            "help": "Do not download the video and do not write anything to disk"
         }
     },
     "130": {
@@ -1550,9 +1550,9 @@
             "no-simulate"
         ],
         "other_values": {
-            "action=": "store_false",
-            "dest=": "simulate",
-            "help=": "Download the video even if printing/listing options are used"
+            "action": "store_false",
+            "dest": "simulate",
+            "help": "Download the video even if printing/listing options are used"
         }
     },
     "131": {
@@ -1562,8 +1562,8 @@
             "ignore-no-formats-error"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "ignore_no_formats_error"
+            "action": "store_true",
+            "dest": "ignore_no_formats_error"
         }
     },
     "132": {
@@ -1573,8 +1573,8 @@
             "no-ignore-no-formats-error"
         ],
         "other_values": {
-            "action=": "store_false",
-            "dest=": "ignore_no_formats_error"
+            "action": "store_false",
+            "dest": "ignore_no_formats_error"
         }
     },
     "133": {
@@ -1585,8 +1585,8 @@
             "no-download"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "skip_download"
+            "action": "store_true",
+            "dest": "skip_download"
         }
     },
     "134": {
@@ -1597,10 +1597,10 @@
             "print"
         ],
         "other_values": {
-            "metavar=": "[WHEN:]TEMPLATE",
-            "dest=": "forceprint",
-            "type=": "str",
-            "action=": "callback"
+            "metavar": "[WHEN:]TEMPLATE",
+            "dest": "forceprint",
+            "type": "str",
+            "action": "callback"
         }
     },
     "135": {
@@ -1610,10 +1610,10 @@
             "print-to-file"
         ],
         "other_values": {
-            "metavar=": "[WHEN:]TEMPLATE FILE",
-            "dest=": "print_to_file",
-            "type=": "str",
-            "action=": "callback"
+            "metavar": "[WHEN:]TEMPLATE FILE",
+            "dest": "print_to_file",
+            "type": "str",
+            "action": "callback"
         }
     },
     "136": {
@@ -1624,8 +1624,8 @@
             "get-url"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "geturl"
+            "action": "store_true",
+            "dest": "geturl"
         }
     },
     "137": {
@@ -1636,8 +1636,8 @@
             "get-title"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "gettitle"
+            "action": "store_true",
+            "dest": "gettitle"
         }
     },
     "138": {
@@ -1647,8 +1647,8 @@
             "get-id"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "getid"
+            "action": "store_true",
+            "dest": "getid"
         }
     },
     "139": {
@@ -1658,8 +1658,8 @@
             "get-thumbnail"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "getthumbnail"
+            "action": "store_true",
+            "dest": "getthumbnail"
         }
     },
     "140": {
@@ -1669,8 +1669,8 @@
             "get-description"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "getdescription"
+            "action": "store_true",
+            "dest": "getdescription"
         }
     },
     "141": {
@@ -1680,8 +1680,8 @@
             "get-duration"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "getduration"
+            "action": "store_true",
+            "dest": "getduration"
         }
     },
     "142": {
@@ -1691,8 +1691,8 @@
             "get-filename"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "getfilename"
+            "action": "store_true",
+            "dest": "getfilename"
         }
     },
     "143": {
@@ -1702,8 +1702,8 @@
             "get-format"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "getformat"
+            "action": "store_true",
+            "dest": "getformat"
         }
     },
     "144": {
@@ -1714,9 +1714,9 @@
             "dump-json"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "dumpjson",
-            "help=": "Quiet, but print JSON information for each video. Simulate unless --no-simulate is used. See \"OUTPUT TEMPLATE\" for a description of available keys"
+            "action": "store_true",
+            "dest": "dumpjson",
+            "help": "Quiet, but print JSON information for each video. Simulate unless --no-simulate is used. See \"OUTPUT TEMPLATE\" for a description of available keys"
         }
     },
     "145": {
@@ -1727,8 +1727,8 @@
             "dump-single-json"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "dump_single_json"
+            "action": "store_true",
+            "dest": "dump_single_json"
         }
     },
     "146": {
@@ -1738,8 +1738,8 @@
             "print-json"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "print_json"
+            "action": "store_true",
+            "dest": "print_json"
         }
     },
     "147": {
@@ -1751,8 +1751,8 @@
             "force-download-archive"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "force_write_download_archive"
+            "action": "store_true",
+            "dest": "force_write_download_archive"
         }
     },
     "148": {
@@ -1762,9 +1762,9 @@
             "newline"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "progress_with_newline",
-            "help=": "Output progress bar as new lines"
+            "action": "store_true",
+            "dest": "progress_with_newline",
+            "help": "Output progress bar as new lines"
         }
     },
     "149": {
@@ -1774,9 +1774,9 @@
             "no-progress"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "noprogress",
-            "help=": "Do not print progress bar"
+            "action": "store_true",
+            "dest": "noprogress",
+            "help": "Do not print progress bar"
         }
     },
     "150": {
@@ -1786,9 +1786,9 @@
             "progress"
         ],
         "other_values": {
-            "action=": "store_false",
-            "dest=": "noprogress",
-            "help=": "Show progress bar, even if in quiet mode"
+            "action": "store_false",
+            "dest": "noprogress",
+            "help": "Show progress bar, even if in quiet mode"
         }
     },
     "151": {
@@ -1798,9 +1798,9 @@
             "console-title"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "consoletitle",
-            "help=": "Display progress in console titlebar"
+            "action": "store_true",
+            "dest": "consoletitle",
+            "help": "Display progress in console titlebar"
         }
     },
     "152": {
@@ -1810,10 +1810,10 @@
             "progress-template"
         ],
         "other_values": {
-            "metavar=": "[TYPES:]TEMPLATE",
-            "dest=": "progress_template",
-            "type=": "str",
-            "action=": "callback"
+            "metavar": "[TYPES:]TEMPLATE",
+            "dest": "progress_template",
+            "type": "str",
+            "action": "callback"
         }
     },
     "153": {
@@ -1824,9 +1824,9 @@
             "verbose"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "verbose",
-            "help=": "Print various debugging information"
+            "action": "store_true",
+            "dest": "verbose",
+            "help": "Print various debugging information"
         }
     },
     "154": {
@@ -1837,8 +1837,8 @@
             "dump-intermediate-pages"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "dump_intermediate_pages"
+            "action": "store_true",
+            "dest": "dump_intermediate_pages"
         }
     },
     "155": {
@@ -1848,9 +1848,9 @@
             "write-pages"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "write_pages",
-            "help=": "Write downloaded intermediary pages to files in the current directory to debug problems"
+            "action": "store_true",
+            "dest": "write_pages",
+            "help": "Write downloaded intermediary pages to files in the current directory to debug problems"
         }
     },
     "156": {
@@ -1860,8 +1860,8 @@
             "load-pages"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "load_pages"
+            "action": "store_true",
+            "dest": "load_pages"
         }
     },
     "157": {
@@ -1871,8 +1871,8 @@
             "youtube-print-sig-code"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "youtube_print_sig_code"
+            "action": "store_true",
+            "dest": "youtube_print_sig_code"
         }
     },
     "158": {
@@ -1883,9 +1883,9 @@
             "dump-headers"
         ],
         "other_values": {
-            "dest=": "debug_printtraffic",
-            "action=": "store_true",
-            "help=": "Display sent and read HTTP traffic"
+            "dest": "debug_printtraffic",
+            "action": "store_true",
+            "help": "Display sent and read HTTP traffic"
         }
     },
     "159": {
@@ -1896,9 +1896,9 @@
             "call-home"
         ],
         "other_values": {
-            "dest=": "call_home",
-            "action=": "store_true",
-            "help=": "Contact the yt-dlp server for debugging"
+            "dest": "call_home",
+            "action": "store_true",
+            "help": "Contact the yt-dlp server for debugging"
         }
     },
     "160": {
@@ -1908,8 +1908,8 @@
             "no-call-home"
         ],
         "other_values": {
-            "dest=": "call_home",
-            "action=": "store_false"
+            "dest": "call_home",
+            "action": "store_false"
         }
     },
     "161": {
@@ -1920,8 +1920,8 @@
             "batch-file"
         ],
         "other_values": {
-            "dest=": "batchfile",
-            "metavar=": "FILE"
+            "dest": "batchfile",
+            "metavar": "FILE"
         }
     },
     "162": {
@@ -1931,8 +1931,8 @@
             "no-batch-file"
         ],
         "other_values": {
-            "dest=": "batchfile",
-            "action=": "store_const"
+            "dest": "batchfile",
+            "action": "store_const"
         }
     },
     "163": {
@@ -1942,8 +1942,8 @@
             "id"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "useid"
+            "action": "store_true",
+            "dest": "useid"
         }
     },
     "164": {
@@ -1954,10 +1954,10 @@
             "paths"
         ],
         "other_values": {
-            "metavar=": "[TYPES:]PATH",
-            "dest=": "paths",
-            "type=": "str",
-            "action=": "callback"
+            "metavar": "[TYPES:]PATH",
+            "dest": "paths",
+            "type": "str",
+            "action": "callback"
         }
     },
     "165": {
@@ -1968,10 +1968,10 @@
             "output"
         ],
         "other_values": {
-            "metavar=": "[TYPES:]TEMPLATE",
-            "dest=": "outtmpl",
-            "type=": "str",
-            "action=": "callback"
+            "metavar": "[TYPES:]TEMPLATE",
+            "dest": "outtmpl",
+            "type": "str",
+            "action": "callback"
         }
     },
     "166": {
@@ -1981,9 +1981,9 @@
             "output-na-placeholder"
         ],
         "other_values": {
-            "dest=": "outtmpl_na_placeholder",
-            "metavar=": "TEXT",
-            "default=": "NA"
+            "dest": "outtmpl_na_placeholder",
+            "metavar": "TEXT",
+            "default": "NA"
         }
     },
     "167": {
@@ -1993,8 +1993,8 @@
             "autonumber-size"
         ],
         "other_values": {
-            "dest=": "autonumber_size",
-            "metavar=": "NUMBER"
+            "dest": "autonumber_size",
+            "metavar": "NUMBER"
         }
     },
     "168": {
@@ -2004,8 +2004,8 @@
             "autonumber-start"
         ],
         "other_values": {
-            "dest=": "autonumber_start",
-            "metavar=": "NUMBER"
+            "dest": "autonumber_start",
+            "metavar": "NUMBER"
         }
     },
     "169": {
@@ -2015,9 +2015,9 @@
             "restrict-filenames"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "restrictfilenames",
-            "help=": "Restrict filenames to only ASCII characters, and avoid \"&\" and spaces in filenames"
+            "action": "store_true",
+            "dest": "restrictfilenames",
+            "help": "Restrict filenames to only ASCII characters, and avoid \"&\" and spaces in filenames"
         }
     },
     "170": {
@@ -2027,8 +2027,8 @@
             "no-restrict-filenames"
         ],
         "other_values": {
-            "action=": "store_false",
-            "dest=": "restrictfilenames"
+            "action": "store_false",
+            "dest": "restrictfilenames"
         }
     },
     "171": {
@@ -2038,9 +2038,9 @@
             "windows-filenames"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "windowsfilenames",
-            "help=": "Force filenames to be Windows-compatible"
+            "action": "store_true",
+            "dest": "windowsfilenames",
+            "help": "Force filenames to be Windows-compatible"
         }
     },
     "172": {
@@ -2050,8 +2050,8 @@
             "no-windows-filenames"
         ],
         "other_values": {
-            "action=": "store_false",
-            "dest=": "windowsfilenames"
+            "action": "store_false",
+            "dest": "windowsfilenames"
         }
     },
     "173": {
@@ -2062,8 +2062,8 @@
             "trim-file-names"
         ],
         "other_values": {
-            "metavar=": "LENGTH",
-            "dest=": "trim_file_name"
+            "metavar": "LENGTH",
+            "dest": "trim_file_name"
         }
     },
     "174": {
@@ -2074,9 +2074,9 @@
             "no-overwrites"
         ],
         "other_values": {
-            "action=": "store_false",
-            "dest=": "overwrites",
-            "help=": "Do not overwrite any files"
+            "action": "store_false",
+            "dest": "overwrites",
+            "help": "Do not overwrite any files"
         }
     },
     "175": {
@@ -2087,9 +2087,9 @@
             "yes-overwrites"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "overwrites",
-            "help=": "Overwrite all video and metadata files. This option includes --no-continue"
+            "action": "store_true",
+            "dest": "overwrites",
+            "help": "Overwrite all video and metadata files. This option includes --no-continue"
         }
     },
     "176": {
@@ -2099,8 +2099,8 @@
             "no-force-overwrites"
         ],
         "other_values": {
-            "action=": "store_const",
-            "dest=": "overwrites"
+            "action": "store_const",
+            "dest": "overwrites"
         }
     },
     "177": {
@@ -2111,8 +2111,8 @@
             "continue"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "continue_dl"
+            "action": "store_true",
+            "dest": "continue_dl"
         }
     },
     "178": {
@@ -2122,8 +2122,8 @@
             "no-continue"
         ],
         "other_values": {
-            "action=": "store_false",
-            "dest=": "continue_dl"
+            "action": "store_false",
+            "dest": "continue_dl"
         }
     },
     "179": {
@@ -2133,8 +2133,8 @@
             "part"
         ],
         "other_values": {
-            "action=": "store_false",
-            "dest=": "nopart"
+            "action": "store_false",
+            "dest": "nopart"
         }
     },
     "180": {
@@ -2144,9 +2144,9 @@
             "no-part"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "nopart",
-            "help=": "Do not use .part files - write directly into output file"
+            "action": "store_true",
+            "dest": "nopart",
+            "help": "Do not use .part files - write directly into output file"
         }
     },
     "181": {
@@ -2156,8 +2156,8 @@
             "mtime"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "updatetime"
+            "action": "store_true",
+            "dest": "updatetime"
         }
     },
     "182": {
@@ -2167,9 +2167,9 @@
             "no-mtime"
         ],
         "other_values": {
-            "action=": "store_false",
-            "dest=": "updatetime",
-            "help=": "Do not use the Last-modified header to set the file modification time"
+            "action": "store_false",
+            "dest": "updatetime",
+            "help": "Do not use the Last-modified header to set the file modification time"
         }
     },
     "183": {
@@ -2179,9 +2179,9 @@
             "write-description"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "writedescription",
-            "help=": "Write video description to a .description file"
+            "action": "store_true",
+            "dest": "writedescription",
+            "help": "Write video description to a .description file"
         }
     },
     "184": {
@@ -2191,8 +2191,8 @@
             "no-write-description"
         ],
         "other_values": {
-            "action=": "store_false",
-            "dest=": "writedescription"
+            "action": "store_false",
+            "dest": "writedescription"
         }
     },
     "185": {
@@ -2202,8 +2202,8 @@
             "write-info-json"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "writeinfojson"
+            "action": "store_true",
+            "dest": "writeinfojson"
         }
     },
     "186": {
@@ -2213,8 +2213,8 @@
             "no-write-info-json"
         ],
         "other_values": {
-            "action=": "store_false",
-            "dest=": "writeinfojson"
+            "action": "store_false",
+            "dest": "writeinfojson"
         }
     },
     "187": {
@@ -2224,8 +2224,8 @@
             "write-annotations"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "writeannotations"
+            "action": "store_true",
+            "dest": "writeannotations"
         }
     },
     "188": {
@@ -2235,8 +2235,8 @@
             "no-write-annotations"
         ],
         "other_values": {
-            "action=": "store_false",
-            "dest=": "writeannotations"
+            "action": "store_false",
+            "dest": "writeannotations"
         }
     },
     "189": {
@@ -2246,8 +2246,8 @@
             "write-playlist-metafiles"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "allow_playlist_files"
+            "action": "store_true",
+            "dest": "allow_playlist_files"
         }
     },
     "190": {
@@ -2257,9 +2257,9 @@
             "no-write-playlist-metafiles"
         ],
         "other_values": {
-            "action=": "store_false",
-            "dest=": "allow_playlist_files",
-            "help=": "Do not write playlist metadata when using --write-info-json, --write-description etc."
+            "action": "store_false",
+            "dest": "allow_playlist_files",
+            "help": "Do not write playlist metadata when using --write-info-json, --write-description etc."
         }
     },
     "191": {
@@ -2270,8 +2270,8 @@
             "clean-infojson"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "clean_infojson"
+            "action": "store_true",
+            "dest": "clean_infojson"
         }
     },
     "192": {
@@ -2282,9 +2282,9 @@
             "no-clean-infojson"
         ],
         "other_values": {
-            "action=": "store_false",
-            "dest=": "clean_infojson",
-            "help=": "Write all fields to the infojson"
+            "action": "store_false",
+            "dest": "clean_infojson",
+            "help": "Write all fields to the infojson"
         }
     },
     "193": {
@@ -2295,8 +2295,8 @@
             "get-comments"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "getcomments"
+            "action": "store_true",
+            "dest": "getcomments"
         }
     },
     "194": {
@@ -2307,8 +2307,8 @@
             "no-get-comments"
         ],
         "other_values": {
-            "action=": "store_false",
-            "dest=": "getcomments"
+            "action": "store_false",
+            "dest": "getcomments"
         }
     },
     "195": {
@@ -2319,8 +2319,8 @@
             "load-info"
         ],
         "other_values": {
-            "dest=": "load_info_filename",
-            "metavar=": "FILE"
+            "dest": "load_info_filename",
+            "metavar": "FILE"
         }
     },
     "196": {
@@ -2330,9 +2330,9 @@
             "cookies"
         ],
         "other_values": {
-            "dest=": "cookiefile",
-            "metavar=": "FILE",
-            "help=": "Netscape formatted file to read cookies from and dump cookie jar in"
+            "dest": "cookiefile",
+            "metavar": "FILE",
+            "help": "Netscape formatted file to read cookies from and dump cookie jar in"
         }
     },
     "197": {
@@ -2342,9 +2342,9 @@
             "no-cookies"
         ],
         "other_values": {
-            "action=": "store_const",
-            "dest=": "cookiefile",
-            "metavar=": "FILE"
+            "action": "store_const",
+            "dest": "cookiefile",
+            "metavar": "FILE"
         }
     },
     "198": {
@@ -2354,8 +2354,8 @@
             "cookies-from-browser"
         ],
         "other_values": {
-            "dest=": "cookiesfrombrowser",
-            "metavar=": "BROWSER[+KEYRING][:PROFILE][::CONTAINER]"
+            "dest": "cookiesfrombrowser",
+            "metavar": "BROWSER[+KEYRING][:PROFILE][::CONTAINER]"
         }
     },
     "199": {
@@ -2365,8 +2365,8 @@
             "no-cookies-from-browser"
         ],
         "other_values": {
-            "action=": "store_const",
-            "dest=": "cookiesfrombrowser"
+            "action": "store_const",
+            "dest": "cookiesfrombrowser"
         }
     },
     "200": {
@@ -2376,8 +2376,8 @@
             "cache-dir"
         ],
         "other_values": {
-            "dest=": "cachedir",
-            "metavar=": "DIR"
+            "dest": "cachedir",
+            "metavar": "DIR"
         }
     },
     "201": {
@@ -2387,9 +2387,9 @@
             "no-cache-dir"
         ],
         "other_values": {
-            "action=": "store_false",
-            "dest=": "cachedir",
-            "help=": "Disable filesystem caching"
+            "action": "store_false",
+            "dest": "cachedir",
+            "help": "Disable filesystem caching"
         }
     },
     "202": {
@@ -2399,9 +2399,9 @@
             "rm-cache-dir"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "rm_cachedir",
-            "help=": "Delete all filesystem cache files"
+            "action": "store_true",
+            "dest": "rm_cachedir",
+            "help": "Delete all filesystem cache files"
         }
     },
     "203": {
@@ -2411,8 +2411,8 @@
             "write-thumbnail"
         ],
         "other_values": {
-            "action=": "callback",
-            "dest=": "writethumbnail"
+            "action": "callback",
+            "dest": "writethumbnail"
         }
     },
     "204": {
@@ -2422,8 +2422,8 @@
             "no-write-thumbnail"
         ],
         "other_values": {
-            "action=": "store_false",
-            "dest=": "writethumbnail"
+            "action": "store_false",
+            "dest": "writethumbnail"
         }
     },
     "205": {
@@ -2433,10 +2433,10 @@
             "write-all-thumbnails"
         ],
         "other_values": {
-            "action=": "store_const",
-            "dest=": "writethumbnail",
-            "const=": "all",
-            "help=": "Write all thumbnail image formats to disk"
+            "action": "store_const",
+            "dest": "writethumbnail",
+            "const": "all",
+            "help": "Write all thumbnail image formats to disk"
         }
     },
     "206": {
@@ -2446,9 +2446,9 @@
             "list-thumbnails"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "list_thumbnails",
-            "help=": "List available thumbnails of each video. Simulate unless --no-simulate is used"
+            "action": "store_true",
+            "dest": "list_thumbnails",
+            "help": "List available thumbnails of each video. Simulate unless --no-simulate is used"
         }
     },
     "207": {
@@ -2458,8 +2458,8 @@
             "write-link"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "writelink"
+            "action": "store_true",
+            "dest": "writelink"
         }
     },
     "208": {
@@ -2469,9 +2469,9 @@
             "write-url-link"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "writeurllink",
-            "help=": "Write a .url Windows internet shortcut. The OS caches the URL based on the file path"
+            "action": "store_true",
+            "dest": "writeurllink",
+            "help": "Write a .url Windows internet shortcut. The OS caches the URL based on the file path"
         }
     },
     "209": {
@@ -2481,9 +2481,9 @@
             "write-webloc-link"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "writewebloclink",
-            "help=": "Write a .webloc macOS internet shortcut"
+            "action": "store_true",
+            "dest": "writewebloclink",
+            "help": "Write a .webloc macOS internet shortcut"
         }
     },
     "210": {
@@ -2493,9 +2493,9 @@
             "write-desktop-link"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "writedesktoplink",
-            "help=": "Write a .desktop Linux internet shortcut"
+            "action": "store_true",
+            "dest": "writedesktoplink",
+            "help": "Write a .desktop Linux internet shortcut"
         }
     },
     "211": {
@@ -2506,8 +2506,8 @@
             "extract-audio"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "extractaudio"
+            "action": "store_true",
+            "dest": "extractaudio"
         }
     },
     "212": {
@@ -2517,9 +2517,9 @@
             "audio-format"
         ],
         "other_values": {
-            "metavar=": "FORMAT",
-            "dest=": "audioformat",
-            "default=": "best"
+            "metavar": "FORMAT",
+            "dest": "audioformat",
+            "default": "best"
         }
     },
     "213": {
@@ -2529,9 +2529,9 @@
             "audio-quality"
         ],
         "other_values": {
-            "metavar=": "QUALITY",
-            "dest=": "audioquality",
-            "default=": "5"
+            "metavar": "QUALITY",
+            "dest": "audioquality",
+            "default": "5"
         }
     },
     "214": {
@@ -2541,8 +2541,8 @@
             "remux-video"
         ],
         "other_values": {
-            "metavar=": "FORMAT",
-            "dest=": "remuxvideo"
+            "metavar": "FORMAT",
+            "dest": "remuxvideo"
         }
     },
     "215": {
@@ -2552,9 +2552,9 @@
             "recode-video"
         ],
         "other_values": {
-            "metavar=": "FORMAT",
-            "dest=": "recodevideo",
-            "help=": "Re-encode the video into another format if necessary. The syntax and supported formats are the same as --remux-video"
+            "metavar": "FORMAT",
+            "dest": "recodevideo",
+            "help": "Re-encode the video into another format if necessary. The syntax and supported formats are the same as --remux-video"
         }
     },
     "216": {
@@ -2565,10 +2565,10 @@
             "ppa"
         ],
         "other_values": {
-            "metavar=": "NAME:ARGS",
-            "dest=": "postprocessor_args",
-            "type=": "str",
-            "action=": "callback"
+            "metavar": "NAME:ARGS",
+            "dest": "postprocessor_args",
+            "type": "str",
+            "action": "callback"
         }
     },
     "217": {
@@ -2579,9 +2579,9 @@
             "keep-video"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "keepvideo",
-            "help=": "Keep the intermediate video file on disk after post-processing"
+            "action": "store_true",
+            "dest": "keepvideo",
+            "help": "Keep the intermediate video file on disk after post-processing"
         }
     },
     "218": {
@@ -2591,8 +2591,8 @@
             "no-keep-video"
         ],
         "other_values": {
-            "action=": "store_false",
-            "dest=": "keepvideo"
+            "action": "store_false",
+            "dest": "keepvideo"
         }
     },
     "219": {
@@ -2602,8 +2602,8 @@
             "post-overwrites"
         ],
         "other_values": {
-            "action=": "store_false",
-            "dest=": "nopostoverwrites"
+            "action": "store_false",
+            "dest": "nopostoverwrites"
         }
     },
     "220": {
@@ -2613,9 +2613,9 @@
             "no-post-overwrites"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "nopostoverwrites",
-            "help=": "Do not overwrite post-processed files"
+            "action": "store_true",
+            "dest": "nopostoverwrites",
+            "help": "Do not overwrite post-processed files"
         }
     },
     "221": {
@@ -2625,8 +2625,8 @@
             "embed-subs"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "embedsubtitles"
+            "action": "store_true",
+            "dest": "embedsubtitles"
         }
     },
     "222": {
@@ -2636,8 +2636,8 @@
             "no-embed-subs"
         ],
         "other_values": {
-            "action=": "store_false",
-            "dest=": "embedsubtitles"
+            "action": "store_false",
+            "dest": "embedsubtitles"
         }
     },
     "223": {
@@ -2647,9 +2647,9 @@
             "embed-thumbnail"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "embedthumbnail",
-            "help=": "Embed thumbnail in the video as cover art"
+            "action": "store_true",
+            "dest": "embedthumbnail",
+            "help": "Embed thumbnail in the video as cover art"
         }
     },
     "224": {
@@ -2659,8 +2659,8 @@
             "no-embed-thumbnail"
         ],
         "other_values": {
-            "action=": "store_false",
-            "dest=": "embedthumbnail"
+            "action": "store_false",
+            "dest": "embedthumbnail"
         }
     },
     "225": {
@@ -2671,8 +2671,8 @@
             "add-metadata"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "addmetadata"
+            "action": "store_true",
+            "dest": "addmetadata"
         }
     },
     "226": {
@@ -2683,8 +2683,8 @@
             "no-add-metadata"
         ],
         "other_values": {
-            "action=": "store_false",
-            "dest=": "addmetadata"
+            "action": "store_false",
+            "dest": "addmetadata"
         }
     },
     "227": {
@@ -2695,8 +2695,8 @@
             "add-chapters"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "addchapters"
+            "action": "store_true",
+            "dest": "addchapters"
         }
     },
     "228": {
@@ -2707,8 +2707,8 @@
             "no-add-chapters"
         ],
         "other_values": {
-            "action=": "store_false",
-            "dest=": "addchapters"
+            "action": "store_false",
+            "dest": "addchapters"
         }
     },
     "229": {
@@ -2718,9 +2718,9 @@
             "embed-info-json"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "embed_infojson",
-            "help=": "Embed the infojson as an attachment to mkv/mka video files"
+            "action": "store_true",
+            "dest": "embed_infojson",
+            "help": "Embed the infojson as an attachment to mkv/mka video files"
         }
     },
     "230": {
@@ -2730,9 +2730,9 @@
             "no-embed-info-json"
         ],
         "other_values": {
-            "action=": "store_false",
-            "dest=": "embed_infojson",
-            "help=": "Do not embed the infojson as an attachment to the video file"
+            "action": "store_false",
+            "dest": "embed_infojson",
+            "help": "Do not embed the infojson as an attachment to the video file"
         }
     },
     "231": {
@@ -2742,8 +2742,8 @@
             "metadata-from-title"
         ],
         "other_values": {
-            "metavar=": "FORMAT",
-            "dest=": "metafromtitle"
+            "metavar": "FORMAT",
+            "dest": "metafromtitle"
         }
     },
     "232": {
@@ -2753,9 +2753,9 @@
             "parse-metadata"
         ],
         "other_values": {
-            "metavar=": "FROM:TO",
-            "dest=": "parse_metadata",
-            "action=": "append"
+            "metavar": "FROM:TO",
+            "dest": "parse_metadata",
+            "action": "append"
         }
     },
     "233": {
@@ -2765,10 +2765,10 @@
             "replace-in-metadata"
         ],
         "other_values": {
-            "dest=": "parse_metadata",
-            "metavar=": "FIELDS REGEX REPLACE",
-            "action=": "append",
-            "help=": "Replace text in a metadata field using the given regex. This option can be used multiple times"
+            "dest": "parse_metadata",
+            "metavar": "FIELDS REGEX REPLACE",
+            "action": "append",
+            "help": "Replace text in a metadata field using the given regex. This option can be used multiple times"
         }
     },
     "234": {
@@ -2779,9 +2779,9 @@
             "xattr"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "xattrs",
-            "help=": "Write metadata to the video file\\"
+            "action": "store_true",
+            "dest": "xattrs",
+            "help": "Write metadata to the video file\\"
         }
     },
     "235": {
@@ -2791,9 +2791,9 @@
             "concat-playlist"
         ],
         "other_values": {
-            "metavar=": "POLICY",
-            "dest=": "concat_playlist",
-            "default=": "multi_video"
+            "metavar": "POLICY",
+            "dest": "concat_playlist",
+            "default": "multi_video"
         }
     },
     "236": {
@@ -2803,8 +2803,8 @@
             "fixup"
         ],
         "other_values": {
-            "metavar=": "POLICY",
-            "dest=": "fixup"
+            "metavar": "POLICY",
+            "dest": "fixup"
         }
     },
     "237": {
@@ -2815,8 +2815,8 @@
             "no-prefer-ffmpeg"
         ],
         "other_values": {
-            "action=": "store_false",
-            "dest=": "prefer_ffmpeg"
+            "action": "store_false",
+            "dest": "prefer_ffmpeg"
         }
     },
     "238": {
@@ -2827,8 +2827,8 @@
             "no-prefer-avconv"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "prefer_ffmpeg"
+            "action": "store_true",
+            "dest": "prefer_ffmpeg"
         }
     },
     "239": {
@@ -2839,9 +2839,9 @@
             "avconv-location"
         ],
         "other_values": {
-            "metavar=": "PATH",
-            "dest=": "ffmpeg_location",
-            "help=": "Location of the ffmpeg binary; either the path to the binary or its containing directory"
+            "metavar": "PATH",
+            "dest": "ffmpeg_location",
+            "help": "Location of the ffmpeg binary; either the path to the binary or its containing directory"
         }
     },
     "240": {
@@ -2851,10 +2851,10 @@
             "exec"
         ],
         "other_values": {
-            "metavar=": "[WHEN:]CMD",
-            "dest=": "exec_cmd",
-            "type=": "str",
-            "action=": "callback"
+            "metavar": "[WHEN:]CMD",
+            "dest": "exec_cmd",
+            "type": "str",
+            "action": "callback"
         }
     },
     "241": {
@@ -2864,9 +2864,9 @@
             "no-exec"
         ],
         "other_values": {
-            "action=": "store_const",
-            "dest=": "exec_cmd",
-            "help=": "Remove any previously defined --exec"
+            "action": "store_const",
+            "dest": "exec_cmd",
+            "help": "Remove any previously defined --exec"
         }
     },
     "242": {
@@ -2876,9 +2876,9 @@
             "exec-before-download"
         ],
         "other_values": {
-            "metavar=": "CMD",
-            "action=": "append",
-            "dest=": "exec_before_dl_cmd"
+            "metavar": "CMD",
+            "action": "append",
+            "dest": "exec_before_dl_cmd"
         }
     },
     "243": {
@@ -2888,8 +2888,8 @@
             "no-exec-before-download"
         ],
         "other_values": {
-            "action=": "store_const",
-            "dest=": "exec_before_dl_cmd"
+            "action": "store_const",
+            "dest": "exec_before_dl_cmd"
         }
     },
     "244": {
@@ -2901,8 +2901,8 @@
             "convert-subtitles"
         ],
         "other_values": {
-            "metavar=": "FORMAT",
-            "dest=": "convertsubtitles"
+            "metavar": "FORMAT",
+            "dest": "convertsubtitles"
         }
     },
     "245": {
@@ -2912,8 +2912,8 @@
             "convert-thumbnails"
         ],
         "other_values": {
-            "metavar=": "FORMAT",
-            "dest=": "convertthumbnails"
+            "metavar": "FORMAT",
+            "dest": "convertthumbnails"
         }
     },
     "246": {
@@ -2924,8 +2924,8 @@
             "split-tracks"
         ],
         "other_values": {
-            "dest=": "split_chapters",
-            "action=": "store_true"
+            "dest": "split_chapters",
+            "action": "store_true"
         }
     },
     "247": {
@@ -2936,8 +2936,8 @@
             "no-split-tracks"
         ],
         "other_values": {
-            "dest=": "split_chapters",
-            "action=": "store_false"
+            "dest": "split_chapters",
+            "action": "store_false"
         }
     },
     "248": {
@@ -2947,9 +2947,9 @@
             "remove-chapters"
         ],
         "other_values": {
-            "metavar=": "REGEX",
-            "dest=": "remove_chapters",
-            "action=": "append"
+            "metavar": "REGEX",
+            "dest": "remove_chapters",
+            "action": "append"
         }
     },
     "249": {
@@ -2959,8 +2959,8 @@
             "no-remove-chapters"
         ],
         "other_values": {
-            "dest=": "remove_chapters",
-            "action=": "store_const"
+            "dest": "remove_chapters",
+            "action": "store_const"
         }
     },
     "250": {
@@ -2970,8 +2970,8 @@
             "force-keyframes-at-cuts"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "force_keyframes_at_cuts"
+            "action": "store_true",
+            "dest": "force_keyframes_at_cuts"
         }
     },
     "251": {
@@ -2981,8 +2981,8 @@
             "no-force-keyframes-at-cuts"
         ],
         "other_values": {
-            "action=": "store_false",
-            "dest=": "force_keyframes_at_cuts"
+            "action": "store_false",
+            "dest": "force_keyframes_at_cuts"
         }
     },
     "252": {
@@ -2992,10 +2992,10 @@
             "use-postprocessor"
         ],
         "other_values": {
-            "metavar=": "NAME[:ARGS]",
-            "dest=": "add_postprocessors",
-            "type=": "str",
-            "action=": "callback"
+            "metavar": "NAME[:ARGS]",
+            "dest": "add_postprocessors",
+            "type": "str",
+            "action": "callback"
         }
     },
     "253": {
@@ -3005,8 +3005,8 @@
             "sponsorblock-mark"
         ],
         "other_values": {
-            "metavar=": "CATS",
-            "dest=": "sponsorblock_mark"
+            "metavar": "CATS",
+            "dest": "sponsorblock_mark"
         }
     },
     "254": {
@@ -3016,8 +3016,8 @@
             "sponsorblock-remove"
         ],
         "other_values": {
-            "metavar=": "CATS",
-            "dest=": "sponsorblock_remove"
+            "metavar": "CATS",
+            "dest": "sponsorblock_remove"
         }
     },
     "255": {
@@ -3027,8 +3027,8 @@
             "sponsorblock-chapter-title"
         ],
         "other_values": {
-            "metavar=": "TEMPLATE",
-            "dest=": "sponsorblock_chapter_title"
+            "metavar": "TEMPLATE",
+            "dest": "sponsorblock_chapter_title"
         }
     },
     "256": {
@@ -3038,9 +3038,9 @@
             "no-sponsorblock"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "no_sponsorblock",
-            "help=": "Disable both --sponsorblock-mark and --sponsorblock-remove"
+            "action": "store_true",
+            "dest": "no_sponsorblock",
+            "help": "Disable both --sponsorblock-mark and --sponsorblock-remove"
         }
     },
     "257": {
@@ -3050,10 +3050,10 @@
             "sponsorblock-api"
         ],
         "other_values": {
-            "metavar=": "URL",
-            "default=": "https://sponsor.ajay.app",
-            "dest=": "sponsorblock_api",
-            "help=": "SponsorBlock API location, defaults to %default"
+            "metavar": "URL",
+            "default": "https://sponsor.ajay.app",
+            "dest": "sponsorblock_api",
+            "help": "SponsorBlock API location, defaults to %default"
         }
     },
     "258": {
@@ -3063,8 +3063,8 @@
             "sponskrub"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "sponskrub"
+            "action": "store_true",
+            "dest": "sponskrub"
         }
     },
     "259": {
@@ -3074,8 +3074,8 @@
             "no-sponskrub"
         ],
         "other_values": {
-            "action=": "store_false",
-            "dest=": "sponskrub"
+            "action": "store_false",
+            "dest": "sponskrub"
         }
     },
     "260": {
@@ -3085,8 +3085,8 @@
             "sponskrub-cut"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "sponskrub_cut"
+            "action": "store_true",
+            "dest": "sponskrub_cut"
         }
     },
     "261": {
@@ -3096,8 +3096,8 @@
             "no-sponskrub-cut"
         ],
         "other_values": {
-            "action=": "store_false",
-            "dest=": "sponskrub_cut"
+            "action": "store_false",
+            "dest": "sponskrub_cut"
         }
     },
     "262": {
@@ -3107,8 +3107,8 @@
             "sponskrub-force"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "sponskrub_force"
+            "action": "store_true",
+            "dest": "sponskrub_force"
         }
     },
     "263": {
@@ -3118,8 +3118,8 @@
             "no-sponskrub-force"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "sponskrub_force"
+            "action": "store_true",
+            "dest": "sponskrub_force"
         }
     },
     "264": {
@@ -3129,9 +3129,9 @@
             "sponskrub-location"
         ],
         "other_values": {
-            "metavar=": "PATH",
-            "dest=": "sponskrub_path",
-            "default=": ""
+            "metavar": "PATH",
+            "dest": "sponskrub_path",
+            "default": ""
         }
     },
     "265": {
@@ -3141,8 +3141,8 @@
             "sponskrub-args"
         ],
         "other_values": {
-            "dest=": "sponskrub_args",
-            "metavar=": "ARGS"
+            "dest": "sponskrub_args",
+            "metavar": "ARGS"
         }
     },
     "266": {
@@ -3152,8 +3152,8 @@
             "extractor-retries"
         ],
         "other_values": {
-            "dest=": "extractor_retries",
-            "metavar=": "RETRIES"
+            "dest": "extractor_retries",
+            "metavar": "RETRIES"
         }
     },
     "267": {
@@ -3164,8 +3164,8 @@
             "no-ignore-dynamic-mpd"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "dynamic_mpd"
+            "action": "store_true",
+            "dest": "dynamic_mpd"
         }
     },
     "268": {
@@ -3176,8 +3176,8 @@
             "no-allow-dynamic-mpd"
         ],
         "other_values": {
-            "action=": "store_false",
-            "dest=": "dynamic_mpd"
+            "action": "store_false",
+            "dest": "dynamic_mpd"
         }
     },
     "269": {
@@ -3187,9 +3187,9 @@
             "hls-split-discontinuity"
         ],
         "other_values": {
-            "dest=": "hls_split_discontinuity",
-            "action=": "store_true",
-            "help=": "Split HLS playlists to different formats at discontinuities such as ad breaks"
+            "dest": "hls_split_discontinuity",
+            "action": "store_true",
+            "help": "Split HLS playlists to different formats at discontinuities such as ad breaks"
         }
     },
     "270": {
@@ -3199,8 +3199,8 @@
             "no-hls-split-discontinuity"
         ],
         "other_values": {
-            "dest=": "hls_split_discontinuity",
-            "action=": "store_false"
+            "dest": "hls_split_discontinuity",
+            "action": "store_false"
         }
     },
     "271": {
@@ -3210,10 +3210,10 @@
             "extractor-args"
         ],
         "other_values": {
-            "metavar=": "IE_KEY:ARGS",
-            "dest=": "extractor_args",
-            "type=": "str",
-            "action=": "callback"
+            "metavar": "IE_KEY:ARGS",
+            "dest": "extractor_args",
+            "type": "str",
+            "action": "callback"
         }
     },
     "272": {
@@ -3224,8 +3224,8 @@
             "no-youtube-skip-dash-manifest"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "youtube_include_dash_manifest"
+            "action": "store_true",
+            "dest": "youtube_include_dash_manifest"
         }
     },
     "273": {
@@ -3236,8 +3236,8 @@
             "no-youtube-include-dash-manifest"
         ],
         "other_values": {
-            "action=": "store_false",
-            "dest=": "youtube_include_dash_manifest"
+            "action": "store_false",
+            "dest": "youtube_include_dash_manifest"
         }
     },
     "274": {
@@ -3248,8 +3248,8 @@
             "no-youtube-skip-hls-manifest"
         ],
         "other_values": {
-            "action=": "store_true",
-            "dest=": "youtube_include_hls_manifest"
+            "action": "store_true",
+            "dest": "youtube_include_hls_manifest"
         }
     },
     "275": {
@@ -3260,8 +3260,8 @@
             "no-youtube-include-hls-manifest"
         ],
         "other_values": {
-            "action=": "store_false",
-            "dest=": "youtube_include_hls_manifest"
+            "action": "store_false",
+            "dest": "youtube_include_hls_manifest"
         }
     }
 }

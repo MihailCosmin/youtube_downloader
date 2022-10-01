@@ -25,18 +25,18 @@ class LeftWidget(QWidget):
         self.left_layout.setContentsMargins(5, 5, 5, 5)
         # self.setStyleSheet("QWidget {border: 1px solid #ffffff;}")
 
-        self.setMinimumWidth(self.parent._left_width)
-        self.setMaximumWidth(self.parent._left_width)
+        self.setMinimumWidth(self.parent.left_width)
+        self.setMaximumWidth(self.parent.left_width)
 
         self.button1 = QtWidgets.QPushButton("Download Current Video")
-        self.button1.setMinimumWidth(self.parent._left_width - 10)
+        self.button1.setMinimumWidth(self.parent.left_width - 10)
         self.button2 = QtWidgets.QPushButton("Add Video to Queue")
         self.button3 = QtWidgets.QPushButton("Download Playlist")
         self.button4 = QtWidgets.QPushButton("Download Queue")
-        self.button1 = format_button(self.button1, self.parent._left_width * 0.6)
-        self.button2 = format_button(self.button2, self.parent._left_width * 0.6)
-        self.button3 = format_button(self.button3, self.parent._left_width * 0.6)
-        self.button4 = format_button(self.button4, self.parent._left_width * 0.6)
+        self.button1 = format_button(self.button1, self.parent.left_width * 0.6)
+        self.button2 = format_button(self.button2, self.parent.left_width * 0.6)
+        self.button3 = format_button(self.button3, self.parent.left_width * 0.6)
+        self.button4 = format_button(self.button4, self.parent.left_width * 0.6)
 
         self.button1.setObjectName(u"button1")
         self.button2.setObjectName(u"button2")
@@ -49,9 +49,9 @@ class LeftWidget(QWidget):
         self.loading_bar_single = QtWidgets.QProgressBar()
         self.loading_bar_playlist = QtWidgets.QProgressBar()
         self.loading_bar_queue = QtWidgets.QProgressBar()
-        self.loading_bar_single = format_loading_bar(self.loading_bar_single, width=self.parent._left_width * 0.35)
-        self.loading_bar_playlist = format_loading_bar(self.loading_bar_playlist, width=self.parent._left_width * 0.35)
-        self.loading_bar_queue = format_loading_bar(self.loading_bar_queue, width=self.parent._left_width * 0.35)
+        self.loading_bar_single = format_loading_bar(self.loading_bar_single, width=self.parent.left_width * 0.35)
+        self.loading_bar_playlist = format_loading_bar(self.loading_bar_playlist, width=self.parent.left_width * 0.35)
+        self.loading_bar_queue = format_loading_bar(self.loading_bar_queue, width=self.parent.left_width * 0.35)
 
         self._create_video_queue_widget()
 
@@ -85,15 +85,15 @@ class LeftWidget(QWidget):
         self.checklists_widget.setLayout(self.checklists_layout)
         # self.checklists_widget.setStyleSheet("QWidget {background-color: #ffffff; border: 1px solid #ffffff; border-radius: 5px;}")
 
-        self.checklists_widget.setFixedWidth(self.parent._left_width)
+        self.checklists_widget.setFixedWidth(self.parent.left_width)
 
         self.checklists_scroll = QtWidgets.QScrollArea()
         self.checklists_scroll.setObjectName(u"checklists_scroll")
         self.checklists_scroll.setWidget(self.checklists_widget)
         self.checklists_scroll.setWidgetResizable(True)
         self.checklists_scroll.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
-        self.checklists_scroll.setFixedHeight(self.parent._height * 0.85 - 30 * 4 - 10)
-        self.checklists_scroll.setFixedWidth(self.parent._left_width * 0.95)
+        self.checklists_scroll.setFixedHeight(self.parent.height * 0.85 - 30 * 4 - 10)
+        self.checklists_scroll.setFixedWidth(self.parent.left_width * 0.95)
         self.left_layout.addWidget(self.checklists_scroll, 5, 0, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
 
     def _add_current_url_to_queue(self):

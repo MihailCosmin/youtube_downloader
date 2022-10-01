@@ -1,0 +1,1244 @@
+{
+    "print_help": {
+        "category": "general",
+        "type": "str",
+        "default": "",
+        "description": "Print this help text and exit"
+    },
+    "": {
+        "category": "general",
+        "type": "str",
+        "default": "",
+        "description": "Print program version and exit"
+    },
+    "update_self": {
+        "category": "general",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "ignoreerrors": {
+        "category": "general",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "dump_user_agent": {
+        "category": "general",
+        "type": "str",
+        "default": "",
+        "description": "Display the current user-agent and exit"
+    },
+    "list_extractors": {
+        "category": "general",
+        "type": "str",
+        "default": "",
+        "description": "List all supported extractors and exit"
+    },
+    "list_extractor_descriptions": {
+        "category": "general",
+        "type": "str",
+        "default": "",
+        "description": "Output descriptions of all supported extractors and exit"
+    },
+    "allowed_extractors": {
+        "category": "general",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "force_generic_extractor": {
+        "category": "general",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "default_search": {
+        "category": "general",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "ignoreconfig": {
+        "category": "general",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "config_locations": {
+        "category": "general",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "extract_flat": {
+        "category": "general",
+        "type": "str",
+        "default": "",
+        "description": "Extract the videos of a playlist"
+    },
+    "live_from_start": {
+        "category": "general",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "wait_for_video": {
+        "category": "general",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "mark_watched": {
+        "category": "general",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "no_color": {
+        "category": "general",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "compat_opts": {
+        "category": "general",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "_": {
+        "category": "general",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "proxy": {
+        "category": "network",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "socket_timeout": {
+        "category": "network",
+        "type": "str",
+        "default": "",
+        "description": "Time to wait before giving up, in seconds"
+    },
+    "source_address": {
+        "category": "network",
+        "type": "str",
+        "default": "",
+        "description": "Make all connections via IPv6"
+    },
+    "geo_verification_proxy": {
+        "category": "geo",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "cn_verification_proxy": {
+        "category": "geo",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "geo_bypass": {
+        "category": "geo",
+        "type": "str",
+        "default": "",
+        "description": "Do not bypass geographic restriction via faking X-Forwarded-For HTTP header"
+    },
+    "geo_bypass_country": {
+        "category": "geo",
+        "type": "str",
+        "default": "",
+        "description": "Force bypass geographic restriction with explicitly provided two-letter ISO 3166-2 country code"
+    },
+    "geo_bypass_ip_block": {
+        "category": "geo",
+        "type": "str",
+        "default": "",
+        "description": "Force bypass geographic restriction with explicitly provided IP block in CIDR notation"
+    },
+    "playliststart": {
+        "category": "selection",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "playlistend": {
+        "category": "selection",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "playlist_items": {
+        "category": "selection",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "matchtitle": {
+        "category": "selection",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "rejecttitle": {
+        "category": "selection",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "min_filesize": {
+        "category": "selection",
+        "type": "str",
+        "default": "",
+        "description": "Do not download any videos smaller than SIZE, e.g. 50k or 44.6M"
+    },
+    "max_filesize": {
+        "category": "selection",
+        "type": "str",
+        "default": "",
+        "description": "Do not download any videos larger than SIZE, e.g. 50k or 44.6M"
+    },
+    "date": {
+        "category": "selection",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "datebefore": {
+        "category": "selection",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "dateafter": {
+        "category": "selection",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "min_views": {
+        "category": "selection",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "max_views": {
+        "category": "selection",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "match_filter": {
+        "category": "selection",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "noplaylist": {
+        "category": "selection",
+        "type": "str",
+        "default": "",
+        "description": "Download the playlist, if the URL refers to a video and a playlist"
+    },
+    "age_limit": {
+        "category": "selection",
+        "type": "str",
+        "default": "",
+        "description": "Download only videos suitable for the given age"
+    },
+    "download_archive": {
+        "category": "selection",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "max_downloads": {
+        "category": "selection",
+        "type": "str",
+        "default": "",
+        "description": "Abort after downloading NUMBER files"
+    },
+    "break_on_existing": {
+        "category": "selection",
+        "type": "str",
+        "default": "",
+        "description": "Stop the download process when encountering a file that is in the archive"
+    },
+    "break_on_reject": {
+        "category": "selection",
+        "type": "str",
+        "default": "",
+        "description": "Stop the download process when encountering a file that has been filtered out"
+    },
+    "break_per_url": {
+        "category": "selection",
+        "type": "str",
+        "default": "",
+        "description": "--break-on-existing and similar options terminates the entire download queue"
+    },
+    "skip_playlist_after_errors": {
+        "category": "selection",
+        "type": "str",
+        "default": "",
+        "description": "Number of allowed failures until the rest of the playlist is skipped"
+    },
+    "include_ads": {
+        "category": "selection",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "username": {
+        "category": "authentication",
+        "type": "str",
+        "default": "",
+        "description": "Login with this account ID"
+    },
+    "password": {
+        "category": "authentication",
+        "type": "str",
+        "default": "",
+        "description": "Account password. If this option is left out, yt-dlp will ask interactively"
+    },
+    "twofactor": {
+        "category": "authentication",
+        "type": "str",
+        "default": "",
+        "description": "Two-factor authentication code"
+    },
+    "usenetrc": {
+        "category": "authentication",
+        "type": "str",
+        "default": "",
+        "description": "Use .netrc authentication data"
+    },
+    "netrc_location": {
+        "category": "authentication",
+        "type": "str",
+        "default": "",
+        "description": "Location of .netrc authentication data; either the path or its containing directory. Defaults to ~/.netrc"
+    },
+    "videopassword": {
+        "category": "authentication",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "ap_mso": {
+        "category": "authentication",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "ap_username": {
+        "category": "authentication",
+        "type": "str",
+        "default": "",
+        "description": "Multiple-system operator account login"
+    },
+    "ap_password": {
+        "category": "authentication",
+        "type": "str",
+        "default": "",
+        "description": "Multiple-system operator account password. If this option is left out, yt-dlp will ask interactively"
+    },
+    "ap_list_mso": {
+        "category": "authentication",
+        "type": "str",
+        "default": "",
+        "description": "List all supported multiple-system operators"
+    },
+    "client_certificate": {
+        "category": "authentication",
+        "type": "str",
+        "default": "",
+        "description": "Path to client certificate file in PEM format. May include the private key"
+    },
+    "client_certificate_key": {
+        "category": "authentication",
+        "type": "str",
+        "default": "",
+        "description": "Path to private key file for client certificate"
+    },
+    "client_certificate_password": {
+        "category": "authentication",
+        "type": "str",
+        "default": "",
+        "description": "Password for client certificate private key, if encrypted. "
+    },
+    "writesubtitles": {
+        "category": "subtitles",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "writeautomaticsub": {
+        "category": "subtitles",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "allsubtitles": {
+        "category": "subtitles",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "listsubtitles": {
+        "category": "subtitles",
+        "type": "str",
+        "default": "",
+        "description": "List available subtitles of each video. Simulate unless --no-simulate is used"
+    },
+    "subtitlesformat": {
+        "category": "subtitles",
+        "type": "str",
+        "default": "best",
+        "description": "Subtitle format; accepts formats preference, e.g. \"srt\" or \"ass/srt/best\""
+    },
+    "subtitleslangs": {
+        "category": "subtitles",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "concurrent_fragment_downloads": {
+        "category": "downloader",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "ratelimit": {
+        "category": "downloader",
+        "type": "str",
+        "default": "",
+        "description": "Maximum download rate in bytes per second, e.g. 50K or 4.2M"
+    },
+    "throttledratelimit": {
+        "category": "downloader",
+        "type": "str",
+        "default": "",
+        "description": "Minimum download rate in bytes per second below which throttling is assumed and the video data is re-extracted, e.g. 100K"
+    },
+    "retries": {
+        "category": "downloader",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "file_access_retries": {
+        "category": "downloader",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "fragment_retries": {
+        "category": "downloader",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "retry_sleep": {
+        "category": "downloader",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "skip_unavailable_fragments": {
+        "category": "downloader",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "keep_fragments": {
+        "category": "downloader",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "buffersize": {
+        "category": "downloader",
+        "type": "str",
+        "default": "1024",
+        "description": ""
+    },
+    "noresizebuffer": {
+        "category": "downloader",
+        "type": "str",
+        "default": "",
+        "description": "Do not automatically adjust the buffer size"
+    },
+    "http_chunk_size": {
+        "category": "downloader",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "test": {
+        "category": "downloader",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "playlist_reverse": {
+        "category": "downloader",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "playlist_random": {
+        "category": "downloader",
+        "type": "str",
+        "default": "",
+        "description": "Download playlist videos in random order"
+    },
+    "lazy_playlist": {
+        "category": "downloader",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "xattr_set_filesize": {
+        "category": "downloader",
+        "type": "str",
+        "default": "",
+        "description": "Set file xattribute ytdl.filesize with expected file size"
+    },
+    "hls_prefer_native": {
+        "category": "downloader",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "hls_use_mpegts": {
+        "category": "downloader",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "download_ranges": {
+        "category": "downloader",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "external_downloader": {
+        "category": "downloader",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "external_downloader_args": {
+        "category": "downloader",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "encoding": {
+        "category": "workarounds",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "legacy_server_connect": {
+        "category": "workarounds",
+        "type": "str",
+        "default": "",
+        "description": "Explicitly allow HTTPS connection to servers that do not support RFC 5746 secure renegotiation"
+    },
+    "no_check_certificate": {
+        "category": "workarounds",
+        "type": "str",
+        "default": "",
+        "description": "Suppress HTTPS certificate validation"
+    },
+    "prefer_insecure": {
+        "category": "workarounds",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "user_agent": {
+        "category": "workarounds",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "referer": {
+        "category": "workarounds",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "headers": {
+        "category": "workarounds",
+        "type": "str",
+        "default": "",
+        "description": "Specify a custom HTTP header and its value, separated by a colon \":\". You can use this option multiple times"
+    },
+    "bidi_workaround": {
+        "category": "workarounds",
+        "type": "str",
+        "default": "",
+        "description": "Work around terminals that lack bidirectional text support. Requires bidiv or fribidi executable in PATH"
+    },
+    "sleep_interval_requests": {
+        "category": "workarounds",
+        "type": "str",
+        "default": "",
+        "description": "Number of seconds to sleep between requests during data extraction"
+    },
+    "sleep_interval": {
+        "category": "workarounds",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "max_sleep_interval": {
+        "category": "workarounds",
+        "type": "str",
+        "default": "",
+        "description": "Maximum number of seconds to sleep. Can only be used along with --min-sleep-interval"
+    },
+    "sleep_interval_subtitles": {
+        "category": "workarounds",
+        "type": "str",
+        "default": "",
+        "description": "Number of seconds to sleep before each subtitle download"
+    },
+    "quiet": {
+        "category": "verbosity",
+        "type": "str",
+        "default": "",
+        "description": "Activate quiet mode. If used with --verbose, print the log to stderr"
+    },
+    "no_warnings": {
+        "category": "verbosity",
+        "type": "str",
+        "default": "",
+        "description": "Ignore warnings"
+    },
+    "simulate": {
+        "category": "verbosity",
+        "type": "str",
+        "default": "",
+        "description": "Download the video even if printing/listing options are used"
+    },
+    "ignore_no_formats_error": {
+        "category": "verbosity",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "skip_download": {
+        "category": "verbosity",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "forceprint": {
+        "category": "verbosity",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "print_to_file": {
+        "category": "verbosity",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "geturl": {
+        "category": "verbosity",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "gettitle": {
+        "category": "verbosity",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "getid": {
+        "category": "verbosity",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "getthumbnail": {
+        "category": "verbosity",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "getdescription": {
+        "category": "verbosity",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "getduration": {
+        "category": "verbosity",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "getfilename": {
+        "category": "verbosity",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "getformat": {
+        "category": "verbosity",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "dumpjson": {
+        "category": "verbosity",
+        "type": "str",
+        "default": "",
+        "description": "Quiet, but print JSON information for each video. Simulate unless --no-simulate is used. See \"OUTPUT TEMPLATE\" for a description of available keys"
+    },
+    "dump_single_json": {
+        "category": "verbosity",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "print_json": {
+        "category": "verbosity",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "force_write_download_archive": {
+        "category": "verbosity",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "progress_with_newline": {
+        "category": "verbosity",
+        "type": "str",
+        "default": "",
+        "description": "Output progress bar as new lines"
+    },
+    "noprogress": {
+        "category": "verbosity",
+        "type": "str",
+        "default": "",
+        "description": "Show progress bar, even if in quiet mode"
+    },
+    "consoletitle": {
+        "category": "verbosity",
+        "type": "str",
+        "default": "",
+        "description": "Display progress in console titlebar"
+    },
+    "progress_template": {
+        "category": "verbosity",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "verbose": {
+        "category": "verbosity",
+        "type": "str",
+        "default": "",
+        "description": "Print various debugging information"
+    },
+    "dump_intermediate_pages": {
+        "category": "verbosity",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "write_pages": {
+        "category": "verbosity",
+        "type": "str",
+        "default": "",
+        "description": "Write downloaded intermediary pages to files in the current directory to debug problems"
+    },
+    "load_pages": {
+        "category": "verbosity",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "youtube_print_sig_code": {
+        "category": "verbosity",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "debug_printtraffic": {
+        "category": "verbosity",
+        "type": "str",
+        "default": "",
+        "description": "Display sent and read HTTP traffic"
+    },
+    "call_home": {
+        "category": "verbosity",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "batchfile": {
+        "category": "filesystem",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "useid": {
+        "category": "filesystem",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "paths": {
+        "category": "filesystem",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "outtmpl": {
+        "category": "filesystem",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "outtmpl_na_placeholder": {
+        "category": "filesystem",
+        "type": "str",
+        "default": "NA",
+        "description": ""
+    },
+    "autonumber_size": {
+        "category": "filesystem",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "autonumber_start": {
+        "category": "filesystem",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "restrictfilenames": {
+        "category": "filesystem",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "windowsfilenames": {
+        "category": "filesystem",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "trim_file_name": {
+        "category": "filesystem",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "overwrites": {
+        "category": "filesystem",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "continue_dl": {
+        "category": "filesystem",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "nopart": {
+        "category": "filesystem",
+        "type": "str",
+        "default": "",
+        "description": "Do not use .part files - write directly into output file"
+    },
+    "updatetime": {
+        "category": "filesystem",
+        "type": "str",
+        "default": "",
+        "description": "Do not use the Last-modified header to set the file modification time"
+    },
+    "writedescription": {
+        "category": "filesystem",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "writeinfojson": {
+        "category": "filesystem",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "writeannotations": {
+        "category": "filesystem",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "allow_playlist_files": {
+        "category": "filesystem",
+        "type": "str",
+        "default": "",
+        "description": "Do not write playlist metadata when using --write-info-json, --write-description etc."
+    },
+    "clean_infojson": {
+        "category": "filesystem",
+        "type": "str",
+        "default": "",
+        "description": "Write all fields to the infojson"
+    },
+    "getcomments": {
+        "category": "filesystem",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "load_info_filename": {
+        "category": "filesystem",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "cookiefile": {
+        "category": "filesystem",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "cookiesfrombrowser": {
+        "category": "filesystem",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "cachedir": {
+        "category": "filesystem",
+        "type": "str",
+        "default": "",
+        "description": "Disable filesystem caching"
+    },
+    "rm_cachedir": {
+        "category": "filesystem",
+        "type": "str",
+        "default": "",
+        "description": "Delete all filesystem cache files"
+    },
+    "writethumbnail": {
+        "category": "thumbnail",
+        "type": "str",
+        "default": "",
+        "description": "Write all thumbnail image formats to disk"
+    },
+    "list_thumbnails": {
+        "category": "thumbnail",
+        "type": "str",
+        "default": "",
+        "description": "List available thumbnails of each video. Simulate unless --no-simulate is used"
+    },
+    "writelink": {
+        "category": "link",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "writeurllink": {
+        "category": "link",
+        "type": "str",
+        "default": "",
+        "description": "Write a .url Windows internet shortcut. The OS caches the URL based on the file path"
+    },
+    "writewebloclink": {
+        "category": "link",
+        "type": "str",
+        "default": "",
+        "description": "Write a .webloc macOS internet shortcut"
+    },
+    "writedesktoplink": {
+        "category": "link",
+        "type": "str",
+        "default": "",
+        "description": "Write a .desktop Linux internet shortcut"
+    },
+    "extractaudio": {
+        "category": "postproc",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "audioformat": {
+        "category": "postproc",
+        "type": "str",
+        "default": "best",
+        "description": ""
+    },
+    "audioquality": {
+        "category": "postproc",
+        "type": "str",
+        "default": "5",
+        "description": ""
+    },
+    "remuxvideo": {
+        "category": "postproc",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "recodevideo": {
+        "category": "postproc",
+        "type": "str",
+        "default": "",
+        "description": "Re-encode the video into another format if necessary. The syntax and supported formats are the same as --remux-video"
+    },
+    "postprocessor_args": {
+        "category": "postproc",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "keepvideo": {
+        "category": "postproc",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "nopostoverwrites": {
+        "category": "postproc",
+        "type": "str",
+        "default": "",
+        "description": "Do not overwrite post-processed files"
+    },
+    "embedsubtitles": {
+        "category": "postproc",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "embedthumbnail": {
+        "category": "postproc",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "addmetadata": {
+        "category": "postproc",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "addchapters": {
+        "category": "postproc",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "embed_infojson": {
+        "category": "postproc",
+        "type": "str",
+        "default": "",
+        "description": "Do not embed the infojson as an attachment to the video file"
+    },
+    "metafromtitle": {
+        "category": "postproc",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "parse_metadata": {
+        "category": "postproc",
+        "type": "str",
+        "default": "",
+        "description": "Replace text in a metadata field using the given regex. This option can be used multiple times"
+    },
+    "xattrs": {
+        "category": "postproc",
+        "type": "str",
+        "default": "",
+        "description": "Write metadata to the video file\\"
+    },
+    "concat_playlist": {
+        "category": "postproc",
+        "type": "str",
+        "default": "multi_video",
+        "description": ""
+    },
+    "fixup": {
+        "category": "postproc",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "prefer_ffmpeg": {
+        "category": "postproc",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "ffmpeg_location": {
+        "category": "postproc",
+        "type": "str",
+        "default": "",
+        "description": "Location of the ffmpeg binary; either the path to the binary or its containing directory"
+    },
+    "exec_cmd": {
+        "category": "postproc",
+        "type": "str",
+        "default": "",
+        "description": "Remove any previously defined --exec"
+    },
+    "exec_before_dl_cmd": {
+        "category": "postproc",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "convertsubtitles": {
+        "category": "postproc",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "convertthumbnails": {
+        "category": "postproc",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "split_chapters": {
+        "category": "postproc",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "remove_chapters": {
+        "category": "postproc",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "force_keyframes_at_cuts": {
+        "category": "postproc",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "add_postprocessors": {
+        "category": "postproc",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "sponsorblock_mark": {
+        "category": "sponsorblock",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "sponsorblock_remove": {
+        "category": "sponsorblock",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "sponsorblock_chapter_title": {
+        "category": "sponsorblock",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "no_sponsorblock": {
+        "category": "sponsorblock",
+        "type": "str",
+        "default": "",
+        "description": "Disable both --sponsorblock-mark and --sponsorblock-remove"
+    },
+    "sponsorblock_api": {
+        "category": "sponsorblock",
+        "type": "str",
+        "default": "https://sponsor.ajay.app",
+        "description": "SponsorBlock API location, defaults to %default"
+    },
+    "sponskrub": {
+        "category": "sponsorblock",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "sponskrub_cut": {
+        "category": "sponsorblock",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "sponskrub_force": {
+        "category": "sponsorblock",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "sponskrub_path": {
+        "category": "sponsorblock",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "sponskrub_args": {
+        "category": "sponsorblock",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "extractor_retries": {
+        "category": "extractor",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "dynamic_mpd": {
+        "category": "extractor",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "hls_split_discontinuity": {
+        "category": "extractor",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "extractor_args": {
+        "category": "extractor",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "youtube_include_dash_manifest": {
+        "category": "extractor",
+        "type": "str",
+        "default": "",
+        "description": ""
+    },
+    "youtube_include_hls_manifest": {
+        "category": "extractor",
+        "type": "str",
+        "default": "",
+        "description": ""
+    }
+}

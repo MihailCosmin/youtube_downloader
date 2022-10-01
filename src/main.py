@@ -52,13 +52,13 @@ class SplitWindowYoutubeBrowser(QMainWindow):
         self.config = {}
         self._init_config()
 
-        self._height = QApplication.primaryScreen().size().height()
-        self._left_bar_width = 50
-        self._left_width = round(
-            (QApplication.primaryScreen().size().width() - self._left_bar_width) * 0.17,
+        self.height = QApplication.primaryScreen().size().height()
+        self.left_bar_width = 50
+        self.left_width = round(
+            (QApplication.primaryScreen().size().width() - self.left_bar_width) * 0.17,
             0)
-        self._right_width = round(
-            (QApplication.primaryScreen().size().width() - self._left_bar_width) * 0.83,
+        self.right_width = round(
+            (QApplication.primaryScreen().size().width() - self.left_bar_width) * 0.83,
             0)
 
         self.dragPos = QPoint()
@@ -106,8 +106,6 @@ class SplitWindowYoutubeBrowser(QMainWindow):
         self.app_layout.addWidget(self.settings_widget)
         self.app_layout.addWidget(self.right_widget)
 
-
-        print(f"Will set theme to: {self.config['theme'][0]}")
         with open(f"themes/{self.config['theme'][0]}.qss", "r", encoding="utf-8") as _:
             stylesheet = _.read()
         self.setStyleSheet(stylesheet)
@@ -165,7 +163,7 @@ class SplitWindowYoutubeBrowser(QMainWindow):
             self.animation = QPropertyAnimation(self.settings_widget, b"minimumWidth")
             self.animation.setDuration(500)
             self.animation.setStartValue(0)
-            self.animation.setEndValue(self._right_width + self._left_width)
+            self.animation.setEndValue(self.right_width + self.left_width)
             self.animation.setEasingCurve(QEasingCurve.InOutQuart)
             self.animation.start()
 
@@ -182,7 +180,7 @@ class SplitWindowYoutubeBrowser(QMainWindow):
             self.animation = QPropertyAnimation(self.left_widget, b"minimumWidth")
             self.animation.setDuration(500)
             self.animation.setStartValue(0)
-            self.animation.setEndValue(self._left_width)
+            self.animation.setEndValue(self.left_width)
             self.animation.setEasingCurve(QEasingCurve.InOutQuart)
             self.animation.start()
 
@@ -263,7 +261,7 @@ class SplitWindowYoutubeBrowser(QMainWindow):
         """
         if self.progress_bar is not None:
             self.progress_bar.setTextVisible(False)
-            self.progress_bar = format_loading_bar(self.progress_bar, width=self._left_width * 0.35)
+            self.progress_bar = format_loading_bar(self.progress_bar, width=self.left_width * 0.35)
             self.progress_bar.setValue(num)
             if num == 100:
                 self.progress_bar.setTextVisible(True)
@@ -281,14 +279,14 @@ class SplitWindowYoutubeBrowser(QMainWindow):
     def change_download_location(self, location: str):
         pass
 
-    def mousePressEvent(self, event):
-        self.dragPos = event.globalPosition().toPoint()
+    # def mousePressEvent(self, event):
+    #     self.dragPos = event.globalPosition().toPoint()
 
-    def mouseMoveEvent(self, event):
-        if event.buttons() == Qt.LeftButton:
-            self.move(self.pos() + event.globalPosition().toPoint() - self.dragPos)
-            self.dragPos = event.globalPosition().toPoint()
-            event.accept()
+    # def mouseMoveEvent(self, event):
+    #     if event.buttons() == Qt.LeftButton:
+    #         self.move(self.pos() + event.globalPosition().toPoint() - self.dragPos)
+    #         self.dragPos = event.globalPosition().toPoint()
+    #         event.accept()
 
     def close(self):
         self.webpage.deleteLater()
