@@ -17,6 +17,12 @@ class SettingsWidget(QtWidgets.QWidget):
         self.settings_layout = QtWidgets.QHBoxLayout()
         self.setLayout(self.settings_layout)
 
+        self.line1 = LineWidget()
+        self.line2 = LineWidget()
+        self.line3 = LineWidget()
+        self.line4 = LineWidget()
+        self.line5 = LineWidget()
+
         self.settings_layout1 = QtWidgets.QVBoxLayout()
         self.settings_layout2 = QtWidgets.QGridLayout()
         self.settings_layout3 = QtWidgets.QGridLayout()
@@ -32,25 +38,31 @@ class SettingsWidget(QtWidgets.QWidget):
         self._settings_widget3()
 
     def _settings_widget1(self):
+        self.settings_layout1.setSpacing(20)
+        
         self.appearance_label = QtWidgets.QLabel("Appearance")
         self.settings_widget1_1 = QtWidgets.QWidget()
         self.settings_layout1_1 = QtWidgets.QGridLayout(self.settings_widget1_1)
         self.download_label = QtWidgets.QLabel("Download")
         self.settings_widget1_2 = QtWidgets.QWidget()
         self.settings_layout1_2 = QtWidgets.QGridLayout(self.settings_widget1_2)
+        self.ydl_options_basic = QtWidgets.QLabel("Youtube-dl Options (Basic)")
+        self.settings_widget1_3 = QtWidgets.QWidget()
+        #self.settings_layout1_3 = QtWidgets.QGridLayout(self.settings_widget1_3)
+        self.settings_layout1_3 = QtWidgets.QGridLayout(self.settings_widget1_3)
 
         self.settings_layout1.addWidget(self.settings_widget1_1)
         self.settings_layout1.addWidget(self.settings_widget1_2)
+        # self.settings_layout1.addWidget(self.settings_widget1_3)
+        
         self.settings_layout1_1.addWidget(self.appearance_label, 0, 0, 1, 2, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
+        self.settings_layout1_1.addWidget(self.line1, 1, 0, 1, 8)
 
-        self.line1 = LineWidget()
-        self.line2 = LineWidget()
-        self.line3 = LineWidget()
-        self.settings_layout1_1.addWidget(self.line1, 1, 0, 1, 2)
-
-        self.settings_layout1.setSpacing(20)
         self.settings_layout1_2.addWidget(self.download_label, 0, 0, 1, 10, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
-        self.settings_layout1_2.addWidget(self.line2, 1, 0, 1, 2)
+        self.settings_layout1_2.addWidget(self.line2, 1, 0, 1, 8)
+
+        self.settings_layout1_3.addWidget(self.ydl_options_basic, 0, 0, 1, 10, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
+        self.settings_layout1_3.addWidget(self.line3, 1, 0, 1, 8)
 
         self.theme_label = QtWidgets.QLabel("Theme")
         self.theme_label.setObjectName(u"theme_label")
@@ -88,8 +100,6 @@ class SettingsWidget(QtWidgets.QWidget):
         self.settings_layout1_1.addWidget(self.accent_label, 3, 0, 1, 1, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
         self.settings_layout1_1.addWidget(self.accent_combo, 3, 1, 1, 1, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
 
-        # self.theme_combo.currentTextChanged.connect(lambda: self.parent.change_accent(self.accent_combo.currentText()))
-
         self.theme_combo.currentTextChanged.connect(
             lambda: self._change_setting(
                 "change_accent",
@@ -116,16 +126,57 @@ class SettingsWidget(QtWidgets.QWidget):
         self.settings_layout1_2.addWidget(self.download_location, 2, 2, 1, 6, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
         self.settings_layout1_2.addWidget(self.download_location_button, 2, 8, 1, 2, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
 
-        self.settings_layout1_2.addItem(QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding))
+        self.settings_widget1_3.setMaximumWidth(self.parent.right_width * 0.39)
+
+        # add settings_widget2_1 to a scroll area
+        self.scroll_area = QtWidgets.QScrollArea()
+        self.scroll_area.setWidgetResizable(True)
+        self.scroll_area.setWidget(self.settings_widget1_3)
+        self.scroll_area.setFrameShape(QtWidgets.QFrame.NoFrame)
+        self.scroll_area.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.scroll_area.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAsNeeded)
+
+        # self.scroll_area.setMaximumHeight(self.parent.height * 0.1)
+
+        self.scroll_area.setMaximumWidth(self.parent.right_width * 0.333)
+        self.scroll_area.setMinimumWidth(self.parent.right_width * 0.39)
+
+        self.scroll_area.setMinimumHeight(self.parent.height * 0.9)
+        self.scroll_area.setMaximumHeight(self.parent.height * 0.9)
+
+        self.settings_layout1.addWidget(self.scroll_area)
+
+        with open("src/ytb/yt-dlp-options2.json", "r", encoding="utf-8") as _:
+            options = load(_)
+
+        for index, (key, value) in enumerate(options.items()):
+            # create label widgets for each key in the options dictionary
+            label = QtWidgets.QLabel(key)
+            label.setObjectName(f"{key}_label")
+            label.setToolTip(value["description"])
+            label.setWordWrap(True)
+            label.setMinimumWidth(self.settings_widget1_3.width() * 0.3)
+
+            self.settings_layout1_3.addWidget(label, index + 2, 0, 1, 2, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
+
+            # create line edit widgets for each key in the options dictionary
+            line_edit = QtWidgets.QLineEdit()
+            line_edit.setObjectName(f"{key}_line_edit")
+            line_edit.setMinimumWidth(self.settings_widget1_3.width() * 0.55)
+            line_edit.setMaximumWidth(self.settings_widget1_3.width() * 0.8)
+            line_edit.setText(value["default"])
+            self.settings_layout1_3.addWidget(line_edit, index + 2, 2, 1, 6, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
+
+        # self.settings_layout1_3.addItem(QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding))
 
     def _settings_widget2(self):
         self.youtube_dl_label = QtWidgets.QLabel("Youtube-dl Options (Advanced)")
         self.settings_widget2_1 = QtWidgets.QWidget()
 
-        # self.settings_widget2_1.setMinimumHeight(self.parent.height)
-        # self.settings_widget2_1.setMaximumHeight(self.parent.height)
+        # self.settings_widget2_1.setMinimumHeight(self.parent.height * 0.9)
+        # self.settings_widget2_1.setMaximumHeight(self.parent.height * 0.9)
 
-        self.settings_widget2_1.setMaximumWidth(self.settings_widget1_2.width() * 0.9)
+        self.settings_widget2_1.setMaximumWidth(self.parent.right_width * 0.39)
 
         # add settings_widget2_1 to a scroll area
         self.scroll_area = QtWidgets.QScrollArea()
@@ -135,19 +186,17 @@ class SettingsWidget(QtWidgets.QWidget):
         self.scroll_area.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
         self.scroll_area.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAsNeeded)
 
-        # self.scroll_area.setMinimumWidth(self.settings_widget1_2.width() * 0.9)
-        self.scroll_area.setMaximumWidth(self.settings_widget1_2.width() * 0.9)
-        self.scroll_area.setMinimumWidth(self.parent.right_width * 0.333)
-        # self.scroll_area.setMaximumWidth(self.parent.right_width * 0.4)
+        self.scroll_area.setMaximumWidth(self.parent.right_width * 0.333)
+        self.scroll_area.setMinimumWidth(self.parent.right_width * 0.39)
 
         self.scroll_area.setMinimumHeight(self.parent.height * 0.9)
         self.scroll_area.setMaximumHeight(self.parent.height * 0.9)
 
         self.settings_layout2_1 = QtWidgets.QGridLayout(self.settings_widget2_1)
-        # self.settings_layout2.addWidget(self.settings_widget2_1)
         self.settings_layout2.addWidget(self.scroll_area)
+
         self.settings_layout2_1.addWidget(self.youtube_dl_label, 0, 0, 1, 2, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
-        self.settings_layout2_1.addWidget(self.line3, 1, 0, 1, 2)
+        self.settings_layout2_1.addWidget(self.line4, 1, 0, 1, 7)
 
         # create labels for every individual youtbe-dl option
         # TODO: Create a dictionary with option names and descriptions, types and default values
@@ -176,9 +225,57 @@ class SettingsWidget(QtWidgets.QWidget):
 
 
     def _settings_widget3(self):
+        self.youtube_dl_label = QtWidgets.QLabel("Youtube-dl Options (Expert)")
         self.settings_widget3_1 = QtWidgets.QWidget()
+
+        # self.settings_widget2_1.setMinimumHeight(self.parent.height * 0.9)
+        # self.settings_widget2_1.setMaximumHeight(self.parent.height * 0.9)
+
+        self.settings_widget3_1.setMaximumWidth(self.parent.right_width * 0.39)
+
+        # add settings_widget2_1 to a scroll area
+        self.scroll_area = QtWidgets.QScrollArea()
+        self.scroll_area.setWidgetResizable(True)
+        self.scroll_area.setWidget(self.settings_widget3_1)
+        self.scroll_area.setFrameShape(QtWidgets.QFrame.NoFrame)
+        self.scroll_area.setHorizontalScrollBarPolicy(QtCore.Qt.ScrollBarAlwaysOff)
+        self.scroll_area.setVerticalScrollBarPolicy(QtCore.Qt.ScrollBarAsNeeded)
+
+        self.scroll_area.setMaximumWidth(self.parent.right_width * 0.333)
+        self.scroll_area.setMinimumWidth(self.parent.right_width * 0.39)
+
+        self.scroll_area.setMinimumHeight(self.parent.height * 0.9)
+        self.scroll_area.setMaximumHeight(self.parent.height * 0.9)
+
         self.settings_layout3_1 = QtWidgets.QGridLayout(self.settings_widget3_1)
-        self.settings_layout3.addWidget(self.settings_widget3_1)
+        self.settings_layout3.addWidget(self.scroll_area)
+        self.settings_layout3_1.addWidget(self.youtube_dl_label, 0, 0, 1, 2, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
+        self.settings_layout3_1.addWidget(self.line5, 1, 0, 1, 7)
+
+        # create labels for every individual youtbe-dl option
+        # TODO: Create a dictionary with option names and descriptions, types and default values
+        # TODO: Create a function to create the labels and widgets based on the dictionary
+
+        with open("src/ytb/yt-dlp-options2.json", "r", encoding="utf-8") as _:
+            options = load(_)
+
+        for index, (key, value) in enumerate(options.items()):
+            # create label widgets for each key in the options dictionary
+            label = QtWidgets.QLabel(key)
+            label.setObjectName(f"{key}_label")
+            label.setToolTip(value["description"])
+            label.setWordWrap(True)
+            label.setMinimumWidth(self.settings_widget3_1.width() * 0.3)
+
+            self.settings_layout3_1.addWidget(label, index + 2, 0, 1, 2, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
+
+            # create line edit widgets for each key in the options dictionary
+            line_edit = QtWidgets.QLineEdit()
+            line_edit.setObjectName(f"{key}_line_edit")
+            line_edit.setMinimumWidth(self.settings_widget3_1.width() * 0.55)
+            line_edit.setMaximumWidth(self.settings_widget3_1.width() * 0.8)
+            line_edit.setText(value["default"])
+            self.settings_layout3_1.addWidget(line_edit, index + 2, 2, 1, 6, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
 
     def _set_download_location(self):
         location = QtWidgets.QFileDialog.getExistingDirectory(self, "Select Directory")

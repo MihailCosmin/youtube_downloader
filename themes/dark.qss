@@ -219,6 +219,15 @@ QToolTip {
 QScrollBar {
 	background-color: rgb(40, 44, 52);
 	border: 1px solid rgb(44, 49, 58);
-	text-align: left;
-	color: white;
+}
+
+/* QScrollBar::handle:hover {
+	background-color: red;
+} */
+
+QScrollBar::up-arrow:hover {
+	background-color: red;
+}
+QScrollBar::down-arrow:hover {
+	background-color: red;
 }

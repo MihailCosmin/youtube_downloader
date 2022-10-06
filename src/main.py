@@ -75,7 +75,6 @@ class SplitWindowYoutubeBrowser(QMainWindow):
 
         self.setWindowTitle("Youtube Downloader")
         self.setMaximumWidth(QApplication.primaryScreen().size().width())
-        print(f"width 0: {self.width()}")
 
         self.central_widget = CenterWidget()
         self.setCentralWidget(self.central_widget)
@@ -92,6 +91,7 @@ class SplitWindowYoutubeBrowser(QMainWindow):
 
         self.settings_widget = SettingsWidget(parent=self)
         self.settings_widget.setObjectName(u"settings_widget")
+        
         self.left_widget = LeftWidget(parent=self)
         self.left_widget.setObjectName(u"left_widget")
 
@@ -143,6 +143,8 @@ class SplitWindowYoutubeBrowser(QMainWindow):
         if self.settings_widget.width() != 0:
             self.settings_widget.setMinimumWidth(0)
             self.settings_widget.setMaximumWidth(0)
+            self.right_widget.setMaximumWidth(self.right_width + self.left_width)
+            self.right_widget.setMinimumWidth(self.right_width + self.left_width)
             self.central_widget.setMaximumWidth(QApplication.primaryScreen().size().width())
             self.central_widget.setMinimumWidth(QApplication.primaryScreen().size().width())
             self.setMaximumWidth(QApplication.primaryScreen().size().width())
@@ -160,6 +162,8 @@ class SplitWindowYoutubeBrowser(QMainWindow):
             self.setMinimumWidth(QApplication.primaryScreen().size().width())
             self.left_widget.setMaximumWidth(0)
             self.left_widget.setMinimumWidth(0)
+            self.right_widget.setMaximumWidth(0)
+            self.right_widget.setMinimumWidth(0)
             self.animation = QPropertyAnimation(self.settings_widget, b"minimumWidth")
             self.animation.setDuration(500)
             self.animation.setStartValue(0)
@@ -278,15 +282,6 @@ class SplitWindowYoutubeBrowser(QMainWindow):
 
     def change_download_location(self, location: str):
         pass
-
-    # def mousePressEvent(self, event):
-    #     self.dragPos = event.globalPosition().toPoint()
-
-    # def mouseMoveEvent(self, event):
-    #     if event.buttons() == Qt.LeftButton:
-    #         self.move(self.pos() + event.globalPosition().toPoint() - self.dragPos)
-    #         self.dragPos = event.globalPosition().toPoint()
-    #         event.accept()
 
     def close(self):
         self.webpage.deleteLater()
