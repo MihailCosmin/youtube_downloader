@@ -1,9 +1,11 @@
-from os.path import dirname
-from os.path import realpath
-from os.path import splitext
-from os.path import basename
-from os.path import isfile
+from os import mkdir
 from os.path import sep
+from os.path import isdir
+from os.path import isfile
+from os.path import dirname
+from os.path import splitext
+from os.path import realpath
+from os.path import basename
 from os.path import expanduser
 
 import sys
@@ -17,9 +19,9 @@ from PySide6.QtWidgets import QMainWindow
 from PySide6.QtWidgets import QHBoxLayout
 from PySide6.QtWidgets import QVBoxLayout
 
-from PySide6.QtCore import QThreadPool
-from PySide6.QtCore import QEasingCurve
 from PySide6.QtCore import QPropertyAnimation
+from PySide6.QtCore import QEasingCurve
+from PySide6.QtCore import QThreadPool
 from PySide6.QtCore import QPoint
 from PySide6.QtCore import Qt
 
@@ -120,6 +122,8 @@ class SplitWindowYoutubeBrowser(QMainWindow):
                 "theme": ("Dark", False),
                 "accent": ("Red", False),
             }
+            if not isdir("src/config"):
+                mkdir("src/config")
             with open("src/config/config.json", "w", encoding="utf-8") as _:
                 dump(self.config, _, indent=4)
         else:
