@@ -56,13 +56,13 @@ class SettingsWidget(QtWidgets.QWidget):
         # self.settings_layout1.addWidget(self.settings_widget1_3)
         
         self.settings_layout1_1.addWidget(self.appearance_label, 0, 0, 1, 2, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
-        self.settings_layout1_1.addWidget(self.line1, 1, 0, 1, 8)
+        self.settings_layout1_1.addWidget(self.line1, 1, 0, 1, 77)
 
         self.settings_layout1_2.addWidget(self.download_label, 0, 0, 1, 10, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
-        self.settings_layout1_2.addWidget(self.line2, 1, 0, 1, 8)
+        self.settings_layout1_2.addWidget(self.line2, 1, 0, 1, 20)
 
         self.settings_layout1_3.addWidget(self.ydl_options_basic, 0, 0, 1, 10, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
-        self.settings_layout1_3.addWidget(self.line3, 1, 0, 1, 8)
+        self.settings_layout1_3.addWidget(self.line3, 1, 0, 1, 10)
 
         self.theme_label = QtWidgets.QLabel("Theme")
         self.theme_label.setObjectName(u"theme_label")
@@ -150,22 +150,26 @@ class SettingsWidget(QtWidgets.QWidget):
             options = load(_)
 
         for index, (key, value) in enumerate(options.items()):
-            # create label widgets for each key in the options dictionary
-            label = QtWidgets.QLabel(key)
-            label.setObjectName(f"{key}_label")
-            label.setToolTip(value["description"])
-            label.setWordWrap(True)
-            label.setMinimumWidth(self.settings_widget1_3.width() * 0.3)
+            if value["search_count"] > 10000:
+                label = QtWidgets.QLabel(key)
+                label.setObjectName(f"{key}_label")
+                label.setToolTip(value["description"])
+                label.setWordWrap(True)
+                label.setMinimumWidth(self.settings_widget1_3.width() * 0.3)
+                # make label selectable
+                label.setTextInteractionFlags(QtCore.Qt.TextSelectableByMouse)
 
-            self.settings_layout1_3.addWidget(label, index + 2, 0, 1, 2, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
+                self.settings_layout1_3.addWidget(label, index + 2, 0, 1, 2, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
 
-            # create line edit widgets for each key in the options dictionary
-            line_edit = QtWidgets.QLineEdit()
-            line_edit.setObjectName(f"{key}_line_edit")
-            line_edit.setMinimumWidth(self.settings_widget1_3.width() * 0.55)
-            line_edit.setMaximumWidth(self.settings_widget1_3.width() * 0.8)
-            line_edit.setText(value["default"])
-            self.settings_layout1_3.addWidget(line_edit, index + 2, 2, 1, 6, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
+                if value["type"] == "bool" or value["default"] in ("True", "False"):
+                    line_edit = QtWidgets.QCheckBox()
+                else:
+                    line_edit = QtWidgets.QLineEdit()
+                    line_edit.setObjectName(f"{key}_line_edit")
+                    line_edit.setMinimumWidth(self.settings_widget1_3.width() * 0.55)
+                    line_edit.setMaximumWidth(self.settings_widget1_3.width() * 0.8)
+                    line_edit.setText(value["default"] if value["default"] not in ("None", "{}", "[]", None, "''") else "")
+                self.settings_layout1_3.addWidget(line_edit, index + 2, 2, 1, 6, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
 
         # self.settings_layout1_3.addItem(QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding))
 
@@ -196,7 +200,7 @@ class SettingsWidget(QtWidgets.QWidget):
         self.settings_layout2.addWidget(self.scroll_area)
 
         self.settings_layout2_1.addWidget(self.youtube_dl_label, 0, 0, 1, 2, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
-        self.settings_layout2_1.addWidget(self.line4, 1, 0, 1, 7)
+        self.settings_layout2_1.addWidget(self.line4, 1, 0, 1, 10)
 
         # create labels for every individual youtbe-dl option
         # TODO: Create a dictionary with option names and descriptions, types and default values
@@ -206,22 +210,25 @@ class SettingsWidget(QtWidgets.QWidget):
             options = load(_)
 
         for index, (key, value) in enumerate(options.items()):
-            # create label widgets for each key in the options dictionary
-            label = QtWidgets.QLabel(key)
-            label.setObjectName(f"{key}_label")
-            label.setToolTip(value["description"])
-            label.setWordWrap(True)
-            label.setMinimumWidth(self.settings_widget2_1.width() * 0.3)
+            if value["search_count"] <= 10000 and value["search_count"] > 1000:
+                label = QtWidgets.QLabel(key)
+                label.setObjectName(f"{key}_label")
+                label.setToolTip(value["description"])
+                label.setWordWrap(True)
+                label.setMinimumWidth(self.settings_widget2_1.width() * 0.3)
+                label.setTextInteractionFlags(QtCore.Qt.TextSelectableByMouse)
 
-            self.settings_layout2_1.addWidget(label, index + 2, 0, 1, 2, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
+                self.settings_layout2_1.addWidget(label, index + 2, 0, 1, 2, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
 
-            # create line edit widgets for each key in the options dictionary
-            line_edit = QtWidgets.QLineEdit()
-            line_edit.setObjectName(f"{key}_line_edit")
-            line_edit.setMinimumWidth(self.settings_widget2_1.width() * 0.55)
-            line_edit.setMaximumWidth(self.settings_widget2_1.width() * 0.8)
-            line_edit.setText(value["default"])
-            self.settings_layout2_1.addWidget(line_edit, index + 2, 2, 1, 6, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
+                if value["type"] == "bool" or value["default"] in ("True", "False"):
+                    line_edit = QtWidgets.QCheckBox()
+                else:
+                    line_edit = QtWidgets.QLineEdit()
+                    line_edit.setObjectName(f"{key}_line_edit")
+                    line_edit.setMinimumWidth(self.settings_widget2_1.width() * 0.55)
+                    line_edit.setMaximumWidth(self.settings_widget2_1.width() * 0.8)
+                    line_edit.setText(value["default"] if value["default"] not in ("None", "{}", "[]", None, "''") else "")
+                self.settings_layout2_1.addWidget(line_edit, index + 2, 2, 1, 6, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
 
 
     def _settings_widget3(self):
@@ -250,7 +257,7 @@ class SettingsWidget(QtWidgets.QWidget):
         self.settings_layout3_1 = QtWidgets.QGridLayout(self.settings_widget3_1)
         self.settings_layout3.addWidget(self.scroll_area)
         self.settings_layout3_1.addWidget(self.youtube_dl_label, 0, 0, 1, 2, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
-        self.settings_layout3_1.addWidget(self.line5, 1, 0, 1, 7)
+        self.settings_layout3_1.addWidget(self.line5, 1, 0, 1, 10)
 
         # create labels for every individual youtbe-dl option
         # TODO: Create a dictionary with option names and descriptions, types and default values
@@ -260,22 +267,26 @@ class SettingsWidget(QtWidgets.QWidget):
             options = load(_)
 
         for index, (key, value) in enumerate(options.items()):
-            # create label widgets for each key in the options dictionary
-            label = QtWidgets.QLabel(key)
-            label.setObjectName(f"{key}_label")
-            label.setToolTip(value["description"])
-            label.setWordWrap(True)
-            label.setMinimumWidth(self.settings_widget3_1.width() * 0.3)
+            if value["search_count"] <= 1000:
+                label = QtWidgets.QLabel(key)
+                label.setObjectName(f"{key}_label")
+                label.setToolTip(value["description"])
+                label.setWordWrap(True)
+                label.setMinimumWidth(self.settings_widget3_1.width() * 0.3)
+                label.setTextInteractionFlags(QtCore.Qt.TextSelectableByMouse)
 
-            self.settings_layout3_1.addWidget(label, index + 2, 0, 1, 2, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
+                self.settings_layout3_1.addWidget(label, index + 2, 0, 1, 2, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
 
-            # create line edit widgets for each key in the options dictionary
-            line_edit = QtWidgets.QLineEdit()
-            line_edit.setObjectName(f"{key}_line_edit")
-            line_edit.setMinimumWidth(self.settings_widget3_1.width() * 0.55)
-            line_edit.setMaximumWidth(self.settings_widget3_1.width() * 0.8)
-            line_edit.setText(value["default"])
-            self.settings_layout3_1.addWidget(line_edit, index + 2, 2, 1, 6, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
+                # create line edit widgets for each key in the options dictionary
+                if value["type"] == "bool" or value["default"] in ("True", "False"):
+                    line_edit = QtWidgets.QCheckBox()
+                else:
+                    line_edit = QtWidgets.QLineEdit()
+                    line_edit.setObjectName(f"{key}_line_edit")
+                    line_edit.setMinimumWidth(self.settings_widget3_1.width() * 0.55)
+                    line_edit.setMaximumWidth(self.settings_widget3_1.width() * 0.8)
+                    line_edit.setText(value["default"] if value["default"] not in ("None", "{}", "[]", None, "''") else "")
+                self.settings_layout3_1.addWidget(line_edit, index + 2, 2, 1, 6, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
 
     def _set_download_location(self):
         location = QtWidgets.QFileDialog.getExistingDirectory(self, "Select Directory")

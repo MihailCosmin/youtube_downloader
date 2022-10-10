@@ -16,6 +16,7 @@ from PySide6.QtWidgets import QApplication
 from PySide6.QtWidgets import QMainWindow
 from PySide6.QtWidgets import QHBoxLayout
 from PySide6.QtWidgets import QVBoxLayout
+from PySide6.QtWidgets import QLineEdit
 
 from PySide6.QtCore import QThreadPool
 from PySide6.QtCore import QEasingCurve
@@ -170,6 +171,11 @@ class SplitWindowYoutubeBrowser(QMainWindow):
             self.animation.setEndValue(self.right_width + self.left_width)
             self.animation.setEasingCurve(QEasingCurve.InOutQuart)
             self.animation.start()
+        
+        print(self.findChild(QLineEdit, "buffersize_line_edit").text())
+        # TODO: create function 
+        # For keys, default values in src/ytb/yt-dlp-options2.json
+        # if self.findChild(QLineEdit, "buffersize_line_edit").text() != default_value: save to config
 
     def toggle_downloads(self):
         if self.left_widget.width() != 0:

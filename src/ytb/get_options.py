@@ -7,7 +7,7 @@ from json import load
 OPT_REGEX = r'( [a-z]+)(\.add_option\()(.*?)(\))'
 OPTION_NAMES_REGEX = r"('-{1,2})(.*?)(')"
 DEST_REGEX = r"(dest=')(.*?)(')"
-OTHER_REGEX = r"([a-z]+=')(.*?)(')"
+OTHER_REGEX = r"([a-z]+=)(.*?)(,)"
 
 
 # with open("src/ytb/yt-dlp-options.py", "r", encoding="utf-8") as _:
@@ -20,9 +20,9 @@ OTHER_REGEX = r"([a-z]+=')(.*?)(')"
 #     if search(OPTION_NAMES_REGEX, match[2]):
 #         option_names = [i[1] for i in findall(OPTION_NAMES_REGEX, match[2])]
 
-#     other_values = {}
+#     other_values = {"default": None}
 #     if search(OTHER_REGEX, match[2]):
-#         other_values = {i[0][:-2]: i[1] for i in findall(OTHER_REGEX, match[2])}
+#         other_values |= {i[0][:-1].replace("'", ""): i[1] for i in findall(OTHER_REGEX, match[2])}
 
 #     opt_dict[ind] = {
 #         "category": match[0].strip(),
@@ -31,20 +31,20 @@ OTHER_REGEX = r"([a-z]+=')(.*?)(')"
 #         "other_values": other_values
 #     }
 
-# with open("src/ytb/yt-dlp-options.json", "w", encoding="utf-8") as _:
+# with open("src/ytb/yt-dlp-options_2.json", "w", encoding="utf-8") as _:
 #     dump(opt_dict, _, indent=4)
 
-with open("src/ytb/yt-dlp-options.json", "r", encoding="utf-8") as _:
+with open("src/ytb/yt-dlp-options_2.json", "r", encoding="utf-8") as _:
     opt = load(_)
 
 new_dict = {}
 for value in opt.values():
     new_dict[value["dest"]] = {
         "category": value["category"],
-        "type": value["other_values"]["type"] if "type" in value["other_values"] else "str",
+        "type": value["other_values"]["type"] if "type" in value["other_values"] else "bool" if value["other_values"]["default"] in ("True", "False") else "str",
         "default": value["other_values"]["default"] if "default" in value["other_values"] else "",
         "description": value["other_values"]["help"] if "help" in value["other_values"] else "",
     }
 
-with open("src/ytb/yt-dlp-options2.json", "w", encoding="utf-8") as _:
+with open("src/ytb/yt-dlp-options5.json", "w", encoding="utf-8") as _:
     dump(new_dict, _, indent=4)

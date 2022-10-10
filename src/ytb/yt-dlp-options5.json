@@ -3,1449 +3,1242 @@
         "category": "general",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 320
+        "description": ""
     },
     "": {
         "category": "general",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 1040000
+        "description": ""
     },
     "update_self": {
         "category": "general",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 1750
+        "description": ""
     },
     "ignoreerrors": {
         "category": "general",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 3190
+        "description": ""
     },
     "dump_user_agent": {
         "category": "general",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 1310
+        "description": ""
     },
     "list_extractors": {
         "category": "general",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 1770
+        "description": ""
     },
     "list_extractor_descriptions": {
         "category": "general",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 10
+        "description": ""
     },
     "allowed_extractors": {
         "category": "general",
         "type": "'str'",
         "default": "[]",
-        "description": "(            'Extractor names to use separated by commas. '            'You can also use regexes",
-        "search_count": 5
+        "description": "(            'Extractor names to use separated by commas. '            'You can also use regexes"
     },
     "force_generic_extractor": {
         "category": "general",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 19000
+        "description": ""
     },
     "default_search": {
         "category": "general",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 1600
+        "description": ""
     },
     "ignoreconfig": {
         "category": "general",
         "type": "str",
         "default": null,
-        "description": "(            'Don\\'t load any more configuration files except those given by --config-locations. '            'For backward compatibility",
-        "search_count": 25900
+        "description": "(            'Don\\'t load any more configuration files except those given by --config-locations. '            'For backward compatibility"
     },
     "config_locations": {
         "category": "general",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 5
+        "description": ""
     },
     "extract_flat": {
         "category": "general",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 1740
+        "description": ""
     },
     "live_from_start": {
         "category": "general",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 9
+        "description": ""
     },
     "wait_for_video": {
         "category": "general",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 25
+        "description": ""
     },
     "mark_watched": {
         "category": "general",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 510
+        "description": ""
     },
     "no_color": {
         "category": "general",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 719
+        "description": ""
     },
     "compat_opts": {
         "category": "general",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 376
+        "description": ""
     },
     "_": {
         "category": "general",
         "type": "'str'",
         "default": null,
-        "description": "(            'Create aliases for an option string. Unless an alias starts with a dash \"-\"",
-        "search_count": 152000
+        "description": "(            'Create aliases for an option string. Unless an alias starts with a dash \"-\""
     },
     "proxy": {
         "category": "network",
         "type": "str",
         "default": "None",
-        "description": "(            'Use the specified HTTP/HTTPS/SOCKS proxy. To enable SOCKS proxy",
-        "search_count": 168000
+        "description": "(            'Use the specified HTTP/HTTPS/SOCKS proxy. To enable SOCKS proxy"
     },
     "socket_timeout": {
         "category": "network",
         "type": "float",
         "default": "None",
-        "description": "'Time to wait before giving up",
-        "search_count": 1090
+        "description": "'Time to wait before giving up"
     },
     "source_address": {
         "category": "network",
         "type": "str",
         "default": null,
-        "description": "'Make all connections via IPv6'",
-        "search_count": 2080
+        "description": "'Make all connections via IPv6'"
     },
     "geo_verification_proxy": {
         "category": "geo",
         "type": "str",
         "default": "None",
-        "description": "(            'Use this proxy to verify the IP address for some geo-restricted sites. '            'The default proxy specified by --proxy (or none",
-        "search_count": 14800
+        "description": "(            'Use this proxy to verify the IP address for some geo-restricted sites. '            'The default proxy specified by --proxy (or none"
     },
     "cn_verification_proxy": {
         "category": "geo",
         "type": "str",
         "default": "None",
-        "description": "",
-        "search_count": 707
+        "description": ""
     },
     "geo_bypass": {
         "category": "geo",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 14800
+        "description": ""
     },
     "geo_bypass_country": {
         "category": "geo",
         "type": "str",
         "default": "None",
-        "description": "",
-        "search_count": 11900
+        "description": ""
     },
     "geo_bypass_ip_block": {
         "category": "geo",
         "type": "str",
         "default": "None",
-        "description": "",
-        "search_count": 8510
+        "description": ""
     },
     "playliststart": {
         "category": "selection",
         "type": "int",
         "default": "1",
-        "description": "",
-        "search_count": 3160
+        "description": ""
     },
     "playlistend": {
         "category": "selection",
         "type": "int",
         "default": "None",
-        "description": "",
-        "search_count": 2340
+        "description": ""
     },
     "playlist_items": {
         "category": "selection",
         "type": "str",
         "default": "None",
-        "description": "(            'Comma separated playlist_index of the videos to download. '            'You can specify a range using \"[START]:[STOP][:STEP]\". For backward compatibility",
-        "search_count": 3010
+        "description": "(            'Comma separated playlist_index of the videos to download. '            'You can specify a range using \"[START]:[STOP][:STEP]\". For backward compatibility"
     },
     "matchtitle": {
         "category": "selection",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 1440
+        "description": ""
     },
     "rejecttitle": {
         "category": "selection",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 28900
+        "description": ""
     },
     "min_filesize": {
         "category": "selection",
         "type": "str",
         "default": "None",
-        "description": "'Do not download any videos smaller than SIZE",
-        "search_count": 1040
+        "description": "'Do not download any videos smaller than SIZE"
     },
     "max_filesize": {
         "category": "selection",
         "type": "str",
         "default": "None",
-        "description": "'Do not download any videos larger than SIZE",
-        "search_count": 1210
+        "description": "'Do not download any videos larger than SIZE"
     },
     "date": {
         "category": "selection",
         "type": "str",
         "default": "None",
-        "description": "",
-        "search_count": 267000
+        "description": ""
     },
     "datebefore": {
         "category": "selection",
         "type": "str",
         "default": "None",
-        "description": "",
-        "search_count": 1590
+        "description": ""
     },
     "dateafter": {
         "category": "selection",
         "type": "str",
         "default": "None",
-        "description": "",
-        "search_count": 26300
+        "description": ""
     },
     "min_views": {
         "category": "selection",
         "type": "int",
         "default": "None",
-        "description": "",
-        "search_count": 546
+        "description": ""
     },
     "max_views": {
         "category": "selection",
         "type": "int",
         "default": "None",
-        "description": "",
-        "search_count": 519
+        "description": ""
     },
     "match_filter": {
         "category": "selection",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 922
+        "description": ""
     },
     "noplaylist": {
         "category": "selection",
         "type": "str",
         "default": null,
-        "description": "'Download the playlist",
-        "search_count": 123000
+        "description": "'Download the playlist"
     },
     "age_limit": {
         "category": "selection",
         "type": "int",
         "default": "None",
-        "description": "",
-        "search_count": 23600
+        "description": ""
     },
     "download_archive": {
         "category": "selection",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 1360
+        "description": ""
     },
     "max_downloads": {
         "category": "selection",
         "type": "int",
         "default": "None",
-        "description": "",
-        "search_count": 1400
+        "description": ""
     },
     "break_on_existing": {
         "category": "selection",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 74
+        "description": ""
     },
     "break_on_reject": {
         "category": "selection",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 63
+        "description": ""
     },
     "break_per_url": {
         "category": "selection",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 27
+        "description": ""
     },
     "skip_playlist_after_errors": {
         "category": "selection",
         "type": "int",
         "default": "None",
-        "description": "",
-        "search_count": 90
+        "description": ""
     },
     "include_ads": {
         "category": "selection",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 927
+        "description": ""
     },
     "username": {
         "category": "authentication",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 74400
+        "description": ""
     },
     "password": {
         "category": "authentication",
         "type": "str",
         "default": null,
-        "description": "'Account password. If this option is left out",
-        "search_count": 210000
+        "description": "'Account password. If this option is left out"
     },
     "twofactor": {
         "category": "authentication",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 69100
+        "description": ""
     },
     "usenetrc": {
         "category": "authentication",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 2130
+        "description": ""
     },
     "netrc_location": {
         "category": "authentication",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 8
+        "description": ""
     },
     "videopassword": {
         "category": "authentication",
         "type": "str",
         "default": null,
-        "description": "'Video password (vimeo",
-        "search_count": 1610
+        "description": "'Video password (vimeo"
     },
     "ap_mso": {
         "category": "authentication",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 341
+        "description": ""
     },
     "ap_username": {
         "category": "authentication",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 333
+        "description": ""
     },
     "ap_password": {
         "category": "authentication",
         "type": "str",
         "default": null,
-        "description": "'Multiple-system operator account password. If this option is left out",
-        "search_count": 345
+        "description": "'Multiple-system operator account password. If this option is left out"
     },
     "ap_list_mso": {
         "category": "authentication",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 7
+        "description": ""
     },
     "client_certificate": {
         "category": "authentication",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 6090
+        "description": ""
     },
     "client_certificate_key": {
         "category": "authentication",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 6
+        "description": ""
     },
     "client_certificate_password": {
         "category": "authentication",
         "type": "str",
         "default": null,
-        "description": "'Password for client certificate private key",
-        "search_count": 6
+        "description": "'Password for client certificate private key"
     },
     "writesubtitles": {
         "category": "subtitles",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 2840
+        "description": ""
     },
     "writeautomaticsub": {
         "category": "subtitles",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 1560
+        "description": ""
     },
     "allsubtitles": {
         "category": "subtitles",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 719
+        "description": ""
     },
     "listsubtitles": {
         "category": "subtitles",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 213
+        "description": ""
     },
     "subtitlesformat": {
         "category": "subtitles",
         "type": "str",
         "default": "'best'",
-        "description": "'Subtitle format; accepts formats preference",
-        "search_count": 2690
+        "description": "'Subtitle format; accepts formats preference"
     },
     "subtitleslangs": {
         "category": "subtitles",
         "type": "'str'",
         "default": "[]",
-        "description": "",
-        "search_count": 1120
+        "description": ""
     },
     "concurrent_fragment_downloads": {
         "category": "downloader",
         "type": "int",
         "default": "1",
-        "description": "",
-        "search_count": 63
+        "description": ""
     },
     "ratelimit": {
         "category": "downloader",
         "type": "str",
         "default": null,
-        "description": "'Maximum download rate in bytes per second",
-        "search_count": 10500
+        "description": "'Maximum download rate in bytes per second"
     },
     "throttledratelimit": {
         "category": "downloader",
         "type": "str",
         "default": null,
-        "description": "'Minimum download rate in bytes per second below which throttling is assumed and the video data is re-extracted",
-        "search_count": 156
+        "description": "'Minimum download rate in bytes per second below which throttling is assumed and the video data is re-extracted"
     },
     "retries": {
         "category": "downloader",
         "type": "str",
         "default": "10",
-        "description": "",
-        "search_count": 5200
+        "description": ""
     },
     "file_access_retries": {
         "category": "downloader",
         "type": "str",
         "default": "3",
-        "description": "",
-        "search_count": 10
+        "description": ""
     },
     "fragment_retries": {
         "category": "downloader",
         "type": "str",
         "default": "10",
-        "description": "",
-        "search_count": 906
+        "description": ""
     },
     "retry_sleep": {
         "category": "downloader",
         "type": "'str'",
         "default": "{}",
-        "description": "",
-        "search_count": 431
+        "description": ""
     },
     "skip_unavailable_fragments": {
         "category": "downloader",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 16500
+        "description": ""
     },
     "keep_fragments": {
         "category": "downloader",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 888
+        "description": ""
     },
     "buffersize": {
         "category": "downloader",
         "type": "str",
         "default": "'1024'",
-        "description": "'Size of download buffer",
-        "search_count": 4530
+        "description": "'Size of download buffer"
     },
     "noresizebuffer": {
         "category": "downloader",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 979
+        "description": ""
     },
     "http_chunk_size": {
         "category": "downloader",
         "type": "str",
         "default": "None",
-        "description": "(            'Size of a chunk for chunk-based HTTP downloading",
-        "search_count": 9850
+        "description": "(            'Size of a chunk for chunk-based HTTP downloading"
     },
     "test": {
         "category": "downloader",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 302000
+        "description": ""
     },
     "playlist_reverse": {
         "category": "downloader",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 1520
+        "description": ""
     },
     "playlist_random": {
         "category": "downloader",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 806
+        "description": ""
     },
     "lazy_playlist": {
         "category": "downloader",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 6
+        "description": ""
     },
     "xattr_set_filesize": {
         "category": "downloader",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 579
+        "description": ""
     },
     "hls_prefer_native": {
         "category": "downloader",
         "type": "str",
         "default": "None",
-        "description": "",
-        "search_count": 27200
+        "description": ""
     },
     "hls_use_mpegts": {
         "category": "downloader",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 464
+        "description": ""
     },
     "download_ranges": {
         "category": "downloader",
         "type": "str",
         "default": null,
-        "description": "(            'Download only chapters whose title matches the given regular expression. '            'Time ranges prefixed by a \"*\" can also be used in place of chapters to download the specified range. '            'Needs ffmpeg. This option can be used multiple times to download multiple sections",
-        "search_count": 61
+        "description": "(            'Download only chapters whose title matches the given regular expression. '            'Time ranges prefixed by a \"*\" can also be used in place of chapters to download the specified range. '            'Needs ffmpeg. This option can be used multiple times to download multiple sections"
     },
     "external_downloader": {
         "category": "downloader",
         "type": "'str'",
         "default": "{}",
-        "description": "",
-        "search_count": 3860
+        "description": ""
     },
     "external_downloader_args": {
         "category": "downloader",
         "type": "'str'",
         "default": "{}",
-        "description": "",
-        "search_count": 753
+        "description": ""
     },
     "encoding": {
         "category": "workarounds",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 108000
+        "description": ""
     },
     "legacy_server_connect": {
         "category": "workarounds",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 48
+        "description": ""
     },
     "no_check_certificate": {
         "category": "workarounds",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 811
+        "description": ""
     },
     "prefer_insecure": {
         "category": "workarounds",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 794
+        "description": ""
     },
     "user_agent": {
         "category": "workarounds",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 5720
+        "description": ""
     },
     "referer": {
         "category": "workarounds",
         "type": "str",
         "default": "None",
-        "description": "",
-        "search_count": 49300
+        "description": ""
     },
     "headers": {
         "category": "workarounds",
         "type": "'str'",
         "default": "{}",
-        "description": "'Specify a custom HTTP header and its value",
-        "search_count": 471000
+        "description": "'Specify a custom HTTP header and its value"
     },
     "bidi_workaround": {
         "category": "workarounds",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 733
+        "description": ""
     },
     "sleep_interval_requests": {
         "category": "workarounds",
         "type": "float",
         "default": null,
-        "description": "",
-        "search_count": 68
+        "description": ""
     },
     "sleep_interval": {
         "category": "workarounds",
         "type": "float",
         "default": null,
-        "description": "",
-        "search_count": 20900
+        "description": ""
     },
     "max_sleep_interval": {
         "category": "workarounds",
         "type": "float",
         "default": null,
-        "description": "",
-        "search_count": 405
+        "description": ""
     },
     "sleep_interval_subtitles": {
         "category": "workarounds",
         "type": "int",
         "default": "0",
-        "description": "",
-        "search_count": 133
+        "description": ""
     },
     "quiet": {
         "category": "verbosity",
         "type": "bool",
         "default": "False",
-        "description": "'Activate quiet mode. If used with --verbose",
-        "search_count": 30600
+        "description": "'Activate quiet mode. If used with --verbose"
     },
     "no_warnings": {
         "category": "verbosity",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 24000
+        "description": ""
     },
     "simulate": {
         "category": "verbosity",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 11700
+        "description": ""
     },
     "ignore_no_formats_error": {
         "category": "verbosity",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 324
+        "description": ""
     },
     "skip_download": {
         "category": "verbosity",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 17100
+        "description": ""
     },
     "forceprint": {
         "category": "verbosity",
         "type": "'str'",
         "default": "{}",
-        "description": "",
-        "search_count": 75
+        "description": ""
     },
     "print_to_file": {
         "category": "verbosity",
         "type": "'str'",
         "default": "{}",
-        "description": "",
-        "search_count": 36
+        "description": ""
     },
     "geturl": {
         "category": "verbosity",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 16300
+        "description": ""
     },
     "gettitle": {
         "category": "verbosity",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 3100
+        "description": ""
     },
     "getid": {
         "category": "verbosity",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 9470
+        "description": ""
     },
     "getthumbnail": {
         "category": "verbosity",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 1120
+        "description": ""
     },
     "getdescription": {
         "category": "verbosity",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 2040
+        "description": ""
     },
     "getduration": {
         "category": "verbosity",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 2550
+        "description": ""
     },
     "getfilename": {
         "category": "verbosity",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 3190
+        "description": ""
     },
     "getformat": {
         "category": "verbosity",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 1080
+        "description": ""
     },
     "dumpjson": {
         "category": "verbosity",
         "type": "bool",
         "default": "False",
-        "description": "'Quiet",
-        "search_count": 597
+        "description": "'Quiet"
     },
     "dump_single_json": {
         "category": "verbosity",
         "type": "bool",
         "default": "False",
-        "description": "(            'Quiet",
-        "search_count": 553
+        "description": "(            'Quiet"
     },
     "print_json": {
         "category": "verbosity",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 339
+        "description": ""
     },
     "force_write_download_archive": {
         "category": "verbosity",
         "type": "bool",
         "default": "False",
-        "description": "(            'Force download archive entries to be written as far as no errors occur",
-        "search_count": 77
+        "description": "(            'Force download archive entries to be written as far as no errors occur"
     },
     "progress_with_newline": {
         "category": "verbosity",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 707
+        "description": ""
     },
     "noprogress": {
         "category": "verbosity",
         "type": "str",
         "default": null,
-        "description": "'Show progress bar",
-        "search_count": 125000
+        "description": "'Show progress bar"
     },
     "consoletitle": {
         "category": "verbosity",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 1320
+        "description": ""
     },
     "progress_template": {
         "category": "verbosity",
         "type": "'str'",
         "default": "{}",
-        "description": "",
-        "search_count": 897
+        "description": ""
     },
     "verbose": {
         "category": "verbosity",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 42300
+        "description": ""
     },
     "dump_intermediate_pages": {
         "category": "verbosity",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 667
+        "description": ""
     },
     "write_pages": {
         "category": "verbosity",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 570
+        "description": ""
     },
     "load_pages": {
         "category": "verbosity",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 8
+        "description": ""
     },
     "youtube_print_sig_code": {
         "category": "verbosity",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 738
+        "description": ""
     },
     "debug_printtraffic": {
         "category": "verbosity",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 617
+        "description": ""
     },
     "call_home": {
         "category": "verbosity",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 577
+        "description": ""
     },
     "batchfile": {
         "category": "filesystem",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 73900
+        "description": ""
     },
     "useid": {
         "category": "filesystem",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 768
+        "description": ""
     },
     "paths": {
         "category": "filesystem",
         "type": "'str'",
         "default": "{}",
-        "description": "",
-        "search_count": 26000
+        "description": ""
     },
     "outtmpl": {
         "category": "filesystem",
         "type": "'str'",
         "default": "{}",
-        "description": "",
-        "search_count": 2280
+        "description": ""
     },
     "outtmpl_na_placeholder": {
         "category": "filesystem",
         "type": "str",
         "default": "'NA'",
-        "description": "",
-        "search_count": 147
+        "description": ""
     },
     "autonumber_size": {
         "category": "filesystem",
         "type": "int",
         "default": null,
-        "description": "",
-        "search_count": 15800
+        "description": ""
     },
     "autonumber_start": {
         "category": "filesystem",
         "type": "int",
         "default": "1",
-        "description": "",
-        "search_count": 12700
+        "description": ""
     },
     "restrictfilenames": {
         "category": "filesystem",
         "type": "str",
         "default": null,
-        "description": "'Allow Unicode characters",
-        "search_count": 2170
+        "description": "'Allow Unicode characters"
     },
     "windowsfilenames": {
         "category": "filesystem",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 6380
+        "description": ""
     },
     "trim_file_name": {
         "category": "filesystem",
         "type": "int",
         "default": "0",
-        "description": "",
-        "search_count": 168
+        "description": ""
     },
     "overwrites": {
         "category": "filesystem",
         "type": "str",
         "default": null,
-        "description": "'Do not overwrite the video",
-        "search_count": 3610
+        "description": "'Do not overwrite the video"
     },
     "continue_dl": {
         "category": "filesystem",
         "type": "str",
         "default": null,
-        "description": "(            'Do not resume partially downloaded fragments. '            'If the file is not fragmented",
-        "search_count": 3
+        "description": "(            'Do not resume partially downloaded fragments. '            'If the file is not fragmented"
     },
     "nopart": {
         "category": "filesystem",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 1480
+        "description": ""
     },
     "updatetime": {
         "category": "filesystem",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 2470
+        "description": ""
     },
     "writedescription": {
         "category": "filesystem",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 2250
+        "description": ""
     },
     "writeinfojson": {
         "category": "filesystem",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 1840
+        "description": ""
     },
     "writeannotations": {
         "category": "filesystem",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 1420
+        "description": ""
     },
     "allow_playlist_files": {
         "category": "filesystem",
         "type": "str",
         "default": null,
-        "description": "'Do not write playlist metadata when using --write-info-json",
-        "search_count": 331
+        "description": "'Do not write playlist metadata when using --write-info-json"
     },
     "clean_infojson": {
         "category": "filesystem",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 66
+        "description": ""
     },
     "getcomments": {
         "category": "filesystem",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 492
+        "description": ""
     },
     "load_info_filename": {
         "category": "filesystem",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 535
+        "description": ""
     },
     "cookiefile": {
         "category": "filesystem",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 1650
+        "description": ""
     },
     "cookiesfrombrowser": {
         "category": "filesystem",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 1720
+        "description": ""
     },
     "cachedir": {
         "category": "filesystem",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 2970
+        "description": ""
     },
     "rm_cachedir": {
         "category": "filesystem",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 419
+        "description": ""
     },
     "writethumbnail": {
         "category": "thumbnail",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 2250
+        "description": ""
     },
     "list_thumbnails": {
         "category": "thumbnail",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 630
+        "description": ""
     },
     "writelink": {
         "category": "link",
         "type": "bool",
         "default": "False",
-        "description": "'Write an internet shortcut file",
-        "search_count": 2000
+        "description": "'Write an internet shortcut file"
     },
     "writeurllink": {
         "category": "link",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 79
+        "description": ""
     },
     "writewebloclink": {
         "category": "link",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 49
+        "description": ""
     },
     "writedesktoplink": {
         "category": "link",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 54
+        "description": ""
     },
     "extractaudio": {
         "category": "postproc",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 21400
+        "description": ""
     },
     "audioformat": {
         "category": "postproc",
         "type": "str",
         "default": "'best'",
-        "description": "",
-        "search_count": 569
+        "description": ""
     },
     "audioquality": {
         "category": "postproc",
         "type": "str",
         "default": "'5'",
-        "description": "",
-        "search_count": 1080
+        "description": ""
     },
     "remuxvideo": {
         "category": "postproc",
         "type": "str",
         "default": "None",
-        "description": "(            'Remux the video into another container if necessary '            f'(currently supported: {\"",
-        "search_count": 3250
+        "description": "(            'Remux the video into another container if necessary '            f'(currently supported: {\""
     },
     "recodevideo": {
         "category": "postproc",
         "type": "str",
         "default": "None",
-        "description": "",
-        "search_count": 834
+        "description": ""
     },
     "postprocessor_args": {
         "category": "postproc",
         "type": "'str'",
         "default": "{}",
-        "description": "",
-        "search_count": 4060
+        "description": ""
     },
     "keepvideo": {
         "category": "postproc",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 23400
+        "description": ""
     },
     "nopostoverwrites": {
         "category": "postproc",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 744
+        "description": ""
     },
     "embedsubtitles": {
         "category": "postproc",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 28000
+        "description": ""
     },
     "embedthumbnail": {
         "category": "postproc",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 3690
+        "description": ""
     },
     "addmetadata": {
         "category": "postproc",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 705
+        "description": ""
     },
     "addchapters": {
         "category": "postproc",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 2090
+        "description": ""
     },
     "embed_infojson": {
         "category": "postproc",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 2
+        "description": ""
     },
     "metafromtitle": {
         "category": "postproc",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 345
+        "description": ""
     },
     "parse_metadata": {
         "category": "postproc",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 2390
+        "description": ""
     },
     "xattrs": {
         "category": "postproc",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 22900
+        "description": ""
     },
     "concat_playlist": {
         "category": "postproc",
         "type": "str",
         "default": "'multi_video'",
-        "description": "",
-        "search_count": 411
+        "description": ""
     },
     "fixup": {
         "category": "postproc",
         "type": "str",
         "default": "None",
-        "description": "",
-        "search_count": 1800
+        "description": ""
     },
     "prefer_ffmpeg": {
         "category": "postproc",
         "type": "bool",
         "default": "True",
-        "description": "",
-        "search_count": 1910
+        "description": ""
     },
     "ffmpeg_location": {
         "category": "postproc",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 1520
+        "description": ""
     },
     "exec_cmd": {
         "category": "postproc",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 840
+        "description": ""
     },
     "exec_before_dl_cmd": {
         "category": "postproc",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 67
+        "description": ""
     },
     "convertsubtitles": {
         "category": "postproc",
         "type": "str",
         "default": "None",
-        "description": "",
-        "search_count": 544
+        "description": ""
     },
     "convertthumbnails": {
         "category": "postproc",
         "type": "str",
         "default": "None",
-        "description": "(            'Convert the thumbnails to another format '            f'(currently supported: {\"",
-        "search_count": 1560
+        "description": "(            'Convert the thumbnails to another format '            f'(currently supported: {\""
     },
     "split_chapters": {
         "category": "postproc",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 1280
+        "description": ""
     },
     "remove_chapters": {
         "category": "postproc",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 85
+        "description": ""
     },
     "force_keyframes_at_cuts": {
         "category": "postproc",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 54
+        "description": ""
     },
     "add_postprocessors": {
         "category": "postproc",
         "type": "'str'",
         "default": "[]",
-        "description": "",
-        "search_count": 2
+        "description": ""
     },
     "sponsorblock_mark": {
         "category": "sponsorblock",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 9
+        "description": ""
     },
     "sponsorblock_remove": {
         "category": "sponsorblock",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 10
+        "description": ""
     },
     "sponsorblock_chapter_title": {
         "category": "sponsorblock",
         "type": "str",
         "default": "DEFAULT_SPONSORBLOCK_CHAPTER_TITLE",
-        "description": "(            'An output template for the title of the SponsorBlock chapters created by --sponsorblock-mark. '            'The only available fields are start_time",
-        "search_count": 9
+        "description": "(            'An output template for the title of the SponsorBlock chapters created by --sponsorblock-mark. '            'The only available fields are start_time"
     },
     "no_sponsorblock": {
         "category": "sponsorblock",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 9
+        "description": ""
     },
     "sponsorblock_api": {
         "category": "sponsorblock",
         "type": "str",
         "default": "'https://sponsor.ajay.app'",
-        "description": "'SponsorBlock API location",
-        "search_count": 8
+        "description": "'SponsorBlock API location"
     },
     "sponskrub": {
         "category": "sponsorblock",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 5000
+        "description": ""
     },
     "sponskrub_cut": {
         "category": "sponsorblock",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 103
+        "description": ""
     },
     "sponskrub_force": {
         "category": "sponsorblock",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 69
+        "description": ""
     },
     "sponskrub_path": {
         "category": "sponsorblock",
         "type": "str",
         "default": "''",
-        "description": "",
-        "search_count": 51
+        "description": ""
     },
     "sponskrub_args": {
         "category": "sponsorblock",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 52
+        "description": ""
     },
     "extractor_retries": {
         "category": "extractor",
         "type": "str",
         "default": "3",
-        "description": "",
-        "search_count": 67
+        "description": ""
     },
     "dynamic_mpd": {
         "category": "extractor",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 344
+        "description": ""
     },
     "hls_split_discontinuity": {
         "category": "extractor",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 1430
+        "description": ""
     },
     "extractor_args": {
         "category": "extractor",
         "type": "'str'",
         "default": "{}",
-        "description": "",
-        "search_count": 242
+        "description": ""
     },
     "youtube_include_dash_manifest": {
         "category": "extractor",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 2580
+        "description": ""
     },
     "youtube_include_hls_manifest": {
         "category": "extractor",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 82
+        "description": ""
     }
 }

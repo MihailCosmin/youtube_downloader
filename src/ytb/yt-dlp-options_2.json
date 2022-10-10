@@ -1,0 +1,3548 @@
+{
+    "0": {
+        "category": "general",
+        "dest": "print_help",
+        "option_names": [
+            "h",
+            "help"
+        ],
+        "other_values": {
+            "default": null,
+            "dest": "print_help",
+            "action": "store_true"
+        }
+    },
+    "1": {
+        "category": "general",
+        "dest": "",
+        "option_names": [
+            "version"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "version"
+        }
+    },
+    "2": {
+        "category": "general",
+        "dest": "update_self",
+        "option_names": [
+            "U",
+            "update"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_true",
+            "dest": "update_self"
+        }
+    },
+    "3": {
+        "category": "general",
+        "dest": "update_self",
+        "option_names": [
+            "no-update"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_false",
+            "dest": "update_self"
+        }
+    },
+    "4": {
+        "category": "general",
+        "dest": "ignoreerrors",
+        "option_names": [
+            "i",
+            "ignore-errors"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_true",
+            "dest": "ignoreerrors"
+        }
+    },
+    "5": {
+        "category": "general",
+        "dest": "ignoreerrors",
+        "option_names": [
+            "no-abort-on-error"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_const",
+            "dest": "ignoreerrors",
+            "const": "only_download"
+        }
+    },
+    "6": {
+        "category": "general",
+        "dest": "ignoreerrors",
+        "option_names": [
+            "abort-on-error",
+            "no-ignore-errors"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_false",
+            "dest": "ignoreerrors"
+        }
+    },
+    "7": {
+        "category": "general",
+        "dest": "dump_user_agent",
+        "option_names": [
+            "dump-user-agent"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "dump_user_agent"
+        }
+    },
+    "8": {
+        "category": "general",
+        "dest": "list_extractors",
+        "option_names": [
+            "list-extractors"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "list_extractors"
+        }
+    },
+    "9": {
+        "category": "general",
+        "dest": "list_extractor_descriptions",
+        "option_names": [
+            "extractor-descriptions"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "list_extractor_descriptions"
+        }
+    },
+    "10": {
+        "category": "general",
+        "dest": "allowed_extractors",
+        "option_names": [
+            "use-extractors",
+            "ies"
+        ],
+        "other_values": {
+            "default": "[]",
+            "action": "callback",
+            "dest": "allowed_extractors",
+            "metavar": "NAMES",
+            "type": "str",
+            "callback": "_list_from_options_callback",
+            "help": "(            'Extractor names to use separated by commas. '            'You can also use regexes"
+        }
+    },
+    "11": {
+        "category": "general",
+        "dest": "force_generic_extractor",
+        "option_names": [
+            "force-generic-extractor"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "force_generic_extractor"
+        }
+    },
+    "12": {
+        "category": "general",
+        "dest": "default_search",
+        "option_names": [
+            "default-search"
+        ],
+        "other_values": {
+            "default": null,
+            "dest": "default_search",
+            "metavar": "PREFIX"
+        }
+    },
+    "13": {
+        "category": "general",
+        "dest": "ignoreconfig",
+        "option_names": [
+            "ignore-config",
+            "no-config"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_true",
+            "dest": "ignoreconfig",
+            "help": "(            'Don\\'t load any more configuration files except those given by --config-locations. '            'For backward compatibility"
+        }
+    },
+    "14": {
+        "category": "general",
+        "dest": "config_locations",
+        "option_names": [
+            "no-config-locations"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_const",
+            "dest": "config_locations",
+            "const": "[]"
+        }
+    },
+    "15": {
+        "category": "general",
+        "dest": "config_locations",
+        "option_names": [
+            "config-locations"
+        ],
+        "other_values": {
+            "default": null,
+            "dest": "config_locations",
+            "metavar": "PATH",
+            "action": "append"
+        }
+    },
+    "16": {
+        "category": "general",
+        "dest": "extract_flat",
+        "option_names": [
+            "flat-playlist"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_const",
+            "dest": "extract_flat",
+            "const": "in_playlist",
+            "help": "Do not extract the videos of a playlist"
+        }
+    },
+    "17": {
+        "category": "general",
+        "dest": "extract_flat",
+        "option_names": [
+            "no-flat-playlist"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_false",
+            "dest": "extract_flat"
+        }
+    },
+    "18": {
+        "category": "general",
+        "dest": "live_from_start",
+        "option_names": [
+            "live-from-start"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_true",
+            "dest": "live_from_start"
+        }
+    },
+    "19": {
+        "category": "general",
+        "dest": "live_from_start",
+        "option_names": [
+            "no-live-from-start"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_false",
+            "dest": "live_from_start"
+        }
+    },
+    "20": {
+        "category": "general",
+        "dest": "wait_for_video",
+        "option_names": [
+            "wait-for-video"
+        ],
+        "other_values": {
+            "default": "None",
+            "dest": "wait_for_video",
+            "metavar": "MIN[-MAX]"
+        }
+    },
+    "21": {
+        "category": "general",
+        "dest": "wait_for_video",
+        "option_names": [
+            "no-wait-for-video"
+        ],
+        "other_values": {
+            "default": null,
+            "dest": "wait_for_video",
+            "action": "store_const",
+            "const": "None"
+        }
+    },
+    "22": {
+        "category": "general",
+        "dest": "mark_watched",
+        "option_names": [
+            "mark-watched"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "mark_watched"
+        }
+    },
+    "23": {
+        "category": "general",
+        "dest": "mark_watched",
+        "option_names": [
+            "no-mark-watched"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_false",
+            "dest": "mark_watched"
+        }
+    },
+    "24": {
+        "category": "general",
+        "dest": "no_color",
+        "option_names": [
+            "no-colors",
+            "no-colours"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "no_color"
+        }
+    },
+    "25": {
+        "category": "general",
+        "dest": "compat_opts",
+        "option_names": [
+            "compat-options"
+        ],
+        "other_values": {
+            "default": null,
+            "metavar": "OPTS",
+            "dest": "compat_opts"
+        }
+    },
+    "26": {
+        "category": "general",
+        "dest": "_",
+        "option_names": [
+            "alias"
+        ],
+        "other_values": {
+            "default": null,
+            "metavar": "ALIASES OPTIONS",
+            "dest": "_",
+            "type": "str",
+            "nargs": "2",
+            "action": "callback",
+            "callback": "_create_alias",
+            "help": "(            'Create aliases for an option string. Unless an alias starts with a dash \"-\""
+        }
+    },
+    "27": {
+        "category": "network",
+        "dest": "proxy",
+        "option_names": [
+            "proxy"
+        ],
+        "other_values": {
+            "default": "None",
+            "dest": "proxy",
+            "metavar": "URL",
+            "help": "(            'Use the specified HTTP/HTTPS/SOCKS proxy. To enable SOCKS proxy"
+        }
+    },
+    "28": {
+        "category": "network",
+        "dest": "socket_timeout",
+        "option_names": [
+            "socket-timeout"
+        ],
+        "other_values": {
+            "default": "None",
+            "dest": "socket_timeout",
+            "type": "float",
+            "metavar": "SECONDS",
+            "help": "Time to wait before giving up"
+        }
+    },
+    "29": {
+        "category": "network",
+        "dest": "source_address",
+        "option_names": [
+            "source-address"
+        ],
+        "other_values": {
+            "default": "None",
+            "metavar": "IP",
+            "dest": "source_address",
+            "help": "Client-side IP address to bind to"
+        }
+    },
+    "30": {
+        "category": "network",
+        "dest": "source_address",
+        "option_names": [
+            "4",
+            "force-ipv4"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_const",
+            "const": "0.0.0.0",
+            "dest": "source_address",
+            "help": "Make all connections via IPv4"
+        }
+    },
+    "31": {
+        "category": "network",
+        "dest": "source_address",
+        "option_names": [
+            "6",
+            "force-ipv6"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_const",
+            "const": "::",
+            "dest": "source_address",
+            "help": "Make all connections via IPv6"
+        }
+    },
+    "32": {
+        "category": "geo",
+        "dest": "geo_verification_proxy",
+        "option_names": [
+            "geo-verification-proxy"
+        ],
+        "other_values": {
+            "default": "None",
+            "dest": "geo_verification_proxy",
+            "metavar": "URL",
+            "help": "(            'Use this proxy to verify the IP address for some geo-restricted sites. '            'The default proxy specified by --proxy (or none"
+        }
+    },
+    "33": {
+        "category": "geo",
+        "dest": "cn_verification_proxy",
+        "option_names": [
+            "cn-verification-proxy"
+        ],
+        "other_values": {
+            "default": "None",
+            "dest": "cn_verification_proxy",
+            "metavar": "URL"
+        }
+    },
+    "34": {
+        "category": "geo",
+        "dest": "geo_bypass",
+        "option_names": [
+            "geo-bypass"
+        ],
+        "other_values": {
+            "default": "True",
+            "action": "store_true",
+            "dest": "geo_bypass"
+        }
+    },
+    "35": {
+        "category": "geo",
+        "dest": "geo_bypass",
+        "option_names": [
+            "no-geo-bypass"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_false",
+            "dest": "geo_bypass"
+        }
+    },
+    "36": {
+        "category": "geo",
+        "dest": "geo_bypass_country",
+        "option_names": [
+            "geo-bypass-country"
+        ],
+        "other_values": {
+            "default": "None",
+            "metavar": "CODE",
+            "dest": "geo_bypass_country"
+        }
+    },
+    "37": {
+        "category": "geo",
+        "dest": "geo_bypass_ip_block",
+        "option_names": [
+            "geo-bypass-ip-block"
+        ],
+        "other_values": {
+            "default": "None",
+            "metavar": "IP_BLOCK",
+            "dest": "geo_bypass_ip_block"
+        }
+    },
+    "38": {
+        "category": "selection",
+        "dest": "playliststart",
+        "option_names": [
+            "playlist-start"
+        ],
+        "other_values": {
+            "default": "1",
+            "dest": "playliststart",
+            "metavar": "NUMBER",
+            "type": "int"
+        }
+    },
+    "39": {
+        "category": "selection",
+        "dest": "playlistend",
+        "option_names": [
+            "playlist-end"
+        ],
+        "other_values": {
+            "default": "None",
+            "dest": "playlistend",
+            "metavar": "NUMBER",
+            "type": "int"
+        }
+    },
+    "40": {
+        "category": "selection",
+        "dest": "playlist_items",
+        "option_names": [
+            "I",
+            "playlist-items"
+        ],
+        "other_values": {
+            "default": "None",
+            "dest": "playlist_items",
+            "metavar": "ITEM_SPEC",
+            "help": "(            'Comma separated playlist_index of the videos to download. '            'You can specify a range using \"[START]:[STOP][:STEP]\". For backward compatibility"
+        }
+    },
+    "41": {
+        "category": "selection",
+        "dest": "matchtitle",
+        "option_names": [
+            "match-title"
+        ],
+        "other_values": {
+            "default": null,
+            "dest": "matchtitle",
+            "metavar": "REGEX"
+        }
+    },
+    "42": {
+        "category": "selection",
+        "dest": "rejecttitle",
+        "option_names": [
+            "reject-title"
+        ],
+        "other_values": {
+            "default": null,
+            "dest": "rejecttitle",
+            "metavar": "REGEX"
+        }
+    },
+    "43": {
+        "category": "selection",
+        "dest": "min_filesize",
+        "option_names": [
+            "min-filesize"
+        ],
+        "other_values": {
+            "default": "None",
+            "metavar": "SIZE",
+            "dest": "min_filesize",
+            "help": "Do not download any videos smaller than SIZE"
+        }
+    },
+    "44": {
+        "category": "selection",
+        "dest": "max_filesize",
+        "option_names": [
+            "max-filesize"
+        ],
+        "other_values": {
+            "default": "None",
+            "metavar": "SIZE",
+            "dest": "max_filesize",
+            "help": "Do not download any videos larger than SIZE"
+        }
+    },
+    "45": {
+        "category": "selection",
+        "dest": "date",
+        "option_names": [
+            "date"
+        ],
+        "other_values": {
+            "default": "None",
+            "metavar": "DATE",
+            "dest": "date"
+        }
+    },
+    "46": {
+        "category": "selection",
+        "dest": "datebefore",
+        "option_names": [
+            "datebefore"
+        ],
+        "other_values": {
+            "default": "None",
+            "metavar": "DATE",
+            "dest": "datebefore"
+        }
+    },
+    "47": {
+        "category": "selection",
+        "dest": "dateafter",
+        "option_names": [
+            "dateafter"
+        ],
+        "other_values": {
+            "default": "None",
+            "metavar": "DATE",
+            "dest": "dateafter"
+        }
+    },
+    "48": {
+        "category": "selection",
+        "dest": "min_views",
+        "option_names": [
+            "min-views"
+        ],
+        "other_values": {
+            "default": "None",
+            "metavar": "COUNT",
+            "dest": "min_views",
+            "type": "int"
+        }
+    },
+    "49": {
+        "category": "selection",
+        "dest": "max_views",
+        "option_names": [
+            "max-views"
+        ],
+        "other_values": {
+            "default": "None",
+            "metavar": "COUNT",
+            "dest": "max_views",
+            "type": "int"
+        }
+    },
+    "50": {
+        "category": "selection",
+        "dest": "match_filter",
+        "option_names": [
+            "match-filters"
+        ],
+        "other_values": {
+            "default": null,
+            "metavar": "FILTER",
+            "dest": "match_filter",
+            "action": "append",
+            "help": "(            'Generic video filter. Any \"OUTPUT TEMPLATE\" field can be compared with a '            'number or a string using the operators defined in \"Filtering Formats\". '            'You can also simply specify a field to match if the field is present"
+        }
+    },
+    "51": {
+        "category": "selection",
+        "dest": "match_filter",
+        "option_names": [
+            "no-match-filter"
+        ],
+        "other_values": {
+            "default": null,
+            "metavar": "FILTER",
+            "dest": "match_filter",
+            "action": "store_const",
+            "const": "None"
+        }
+    },
+    "52": {
+        "category": "selection",
+        "dest": "noplaylist",
+        "option_names": [
+            "no-playlist"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "noplaylist",
+            "help": "Download only the video"
+        }
+    },
+    "53": {
+        "category": "selection",
+        "dest": "noplaylist",
+        "option_names": [
+            "yes-playlist"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_false",
+            "dest": "noplaylist",
+            "help": "Download the playlist"
+        }
+    },
+    "54": {
+        "category": "selection",
+        "dest": "age_limit",
+        "option_names": [
+            "age-limit"
+        ],
+        "other_values": {
+            "default": "None",
+            "metavar": "YEARS",
+            "dest": "age_limit",
+            "type": "int"
+        }
+    },
+    "55": {
+        "category": "selection",
+        "dest": "download_archive",
+        "option_names": [
+            "download-archive"
+        ],
+        "other_values": {
+            "default": null,
+            "metavar": "FILE",
+            "dest": "download_archive"
+        }
+    },
+    "56": {
+        "category": "selection",
+        "dest": "download_archive",
+        "option_names": [
+            "no-download-archive"
+        ],
+        "other_values": {
+            "default": null,
+            "dest": "download_archive",
+            "action": "\"store_const\"",
+            "const": "None"
+        }
+    },
+    "57": {
+        "category": "selection",
+        "dest": "max_downloads",
+        "option_names": [
+            "max-downloads"
+        ],
+        "other_values": {
+            "default": "None",
+            "dest": "max_downloads",
+            "metavar": "NUMBER",
+            "type": "int"
+        }
+    },
+    "58": {
+        "category": "selection",
+        "dest": "break_on_existing",
+        "option_names": [
+            "break-on-existing"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "break_on_existing"
+        }
+    },
+    "59": {
+        "category": "selection",
+        "dest": "break_on_reject",
+        "option_names": [
+            "break-on-reject"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "break_on_reject"
+        }
+    },
+    "60": {
+        "category": "selection",
+        "dest": "break_per_url",
+        "option_names": [
+            "break-per-input",
+            "break-on-existing, --break-on-reject, --max-downloads, and autonumber resets per input URL"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "break_per_url",
+            "help": "--break-on-existing"
+        }
+    },
+    "61": {
+        "category": "selection",
+        "dest": "break_per_url",
+        "option_names": [
+            "no-break-per-input",
+            "break-on-existing and similar options terminates the entire download queue"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_false",
+            "dest": "break_per_url"
+        }
+    },
+    "62": {
+        "category": "selection",
+        "dest": "skip_playlist_after_errors",
+        "option_names": [
+            "skip-playlist-after-errors"
+        ],
+        "other_values": {
+            "default": "None",
+            "metavar": "N",
+            "dest": "skip_playlist_after_errors",
+            "type": "int"
+        }
+    },
+    "63": {
+        "category": "selection",
+        "dest": "include_ads",
+        "option_names": [
+            "include-ads"
+        ],
+        "other_values": {
+            "default": null,
+            "dest": "include_ads",
+            "action": "store_true"
+        }
+    },
+    "64": {
+        "category": "selection",
+        "dest": "include_ads",
+        "option_names": [
+            "no-include-ads"
+        ],
+        "other_values": {
+            "default": null,
+            "dest": "include_ads",
+            "action": "store_false"
+        }
+    },
+    "65": {
+        "category": "authentication",
+        "dest": "username",
+        "option_names": [
+            "u",
+            "username"
+        ],
+        "other_values": {
+            "default": null,
+            "dest": "username",
+            "metavar": "USERNAME"
+        }
+    },
+    "66": {
+        "category": "authentication",
+        "dest": "password",
+        "option_names": [
+            "p",
+            "password"
+        ],
+        "other_values": {
+            "default": null,
+            "dest": "password",
+            "metavar": "PASSWORD",
+            "help": "Account password. If this option is left out"
+        }
+    },
+    "67": {
+        "category": "authentication",
+        "dest": "twofactor",
+        "option_names": [
+            "2",
+            "twofactor"
+        ],
+        "other_values": {
+            "default": null,
+            "dest": "twofactor",
+            "metavar": "TWOFACTOR"
+        }
+    },
+    "68": {
+        "category": "authentication",
+        "dest": "usenetrc",
+        "option_names": [
+            "n",
+            "netrc"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "usenetrc"
+        }
+    },
+    "69": {
+        "category": "authentication",
+        "dest": "netrc_location",
+        "option_names": [
+            "netrc-location"
+        ],
+        "other_values": {
+            "default": null,
+            "dest": "netrc_location",
+            "metavar": "PATH"
+        }
+    },
+    "70": {
+        "category": "authentication",
+        "dest": "videopassword",
+        "option_names": [
+            "video-password"
+        ],
+        "other_values": {
+            "default": null,
+            "dest": "videopassword",
+            "metavar": "PASSWORD",
+            "help": "Video password (vimeo"
+        }
+    },
+    "71": {
+        "category": "authentication",
+        "dest": "ap_mso",
+        "option_names": [
+            "ap-mso"
+        ],
+        "other_values": {
+            "default": null,
+            "dest": "ap_mso",
+            "metavar": "MSO"
+        }
+    },
+    "72": {
+        "category": "authentication",
+        "dest": "ap_username",
+        "option_names": [
+            "ap-username"
+        ],
+        "other_values": {
+            "default": null,
+            "dest": "ap_username",
+            "metavar": "USERNAME"
+        }
+    },
+    "73": {
+        "category": "authentication",
+        "dest": "ap_password",
+        "option_names": [
+            "ap-password"
+        ],
+        "other_values": {
+            "default": null,
+            "dest": "ap_password",
+            "metavar": "PASSWORD",
+            "help": "Multiple-system operator account password. If this option is left out"
+        }
+    },
+    "74": {
+        "category": "authentication",
+        "dest": "ap_list_mso",
+        "option_names": [
+            "ap-list-mso"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "ap_list_mso"
+        }
+    },
+    "75": {
+        "category": "authentication",
+        "dest": "client_certificate",
+        "option_names": [
+            "client-certificate"
+        ],
+        "other_values": {
+            "default": null,
+            "dest": "client_certificate",
+            "metavar": "CERTFILE"
+        }
+    },
+    "76": {
+        "category": "authentication",
+        "dest": "client_certificate_key",
+        "option_names": [
+            "client-certificate-key"
+        ],
+        "other_values": {
+            "default": null,
+            "dest": "client_certificate_key",
+            "metavar": "KEYFILE"
+        }
+    },
+    "77": {
+        "category": "authentication",
+        "dest": "client_certificate_password",
+        "option_names": [
+            "client-certificate-password"
+        ],
+        "other_values": {
+            "default": null,
+            "dest": "client_certificate_password",
+            "metavar": "PASSWORD",
+            "help": "Password for client certificate private key"
+        }
+    },
+    "78": {
+        "category": "subtitles",
+        "dest": "writesubtitles",
+        "option_names": [
+            "write-subs",
+            "write-srt"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "writesubtitles"
+        }
+    },
+    "79": {
+        "category": "subtitles",
+        "dest": "writesubtitles",
+        "option_names": [
+            "no-write-subs",
+            "no-write-srt"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_false",
+            "dest": "writesubtitles"
+        }
+    },
+    "80": {
+        "category": "subtitles",
+        "dest": "writeautomaticsub",
+        "option_names": [
+            "write-auto-subs",
+            "write-automatic-subs"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "writeautomaticsub"
+        }
+    },
+    "81": {
+        "category": "subtitles",
+        "dest": "writeautomaticsub",
+        "option_names": [
+            "no-write-auto-subs",
+            "no-write-automatic-subs"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_false",
+            "dest": "writeautomaticsub"
+        }
+    },
+    "82": {
+        "category": "subtitles",
+        "dest": "allsubtitles",
+        "option_names": [
+            "all-subs"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "allsubtitles"
+        }
+    },
+    "83": {
+        "category": "subtitles",
+        "dest": "listsubtitles",
+        "option_names": [
+            "list-subs"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "listsubtitles"
+        }
+    },
+    "84": {
+        "category": "subtitles",
+        "dest": "subtitlesformat",
+        "option_names": [
+            "sub-format"
+        ],
+        "other_values": {
+            "default": "best",
+            "action": "store",
+            "dest": "subtitlesformat",
+            "metavar": "FORMAT",
+            "help": "Subtitle format; accepts formats preference"
+        }
+    },
+    "85": {
+        "category": "subtitles",
+        "dest": "subtitleslangs",
+        "option_names": [
+            "sub-langs",
+            "srt-langs"
+        ],
+        "other_values": {
+            "default": "[]",
+            "action": "callback",
+            "dest": "subtitleslangs",
+            "metavar": "LANGS",
+            "type": "str",
+            "callback": "_list_from_options_callback"
+        }
+    },
+    "86": {
+        "category": "downloader",
+        "dest": "concurrent_fragment_downloads",
+        "option_names": [
+            "N",
+            "concurrent-fragments"
+        ],
+        "other_values": {
+            "default": "1",
+            "dest": "concurrent_fragment_downloads",
+            "metavar": "N",
+            "type": "int"
+        }
+    },
+    "87": {
+        "category": "downloader",
+        "dest": "ratelimit",
+        "option_names": [
+            "r",
+            "limit-rate",
+            "rate-limit"
+        ],
+        "other_values": {
+            "default": null,
+            "dest": "ratelimit",
+            "metavar": "RATE",
+            "help": "Maximum download rate in bytes per second"
+        }
+    },
+    "88": {
+        "category": "downloader",
+        "dest": "throttledratelimit",
+        "option_names": [
+            "throttled-rate"
+        ],
+        "other_values": {
+            "default": null,
+            "dest": "throttledratelimit",
+            "metavar": "RATE",
+            "help": "Minimum download rate in bytes per second below which throttling is assumed and the video data is re-extracted"
+        }
+    },
+    "89": {
+        "category": "downloader",
+        "dest": "retries",
+        "option_names": [
+            "R",
+            "retries"
+        ],
+        "other_values": {
+            "default": "10",
+            "dest": "retries",
+            "metavar": "RETRIES"
+        }
+    },
+    "90": {
+        "category": "downloader",
+        "dest": "file_access_retries",
+        "option_names": [
+            "file-access-retries"
+        ],
+        "other_values": {
+            "default": "3",
+            "dest": "file_access_retries",
+            "metavar": "RETRIES"
+        }
+    },
+    "91": {
+        "category": "downloader",
+        "dest": "fragment_retries",
+        "option_names": [
+            "fragment-retries"
+        ],
+        "other_values": {
+            "default": "10",
+            "dest": "fragment_retries",
+            "metavar": "RETRIES"
+        }
+    },
+    "92": {
+        "category": "downloader",
+        "dest": "retry_sleep",
+        "option_names": [
+            "retry-sleep"
+        ],
+        "other_values": {
+            "default": "{}",
+            "dest": "retry_sleep",
+            "metavar": "[TYPE:]EXPR",
+            "type": "str",
+            "action": "callback",
+            "callback": "_dict_from_options_callback",
+            "kwargs": "{            'allowed_keys': 'http|fragment|file_access|extractor"
+        }
+    },
+    "93": {
+        "category": "downloader",
+        "dest": "skip_unavailable_fragments",
+        "option_names": [
+            "skip-unavailable-fragments",
+            "no-abort-on-unavailable-fragment"
+        ],
+        "other_values": {
+            "default": "True",
+            "action": "store_true",
+            "dest": "skip_unavailable_fragments",
+            "help": "Skip unavailable fragments for DASH"
+        }
+    },
+    "94": {
+        "category": "downloader",
+        "dest": "skip_unavailable_fragments",
+        "option_names": [
+            "abort-on-unavailable-fragment",
+            "no-skip-unavailable-fragments"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_false",
+            "dest": "skip_unavailable_fragments"
+        }
+    },
+    "95": {
+        "category": "downloader",
+        "dest": "keep_fragments",
+        "option_names": [
+            "keep-fragments"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "keep_fragments"
+        }
+    },
+    "96": {
+        "category": "downloader",
+        "dest": "keep_fragments",
+        "option_names": [
+            "no-keep-fragments"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_false",
+            "dest": "keep_fragments"
+        }
+    },
+    "97": {
+        "category": "downloader",
+        "dest": "buffersize",
+        "option_names": [
+            "buffer-size"
+        ],
+        "other_values": {
+            "default": "1024",
+            "dest": "buffersize",
+            "metavar": "SIZE",
+            "help": "Size of download buffer"
+        }
+    },
+    "98": {
+        "category": "downloader",
+        "dest": "noresizebuffer",
+        "option_names": [
+            "resize-buffer"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_false",
+            "dest": "noresizebuffer"
+        }
+    },
+    "99": {
+        "category": "downloader",
+        "dest": "noresizebuffer",
+        "option_names": [
+            "no-resize-buffer"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "noresizebuffer"
+        }
+    },
+    "100": {
+        "category": "downloader",
+        "dest": "http_chunk_size",
+        "option_names": [
+            "http-chunk-size"
+        ],
+        "other_values": {
+            "default": "None",
+            "dest": "http_chunk_size",
+            "metavar": "SIZE",
+            "help": "(            'Size of a chunk for chunk-based HTTP downloading"
+        }
+    },
+    "101": {
+        "category": "downloader",
+        "dest": "test",
+        "option_names": [
+            "test"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "test"
+        }
+    },
+    "102": {
+        "category": "downloader",
+        "dest": "playlist_reverse",
+        "option_names": [
+            "playlist-reverse"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_true",
+            "dest": "playlist_reverse"
+        }
+    },
+    "103": {
+        "category": "downloader",
+        "dest": "playlist_reverse",
+        "option_names": [
+            "no-playlist-reverse"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_false",
+            "dest": "playlist_reverse"
+        }
+    },
+    "104": {
+        "category": "downloader",
+        "dest": "playlist_random",
+        "option_names": [
+            "playlist-random"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_true",
+            "dest": "playlist_random"
+        }
+    },
+    "105": {
+        "category": "downloader",
+        "dest": "lazy_playlist",
+        "option_names": [
+            "lazy-playlist"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_true",
+            "dest": "lazy_playlist",
+            "help": "Process entries in the playlist as they are received. This disables n_entries"
+        }
+    },
+    "106": {
+        "category": "downloader",
+        "dest": "lazy_playlist",
+        "option_names": [
+            "no-lazy-playlist"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_false",
+            "dest": "lazy_playlist"
+        }
+    },
+    "107": {
+        "category": "downloader",
+        "dest": "xattr_set_filesize",
+        "option_names": [
+            "xattr-set-filesize"
+        ],
+        "other_values": {
+            "default": null,
+            "dest": "xattr_set_filesize",
+            "action": "store_true"
+        }
+    },
+    "108": {
+        "category": "downloader",
+        "dest": "hls_prefer_native",
+        "option_names": [
+            "hls-prefer-native"
+        ],
+        "other_values": {
+            "default": "None",
+            "dest": "hls_prefer_native",
+            "action": "store_true"
+        }
+    },
+    "109": {
+        "category": "downloader",
+        "dest": "hls_prefer_native",
+        "option_names": [
+            "hls-prefer-ffmpeg"
+        ],
+        "other_values": {
+            "default": "None",
+            "dest": "hls_prefer_native",
+            "action": "store_false"
+        }
+    },
+    "110": {
+        "category": "downloader",
+        "dest": "hls_use_mpegts",
+        "option_names": [
+            "hls-use-mpegts"
+        ],
+        "other_values": {
+            "default": "None",
+            "dest": "hls_use_mpegts",
+            "action": "store_true",
+            "help": "(            'Use the mpegts container for HLS videos; '            'allowing some players to play the video while downloading"
+        }
+    },
+    "111": {
+        "category": "downloader",
+        "dest": "hls_use_mpegts",
+        "option_names": [
+            "no-hls-use-mpegts"
+        ],
+        "other_values": {
+            "default": null,
+            "dest": "hls_use_mpegts",
+            "action": "store_false"
+        }
+    },
+    "112": {
+        "category": "downloader",
+        "dest": "download_ranges",
+        "option_names": [
+            "download-sections"
+        ],
+        "other_values": {
+            "default": null,
+            "metavar": "REGEX",
+            "dest": "download_ranges",
+            "action": "append",
+            "help": "(            'Download only chapters whose title matches the given regular expression. '            'Time ranges prefixed by a \"*\" can also be used in place of chapters to download the specified range. '            'Needs ffmpeg. This option can be used multiple times to download multiple sections"
+        }
+    },
+    "113": {
+        "category": "downloader",
+        "dest": "external_downloader",
+        "option_names": [
+            "downloader",
+            "external-downloader"
+        ],
+        "other_values": {
+            "default": "{}",
+            "dest": "external_downloader",
+            "metavar": "[PROTO:]NAME",
+            "type": "str",
+            "action": "callback",
+            "callback": "_dict_from_options_callback",
+            "kwargs": "{            'allowed_keys': 'http|ftp|m3u8|dash|rtsp|rtmp|mms"
+        }
+    },
+    "114": {
+        "category": "downloader",
+        "dest": "external_downloader_args",
+        "option_names": [
+            "downloader-args",
+            "external-downloader-args"
+        ],
+        "other_values": {
+            "default": "{}",
+            "metavar": "NAME:ARGS",
+            "dest": "external_downloader_args",
+            "type": "str",
+            "action": "callback",
+            "callback": "_dict_from_options_callback",
+            "kwargs": "{            'allowed_keys': r'ffmpeg_[io]\\d*|%s' % '|'.join(map(re.escape"
+        }
+    },
+    "115": {
+        "category": "workarounds",
+        "dest": "encoding",
+        "option_names": [
+            "encoding"
+        ],
+        "other_values": {
+            "default": null,
+            "dest": "encoding",
+            "metavar": "ENCODING"
+        }
+    },
+    "116": {
+        "category": "workarounds",
+        "dest": "legacy_server_connect",
+        "option_names": [
+            "legacy-server-connect"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "legacy_server_connect"
+        }
+    },
+    "117": {
+        "category": "workarounds",
+        "dest": "no_check_certificate",
+        "option_names": [
+            "no-check-certificates"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "no_check_certificate"
+        }
+    },
+    "118": {
+        "category": "workarounds",
+        "dest": "prefer_insecure",
+        "option_names": [
+            "prefer-insecure",
+            "prefer-unsecure"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_true",
+            "dest": "prefer_insecure"
+        }
+    },
+    "119": {
+        "category": "workarounds",
+        "dest": "user_agent",
+        "option_names": [
+            "user-agent"
+        ],
+        "other_values": {
+            "default": null,
+            "metavar": "UA",
+            "dest": "user_agent"
+        }
+    },
+    "120": {
+        "category": "workarounds",
+        "dest": "referer",
+        "option_names": [
+            "referer"
+        ],
+        "other_values": {
+            "default": "None",
+            "metavar": "URL",
+            "dest": "referer"
+        }
+    },
+    "121": {
+        "category": "workarounds",
+        "dest": "headers",
+        "option_names": [
+            "add-header"
+        ],
+        "other_values": {
+            "default": "{}",
+            "metavar": "FIELD:VALUE",
+            "dest": "headers",
+            "type": "str",
+            "action": "callback",
+            "callback": "_dict_from_options_callback",
+            "kwargs": "{'multiple_keys': False}",
+            "help": "Specify a custom HTTP header and its value"
+        }
+    },
+    "122": {
+        "category": "workarounds",
+        "dest": "bidi_workaround",
+        "option_names": [
+            "bidi-workaround"
+        ],
+        "other_values": {
+            "default": null,
+            "dest": "bidi_workaround",
+            "action": "store_true"
+        }
+    },
+    "123": {
+        "category": "workarounds",
+        "dest": "sleep_interval_requests",
+        "option_names": [
+            "sleep-requests"
+        ],
+        "other_values": {
+            "default": null,
+            "metavar": "SECONDS",
+            "dest": "sleep_interval_requests",
+            "type": "float"
+        }
+    },
+    "124": {
+        "category": "workarounds",
+        "dest": "sleep_interval",
+        "option_names": [
+            "sleep-interval",
+            "min-sleep-interval"
+        ],
+        "other_values": {
+            "default": null,
+            "metavar": "SECONDS",
+            "dest": "sleep_interval",
+            "type": "float"
+        }
+    },
+    "125": {
+        "category": "workarounds",
+        "dest": "max_sleep_interval",
+        "option_names": [
+            "max-sleep-interval"
+        ],
+        "other_values": {
+            "default": null,
+            "metavar": "SECONDS",
+            "dest": "max_sleep_interval",
+            "type": "float"
+        }
+    },
+    "126": {
+        "category": "workarounds",
+        "dest": "sleep_interval_subtitles",
+        "option_names": [
+            "sleep-subtitles"
+        ],
+        "other_values": {
+            "default": "0",
+            "metavar": "SECONDS",
+            "dest": "sleep_interval_subtitles",
+            "type": "int"
+        }
+    },
+    "127": {
+        "category": "verbosity",
+        "dest": "quiet",
+        "option_names": [
+            "q",
+            "quiet"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "quiet",
+            "help": "Activate quiet mode. If used with --verbose"
+        }
+    },
+    "128": {
+        "category": "verbosity",
+        "dest": "no_warnings",
+        "option_names": [
+            "no-warnings"
+        ],
+        "other_values": {
+            "default": "False",
+            "dest": "no_warnings",
+            "action": "store_true"
+        }
+    },
+    "129": {
+        "category": "verbosity",
+        "dest": "simulate",
+        "option_names": [
+            "s",
+            "simulate"
+        ],
+        "other_values": {
+            "default": "None",
+            "action": "store_true",
+            "dest": "simulate"
+        }
+    },
+    "130": {
+        "category": "verbosity",
+        "dest": "simulate",
+        "option_names": [
+            "no-simulate"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_false",
+            "dest": "simulate"
+        }
+    },
+    "131": {
+        "category": "verbosity",
+        "dest": "ignore_no_formats_error",
+        "option_names": [
+            "ignore-no-formats-error"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "ignore_no_formats_error"
+        }
+    },
+    "132": {
+        "category": "verbosity",
+        "dest": "ignore_no_formats_error",
+        "option_names": [
+            "no-ignore-no-formats-error"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_false",
+            "dest": "ignore_no_formats_error"
+        }
+    },
+    "133": {
+        "category": "verbosity",
+        "dest": "skip_download",
+        "option_names": [
+            "skip-download",
+            "no-download"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "skip_download"
+        }
+    },
+    "134": {
+        "category": "verbosity",
+        "dest": "forceprint",
+        "option_names": [
+            "O",
+            "print"
+        ],
+        "other_values": {
+            "default": "{}",
+            "metavar": "[WHEN:]TEMPLATE",
+            "dest": "forceprint",
+            "type": "str",
+            "action": "callback",
+            "callback": "_dict_from_options_callback",
+            "kwargs": "{            'allowed_keys': 'video|' + '|'.join(map(re.escape"
+        }
+    },
+    "135": {
+        "category": "verbosity",
+        "dest": "print_to_file",
+        "option_names": [
+            "print-to-file"
+        ],
+        "other_values": {
+            "default": "{}",
+            "metavar": "[WHEN:]TEMPLATE FILE",
+            "dest": "print_to_file",
+            "type": "str",
+            "nargs": "2",
+            "action": "callback",
+            "callback": "_dict_from_options_callback",
+            "kwargs": "{            'allowed_keys': 'video|' + '|'.join(map(re.escape"
+        }
+    },
+    "136": {
+        "category": "verbosity",
+        "dest": "geturl",
+        "option_names": [
+            "g",
+            "get-url"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "geturl"
+        }
+    },
+    "137": {
+        "category": "verbosity",
+        "dest": "gettitle",
+        "option_names": [
+            "e",
+            "get-title"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "gettitle"
+        }
+    },
+    "138": {
+        "category": "verbosity",
+        "dest": "getid",
+        "option_names": [
+            "get-id"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "getid"
+        }
+    },
+    "139": {
+        "category": "verbosity",
+        "dest": "getthumbnail",
+        "option_names": [
+            "get-thumbnail"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "getthumbnail"
+        }
+    },
+    "140": {
+        "category": "verbosity",
+        "dest": "getdescription",
+        "option_names": [
+            "get-description"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "getdescription"
+        }
+    },
+    "141": {
+        "category": "verbosity",
+        "dest": "getduration",
+        "option_names": [
+            "get-duration"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "getduration"
+        }
+    },
+    "142": {
+        "category": "verbosity",
+        "dest": "getfilename",
+        "option_names": [
+            "get-filename"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "getfilename"
+        }
+    },
+    "143": {
+        "category": "verbosity",
+        "dest": "getformat",
+        "option_names": [
+            "get-format"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "getformat"
+        }
+    },
+    "144": {
+        "category": "verbosity",
+        "dest": "dumpjson",
+        "option_names": [
+            "j",
+            "dump-json"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "dumpjson",
+            "help": "Quiet"
+        }
+    },
+    "145": {
+        "category": "verbosity",
+        "dest": "dump_single_json",
+        "option_names": [
+            "J",
+            "dump-single-json"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "dump_single_json",
+            "help": "(            'Quiet"
+        }
+    },
+    "146": {
+        "category": "verbosity",
+        "dest": "print_json",
+        "option_names": [
+            "print-json"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "print_json"
+        }
+    },
+    "147": {
+        "category": "verbosity",
+        "dest": "force_write_download_archive",
+        "option_names": [
+            "force-write-archive",
+            "force-write-download-archive",
+            "force-download-archive"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "force_write_download_archive",
+            "help": "(            'Force download archive entries to be written as far as no errors occur"
+        }
+    },
+    "148": {
+        "category": "verbosity",
+        "dest": "progress_with_newline",
+        "option_names": [
+            "newline"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "progress_with_newline"
+        }
+    },
+    "149": {
+        "category": "verbosity",
+        "dest": "noprogress",
+        "option_names": [
+            "no-progress"
+        ],
+        "other_values": {
+            "default": "None",
+            "action": "store_true",
+            "dest": "noprogress"
+        }
+    },
+    "150": {
+        "category": "verbosity",
+        "dest": "noprogress",
+        "option_names": [
+            "progress"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_false",
+            "dest": "noprogress",
+            "help": "Show progress bar"
+        }
+    },
+    "151": {
+        "category": "verbosity",
+        "dest": "consoletitle",
+        "option_names": [
+            "console-title"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "consoletitle"
+        }
+    },
+    "152": {
+        "category": "verbosity",
+        "dest": "progress_template",
+        "option_names": [
+            "progress-template"
+        ],
+        "other_values": {
+            "default": "{}",
+            "metavar": "[TYPES:]TEMPLATE",
+            "dest": "progress_template",
+            "type": "str",
+            "action": "callback",
+            "callback": "_dict_from_options_callback"
+        }
+    },
+    "153": {
+        "category": "verbosity",
+        "dest": "verbose",
+        "option_names": [
+            "v",
+            "verbose"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "verbose"
+        }
+    },
+    "154": {
+        "category": "verbosity",
+        "dest": "dump_intermediate_pages",
+        "option_names": [
+            "dump-pages",
+            "dump-intermediate-pages"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "dump_intermediate_pages"
+        }
+    },
+    "155": {
+        "category": "verbosity",
+        "dest": "write_pages",
+        "option_names": [
+            "write-pages"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "write_pages"
+        }
+    },
+    "156": {
+        "category": "verbosity",
+        "dest": "load_pages",
+        "option_names": [
+            "load-pages"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "load_pages"
+        }
+    },
+    "157": {
+        "category": "verbosity",
+        "dest": "youtube_print_sig_code",
+        "option_names": [
+            "youtube-print-sig-code"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "youtube_print_sig_code"
+        }
+    },
+    "158": {
+        "category": "verbosity",
+        "dest": "debug_printtraffic",
+        "option_names": [
+            "print-traffic",
+            "dump-headers"
+        ],
+        "other_values": {
+            "default": "False",
+            "dest": "debug_printtraffic",
+            "action": "store_true"
+        }
+    },
+    "159": {
+        "category": "verbosity",
+        "dest": "call_home",
+        "option_names": [
+            "C",
+            "call-home"
+        ],
+        "other_values": {
+            "default": "False",
+            "dest": "call_home",
+            "action": "store_true"
+        }
+    },
+    "160": {
+        "category": "verbosity",
+        "dest": "call_home",
+        "option_names": [
+            "no-call-home"
+        ],
+        "other_values": {
+            "default": null,
+            "dest": "call_home",
+            "action": "store_false"
+        }
+    },
+    "161": {
+        "category": "filesystem",
+        "dest": "batchfile",
+        "option_names": [
+            "a",
+            "batch-file"
+        ],
+        "other_values": {
+            "default": null,
+            "dest": "batchfile",
+            "metavar": "FILE"
+        }
+    },
+    "162": {
+        "category": "filesystem",
+        "dest": "batchfile",
+        "option_names": [
+            "no-batch-file"
+        ],
+        "other_values": {
+            "default": null,
+            "dest": "batchfile",
+            "action": "store_const",
+            "const": "None"
+        }
+    },
+    "163": {
+        "category": "filesystem",
+        "dest": "useid",
+        "option_names": [
+            "id"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "useid"
+        }
+    },
+    "164": {
+        "category": "filesystem",
+        "dest": "paths",
+        "option_names": [
+            "P",
+            "paths"
+        ],
+        "other_values": {
+            "default": "{}",
+            "metavar": "[TYPES:]PATH",
+            "dest": "paths",
+            "type": "str",
+            "action": "callback",
+            "callback": "_dict_from_options_callback",
+            "kwargs": "{            'allowed_keys': 'home|temp|%s' % '|'.join(map(re.escape"
+        }
+    },
+    "165": {
+        "category": "filesystem",
+        "dest": "outtmpl",
+        "option_names": [
+            "o",
+            "output"
+        ],
+        "other_values": {
+            "default": "{}",
+            "metavar": "[TYPES:]TEMPLATE",
+            "dest": "outtmpl",
+            "type": "str",
+            "action": "callback",
+            "callback": "_dict_from_options_callback",
+            "kwargs": "{            'allowed_keys': '|'.join(map(re.escape"
+        }
+    },
+    "166": {
+        "category": "filesystem",
+        "dest": "outtmpl_na_placeholder",
+        "option_names": [
+            "output-na-placeholder"
+        ],
+        "other_values": {
+            "default": "NA",
+            "dest": "outtmpl_na_placeholder",
+            "metavar": "TEXT"
+        }
+    },
+    "167": {
+        "category": "filesystem",
+        "dest": "autonumber_size",
+        "option_names": [
+            "autonumber-size"
+        ],
+        "other_values": {
+            "default": null,
+            "dest": "autonumber_size",
+            "metavar": "NUMBER",
+            "type": "int"
+        }
+    },
+    "168": {
+        "category": "filesystem",
+        "dest": "autonumber_start",
+        "option_names": [
+            "autonumber-start"
+        ],
+        "other_values": {
+            "default": "1",
+            "dest": "autonumber_start",
+            "metavar": "NUMBER",
+            "type": "int"
+        }
+    },
+    "169": {
+        "category": "filesystem",
+        "dest": "restrictfilenames",
+        "option_names": [
+            "restrict-filenames"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "restrictfilenames",
+            "help": "Restrict filenames to only ASCII characters"
+        }
+    },
+    "170": {
+        "category": "filesystem",
+        "dest": "restrictfilenames",
+        "option_names": [
+            "no-restrict-filenames"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_false",
+            "dest": "restrictfilenames",
+            "help": "Allow Unicode characters"
+        }
+    },
+    "171": {
+        "category": "filesystem",
+        "dest": "windowsfilenames",
+        "option_names": [
+            "windows-filenames"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "windowsfilenames"
+        }
+    },
+    "172": {
+        "category": "filesystem",
+        "dest": "windowsfilenames",
+        "option_names": [
+            "no-windows-filenames"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_false",
+            "dest": "windowsfilenames"
+        }
+    },
+    "173": {
+        "category": "filesystem",
+        "dest": "trim_file_name",
+        "option_names": [
+            "trim-filenames",
+            "trim-file-names"
+        ],
+        "other_values": {
+            "default": "0",
+            "metavar": "LENGTH",
+            "dest": "trim_file_name",
+            "type": "int"
+        }
+    },
+    "174": {
+        "category": "filesystem",
+        "dest": "overwrites",
+        "option_names": [
+            "w",
+            "no-overwrites"
+        ],
+        "other_values": {
+            "default": "None",
+            "action": "store_false",
+            "dest": "overwrites"
+        }
+    },
+    "175": {
+        "category": "filesystem",
+        "dest": "overwrites",
+        "option_names": [
+            "force-overwrites",
+            "yes-overwrites"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_true",
+            "dest": "overwrites"
+        }
+    },
+    "176": {
+        "category": "filesystem",
+        "dest": "overwrites",
+        "option_names": [
+            "no-force-overwrites"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_const",
+            "dest": "overwrites",
+            "const": "None",
+            "help": "Do not overwrite the video"
+        }
+    },
+    "177": {
+        "category": "filesystem",
+        "dest": "continue_dl",
+        "option_names": [
+            "c",
+            "continue"
+        ],
+        "other_values": {
+            "default": "True",
+            "action": "store_true",
+            "dest": "continue_dl"
+        }
+    },
+    "178": {
+        "category": "filesystem",
+        "dest": "continue_dl",
+        "option_names": [
+            "no-continue"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_false",
+            "dest": "continue_dl",
+            "help": "(            'Do not resume partially downloaded fragments. '            'If the file is not fragmented"
+        }
+    },
+    "179": {
+        "category": "filesystem",
+        "dest": "nopart",
+        "option_names": [
+            "part"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_false",
+            "dest": "nopart"
+        }
+    },
+    "180": {
+        "category": "filesystem",
+        "dest": "nopart",
+        "option_names": [
+            "no-part"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_true",
+            "dest": "nopart"
+        }
+    },
+    "181": {
+        "category": "filesystem",
+        "dest": "updatetime",
+        "option_names": [
+            "mtime"
+        ],
+        "other_values": {
+            "default": "True",
+            "action": "store_true",
+            "dest": "updatetime"
+        }
+    },
+    "182": {
+        "category": "filesystem",
+        "dest": "updatetime",
+        "option_names": [
+            "no-mtime"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_false",
+            "dest": "updatetime"
+        }
+    },
+    "183": {
+        "category": "filesystem",
+        "dest": "writedescription",
+        "option_names": [
+            "write-description"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "writedescription"
+        }
+    },
+    "184": {
+        "category": "filesystem",
+        "dest": "writedescription",
+        "option_names": [
+            "no-write-description"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_false",
+            "dest": "writedescription"
+        }
+    },
+    "185": {
+        "category": "filesystem",
+        "dest": "writeinfojson",
+        "option_names": [
+            "write-info-json"
+        ],
+        "other_values": {
+            "default": "None",
+            "action": "store_true",
+            "dest": "writeinfojson"
+        }
+    },
+    "186": {
+        "category": "filesystem",
+        "dest": "writeinfojson",
+        "option_names": [
+            "no-write-info-json"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_false",
+            "dest": "writeinfojson"
+        }
+    },
+    "187": {
+        "category": "filesystem",
+        "dest": "writeannotations",
+        "option_names": [
+            "write-annotations"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "writeannotations"
+        }
+    },
+    "188": {
+        "category": "filesystem",
+        "dest": "writeannotations",
+        "option_names": [
+            "no-write-annotations"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_false",
+            "dest": "writeannotations"
+        }
+    },
+    "189": {
+        "category": "filesystem",
+        "dest": "allow_playlist_files",
+        "option_names": [
+            "write-playlist-metafiles"
+        ],
+        "other_values": {
+            "default": "None",
+            "action": "store_true",
+            "dest": "allow_playlist_files",
+            "help": "(            'Write playlist metadata in addition to the video metadata '            'when using --write-info-json"
+        }
+    },
+    "190": {
+        "category": "filesystem",
+        "dest": "allow_playlist_files",
+        "option_names": [
+            "no-write-playlist-metafiles"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_false",
+            "dest": "allow_playlist_files",
+            "help": "Do not write playlist metadata when using --write-info-json"
+        }
+    },
+    "191": {
+        "category": "filesystem",
+        "dest": "clean_infojson",
+        "option_names": [
+            "clean-info-json",
+            "clean-infojson"
+        ],
+        "other_values": {
+            "default": "None",
+            "action": "store_true",
+            "dest": "clean_infojson"
+        }
+    },
+    "192": {
+        "category": "filesystem",
+        "dest": "clean_infojson",
+        "option_names": [
+            "no-clean-info-json",
+            "no-clean-infojson"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_false",
+            "dest": "clean_infojson"
+        }
+    },
+    "193": {
+        "category": "filesystem",
+        "dest": "getcomments",
+        "option_names": [
+            "write-comments",
+            "get-comments"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "getcomments"
+        }
+    },
+    "194": {
+        "category": "filesystem",
+        "dest": "getcomments",
+        "option_names": [
+            "no-write-comments",
+            "no-get-comments"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_false",
+            "dest": "getcomments"
+        }
+    },
+    "195": {
+        "category": "filesystem",
+        "dest": "load_info_filename",
+        "option_names": [
+            "load-info-json",
+            "load-info"
+        ],
+        "other_values": {
+            "default": null,
+            "dest": "load_info_filename",
+            "metavar": "FILE"
+        }
+    },
+    "196": {
+        "category": "filesystem",
+        "dest": "cookiefile",
+        "option_names": [
+            "cookies"
+        ],
+        "other_values": {
+            "default": null,
+            "dest": "cookiefile",
+            "metavar": "FILE"
+        }
+    },
+    "197": {
+        "category": "filesystem",
+        "dest": "cookiefile",
+        "option_names": [
+            "no-cookies"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_const",
+            "const": "None",
+            "dest": "cookiefile",
+            "metavar": "FILE"
+        }
+    },
+    "198": {
+        "category": "filesystem",
+        "dest": "cookiesfrombrowser",
+        "option_names": [
+            "cookies-from-browser"
+        ],
+        "other_values": {
+            "default": null,
+            "dest": "cookiesfrombrowser",
+            "metavar": "BROWSER[+KEYRING][:PROFILE][::CONTAINER]",
+            "help": "(            'The name of the browser to load cookies from. '            f'Currently supported browsers are: {\""
+        }
+    },
+    "199": {
+        "category": "filesystem",
+        "dest": "cookiesfrombrowser",
+        "option_names": [
+            "no-cookies-from-browser"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_const",
+            "const": "None",
+            "dest": "cookiesfrombrowser"
+        }
+    },
+    "200": {
+        "category": "filesystem",
+        "dest": "cachedir",
+        "option_names": [
+            "cache-dir"
+        ],
+        "other_values": {
+            "default": "None",
+            "dest": "cachedir",
+            "metavar": "DIR"
+        }
+    },
+    "201": {
+        "category": "filesystem",
+        "dest": "cachedir",
+        "option_names": [
+            "no-cache-dir"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_false",
+            "dest": "cachedir"
+        }
+    },
+    "202": {
+        "category": "filesystem",
+        "dest": "rm_cachedir",
+        "option_names": [
+            "rm-cache-dir"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_true",
+            "dest": "rm_cachedir"
+        }
+    },
+    "203": {
+        "category": "thumbnail",
+        "dest": "writethumbnail",
+        "option_names": [
+            "write-thumbnail"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "callback",
+            "dest": "writethumbnail",
+            "callback": "lambda option"
+        }
+    },
+    "204": {
+        "category": "thumbnail",
+        "dest": "writethumbnail",
+        "option_names": [
+            "no-write-thumbnail"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_false",
+            "dest": "writethumbnail"
+        }
+    },
+    "205": {
+        "category": "thumbnail",
+        "dest": "writethumbnail",
+        "option_names": [
+            "write-all-thumbnails"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_const",
+            "dest": "writethumbnail",
+            "const": "all"
+        }
+    },
+    "206": {
+        "category": "thumbnail",
+        "dest": "list_thumbnails",
+        "option_names": [
+            "list-thumbnails"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "list_thumbnails"
+        }
+    },
+    "207": {
+        "category": "link",
+        "dest": "writelink",
+        "option_names": [
+            "write-link"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "writelink",
+            "help": "Write an internet shortcut file"
+        }
+    },
+    "208": {
+        "category": "link",
+        "dest": "writeurllink",
+        "option_names": [
+            "write-url-link"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "writeurllink"
+        }
+    },
+    "209": {
+        "category": "link",
+        "dest": "writewebloclink",
+        "option_names": [
+            "write-webloc-link"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "writewebloclink"
+        }
+    },
+    "210": {
+        "category": "link",
+        "dest": "writedesktoplink",
+        "option_names": [
+            "write-desktop-link"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "writedesktoplink"
+        }
+    },
+    "211": {
+        "category": "postproc",
+        "dest": "extractaudio",
+        "option_names": [
+            "x",
+            "extract-audio"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "extractaudio"
+        }
+    },
+    "212": {
+        "category": "postproc",
+        "dest": "audioformat",
+        "option_names": [
+            "audio-format"
+        ],
+        "other_values": {
+            "default": "best",
+            "metavar": "FORMAT",
+            "dest": "audioformat"
+        }
+    },
+    "213": {
+        "category": "postproc",
+        "dest": "audioquality",
+        "option_names": [
+            "audio-quality"
+        ],
+        "other_values": {
+            "default": "5",
+            "metavar": "QUALITY",
+            "dest": "audioquality"
+        }
+    },
+    "214": {
+        "category": "postproc",
+        "dest": "remuxvideo",
+        "option_names": [
+            "remux-video"
+        ],
+        "other_values": {
+            "default": "None",
+            "metavar": "FORMAT",
+            "dest": "remuxvideo",
+            "help": "(            'Remux the video into another container if necessary '            f'(currently supported: {\""
+        }
+    },
+    "215": {
+        "category": "postproc",
+        "dest": "recodevideo",
+        "option_names": [
+            "recode-video"
+        ],
+        "other_values": {
+            "default": "None",
+            "metavar": "FORMAT",
+            "dest": "recodevideo"
+        }
+    },
+    "216": {
+        "category": "postproc",
+        "dest": "postprocessor_args",
+        "option_names": [
+            "postprocessor-args",
+            "ppa"
+        ],
+        "other_values": {
+            "default": "{}",
+            "metavar": "NAME:ARGS",
+            "dest": "postprocessor_args",
+            "type": "str",
+            "action": "callback",
+            "callback": "_dict_from_options_callback"
+        }
+    },
+    "217": {
+        "category": "postproc",
+        "dest": "keepvideo",
+        "option_names": [
+            "k",
+            "keep-video"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "keepvideo"
+        }
+    },
+    "218": {
+        "category": "postproc",
+        "dest": "keepvideo",
+        "option_names": [
+            "no-keep-video"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_false",
+            "dest": "keepvideo"
+        }
+    },
+    "219": {
+        "category": "postproc",
+        "dest": "nopostoverwrites",
+        "option_names": [
+            "post-overwrites"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_false",
+            "dest": "nopostoverwrites"
+        }
+    },
+    "220": {
+        "category": "postproc",
+        "dest": "nopostoverwrites",
+        "option_names": [
+            "no-post-overwrites"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "nopostoverwrites"
+        }
+    },
+    "221": {
+        "category": "postproc",
+        "dest": "embedsubtitles",
+        "option_names": [
+            "embed-subs"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "embedsubtitles",
+            "help": "Embed subtitles in the video (only for mp4"
+        }
+    },
+    "222": {
+        "category": "postproc",
+        "dest": "embedsubtitles",
+        "option_names": [
+            "no-embed-subs"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_false",
+            "dest": "embedsubtitles"
+        }
+    },
+    "223": {
+        "category": "postproc",
+        "dest": "embedthumbnail",
+        "option_names": [
+            "embed-thumbnail"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "embedthumbnail"
+        }
+    },
+    "224": {
+        "category": "postproc",
+        "dest": "embedthumbnail",
+        "option_names": [
+            "no-embed-thumbnail"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_false",
+            "dest": "embedthumbnail"
+        }
+    },
+    "225": {
+        "category": "postproc",
+        "dest": "addmetadata",
+        "option_names": [
+            "embed-metadata",
+            "add-metadata"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "addmetadata"
+        }
+    },
+    "226": {
+        "category": "postproc",
+        "dest": "addmetadata",
+        "option_names": [
+            "no-embed-metadata",
+            "no-add-metadata"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_false",
+            "dest": "addmetadata"
+        }
+    },
+    "227": {
+        "category": "postproc",
+        "dest": "addchapters",
+        "option_names": [
+            "embed-chapters",
+            "add-chapters"
+        ],
+        "other_values": {
+            "default": "None",
+            "action": "store_true",
+            "dest": "addchapters"
+        }
+    },
+    "228": {
+        "category": "postproc",
+        "dest": "addchapters",
+        "option_names": [
+            "no-embed-chapters",
+            "no-add-chapters"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_false",
+            "dest": "addchapters"
+        }
+    },
+    "229": {
+        "category": "postproc",
+        "dest": "embed_infojson",
+        "option_names": [
+            "embed-info-json"
+        ],
+        "other_values": {
+            "default": "None",
+            "action": "store_true",
+            "dest": "embed_infojson"
+        }
+    },
+    "230": {
+        "category": "postproc",
+        "dest": "embed_infojson",
+        "option_names": [
+            "no-embed-info-json"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_false",
+            "dest": "embed_infojson"
+        }
+    },
+    "231": {
+        "category": "postproc",
+        "dest": "metafromtitle",
+        "option_names": [
+            "metadata-from-title"
+        ],
+        "other_values": {
+            "default": null,
+            "metavar": "FORMAT",
+            "dest": "metafromtitle"
+        }
+    },
+    "232": {
+        "category": "postproc",
+        "dest": "parse_metadata",
+        "option_names": [
+            "parse-metadata"
+        ],
+        "other_values": {
+            "default": null,
+            "metavar": "FROM:TO",
+            "dest": "parse_metadata",
+            "action": "append"
+        }
+    },
+    "233": {
+        "category": "postproc",
+        "dest": "parse_metadata",
+        "option_names": [
+            "replace-in-metadata"
+        ],
+        "other_values": {
+            "default": null,
+            "dest": "parse_metadata",
+            "metavar": "FIELDS REGEX REPLACE",
+            "action": "append",
+            "nargs": "3"
+        }
+    },
+    "234": {
+        "category": "postproc",
+        "dest": "xattrs",
+        "option_names": [
+            "xattrs",
+            "xattr"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "xattrs"
+        }
+    },
+    "235": {
+        "category": "postproc",
+        "dest": "concat_playlist",
+        "option_names": [
+            "concat-playlist"
+        ],
+        "other_values": {
+            "default": "multi_video",
+            "metavar": "POLICY",
+            "dest": "concat_playlist",
+            "choices": "('never"
+        }
+    },
+    "236": {
+        "category": "postproc",
+        "dest": "fixup",
+        "option_names": [
+            "fixup"
+        ],
+        "other_values": {
+            "default": "None",
+            "metavar": "POLICY",
+            "dest": "fixup",
+            "choices": "('never"
+        }
+    },
+    "237": {
+        "category": "postproc",
+        "dest": "prefer_ffmpeg",
+        "option_names": [
+            "prefer-avconv",
+            "no-prefer-ffmpeg"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_false",
+            "dest": "prefer_ffmpeg"
+        }
+    },
+    "238": {
+        "category": "postproc",
+        "dest": "prefer_ffmpeg",
+        "option_names": [
+            "prefer-ffmpeg",
+            "no-prefer-avconv"
+        ],
+        "other_values": {
+            "default": "True",
+            "action": "store_true",
+            "dest": "prefer_ffmpeg"
+        }
+    },
+    "239": {
+        "category": "postproc",
+        "dest": "ffmpeg_location",
+        "option_names": [
+            "ffmpeg-location",
+            "avconv-location"
+        ],
+        "other_values": {
+            "default": null,
+            "metavar": "PATH",
+            "dest": "ffmpeg_location"
+        }
+    },
+    "240": {
+        "category": "postproc",
+        "dest": "exec_cmd",
+        "option_names": [
+            "exec"
+        ],
+        "other_values": {
+            "default": "{}",
+            "metavar": "[WHEN:]CMD",
+            "dest": "exec_cmd",
+            "type": "str",
+            "action": "callback",
+            "callback": "_dict_from_options_callback",
+            "kwargs": "{            'allowed_keys': '|'.join(map(re.escape"
+        }
+    },
+    "241": {
+        "category": "postproc",
+        "dest": "exec_cmd",
+        "option_names": [
+            "no-exec"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_const",
+            "dest": "exec_cmd",
+            "const": "{}"
+        }
+    },
+    "242": {
+        "category": "postproc",
+        "dest": "exec_before_dl_cmd",
+        "option_names": [
+            "exec-before-download"
+        ],
+        "other_values": {
+            "default": null,
+            "metavar": "CMD",
+            "action": "append",
+            "dest": "exec_before_dl_cmd"
+        }
+    },
+    "243": {
+        "category": "postproc",
+        "dest": "exec_before_dl_cmd",
+        "option_names": [
+            "no-exec-before-download"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_const",
+            "dest": "exec_before_dl_cmd",
+            "const": "None"
+        }
+    },
+    "244": {
+        "category": "postproc",
+        "dest": "convertsubtitles",
+        "option_names": [
+            "convert-subs",
+            "convert-sub",
+            "convert-subtitles"
+        ],
+        "other_values": {
+            "default": "None",
+            "metavar": "FORMAT",
+            "dest": "convertsubtitles"
+        }
+    },
+    "245": {
+        "category": "postproc",
+        "dest": "convertthumbnails",
+        "option_names": [
+            "convert-thumbnails"
+        ],
+        "other_values": {
+            "default": "None",
+            "metavar": "FORMAT",
+            "dest": "convertthumbnails",
+            "help": "(            'Convert the thumbnails to another format '            f'(currently supported: {\""
+        }
+    },
+    "246": {
+        "category": "postproc",
+        "dest": "split_chapters",
+        "option_names": [
+            "split-chapters",
+            "split-tracks"
+        ],
+        "other_values": {
+            "default": "False",
+            "dest": "split_chapters",
+            "action": "store_true"
+        }
+    },
+    "247": {
+        "category": "postproc",
+        "dest": "split_chapters",
+        "option_names": [
+            "no-split-chapters",
+            "no-split-tracks"
+        ],
+        "other_values": {
+            "default": null,
+            "dest": "split_chapters",
+            "action": "store_false"
+        }
+    },
+    "248": {
+        "category": "postproc",
+        "dest": "remove_chapters",
+        "option_names": [
+            "remove-chapters"
+        ],
+        "other_values": {
+            "default": null,
+            "metavar": "REGEX",
+            "dest": "remove_chapters",
+            "action": "append"
+        }
+    },
+    "249": {
+        "category": "postproc",
+        "dest": "remove_chapters",
+        "option_names": [
+            "no-remove-chapters"
+        ],
+        "other_values": {
+            "default": null,
+            "dest": "remove_chapters",
+            "action": "store_const",
+            "const": "None"
+        }
+    },
+    "250": {
+        "category": "postproc",
+        "dest": "force_keyframes_at_cuts",
+        "option_names": [
+            "force-keyframes-at-cuts"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "force_keyframes_at_cuts",
+            "help": "(            'Force keyframes at cuts when downloading/splitting/removing sections. '            'This is slow due to needing a re-encode"
+        }
+    },
+    "251": {
+        "category": "postproc",
+        "dest": "force_keyframes_at_cuts",
+        "option_names": [
+            "no-force-keyframes-at-cuts"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_false",
+            "dest": "force_keyframes_at_cuts"
+        }
+    },
+    "252": {
+        "category": "postproc",
+        "dest": "add_postprocessors",
+        "option_names": [
+            "use-postprocessor"
+        ],
+        "other_values": {
+            "default": "[]",
+            "metavar": "NAME[:ARGS]",
+            "dest": "add_postprocessors",
+            "type": "str",
+            "action": "callback",
+            "callback": "_list_from_options_callback",
+            "kwargs": "{            'delim': None"
+        }
+    },
+    "253": {
+        "category": "sponsorblock",
+        "dest": "sponsorblock_mark",
+        "option_names": [
+            "sponsorblock-mark"
+        ],
+        "other_values": {
+            "default": null,
+            "metavar": "CATS",
+            "dest": "sponsorblock_mark"
+        }
+    },
+    "254": {
+        "category": "sponsorblock",
+        "dest": "sponsorblock_remove",
+        "option_names": [
+            "sponsorblock-remove"
+        ],
+        "other_values": {
+            "default": null,
+            "metavar": "CATS",
+            "dest": "sponsorblock_remove"
+        }
+    },
+    "255": {
+        "category": "sponsorblock",
+        "dest": "sponsorblock_chapter_title",
+        "option_names": [
+            "sponsorblock-chapter-title"
+        ],
+        "other_values": {
+            "default": "DEFAULT_SPONSORBLOCK_CHAPTER_TITLE",
+            "metavar": "TEMPLATE",
+            "dest": "sponsorblock_chapter_title",
+            "help": "(            'An output template for the title of the SponsorBlock chapters created by --sponsorblock-mark. '            'The only available fields are start_time"
+        }
+    },
+    "256": {
+        "category": "sponsorblock",
+        "dest": "no_sponsorblock",
+        "option_names": [
+            "no-sponsorblock"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "no_sponsorblock"
+        }
+    },
+    "257": {
+        "category": "sponsorblock",
+        "dest": "sponsorblock_api",
+        "option_names": [
+            "sponsorblock-api"
+        ],
+        "other_values": {
+            "default": "https://sponsor.ajay.app",
+            "metavar": "URL",
+            "dest": "sponsorblock_api",
+            "help": "SponsorBlock API location"
+        }
+    },
+    "258": {
+        "category": "sponsorblock",
+        "dest": "sponskrub",
+        "option_names": [
+            "sponskrub"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "sponskrub"
+        }
+    },
+    "259": {
+        "category": "sponsorblock",
+        "dest": "sponskrub",
+        "option_names": [
+            "no-sponskrub"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_false",
+            "dest": "sponskrub"
+        }
+    },
+    "260": {
+        "category": "sponsorblock",
+        "dest": "sponskrub_cut",
+        "option_names": [
+            "sponskrub-cut"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "sponskrub_cut"
+        }
+    },
+    "261": {
+        "category": "sponsorblock",
+        "dest": "sponskrub_cut",
+        "option_names": [
+            "no-sponskrub-cut"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_false",
+            "dest": "sponskrub_cut"
+        }
+    },
+    "262": {
+        "category": "sponsorblock",
+        "dest": "sponskrub_force",
+        "option_names": [
+            "sponskrub-force"
+        ],
+        "other_values": {
+            "default": "False",
+            "action": "store_true",
+            "dest": "sponskrub_force"
+        }
+    },
+    "263": {
+        "category": "sponsorblock",
+        "dest": "sponskrub_force",
+        "option_names": [
+            "no-sponskrub-force"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_true",
+            "dest": "sponskrub_force"
+        }
+    },
+    "264": {
+        "category": "sponsorblock",
+        "dest": "sponskrub_path",
+        "option_names": [
+            "sponskrub-location"
+        ],
+        "other_values": {
+            "default": "",
+            "metavar": "PATH",
+            "dest": "sponskrub_path"
+        }
+    },
+    "265": {
+        "category": "sponsorblock",
+        "dest": "sponskrub_args",
+        "option_names": [
+            "sponskrub-args"
+        ],
+        "other_values": {
+            "default": null,
+            "dest": "sponskrub_args",
+            "metavar": "ARGS"
+        }
+    },
+    "266": {
+        "category": "extractor",
+        "dest": "extractor_retries",
+        "option_names": [
+            "extractor-retries"
+        ],
+        "other_values": {
+            "default": "3",
+            "dest": "extractor_retries",
+            "metavar": "RETRIES"
+        }
+    },
+    "267": {
+        "category": "extractor",
+        "dest": "dynamic_mpd",
+        "option_names": [
+            "allow-dynamic-mpd",
+            "no-ignore-dynamic-mpd"
+        ],
+        "other_values": {
+            "default": "True",
+            "action": "store_true",
+            "dest": "dynamic_mpd"
+        }
+    },
+    "268": {
+        "category": "extractor",
+        "dest": "dynamic_mpd",
+        "option_names": [
+            "ignore-dynamic-mpd",
+            "no-allow-dynamic-mpd"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_false",
+            "dest": "dynamic_mpd"
+        }
+    },
+    "269": {
+        "category": "extractor",
+        "dest": "hls_split_discontinuity",
+        "option_names": [
+            "hls-split-discontinuity"
+        ],
+        "other_values": {
+            "default": "False",
+            "dest": "hls_split_discontinuity",
+            "action": "store_true"
+        }
+    },
+    "270": {
+        "category": "extractor",
+        "dest": "hls_split_discontinuity",
+        "option_names": [
+            "no-hls-split-discontinuity"
+        ],
+        "other_values": {
+            "default": null,
+            "dest": "hls_split_discontinuity",
+            "action": "store_false"
+        }
+    },
+    "271": {
+        "category": "extractor",
+        "dest": "extractor_args",
+        "option_names": [
+            "extractor-args"
+        ],
+        "other_values": {
+            "default": "{}",
+            "metavar": "IE_KEY:ARGS",
+            "dest": "extractor_args",
+            "type": "str",
+            "action": "callback",
+            "callback": "_dict_from_options_callback",
+            "kwargs": "{            'multiple_keys': False"
+        }
+    },
+    "272": {
+        "category": "extractor",
+        "dest": "youtube_include_dash_manifest",
+        "option_names": [
+            "youtube-include-dash-manifest",
+            "no-youtube-skip-dash-manifest"
+        ],
+        "other_values": {
+            "default": "True",
+            "action": "store_true",
+            "dest": "youtube_include_dash_manifest"
+        }
+    },
+    "273": {
+        "category": "extractor",
+        "dest": "youtube_include_dash_manifest",
+        "option_names": [
+            "youtube-skip-dash-manifest",
+            "no-youtube-include-dash-manifest"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_false",
+            "dest": "youtube_include_dash_manifest"
+        }
+    },
+    "274": {
+        "category": "extractor",
+        "dest": "youtube_include_hls_manifest",
+        "option_names": [
+            "youtube-include-hls-manifest",
+            "no-youtube-skip-hls-manifest"
+        ],
+        "other_values": {
+            "default": "True",
+            "action": "store_true",
+            "dest": "youtube_include_hls_manifest"
+        }
+    },
+    "275": {
+        "category": "extractor",
+        "dest": "youtube_include_hls_manifest",
+        "option_names": [
+            "youtube-skip-hls-manifest",
+            "no-youtube-include-hls-manifest"
+        ],
+        "other_values": {
+            "default": null,
+            "action": "store_false",
+            "dest": "youtube_include_hls_manifest"
+        }
+    }
+}
