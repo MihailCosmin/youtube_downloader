@@ -18,8 +18,8 @@ with open("easylist_clean.txt", "r", encoding="utf-8") as _:
 class WebEngineUrlRequestInterceptor(QtWebEngineCore.QWebEngineUrlRequestInterceptor):
     def __init__(self, parent=None):
         super().__init__(parent)
-        with open("accepted_urls.txt", "w", encoding="utf-8") as _:
-            _.write("")
+        # with open("accepted_urls.txt", "w", encoding="utf-8") as _:
+        #     _.write("")
 
     def interceptRequest(self, info):
         url = info.requestUrl().toString()
@@ -40,9 +40,9 @@ class WebEngineUrlRequestInterceptor(QtWebEngineCore.QWebEngineUrlRequestInterce
             print(f"4 - {current_time} - block::::::::::::::::::::::", url)
             info.block(True)
             return
-        else:
-            with open("accepted_urls.txt", "a", encoding="utf-8") as _:
-                _.write(f"{current_time} - {url}\n")
+        # else:
+        #     with open("accepted_urls.txt", "a", encoding="utf-8") as _:
+        #         _.write(f"{current_time} - {url}\n")
 
 class RightWidget(QtWidgets.QWidget):
     def __init__(self, parent=None):
