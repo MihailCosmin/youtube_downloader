@@ -6,13 +6,6 @@
         "description": "",
         "search_count": 320
     },
-    "": {
-        "category": "general",
-        "type": "str",
-        "default": null,
-        "description": "",
-        "search_count": 1040000
-    },
     "update_self": {
         "category": "general",
         "type": "str",
@@ -124,13 +117,6 @@
         "default": null,
         "description": "",
         "search_count": 376
-    },
-    "_": {
-        "category": "general",
-        "type": "'str'",
-        "default": null,
-        "description": "(            'Create aliases for an option string. Unless an alias starts with a dash \"-\"",
-        "search_count": 152000
     },
     "proxy": {
         "category": "network",

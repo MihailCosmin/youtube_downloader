@@ -18,6 +18,7 @@ from PySide6.QtWidgets import QApplication
 from PySide6.QtWidgets import QMainWindow
 from PySide6.QtWidgets import QHBoxLayout
 from PySide6.QtWidgets import QVBoxLayout
+from PySide6.QtWidgets import QCheckBox
 from PySide6.QtWidgets import QLineEdit
 
 from PySide6.QtCore import QPropertyAnimation
@@ -94,7 +95,7 @@ class SplitWindowYoutubeBrowser(QMainWindow):
 
         self.settings_widget = SettingsWidget(parent=self)
         self.settings_widget.setObjectName(u"settings_widget")
-        
+
         self.left_widget = LeftWidget(parent=self)
         self.left_widget.setObjectName(u"left_widget")
 
@@ -131,7 +132,7 @@ class SplitWindowYoutubeBrowser(QMainWindow):
             with open("src/config/config.json", "r", encoding="utf-8") as _:
                 self.config = load(_)
 
-    def update_config(self, key: str, value: str, youtube: bool):
+    def update_config(self, key: str, value, youtube: bool):
         self.config[key] = (value, youtube)
         if youtube:
             self.ydl.update_dl_ops(key, value)
@@ -175,11 +176,36 @@ class SplitWindowYoutubeBrowser(QMainWindow):
             self.animation.setEndValue(self.right_width + self.left_width)
             self.animation.setEasingCurve(QEasingCurve.InOutQuart)
             self.animation.start()
-        
-        print(self.findChild(QLineEdit, "buffersize_line_edit").text())
-        # TODO: create function 
-        # For keys, default values in src/ytb/yt-dlp-options2.json
-        # if self.findChild(QLineEdit, "buffersize_line_edit").text() != default_value: save to config
+
+        self.save_settings()
+
+    def save_settings(self):
+        """save_settings
+        """
+        with open("src/ytb/yt-dlp-options2.json", "r", encoding="utf-8") as _:
+            opt = load(_)
+        for key, value in opt.items():
+            try:
+                if value["type"] == "bool" or value["default"] in ("True", "False"):
+                    if key not in self.config:
+                        if str(self.findChild(QCheckBox, f"{key}_line_edit").isChecked()) != value["default"]:
+                            self.update_config(key, self.findChild(QCheckBox, f"{key}_line_edit").isChecked(), True)
+                    else:
+                        if str(self.findChild(QCheckBox, f"{key}_line_edit").isChecked()) != self.config[key]:
+                            self.update_config(key, self.findChild(QCheckBox, f"{key}_line_edit").isChecked(), True)
+            except AttributeError:
+                pass
+            try:
+                if value["type"] != "bool" or value["default"] not in ("True", "False"):
+                    if key not in self.config:
+                        if self.findChild(QLineEdit, f"{key}_line_edit").text() != value["default"] \
+                                and self.findChild(QLineEdit, f"{key}_line_edit").text() != "":
+                            self.update_config(key, self.findChild(QLineEdit, f"{key}_line_edit").text(), True)
+                    else:
+                        if self.findChild(QLineEdit, f"{key}_line_edit").text() != self.config[key]:
+                            self.update_config(key, self.findChild(QLineEdit, f"{key}_line_edit").text(), True)
+            except AttributeError:
+                pass
 
     def toggle_downloads(self):
         if self.left_widget.width() != 0:
@@ -197,6 +223,7 @@ class SplitWindowYoutubeBrowser(QMainWindow):
             self.animation.setEndValue(self.left_width)
             self.animation.setEasingCurve(QEasingCurve.InOutQuart)
             self.animation.start()
+        self.save_settings()
 
     def _download_queue(self, progress_bar=None):
         self.progress_bar = progress_bar

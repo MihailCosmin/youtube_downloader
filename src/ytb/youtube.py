@@ -1,6 +1,8 @@
 from os.path import join
 from os.path import expanduser
 
+import json
+
 import yt_dlp
 
 class YoutubeDLP():
@@ -144,5 +146,5 @@ class YoutubeDLP():
         if key == "file_pattern":
             key = "outtmpl"
             value = join(self.dl_ops["outtmpl"].split("%")[0], value)
-        print(f"Updating {key} to {value}")
+        # print(f"Updating {key} to {value}")
         self.dl_ops[key] = value

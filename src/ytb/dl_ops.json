@@ -1,0 +1,9 @@
+{
+    "outtmpl": {
+        "default": "C:\\Users\\munte/OneDrive/Desktop\\%(title)s-%(id)s.%(ext)s",
+        "chapter": "%(title)s - %(section_number)03d %(section_title)s [%(id)s].%(ext)s"
+    },
+    "quiet": true,
+    "no_warnings": true,
+    "throttled-rate": "100K",
+    "compat_opts": 

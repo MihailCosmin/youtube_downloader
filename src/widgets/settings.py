@@ -150,7 +150,7 @@ class SettingsWidget(QtWidgets.QWidget):
             options = load(_)
 
         for index, (key, value) in enumerate(options.items()):
-            if value["search_count"] > 10000:
+            if value["search_count"] > 10000 and len(key) > 2:
                 label = QtWidgets.QLabel(key)
                 label.setObjectName(f"{key}_label")
                 label.setToolTip(value["description"])
@@ -163,12 +163,20 @@ class SettingsWidget(QtWidgets.QWidget):
 
                 if value["type"] == "bool" or value["default"] in ("True", "False"):
                     line_edit = QtWidgets.QCheckBox()
+                    line_edit.setObjectName(f"{key}_line_edit")
+                    if key in self.parent.config:
+                        line_edit.setChecked(self.parent.config[key][0])
+                    elif value["default"] == "True":
+                        line_edit.setChecked(True)
                 else:
                     line_edit = QtWidgets.QLineEdit()
                     line_edit.setObjectName(f"{key}_line_edit")
                     line_edit.setMinimumWidth(self.settings_widget1_3.width() * 0.55)
                     line_edit.setMaximumWidth(self.settings_widget1_3.width() * 0.8)
-                    line_edit.setText(value["default"] if value["default"] not in ("None", "{}", "[]", None, "''") else "")
+                    if key in self.parent.config:
+                        line_edit.setText(self.parent.config[key][0])
+                    else:
+                        line_edit.setText(value["default"] if value["default"] not in ("None", "{}", "[]", None, "''") else "")
                 self.settings_layout1_3.addWidget(line_edit, index + 2, 2, 1, 6, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
 
         # self.settings_layout1_3.addItem(QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding))
@@ -222,12 +230,20 @@ class SettingsWidget(QtWidgets.QWidget):
 
                 if value["type"] == "bool" or value["default"] in ("True", "False"):
                     line_edit = QtWidgets.QCheckBox()
+                    line_edit.setObjectName(f"{key}_line_edit")
+                    if key in self.parent.config:
+                        line_edit.setChecked(self.parent.config[key][0])
+                    elif value["default"] == "True":
+                        line_edit.setChecked(True)
                 else:
                     line_edit = QtWidgets.QLineEdit()
                     line_edit.setObjectName(f"{key}_line_edit")
                     line_edit.setMinimumWidth(self.settings_widget2_1.width() * 0.55)
                     line_edit.setMaximumWidth(self.settings_widget2_1.width() * 0.8)
-                    line_edit.setText(value["default"] if value["default"] not in ("None", "{}", "[]", None, "''") else "")
+                    if key in self.parent.config:
+                        line_edit.setText(self.parent.config[key][0])
+                    else:
+                        line_edit.setText(value["default"] if value["default"] not in ("None", "{}", "[]", None, "''") else "")
                 self.settings_layout2_1.addWidget(line_edit, index + 2, 2, 1, 6, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
 
 
@@ -280,12 +296,20 @@ class SettingsWidget(QtWidgets.QWidget):
                 # create line edit widgets for each key in the options dictionary
                 if value["type"] == "bool" or value["default"] in ("True", "False"):
                     line_edit = QtWidgets.QCheckBox()
+                    line_edit.setObjectName(f"{key}_line_edit")
+                    if key in self.parent.config:
+                        line_edit.setChecked(self.parent.config[key][0])
+                    elif value["default"] == "True":
+                        line_edit.setChecked(True)
                 else:
                     line_edit = QtWidgets.QLineEdit()
                     line_edit.setObjectName(f"{key}_line_edit")
                     line_edit.setMinimumWidth(self.settings_widget3_1.width() * 0.55)
                     line_edit.setMaximumWidth(self.settings_widget3_1.width() * 0.8)
-                    line_edit.setText(value["default"] if value["default"] not in ("None", "{}", "[]", None, "''") else "")
+                    if key in self.parent.config:
+                        line_edit.setText(self.parent.config[key][0])
+                    else:
+                        line_edit.setText(value["default"] if value["default"] not in ("None", "{}", "[]", None, "''") else "")
                 self.settings_layout3_1.addWidget(line_edit, index + 2, 2, 1, 6, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
 
     def _set_download_location(self):
