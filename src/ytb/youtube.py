@@ -148,3 +148,4 @@ class YoutubeDLP():
             value = join(self.dl_ops["outtmpl"].split("%")[0], value)
         # print(f"Updating {key} to {value}")
         self.dl_ops[key] = value
+        print(self.dl_ops)

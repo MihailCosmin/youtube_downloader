@@ -159,6 +159,26 @@ QPushButton#downloads_button:hover {
     image: url("./src/images/icons/download_hover.svg");
 }
 
+QPushButton#back_button {
+    background: transparent;
+    image: url("./src/images/icons/back2.svg");
+}
+
+QPushButton#back_button:hover {
+    background: transparent;
+    image: url("./src/images/icons/back2_hover.svg");
+}
+
+QPushButton#clear_cache {
+    background: transparent;
+    image: url("./src/images/icons/clear1.svg");
+}
+
+QPushButton#clear_cache:hover {
+    background: transparent;
+    image: url("./src/images/icons/clear1_hover.svg");
+}
+
 /* /////////////////////////////////////////////////////////////////////////////////////////////////
 QMainWindow Options */
 QMainWindow {

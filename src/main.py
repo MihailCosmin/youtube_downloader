@@ -8,6 +8,8 @@ from os.path import realpath
 from os.path import basename
 from os.path import expanduser
 
+from time import sleep
+
 import sys
 from sys import executable
 
@@ -15,6 +17,7 @@ from json import dump
 from json import load
 
 from PySide6.QtWidgets import QApplication
+from PySide6.QtWidgets import QProgressBar
 from PySide6.QtWidgets import QMainWindow
 from PySide6.QtWidgets import QHBoxLayout
 from PySide6.QtWidgets import QVBoxLayout
@@ -25,6 +28,7 @@ from PySide6.QtCore import QPropertyAnimation
 from PySide6.QtCore import QEasingCurve
 from PySide6.QtCore import QThreadPool
 from PySide6.QtCore import QPoint
+from PySide6.QtCore import QUrl
 from PySide6.QtCore import Qt
 
 exe = ''
@@ -307,6 +311,24 @@ class SplitWindowYoutubeBrowser(QMainWindow):
             if num == 100:
                 self.progress_bar.setTextVisible(True)
                 self.progress_bar.setFormat("Done")
+
+    def back_button_clicked(self):
+        self.webview.back()
+
+    def clear_cache_clicked(self):
+        print("Clearing cache...")
+        self.webview.page().profile().clearHttpCache()
+        self.webview.page().profile().clearAllVisitedLinks()
+        self.webview.page().profile().cookieStore().deleteAllCookies()
+        self.webview.page().setHtml("")
+        # show a loading bar
+        # self.progress_bar = QProgressBar()
+        # self.progress_bar.show()
+        # self.progress_bar.setTextVisible(True)
+        # for i in range(100):
+        #     self.progress_bar.setValue(i)
+  
+        self.webview.setUrl(QUrl("https://www.youtube.com/?theme=dark&themeRefresh=1"))
 
     def change_theme(self, theme: str):
         print(f"Changing theme to {theme}")
