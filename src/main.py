@@ -24,6 +24,8 @@ from PySide6.QtWidgets import QVBoxLayout
 from PySide6.QtWidgets import QCheckBox
 from PySide6.QtWidgets import QLineEdit
 
+from PySide6.QtWebEngineCore import QWebEnginePage
+
 from PySide6.QtCore import QPropertyAnimation
 from PySide6.QtCore import QEasingCurve
 from PySide6.QtCore import QThreadPool
@@ -113,6 +115,8 @@ class SplitWindowYoutubeBrowser(QMainWindow):
         self.app_layout.addWidget(self.left_widget)
         self.app_layout.addWidget(self.settings_widget)
         self.app_layout.addWidget(self.right_widget)
+        
+        self.app_layout.setAlignment(Qt.AlignLeft)
 
         with open(f"themes/{self.config['theme'][0]}.qss", "r", encoding="utf-8") as _:
             stylesheet = _.read()
@@ -153,6 +157,8 @@ class SplitWindowYoutubeBrowser(QMainWindow):
         if self.settings_widget.width() != 0:
             self.settings_widget.setMinimumWidth(0)
             self.settings_widget.setMaximumWidth(0)
+            self.left_widget.setMaximumWidth(0)
+            self.left_widget.setMinimumWidth(0)
             self.right_widget.setMaximumWidth(self.right_width + self.left_width)
             self.right_widget.setMinimumWidth(self.right_width + self.left_width)
             self.central_widget.setMaximumWidth(QApplication.primaryScreen().size().width())
@@ -214,20 +220,47 @@ class SplitWindowYoutubeBrowser(QMainWindow):
     def toggle_downloads(self):
         if self.left_widget.width() != 0:
             self.left_widget.setMinimumWidth(0)
+            self.central_widget.setMaximumWidth(QApplication.primaryScreen().size().width())
+            self.central_widget.setMinimumWidth(QApplication.primaryScreen().size().width())
+            self.setMaximumWidth(QApplication.primaryScreen().size().width())
+            self.setMinimumWidth(QApplication.primaryScreen().size().width())
+
             self.animation = QPropertyAnimation(self.left_widget, b"maximumWidth")
             self.animation.setDuration(500)
             self.animation.setStartValue(self.left_widget.width())
             self.animation.setEndValue(0)
             self.animation.setEasingCurve(QEasingCurve.InOutQuart)
             self.animation.start()
+
+            # connect animatio finished to hide widget
+            self.animation.finished.connect(self._restore_youtube1)
+
         else:
+            self.settings_widget.setMinimumWidth(0)
+            self.settings_widget.setMaximumWidth(0)
+
             self.animation = QPropertyAnimation(self.left_widget, b"minimumWidth")
             self.animation.setDuration(500)
             self.animation.setStartValue(0)
             self.animation.setEndValue(self.left_width)
             self.animation.setEasingCurve(QEasingCurve.InOutQuart)
             self.animation.start()
+            self.animation.finished.connect(self._restore_youtube2)
         self.save_settings()
+
+    def _restore_youtube1(self):
+        self.right_widget.setMaximumWidth(self.right_width + self.left_width)
+        self.right_widget.setMinimumWidth(self.right_width + self.left_width)
+
+        self.webview.setMaximumWidth(self.right_width + self.left_width)
+        self.webview.setMinimumWidth(self.right_width + self.left_width)
+
+    def _restore_youtube2(self):
+        self.webview.setMaximumWidth(self.right_width)
+        self.webview.setMinimumWidth(self.right_width)
+
+        self.right_widget.setMaximumWidth(self.right_width)
+        self.right_widget.setMinimumWidth(self.right_width)
 
     def _download_queue(self, progress_bar=None):
         self.progress_bar = progress_bar
@@ -320,15 +353,10 @@ class SplitWindowYoutubeBrowser(QMainWindow):
         self.webview.page().profile().clearHttpCache()
         self.webview.page().profile().clearAllVisitedLinks()
         self.webview.page().profile().cookieStore().deleteAllCookies()
-        self.webview.page().setHtml("")
-        # show a loading bar
-        # self.progress_bar = QProgressBar()
-        # self.progress_bar.show()
-        # self.progress_bar.setTextVisible(True)
-        # for i in range(100):
-        #     self.progress_bar.setValue(i)
-  
+        self.webview.page().setHtml("")  
         self.webview.setUrl(QUrl("https://www.youtube.com/?theme=dark&themeRefresh=1"))
+        # force refresh page
+        self.webview.reload().triggerAction(QWebEnginePage.ReloadAndBypassCache)
 
     def change_theme(self, theme: str):
         print(f"Changing theme to {theme}")

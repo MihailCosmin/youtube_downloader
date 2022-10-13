@@ -13,6 +13,9 @@ class LeftMenu(QFrame):
 
         self.setMaximumWidth(self.parent.left_bar_width)
         self.setMinimumWidth(self.parent.left_bar_width)
+        
+        # self.setMaximumHeight(self.parent.height)
+        
         self.left_frame_layout = QVBoxLayout(self)
 
         self.back_button = QPushButton()
