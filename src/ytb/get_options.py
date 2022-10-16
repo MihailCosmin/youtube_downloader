@@ -10,10 +10,16 @@ DEST_REGEX = r"(dest=')(.*?)(')"
 OTHER_REGEX = r"([a-z]+=)(.*?)(,)"
 
 
-# with open("src/ytb/yt-dlp-options.py", "r", encoding="utf-8") as _:
-#     content = _.read().replace("\n", "")
+with open("src/ytb/yt-dlp-options.py", "r", encoding="utf-8") as _:
+    content = _.read().replace("\n", "")
 
-# opt_dict = {}
+opt_dict = {}
+
+arguments = []
+for ind, match in enumerate(findall(OPT_REGEX, content)):
+    # print(match)
+    print([entry for entry in match[2].split(",")])
+
 
 # for ind, match in enumerate(findall(OPT_REGEX, content)):
 #     option_names = []
@@ -34,17 +40,17 @@ OTHER_REGEX = r"([a-z]+=)(.*?)(,)"
 # with open("src/ytb/yt-dlp-options_2.json", "w", encoding="utf-8") as _:
 #     dump(opt_dict, _, indent=4)
 
-with open("src/ytb/yt-dlp-options_2.json", "r", encoding="utf-8") as _:
-    opt = load(_)
+# with open("src/ytb/yt-dlp-options_2.json", "r", encoding="utf-8") as _:
+#     opt = load(_)
 
-new_dict = {}
-for value in opt.values():
-    new_dict[value["dest"]] = {
-        "category": value["category"],
-        "type": value["other_values"]["type"] if "type" in value["other_values"] else "bool" if value["other_values"]["default"] in ("True", "False") else "str",
-        "default": value["other_values"]["default"] if "default" in value["other_values"] else "",
-        "description": value["other_values"]["help"] if "help" in value["other_values"] else "",
-    }
+# new_dict = {}
+# for value in opt.values():
+#     new_dict[value["dest"]] = {
+#         "category": value["category"],
+#         "type": value["other_values"]["type"] if "type" in value["other_values"] else "bool" if value["other_values"]["default"] in ("True", "False") else "str",
+#         "default": value["other_values"]["default"] if "default" in value["other_values"] else "",
+#         "description": value["other_values"]["help"] if "help" in value["other_values"] else "",
+#     }
 
-with open("src/ytb/yt-dlp-options5.json", "w", encoding="utf-8") as _:
-    dump(new_dict, _, indent=4)
+# with open("src/ytb/yt-dlp-options5.json", "w", encoding="utf-8") as _:
+#     dump(new_dict, _, indent=4)

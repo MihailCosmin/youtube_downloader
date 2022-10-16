@@ -1,472 +1,507 @@
 {
-    "update_self": {
-        "category": "general",
-        "type": "str",
-        "default": null,
-        "description": "Update youtube-dl to the latest version",
-        "search_count": 1750
-    },
     "ignoreerrors": {
         "category": "general",
-        "type": "str",
-        "default": null,
-        "description": "",
-        "search_count": 3190
-    },
-    "dump_user_agent": {
-        "category": "general",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 1310
-    },
-    "list_extractors": {
-        "category": "general",
-        "type": "bool",
-        "default": "False",
-        "description": "",
-        "search_count": 1770
-    },
-    "list_extractor_descriptions": {
-        "category": "general",
-        "type": "bool",
-        "default": "False",
-        "description": "",
-        "search_count": 10
+        "description": "Ignore download and postprocessing errors. The download will be considered successful even if the postprocessing fails",
+        "search_count": 76,
+        "add": "True"
     },
     "allowed_extractors": {
         "category": "general",
-        "type": "'str'",
+        "type": "list",
         "default": "[]",
-        "description": "(            'Extractor names to use separated by commas. '            'You can also use regexes",
-        "search_count": 5
+        "description": "Extractor names to use separated by commas. You can also use regexes",
+        "search_count": 3,
+        "add": "True"
     },
     "force_generic_extractor": {
         "category": "general",
         "type": "bool",
         "default": "False",
         "description": "",
-        "search_count": 19000
+        "search_count": 71,
+        "add": "True"
     },
     "default_search": {
         "category": "general",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 1600
+        "description": "Use this prefix for unqualified URLs. E.g. gvsearch2:python downloads two videos rom google videos for the search term python. Use the value auto to let yt-dlp guess (auto_warning to emit a warning when guessing). error just throws an error. The default value fixup_error repairs broken URLs, but emits an error if this is not possible instead of searching",
+        "search_count": 76,
+        "add": "Maybe"
     },
     "ignoreconfig": {
         "category": "general",
-        "type": "str",
-        "default": null,
-        "description": "(            'Don\\'t load any more configuration files except those given by --config-locations. '            'For backward compatibility",
-        "search_count": 25900
+        "type": "bool",
+        "default": "False",
+        "description": "Don't load any more configuration files except those given by --config-locations. For backward compatibility",
+        "search_count": 5,
+        "add": "Maybe"
     },
     "config_locations": {
         "category": "general",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 5
+        "description": "Location of the main configuration file; either the path to the config or its containing directory (- for stdin). Can be used multiple times and inside other configuration files",
+        "search_count": 5,
+        "add": "Maybe"
     },
     "extract_flat": {
         "category": "general",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 1740
+        "description": "Do not extract the videos of a playlist, only list them",
+        "search_count": 58,
+        "add": "Maybe"
+
     },
     "live_from_start": {
         "category": "general",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 9
+        "description": "Download livestreams from the start. Currently only supported for YouTube (Experimental)",
+        "search_count": 6,
+        "add": "Maybe"
     },
     "wait_for_video": {
         "category": "general",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 25
+        "description": "Wait for scheduled streams to become available. Pass the minimum number of seconds (or range) to wait between retries",
+        "search_count": 7,
+        "add": "Maybe"
     },
     "mark_watched": {
         "category": "general",
-        "type": "str",
-        "default": null,
-        "description": "",
-        "search_count": 510
+        "type": "bool",
+        "default": "False",
+        "description": "Mark videos watched (even with --simulate)",
+        "search_count": 22,
+        "add": "Maybe"
     },
     "no_color": {
         "category": "general",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 719
+        "description": "Do not emit color codes in output (Alias: --no-colours)",
+        "search_count": 57,
+        "add": "Maybe"
     },
     "compat_opts": {
         "category": "general",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 376
+        "description": "Options that can help keep compatibility with youtube-dl or youtube-dlc configurations by reverting some of the changes made in yt-dlp. See Differences in default behavior for details. Allowed_values: 'filename', 'filename-sanitization', 'format-sort', 'abort-on-error', 'format-spec', 'no-playlist-metafiles', 'multistreams', 'no-live-chat', 'playlist-index', 'list-formats', 'no-direct-merge', 'no-attach-info-json', 'embed-metadata', 'embed-thumbnail-atomicparsley', 'seperate-video-versions', 'no-clean-infojson', 'no-keep-subs', 'no-certifi', 'no-youtube-channel-redirect', 'no-youtube-unavailable-videos', 'no-youtube-prefer-utc-upload-date'",
+        "search_count": 17,
+        "add": "True"
     },
     "proxy": {
         "category": "network",
         "type": "str",
         "default": "None",
-        "description": "(            'Use the specified HTTP/HTTPS/SOCKS proxy. To enable SOCKS proxy",
-        "search_count": 168000
+        "description": "Use the specified HTTP/HTTPS/SOCKS proxy. To enable SOCKS proxy. e.g. socks5://user:pass@127.0.0.1:1080/. Pass in an empty string (--proxy '') for direct connection",
+        "search_count": 81,
+        "add": "True"
     },
     "socket_timeout": {
         "category": "network",
         "type": "float",
         "default": "None",
-        "description": "'Time to wait before giving up",
-        "search_count": 1090
+        "description": "Time to wait before giving up",
+        "search_count": 12,
+        "add": "True"
     },
     "source_address": {
         "category": "network",
         "type": "str",
         "default": null,
-        "description": "'Make all connections via IPv6'",
-        "search_count": 2080
+        "description": "Client-side IP address to bind to, Or: '0.0.0.0' in order to Make all connections via IPv4. Or: '::' Make all connections via IPv6",
+        "search_count": 20,
+        "add": "True"
     },
     "geo_verification_proxy": {
         "category": "geo",
         "type": "str",
         "default": "None",
-        "description": "(            'Use this proxy to verify the IP address for some geo-restricted sites. '            'The default proxy specified by --proxy (or none",
-        "search_count": 14800
+        "description": "Use this proxy to verify the IP address for some geo-restricted sites. The default proxy specified by --proxy (or none if the option is not present) is used for the actual downloading",
+        "search_count": 13,
+        "add": "Maybe"
     },
     "cn_verification_proxy": {
         "category": "geo",
         "type": "str",
         "default": "None",
         "description": "",
-        "search_count": 707
+        "search_count": 10,
+        "add": "Maybe"
     },
     "geo_bypass": {
         "category": "geo",
-        "type": "str",
-        "default": null,
-        "description": "",
-        "search_count": 14800
+        "type": "bool",
+        "default": "True",
+        "description": "Bypass geographic restriction via faking X-Forwarded-For HTTP header (default)",
+        "search_count": 31,
+        "add": "True"
     },
     "geo_bypass_country": {
         "category": "geo",
-        "type": "str",
-        "default": "None",
-        "description": "",
-        "search_count": 11900
+        "type": "bool",
+        "default": "False",
+        "description": "Force bypass geographic restriction with explicitly provided two-letter ISO 3166-2 country code",
+        "search_count": 22,
+        "add": "True"
     },
     "geo_bypass_ip_block": {
         "category": "geo",
-        "type": "str",
-        "default": "None",
-        "description": "",
-        "search_count": 8510
+        "type": "bool",
+        "default": "False",
+        "description": "Force bypass geographic restriction with explicitly provided IP block in CIDR notation",
+        "search_count": 13,
+        "add": "True"
     },
     "playliststart": {
         "category": "selection",
         "type": "int",
         "default": "1",
-        "description": "",
-        "search_count": 3160
+        "description": "Position to start downloading playlist. Default is 1",
+        "search_count": 37,
+        "add": "True"
     },
     "playlistend": {
         "category": "selection",
         "type": "int",
         "default": "None",
-        "description": "",
-        "search_count": 2340
+        "description": "Position to end downloading playlist (default is last)",
+        "search_count": 19,
+        "add": "True"
     },
     "playlist_items": {
         "category": "selection",
         "type": "str",
         "default": "None",
-        "description": "(            'Comma separated playlist_index of the videos to download. '            'You can specify a range using \"[START]:[STOP][:STEP]\". For backward compatibility",
-        "search_count": 3010
+        "description": "Comma separated playlist_index of the videos to download. You can specify a range using \"[START]:[STOP][:STEP]\". For backward compatibility",
+        "search_count": 35,
+        "add": "True"
     },
     "matchtitle": {
         "category": "selection",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 1440
+        "description": "REGEX to match video title",
+        "search_count": 13,
+        "add": "True"
     },
     "rejecttitle": {
         "category": "selection",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 28900
+        "description": "REGEX to reject video title",
+        "search_count": 14,
+        "add": "True"
     },
     "min_filesize": {
         "category": "selection",
         "type": "str",
         "default": "None",
-        "description": "'Do not download any videos smaller than SIZE",
-        "search_count": 1040
+        "description": "Do not download any videos smaller than SIZE, e.g. 50k or 44.6M",
+        "search_count": 11,
+        "add": "True"
     },
     "max_filesize": {
         "category": "selection",
         "type": "str",
         "default": "None",
-        "description": "'Do not download any videos larger than SIZE",
-        "search_count": 1210
+        "description": "Do not download any videos larger than SIZE, e.g. 50k or 44.6M",
+        "search_count": 13,
+        "add": "True"
     },
     "date": {
         "category": "selection",
         "type": "str",
         "default": "None",
-        "description": "",
-        "search_count": 267000
+        "description": "Download only videos uploaded on this date. The date can be YYYYMMDD or in the format [now|today|yesterday][-N[day|week|month|year]]. E.g. --date today-2weeks",
+        "search_count": 69,
+        "add": "True"
     },
     "datebefore": {
         "category": "selection",
         "type": "str",
         "default": "None",
-        "description": "",
-        "search_count": 1590
+        "description": "Download only videos uploaded on or before this date. The date formats accepted is the same as --date",
+        "search_count": 20,
+        "add": "True"
     },
     "dateafter": {
         "category": "selection",
         "type": "str",
         "default": "None",
-        "description": "",
-        "search_count": 26300
+        "description": "Download only videos uploaded on or after this date. The date formats accepted is the same as --date",
+        "search_count": 19,
+        "add": "True"
     },
     "min_views": {
         "category": "selection",
         "type": "int",
         "default": "None",
-        "description": "",
-        "search_count": 546
+        "description": "Minimum view count to consider a video eligible for download",
+        "search_count": 12,
+        "add": "True"
     },
     "max_views": {
         "category": "selection",
         "type": "int",
         "default": "None",
-        "description": "",
-        "search_count": 519
+        "description": "Maximum view count to consider a video eligible for download",
+        "search_count": 11,
+        "add": "True"
     },
     "match_filter": {
         "category": "selection",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 922
+        "description": "Generic video filter. Any OUTPUT TEMPLATE field can be compared with a number or a string using the operators defined in Filtering Formats. You can also simply specify a field to match if the field is present, use !field to check if the field is not present, and & to check multiple conditions. Use a \\ to escape & or quotes if needed. If used multiple times, the filter matches if atleast one of the conditions are met. E.g. --match-filter !is_live --match-filter like_count>?100 & description~=(?i)\\bcats \\& dogs\\b matches only videos that are not live OR those that have a like count more than 100 (or the like field is not available) and also has a description that contains the phrase cats & dogs (caseless). Use --match-filter - to interactively ask whether to download each video",
+        "search_count": 16,
+        "add": "True"
     },
     "noplaylist": {
         "category": "selection",
-        "type": "str",
-        "default": null,
-        "description": "'Download the playlist",
-        "search_count": 123000
+        "type": "bool",
+        "default": "False",
+        "description": "False = Download only the video, if the URL refers to a video and a playlist. True = Download the playlist, if the URL refers to a video and a playlist",
+        "search_count": 31,
+        "add": "True"
     },
     "age_limit": {
         "category": "selection",
         "type": "int",
         "default": "None",
-        "description": "",
-        "search_count": 23600
+        "description": "Download only videos suitable for the given age",
+        "search_count": 25,
+        "add": "True"
     },
     "download_archive": {
         "category": "selection",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 1360
+        "description": "Download only videos not listed in the archive file. Record the IDs of all downloaded videos in it. Path to the archive (.txt) file.",
+        "search_count": 67,
+        "add": "True"
     },
     "max_downloads": {
         "category": "selection",
         "type": "int",
         "default": "None",
-        "description": "",
-        "search_count": 1400
+        "description": "Abort after downloading NUMBER files",
+        "search_count": 12,
+        "add": "True"
     },
     "break_on_existing": {
         "category": "selection",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 74
+        "description": "Stop the download process when encountering a file that is in the archive",
+        "search_count": 74,
+        "add": "True"
     },
     "break_on_reject": {
         "category": "selection",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 63
+        "description": "Stop the download process when encountering a file that has been filtered out",
+        "search_count": 63,
+        "add": "True"
     },
     "break_per_url": {
         "category": "selection",
-        "type": "str",
-        "default": null,
-        "description": "",
-        "search_count": 27
+        "type": "bool",
+        "default": "False",
+        "description": "--break-on-existing, --break-on-reject, --max-downloads, and autonumber resets per input URL",
+        "search_count": 27,
+        "add": "True"
     },
     "skip_playlist_after_errors": {
         "category": "selection",
         "type": "int",
         "default": "None",
-        "description": "",
-        "search_count": 90
+        "description": "Number of allowed failures until the rest of the playlist is skipped",
+        "search_count": 9,
+        "add": "True"
     },
     "include_ads": {
         "category": "selection",
-        "type": "str",
-        "default": null,
-        "description": "",
-        "search_count": 927
+        "type": "bool",
+        "default": "False",
+        "description": "Include ads or not",
+        "search_count": 11,
+        "add": "True"
     },
     "username": {
         "category": "authentication",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 74400
+        "description": "Login with this account ID",
+        "search_count": 58,
+        "add": "True"
     },
     "password": {
         "category": "authentication",
         "type": "str",
         "default": null,
-        "description": "'Account password. If this option is left out",
-        "search_count": 210000
+        "description": "Account password. If this option is left out, yt-dlp will ask interactively",
+        "search_count": 86,
+        "add": "True"
     },
     "twofactor": {
         "category": "authentication",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 69100
+        "description": "Two-factor authentication code",
+        "search_count": 19,
+        "add": "True"
     },
     "usenetrc": {
         "category": "authentication",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 2130
+        "description": "Use .netrc authentication data",
+        "search_count": 12,
+        "add": "True"
     },
     "netrc_location": {
         "category": "authentication",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 8
+        "description": "Location of .netrc authentication data; either the path or its containing directory. Defaults to ~/.netrc",
+        "search_count": 4,
+        "add": "True"
     },
     "videopassword": {
         "category": "authentication",
         "type": "str",
         "default": null,
-        "description": "'Video password (vimeo",
-        "search_count": 1610
+        "description": "Video password (vimeo, youku)",
+        "search_count": 20,
+        "add": "True"
     },
     "ap_mso": {
         "category": "authentication",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 341
+        "description": "Adobe Pass multiple-system operator (TV provider) identifier, use --ap-list-mso for a list of available MSOs",
+        "search_count": 11,
+        "add": "Maybe"
     },
     "ap_username": {
         "category": "authentication",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 333
+        "description": "Multiple-system operator account login",
+        "search_count": 10,
+        "add": "Maybe"
     },
     "ap_password": {
         "category": "authentication",
         "type": "str",
         "default": null,
-        "description": "'Multiple-system operator account password. If this option is left out",
-        "search_count": 345
+        "description": "Multiple-system operator account password. If this option is left out, yt-dlp will ask interactively",
+        "search_count": 10,
+        "add": "Maybe"
     },
     "ap_list_mso": {
         "category": "authentication",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 7
+        "description": "List all supported multiple-system operators",
+        "search_count": 6,
+        "add": "Maybe"
     },
     "client_certificate": {
         "category": "authentication",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 6090
+        "description": "Path to client certificate file in PEM format. May include the private key",
+        "search_count": 6,
+        "add": "True"
     },
     "client_certificate_key": {
         "category": "authentication",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 6
+        "description": "Path to private key file for client certificate",
+        "search_count": 6,
+        "add": "True"
     },
     "client_certificate_password": {
         "category": "authentication",
         "type": "str",
         "default": null,
-        "description": "'Password for client certificate private key",
+        "description": "Password for client certificate private key, if encrypted. If not provided, and the key is encrypted, yt-dlp will ask interactively",
         "search_count": 6
     },
     "writesubtitles": {
         "category": "subtitles",
-        "type": "str",
-        "default": null,
-        "description": "",
-        "search_count": 2840
+        "type": "bool",
+        "default": "False",
+        "description": "True = Write subtitle file. False = Do not write subtitle file",
+        "search_count": 17,
+        "add": "True"
     },
     "writeautomaticsub": {
         "category": "subtitles",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 1560
+        "description": "Write automatically generated subtitle file (Alias: --write-automatic-subs)",
+        "search_count": 17,
+        "add": "True"
     },
     "allsubtitles": {
         "category": "subtitles",
         "type": "bool",
         "default": "False",
         "description": "",
-        "search_count": 719
+        "search_count": 16,
+        "add": "True"
     },
     "listsubtitles": {
         "category": "subtitles",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 213
+        "description": "List available subtitles of each video. Simulate unless --no-simulate is used",
+        "search_count": 6,
+        "add": "False"
     },
     "subtitlesformat": {
         "category": "subtitles",
         "type": "str",
-        "default": "'best'",
-        "description": "'Subtitle format; accepts formats preference",
-        "search_count": 2690
+        "default": "best",
+        "description": "Subtitle format; accepts formats preference, e.g. srt or ass/srt/best",
+        "search_count": 8,
+        "add": "True"
     },
     "subtitleslangs": {
         "category": "subtitles",
         "type": "'str'",
         "default": "[]",
-        "description": "",
-        "search_count": 1120
+        "description": "Languages of the subtitles to download (can be regex) or all separated by commas, e.g. --sub-langs en.*,ja. You can prefix the language code with a - to exclude it from the requested languages, e.g. --sub-langs all,-live_chat. Use --list-subs for a list of available language tags",
+        "search_count": 24,
+        "add": "True"
     },
     "concurrent_fragment_downloads": {
         "category": "downloader",
         "type": "int",
         "default": "1",
         "description": "",
-        "search_count": 63
+        "search_count": 0,
+        "add": "True"
     },
     "ratelimit": {
         "category": "downloader",
         "type": "str",
         "default": null,
-        "description": "'Maximum download rate in bytes per second",
-        "search_count": 10500
+        "description": "Maximum download rate in bytes per second, e.g. 50K or 4.2M",
+        "search_count": 73,
+        "add": "True"
     },
     "throttledratelimit": {
         "category": "downloader",
