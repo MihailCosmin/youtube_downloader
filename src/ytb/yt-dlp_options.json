@@ -507,442 +507,496 @@
         "category": "downloader",
         "type": "str",
         "default": null,
-        "description": "'Minimum download rate in bytes per second below which throttling is assumed and the video data is re-extracted",
-        "search_count": 156
+        "description": "Minimum download rate in bytes per second below which throttling is assumed and the video data is re-extracted, e.g. 100K",
+        "search_count": 3,
+        "add": "True"
     },
     "retries": {
         "category": "downloader",
         "type": "str",
         "default": "10",
-        "description": "",
-        "search_count": 5200
+        "description": "Number of retries (default is %default), or infinite",
+        "search_count": 40,
+        "add": "True"
     },
     "file_access_retries": {
         "category": "downloader",
         "type": "str",
         "default": "3",
         "description": "",
-        "search_count": 10
+        "search_count": 7,
+        "add": "True"
     },
     "fragment_retries": {
         "category": "downloader",
         "type": "str",
         "default": "10",
-        "description": "",
-        "search_count": 906
+        "description": "Number of times to retry on file access error (default is %default), or infinite",
+        "search_count": 20,
+        "add": "True"
     },
     "retry_sleep": {
         "category": "downloader",
-        "type": "'str'",
+        "type": "str",
         "default": "{}",
-        "description": "",
-        "search_count": 431
+        "description": "Time to sleep between retries in seconds (optionally) prefixed by the type of retry (http (default), fragment, file_access, extractor) to apply the sleep to. EXPR can be a number, linear=START[:END[:STEP=1]] or exp=START[:END[:BASE=2]]. This option can be used multiple times to set the sleep for the different retry types, e.g. --retry-sleep linear=1::2 --retry-sleep fragment:exp=1:20. 'allowed_keys': 'http|fragment|file_access|extractor'. default_key': 'http",
+        "search_count": 3,
+        "add": "True"
     },
     "skip_unavailable_fragments": {
         "category": "downloader",
-        "type": "str",
-        "default": null,
-        "description": "",
-        "search_count": 16500
+        "type": "bool",
+        "default": "True",
+        "description": "True = Skip unavailable fragments for DASH, hlsnative and ISM downloads (default) (Alias: --no-abort-on-unavailable-fragment). False = Abort download if a fragment is unavailable (Alias: --no-skip-unavailable-fragments)",
+        "search_count": 10,
+        "add": "True"
     },
     "keep_fragments": {
         "category": "downloader",
-        "type": "str",
-        "default": null,
-        "description": "",
-        "search_count": 888
+        "type": "bool",
+        "default": "False",
+        "description": "True = Keep downloaded fragments on disk after downloading is finished. False = Delete downloaded fragments after downloading is finished (default)",
+        "search_count": 10,
+        "add": "True"
     },
     "buffersize": {
         "category": "downloader",
         "type": "str",
-        "default": "'1024'",
-        "description": "'Size of download buffer",
-        "search_count": 4530
+        "default": "1024",
+        "description": "Size of download buffer, e.g. 1024 or 16K (default is %default)",
+        "search_count": 24,
+        "add": "True"
     },
     "noresizebuffer": {
         "category": "downloader",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 979
+        "description": "The buffer size is automatically resized from an initial value of --buffer-size (default)",
+        "search_count": 13,
+        "add": "True"
     },
     "http_chunk_size": {
         "category": "downloader",
         "type": "str",
         "default": "None",
-        "description": "(            'Size of a chunk for chunk-based HTTP downloading",
-        "search_count": 9850
-    },
-    "test": {
-        "category": "downloader",
-        "type": "bool",
-        "default": "False",
-        "description": "",
-        "search_count": 302000
+        "description": "Size of a chunk for chunk-based HTTP downloading, e.g. 10485760 or 10M (default is disabled). May be useful for bypassing bandwidth throttling imposed by a webserver (experimental)",
+        "search_count": 17,
+        "add": "True"
     },
     "playlist_reverse": {
         "category": "downloader",
-        "type": "str",
-        "default": null,
-        "description": "",
-        "search_count": 1520
+        "type": "bool",
+        "default": "False",
+        "description": "Download playlist videos in reverse order",
+        "search_count": 42,
+        "add": "True"
     },
     "playlist_random": {
         "category": "downloader",
-        "type": "str",
-        "default": null,
-        "description": "",
-        "search_count": 806
+        "type": "bool",
+        "default": "False",
+        "description": "Download playlist videos in random order",
+        "search_count": 6,
+        "add": "True"
     },
     "lazy_playlist": {
         "category": "downloader",
-        "type": "str",
-        "default": null,
-        "description": "",
-        "search_count": 6
+        "type": "bool",
+        "default": "False",
+        "description": "True = Process entries in the playlist as they are received. This disables n_entries, --playlist-random and --playlist-reverse. False = Process videos in the playlist only after the entire playlist is parsed (default)",
+        "search_count": 5,
+        "add": "True"
     },
     "xattr_set_filesize": {
         "category": "downloader",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 579
+        "description": "Set file xattribute ytdl.filesize with expected file size",
+        "search_count": 12,
+        "add": "Maybe"
     },
     "hls_prefer_native": {
         "category": "downloader",
-        "type": "str",
+        "type": "bool",
         "default": "None",
         "description": "",
-        "search_count": 27200
+        "search_count": 29,
+        "add": "Maybe"
     },
     "hls_use_mpegts": {
         "category": "downloader",
-        "type": "str",
-        "default": null,
-        "description": "",
-        "search_count": 464
+        "type": "bool",
+        "default": "None",
+        "description": "Use the mpegts container for HLS videos; allowing some players to play the video while downloading, and reducing the chance of file corruption if download is interrupted. This is enabled by default for live streams",
+        "search_count": 34,
+        "add": "Maybe"
     },
     "download_ranges": {
         "category": "downloader",
         "type": "str",
         "default": null,
-        "description": "(            'Download only chapters whose title matches the given regular expression. '            'Time ranges prefixed by a \"*\" can also be used in place of chapters to download the specified range. '            'Needs ffmpeg. This option can be used multiple times to download multiple sections",
-        "search_count": 61
+        "description": "Download only chapters whose title matches the given regular expression. Time ranges prefixed by a * can also be used in place of chapters to download the specified range. Needs ffmpeg. This option can be used multiple times to download multiple sections, e.g. --download-sections *10:15-inf --download-sections intro",
+        "search_count": 19,
+        "add": "True"
     },
     "external_downloader": {
         "category": "downloader",
-        "type": "'str'",
+        "type": "str",
         "default": "{}",
-        "description": "",
-        "search_count": 3860
+        "description": "Name or path of the external downloader to use (optionally) prefixed by the protocols (http, ftp, m3u8, dash, rstp, rtmp, mms) to use it for. f'Currently supports native, {, .join(sorted(list_external_downloaders()))}. You can use this option multiple times to set different downloaders for different protocols. E.g. --downloader aria2c --downloader dash,m3u8:native will use aria2c for http/ftp downloads, and the native downloader for dash/m3u8 downloads Alias: --external-downloader. 'allowed_keys': 'http|ftp|m3u8|dash|rtsp|rtmp|mms', 'default_key': 'default', process': str.strip",
+        "search_count": 71,
+        "add": "True"
     },
     "external_downloader_args": {
         "category": "downloader",
-        "type": "'str'",
+        "type": "str",
         "default": "{}",
-        "description": "",
-        "search_count": 753
+        "description": "Give these arguments to the external downloader. Specify the downloader name and the arguments separated by a colon :. For ffmpeg, arguments can be passed to different positions using the same syntax as --postprocessor-args. You can use this option multiple times to give different arguments to different downloaders (Alias: --external-downloader-args). 'allowed_keys': r'ffmpeg_[io]\\d*|%s' % '|'.join(map(re.escape, list_external_downloaders())), 'default_key': 'default','process': shlex.split",
+        "search_count": 48,
+        "add": "True"
     },
     "encoding": {
         "category": "workarounds",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 108000
+        "description": "Force the specified encoding (experimental)",
+        "search_count": 78,
+        "add": "True"
     },
     "legacy_server_connect": {
         "category": "workarounds",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 48
+        "description": "Explicitly allow HTTPS connection to servers that do not support RFC 5746 secure renegotiation",
+        "search_count": 2,
+        "add": "True"
     },
     "no_check_certificate": {
         "category": "workarounds",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 811
+        "description": "Suppress HTTPS certificate validation",
+        "search_count": 10,
+        "add": "True"
     },
     "prefer_insecure": {
         "category": "workarounds",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 794
+        "description": "Use an unencrypted connection to retrieve information about the video (Currently supported only for YouTube)",
+        "search_count": 13,
+        "add": "True"
     },
     "user_agent": {
         "category": "workarounds",
         "type": "str",
         "default": null,
         "description": "",
-        "search_count": 5720
+        "search_count": 47,
+        "add": "True"
     },
     "referer": {
         "category": "workarounds",
         "type": "str",
         "default": "None",
         "description": "",
-        "search_count": 49300
+        "search_count": 47,
+        "add": "True"
     },
     "headers": {
         "category": "workarounds",
         "type": "'str'",
         "default": "{}",
-        "description": "'Specify a custom HTTP header and its value",
-        "search_count": 471000
+        "description": "Specify a custom HTTP header and its value, separated by a colon ":". You can use this option multiple times",
+        "search_count": 57,
+        "add": "True"
     },
     "bidi_workaround": {
         "category": "workarounds",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 733
+        "description": "Work around terminals that lack bidirectional text support. Requires bidiv or fribidi executable in PATH",
+        "search_count": 10,
+        "add": "True"
     },
     "sleep_interval_requests": {
         "category": "workarounds",
         "type": "float",
         "default": null,
-        "description": "",
-        "search_count": 68
+        "description": "Number of seconds to sleep between requests during data extraction",
+        "search_count": 8,
+        "add": "True"
     },
     "sleep_interval": {
         "category": "workarounds",
         "type": "float",
         "default": null,
-        "description": "",
-        "search_count": 20900
+        "description": "Number of seconds to sleep before each download. This is the minimum time to sleep when used along with --max-sleep-interval (Alias: --min-sleep-interval)",
+        "search_count": 14,
+        "add": "True"
     },
     "max_sleep_interval": {
         "category": "workarounds",
         "type": "float",
         "default": null,
-        "description": "",
-        "search_count": 405
+        "description": "Maximum number of seconds to sleep. Can only be used along with --min-sleep-interval",
+        "search_count": 13,
+        "add": "True"
     },
     "sleep_interval_subtitles": {
         "category": "workarounds",
         "type": "int",
         "default": "0",
-        "description": "",
-        "search_count": 133
+        "description": "Maximum number of seconds to sleep. Can only be used along with --min-sleep-interval",
+        "search_count": 12,
+        "add": "True"
     },
     "quiet": {
         "category": "verbosity",
         "type": "bool",
         "default": "False",
-        "description": "'Activate quiet mode. If used with --verbose",
-        "search_count": 30600
+        "description": "Activate quiet mode. If used with --verbose",
+        "search_count": 24,
+        "add": "False"
     },
     "no_warnings": {
         "category": "verbosity",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 24000
+        "description": "Ignore warnings",
+        "search_count": 19,
+        "add": "False"
     },
     "simulate": {
         "category": "verbosity",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 11700
+        "description": "True = Do not download the video and do not write anything to disk. False = Download the video even if printing/listing options are used",
+        "search_count": 23,
+        "add": "False"
     },
     "ignore_no_formats_error": {
         "category": "verbosity",
-        "type": "str",
-        "default": null,
-        "description": "",
-        "search_count": 324
+        "type": "bool",
+        "default": "False",
+        "description": "True = Ignore No video formats error. Useful for extracting metadata even if the videos are not actually available for download (experimental). False = Throw error when no downloadable video formats are found (default)",
+        "search_count": 16,
+        "add": "False"
     },
     "skip_download": {
         "category": "verbosity",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 17100
+        "description": "Do not download the video but write all related files (Alias: --no-download)",
+        "search_count": 21,
+        "add": "False"
     },
     "forceprint": {
         "category": "verbosity",
         "type": "'str'",
         "default": "{}",
         "description": "",
-        "search_count": 75
+        "search_count": 75,
+        "add": "False"
     },
     "print_to_file": {
         "category": "verbosity",
-        "type": "'str'",
+        "type": "str",
         "default": "{}",
-        "description": "",
-        "search_count": 36
+        "description": "Append given template to the file. The values of WHEN and TEMPLATE are same as that of --print. FILE uses the same syntax as the output template. This option can be used multiple times",
+        "search_count": 36,
+        "add": "True"
     },
     "geturl": {
         "category": "verbosity",
         "type": "bool",
         "default": "False",
         "description": "",
-        "search_count": 16300
+        "search_count": 33,
+        "add": "False"
     },
     "gettitle": {
         "category": "verbosity",
         "type": "bool",
         "default": "False",
         "description": "",
-        "search_count": 3100
+        "search_count": 17,
+        "add": "False"
     },
     "getid": {
         "category": "verbosity",
         "type": "bool",
         "default": "False",
         "description": "",
-        "search_count": 9470
+        "search_count": 22,
+        "add": "False"
     },
     "getthumbnail": {
         "category": "verbosity",
         "type": "bool",
         "default": "False",
         "description": "",
-        "search_count": 1120
+        "search_count": 8,
+        "add": "False"
     },
     "getdescription": {
         "category": "verbosity",
         "type": "bool",
         "default": "False",
         "description": "",
-        "search_count": 2040
+        "search_count": 13,
+        "add": "False"
     },
     "getduration": {
         "category": "verbosity",
         "type": "bool",
         "default": "False",
         "description": "",
-        "search_count": 2550
+        "search_count": 9,
+        "add": "False"
     },
     "getfilename": {
         "category": "verbosity",
         "type": "bool",
         "default": "False",
         "description": "",
-        "search_count": 3190
+        "search_count": 10,
+        "add": "False"
     },
     "getformat": {
         "category": "verbosity",
         "type": "bool",
         "default": "False",
         "description": "",
-        "search_count": 1080
+        "search_count": 13,
+        "add": "False"
     },
     "dumpjson": {
         "category": "verbosity",
         "type": "bool",
         "default": "False",
-        "description": "'Quiet",
-        "search_count": 597
+        "description": "Quiet, but print JSON information for each video. Simulate unless --no-simulate is used. See OUTPUT TEMPLATE for a description of available keys",
+        "search_count": 9,
+        "add": "True"
     },
     "dump_single_json": {
         "category": "verbosity",
         "type": "bool",
         "default": "False",
-        "description": "(            'Quiet",
-        "search_count": 553
+        "description": "Quiet, but print JSON information for each url or infojson passed. Simulate unless --no-simulate is used. If the URL refers to a playlist, the whole playlist information is dumped in a single line",
+        "search_count": 12,
+        "add": "True"
     },
     "print_json": {
         "category": "verbosity",
         "type": "bool",
         "default": "False",
         "description": "",
-        "search_count": 339
+        "search_count": 8,
+        "add": "False"
     },
     "force_write_download_archive": {
         "category": "verbosity",
         "type": "bool",
         "default": "False",
-        "description": "(            'Force download archive entries to be written as far as no errors occur",
-        "search_count": 77
+        "description": "Force download archive entries to be written as far as no errors occur, even if -s or another simulation option is used (Alias: --force-download-archive)",
+        "search_count": 15,
+        "add": "False"
     },
     "progress_with_newline": {
         "category": "verbosity",
         "type": "bool",
         "default": "False",
         "description": "",
-        "search_count": 707
+        "search_count": 8,
+        "add": "False"
     },
     "noprogress": {
         "category": "verbosity",
         "type": "str",
         "default": null,
         "description": "'Show progress bar",
-        "search_count": 125000
+        "search_count": 13,
+        "add": "False"
     },
     "consoletitle": {
         "category": "verbosity",
         "type": "bool",
         "default": "False",
         "description": "",
-        "search_count": 1320
+        "search_count": 10,
+        "add": "False"
     },
     "progress_template": {
         "category": "verbosity",
         "type": "'str'",
         "default": "{}",
-        "description": "",
-        "search_count": 897
+        "description": "Template for progress outputs, optionally prefixed with one of download: (default)",
+        "search_count": 6,
+        "add": "False"
     },
     "verbose": {
         "category": "verbosity",
         "type": "bool",
         "default": "False",
         "description": "",
-        "search_count": 42300
+        "search_count": 48,
+        "add": "False"
     },
     "dump_intermediate_pages": {
         "category": "verbosity",
         "type": "bool",
         "default": "False",
         "description": "",
-        "search_count": 667
+        "search_count": 8,
+        "add": "False"
     },
     "write_pages": {
         "category": "verbosity",
         "type": "bool",
         "default": "False",
         "description": "",
-        "search_count": 570
+        "search_count": 8,
+        "add": "False"
     },
     "load_pages": {
         "category": "verbosity",
         "type": "bool",
         "default": "False",
         "description": "",
-        "search_count": 8
+        "search_count": 2,
+        "add": "False"
     },
     "youtube_print_sig_code": {
         "category": "verbosity",
         "type": "bool",
         "default": "False",
         "description": "",
-        "search_count": 738
+        "search_count": 9,
+        "add": "False"
     },
     "debug_printtraffic": {
         "category": "verbosity",
         "type": "bool",
         "default": "False",
         "description": "",
-        "search_count": 617
+        "search_count": 11,
+        "add": "False"
     },
     "call_home": {
         "category": "verbosity",
         "type": "str",
         "default": null,
         "description": "",
-        "search_count": 577
+        "search_count": 11,
+        "add": "False"
     },
     "batchfile": {
         "category": "filesystem",
         "type": "str",
         "default": null,
-        "description": "",
-        "search_count": 73900
+        "description": "File containing URLs to download (- for stdin), one URL per line. Lines starting with #, ; or ] are considered as comments and ignored",
+        "search_count": 40
     },
     "useid": {
         "category": "filesystem",
