@@ -1,7 +1,24 @@
 {
-    "ignoreerrors": {
+    "print_help": {
         "category": "general",
         "type": "bool",
+        "default": "False",
+        "description": "True = Print this help text and exit.",
+        "search_count": 44,
+        "add": "True"
+    },
+    "update_self": {
+        "category": "general",
+        "type": "bool",
+        "default": "False",
+        "description": "True = Update this program to the latest version. False = Do not update this program.",
+        "search_count": 44,
+        "add": "True"
+    },
+    "ignoreerrors": {
+        "category": "general",
+        "type": "dropdown",
+        "values": ["True", "False", "only_download"],
         "default": "False",
         "description": "Ignore download and postprocessing errors. The download will be considered successful even if the postprocessing fails",
         "search_count": 76,
@@ -19,14 +36,14 @@
         "category": "general",
         "type": "bool",
         "default": "False",
-        "description": "",
+        "description": "True = Use this prefix for unqualified URLs. E.g. gvsearch2:python downloads two videos from google videos for the search term python. Use the value auto to let yt-dlp guess (auto_warning to emit a warning when guessing). error just throws an error. The default value fixup_error repairs broken URLs, but emits an error if this is not possible instead of searching",
         "search_count": 71,
         "add": "True"
     },
     "default_search": {
         "category": "general",
         "type": "str",
-        "default": null,
+        "default": "None",
         "description": "Use this prefix for unqualified URLs. E.g. gvsearch2:python downloads two videos rom google videos for the search term python. Use the value auto to let yt-dlp guess (auto_warning to emit a warning when guessing). error just throws an error. The default value fixup_error repairs broken URLs, but emits an error if this is not possible instead of searching",
         "search_count": 76,
         "add": "Maybe"
@@ -41,33 +58,33 @@
     },
     "config_locations": {
         "category": "general",
-        "type": "str",
-        "default": null,
-        "description": "Location of the main configuration file; either the path to the config or its containing directory (- for stdin). Can be used multiple times and inside other configuration files",
+        "type": "filepath",
+        "default": "None",
+        "description": "[] = Do not load any custom configuration files (default) or Location of the main configuration file; either the path to the config or its containing directory (- for stdin). Can be used multiple times and inside other configuration files",
         "search_count": 5,
-        "add": "Maybe"
+        "add": "True"
     },
     "extract_flat": {
         "category": "general",
-        "type": "str",
-        "default": null,
-        "description": "Do not extract the videos of a playlist, only list them",
+        "type": "dropdown",
+        "values": ["False", "in_playlist"],
+        "default": "False",
+        "description": "in_playlist = Do not extract the videos of a playlist, only list them. False = Extract the videos of a playlist",
         "search_count": 58,
         "add": "Maybe"
-
     },
     "live_from_start": {
         "category": "general",
         "type": "str",
-        "default": null,
-        "description": "Download livestreams from the start. Currently only supported for YouTube (Experimental)",
+        "default": "None",
+        "description": "True = Download livestreams from the start. Currently only supported for YouTube (Experimental). False = Download livestreams from the current time (default)",
         "search_count": 6,
         "add": "Maybe"
     },
     "wait_for_video": {
         "category": "general",
         "type": "str",
-        "default": null,
+        "default": "None",
         "description": "Wait for scheduled streams to become available. Pass the minimum number of seconds (or range) to wait between retries",
         "search_count": 7,
         "add": "Maybe"
@@ -76,7 +93,7 @@
         "category": "general",
         "type": "bool",
         "default": "False",
-        "description": "Mark videos watched (even with --simulate)",
+        "description": "True = Mark videos watched (even with --simulate). False = Do not mark videos watched (default)",
         "search_count": 22,
         "add": "Maybe"
     },
@@ -84,14 +101,14 @@
         "category": "general",
         "type": "bool",
         "default": "False",
-        "description": "Do not emit color codes in output (Alias: --no-colours)",
+        "description": "True = Do not emit color codes in output (Alias: --no-colours)",
         "search_count": 57,
-        "add": "Maybe"
+        "add": "True"
     },
     "compat_opts": {
         "category": "general",
         "type": "str",
-        "default": null,
+        "default": "None",
         "description": "Options that can help keep compatibility with youtube-dl or youtube-dlc configurations by reverting some of the changes made in yt-dlp. See Differences in default behavior for details. Allowed_values: 'filename', 'filename-sanitization', 'format-sort', 'abort-on-error', 'format-spec', 'no-playlist-metafiles', 'multistreams', 'no-live-chat', 'playlist-index', 'list-formats', 'no-direct-merge', 'no-attach-info-json', 'embed-metadata', 'embed-thumbnail-atomicparsley', 'seperate-video-versions', 'no-clean-infojson', 'no-keep-subs', 'no-certifi', 'no-youtube-channel-redirect', 'no-youtube-unavailable-videos', 'no-youtube-prefer-utc-upload-date'",
         "search_count": 17,
         "add": "True"
@@ -104,7 +121,7 @@
         "search_count": 81,
         "add": "True"
     },
-    "socket_timeout": {
+    "socket_timeout": {  # Continue here
         "category": "network",
         "type": "float",
         "default": "None",
@@ -115,7 +132,7 @@
     "source_address": {
         "category": "network",
         "type": "str",
-        "default": null,
+        "default": "None",
         "description": "Client-side IP address to bind to, Or: '0.0.0.0' in order to Make all connections via IPv4. Or: '::' Make all connections via IPv6",
         "search_count": 20,
         "add": "True"
@@ -187,7 +204,7 @@
     "matchtitle": {
         "category": "selection",
         "type": "str",
-        "default": null,
+        "default": "None",
         "description": "REGEX to match video title",
         "search_count": 13,
         "add": "True"
@@ -195,7 +212,7 @@
     "rejecttitle": {
         "category": "selection",
         "type": "str",
-        "default": null,
+        "default": "None",
         "description": "REGEX to reject video title",
         "search_count": 14,
         "add": "True"
@@ -259,7 +276,7 @@
     "match_filter": {
         "category": "selection",
         "type": "str",
-        "default": null,
+        "default": "None",
         "description": "Generic video filter. Any OUTPUT TEMPLATE field can be compared with a number or a string using the operators defined in Filtering Formats. You can also simply specify a field to match if the field is present, use !field to check if the field is not present, and & to check multiple conditions. Use a \\ to escape & or quotes if needed. If used multiple times, the filter matches if atleast one of the conditions are met. E.g. --match-filter !is_live --match-filter like_count>?100 & description~=(?i)\\bcats \\& dogs\\b matches only videos that are not live OR those that have a like count more than 100 (or the like field is not available) and also has a description that contains the phrase cats & dogs (caseless). Use --match-filter - to interactively ask whether to download each video",
         "search_count": 16,
         "add": "True"
@@ -283,7 +300,7 @@
     "download_archive": {
         "category": "selection",
         "type": "str",
-        "default": null,
+        "default": "None",
         "description": "Download only videos not listed in the archive file. Record the IDs of all downloaded videos in it. Path to the archive (.txt) file.",
         "search_count": 67,
         "add": "True"
@@ -339,7 +356,7 @@
     "username": {
         "category": "authentication",
         "type": "str",
-        "default": null,
+        "default": "None",
         "description": "Login with this account ID",
         "search_count": 58,
         "add": "True"
@@ -347,7 +364,7 @@
     "password": {
         "category": "authentication",
         "type": "str",
-        "default": null,
+        "default": "None",
         "description": "Account password. If this option is left out, yt-dlp will ask interactively",
         "search_count": 86,
         "add": "True"
@@ -355,7 +372,7 @@
     "twofactor": {
         "category": "authentication",
         "type": "str",
-        "default": null,
+        "default": "None",
         "description": "Two-factor authentication code",
         "search_count": 19,
         "add": "True"
@@ -371,7 +388,7 @@
     "netrc_location": {
         "category": "authentication",
         "type": "str",
-        "default": null,
+        "default": "None",
         "description": "Location of .netrc authentication data; either the path or its containing directory. Defaults to ~/.netrc",
         "search_count": 4,
         "add": "True"
@@ -379,7 +396,7 @@
     "videopassword": {
         "category": "authentication",
         "type": "str",
-        "default": null,
+        "default": "None",
         "description": "Video password (vimeo, youku)",
         "search_count": 20,
         "add": "True"
@@ -387,7 +404,7 @@
     "ap_mso": {
         "category": "authentication",
         "type": "str",
-        "default": null,
+        "default": "None",
         "description": "Adobe Pass multiple-system operator (TV provider) identifier, use --ap-list-mso for a list of available MSOs",
         "search_count": 11,
         "add": "Maybe"
@@ -395,7 +412,7 @@
     "ap_username": {
         "category": "authentication",
         "type": "str",
-        "default": null,
+        "default": "None",
         "description": "Multiple-system operator account login",
         "search_count": 10,
         "add": "Maybe"
@@ -403,7 +420,7 @@
     "ap_password": {
         "category": "authentication",
         "type": "str",
-        "default": null,
+        "default": "None",
         "description": "Multiple-system operator account password. If this option is left out, yt-dlp will ask interactively",
         "search_count": 10,
         "add": "Maybe"
@@ -419,7 +436,7 @@
     "client_certificate": {
         "category": "authentication",
         "type": "str",
-        "default": null,
+        "default": "None",
         "description": "Path to client certificate file in PEM format. May include the private key",
         "search_count": 6,
         "add": "True"
@@ -427,7 +444,7 @@
     "client_certificate_key": {
         "category": "authentication",
         "type": "str",
-        "default": null,
+        "default": "None",
         "description": "Path to private key file for client certificate",
         "search_count": 6,
         "add": "True"
@@ -435,7 +452,7 @@
     "client_certificate_password": {
         "category": "authentication",
         "type": "str",
-        "default": null,
+        "default": "None",
         "description": "Password for client certificate private key, if encrypted. If not provided, and the key is encrypted, yt-dlp will ask interactively",
         "search_count": 6
     },
@@ -498,7 +515,7 @@
     "ratelimit": {
         "category": "downloader",
         "type": "str",
-        "default": null,
+        "default": "None",
         "description": "Maximum download rate in bytes per second, e.g. 50K or 4.2M",
         "search_count": 73,
         "add": "True"
@@ -506,7 +523,7 @@
     "throttledratelimit": {
         "category": "downloader",
         "type": "str",
-        "default": null,
+        "default": "None",
         "description": "Minimum download rate in bytes per second below which throttling is assumed and the video data is re-extracted, e.g. 100K",
         "search_count": 3,
         "add": "True"
@@ -610,7 +627,7 @@
     "xattr_set_filesize": {
         "category": "downloader",
         "type": "str",
-        "default": null,
+        "default": "None",
         "description": "Set file xattribute ytdl.filesize with expected file size",
         "search_count": 12,
         "add": "Maybe"
@@ -634,7 +651,7 @@
     "download_ranges": {
         "category": "downloader",
         "type": "str",
-        "default": null,
+        "default": "None",
         "description": "Download only chapters whose title matches the given regular expression. Time ranges prefixed by a * can also be used in place of chapters to download the specified range. Needs ffmpeg. This option can be used multiple times to download multiple sections, e.g. --download-sections *10:15-inf --download-sections intro",
         "search_count": 19,
         "add": "True"
@@ -658,7 +675,7 @@
     "encoding": {
         "category": "workarounds",
         "type": "str",
-        "default": null,
+        "default": "None",
         "description": "Force the specified encoding (experimental)",
         "search_count": 78,
         "add": "True"
@@ -682,7 +699,7 @@
     "prefer_insecure": {
         "category": "workarounds",
         "type": "str",
-        "default": null,
+        "default": "None",
         "description": "Use an unencrypted connection to retrieve information about the video (Currently supported only for YouTube)",
         "search_count": 13,
         "add": "True"
@@ -690,7 +707,7 @@
     "user_agent": {
         "category": "workarounds",
         "type": "str",
-        "default": null,
+        "default": "None",
         "description": "",
         "search_count": 47,
         "add": "True"
@@ -707,14 +724,14 @@
         "category": "workarounds",
         "type": "'str'",
         "default": "{}",
-        "description": "Specify a custom HTTP header and its value, separated by a colon ":". You can use this option multiple times",
+        "description": "Specify a custom HTTP header and its value, separated by a colon :. You can use this option multiple times",
         "search_count": 57,
         "add": "True"
     },
     "bidi_workaround": {
         "category": "workarounds",
         "type": "str",
-        "default": null,
+        "default": "None",
         "description": "Work around terminals that lack bidirectional text support. Requires bidiv or fribidi executable in PATH",
         "search_count": 10,
         "add": "True"
@@ -722,7 +739,7 @@
     "sleep_interval_requests": {
         "category": "workarounds",
         "type": "float",
-        "default": null,
+        "default": "None",
         "description": "Number of seconds to sleep between requests during data extraction",
         "search_count": 8,
         "add": "True"
@@ -730,7 +747,7 @@
     "sleep_interval": {
         "category": "workarounds",
         "type": "float",
-        "default": null,
+        "default": "None",
         "description": "Number of seconds to sleep before each download. This is the minimum time to sleep when used along with --max-sleep-interval (Alias: --min-sleep-interval)",
         "search_count": 14,
         "add": "True"
@@ -738,7 +755,7 @@
     "max_sleep_interval": {
         "category": "workarounds",
         "type": "float",
-        "default": null,
+        "default": "None",
         "description": "Maximum number of seconds to sleep. Can only be used along with --min-sleep-interval",
         "search_count": 13,
         "add": "True"
@@ -770,7 +787,7 @@
     "simulate": {
         "category": "verbosity",
         "type": "str",
-        "default": null,
+        "default": "None",
         "description": "True = Do not download the video and do not write anything to disk. False = Download the video even if printing/listing options are used",
         "search_count": 23,
         "add": "False"
@@ -914,7 +931,7 @@
     "noprogress": {
         "category": "verbosity",
         "type": "str",
-        "default": null,
+        "default": "None",
         "description": "'Show progress bar",
         "search_count": 13,
         "add": "False"
@@ -986,7 +1003,7 @@
     "call_home": {
         "category": "verbosity",
         "type": "str",
-        "default": null,
+        "default": "None",
         "description": "",
         "search_count": 11,
         "add": "False"
@@ -994,526 +1011,606 @@
     "batchfile": {
         "category": "filesystem",
         "type": "str",
-        "default": null,
+        "default": "None",
         "description": "File containing URLs to download (- for stdin), one URL per line. Lines starting with #, ; or ] are considered as comments and ignored",
-        "search_count": 40
+        "search_count": 40,
+        "add": "True"
     },
     "useid": {
         "category": "filesystem",
         "type": "bool",
         "default": "False",
         "description": "",
-        "search_count": 768
+        "search_count": 9,
+        "add": "Maybe"
     },
     "paths": {
         "category": "filesystem",
-        "type": "'str'",
+        "type": "str",
         "default": "{}",
-        "description": "",
-        "search_count": 26000
+        "description": "The paths where the files should be downloaded. Specify the type of file and the path separated by a colon :. All the same TYPES as --output are supported. Additionally, you can also provide home (default) and temp paths. All intermediary files are first downloaded to the temp path and then the final files are moved over to the home path after download is finished. This option is ignored if --output is an absolute path. 'allowed_keys': 'home|temp|%s' % '|'.join(map(re.escape, OUTTMPL_TYPES.keys())) default_key: home",
+        "search_count": 79,
+        "add": "True"
     },
     "outtmpl": {
         "category": "filesystem",
         "type": "'str'",
         "default": "{}",
-        "description": "",
-        "search_count": 2280
+        "description": "Output filename template; see OUTPUT TEMPLATE for details. 'allowed_keys': '|'.join(map(re.escape, OUTTMPL_TYPES.keys())),'default_key': 'default'",
+        "search_count": 52,
+        "add": "True"
     },
     "outtmpl_na_placeholder": {
         "category": "filesystem",
         "type": "str",
-        "default": "'NA'",
-        "description": "",
-        "search_count": 147
+        "default": "NA",
+        "description": "Placeholder for unavailable fields in OUTPUT TEMPLATE (default: %default)",
+        "search_count": 12,
+        "add": "True"
     },
     "autonumber_size": {
         "category": "filesystem",
         "type": "int",
-        "default": null,
+        "default": "None",
         "description": "",
-        "search_count": 15800
+        "search_count": 9,
+        "add": "True"
     },
     "autonumber_start": {
         "category": "filesystem",
         "type": "int",
         "default": "1",
         "description": "",
-        "search_count": 12700
+        "search_count": 23,
+        "add": "True"
     },
     "restrictfilenames": {
         "category": "filesystem",
-        "type": "str",
-        "default": null,
-        "description": "'Allow Unicode characters",
-        "search_count": 2170
+        "type": "bool",
+        "default": "False",
+        "description": "True = Restrict filenames to only ASCII characters, and avoid & and spaces in filenames. False = Allow Unicode characters, & and spaces in filenames (default)",
+        "search_count": 23,
+        "add": "True"
     },
     "windowsfilenames": {
         "category": "filesystem",
-        "type": "str",
-        "default": null,
-        "description": "",
-        "search_count": 6380
+        "type": "bool",
+        "default": "False",
+        "description": "True = Force filenames to be Windows-compatible. False = Make filenames Windows-compatible only if using Windows (default)",
+        "search_count": 37,
+        "add": "True"
     },
     "trim_file_name": {
         "category": "filesystem",
         "type": "int",
         "default": "0",
-        "description": "",
-        "search_count": 168
+        "description": "Limit the filename length (excluding extension) to the specified number of characters",
+        "search_count": 7,
+        "add": "True"
     },
     "overwrites": {
         "category": "filesystem",
-        "type": "str",
-        "default": null,
-        "description": "'Do not overwrite the video",
-        "search_count": 3610
+        "type": "bool",
+        "default": "None",
+        "description": "True = Overwrite all video and metadata files. This option includes --no-continue. False = Do not overwrite any files. None = Do not overwrite the video, but overwrite related files (default)",
+        "search_count": 34,
+        "add": "True"
     },
     "continue_dl": {
         "category": "filesystem",
-        "type": "str",
-        "default": null,
-        "description": "(            'Do not resume partially downloaded fragments. '            'If the file is not fragmented",
-        "search_count": 3
+        "type": "bool",
+        "default": "True",
+        "description": "True = Resume partially downloaded files/fragments (default). False = Do not resume partially downloaded fragments. If the file is not fragmented, restart download of the entire file",
+        "search_count": 3,
+        "add": "True"
     },
     "nopart": {
         "category": "filesystem",
-        "type": "str",
-        "default": null,
-        "description": "",
-        "search_count": 1480
+        "type": "bool",
+        "default": "False",
+        "description": "True = Do not use .part files - write directly into output file. False = Use .part files instead of writing directly into output file (default)",
+        "search_count": 16,
+        "add": "True"
     },
     "updatetime": {
         "category": "filesystem",
-        "type": "str",
-        "default": null,
-        "description": "",
-        "search_count": 2470
+        "type": "bool",
+        "default": "True",
+        "description": "True = Use the Last-modified header to set the file modification time (default). False = Do not use the Last-modified header to set the file modification time",
+        "search_count": 19,
+        "add": "True"
     },
     "writedescription": {
         "category": "filesystem",
-        "type": "str",
-        "default": null,
-        "description": "",
-        "search_count": 2250
+        "type": "bool",
+        "default": "False",
+        "description": "True = Write video description to a .description file. False = Do not write video description (default)",
+        "search_count": 27,
+        "add": "True"
     },
     "writeinfojson": {
         "category": "filesystem",
-        "type": "str",
-        "default": null,
-        "description": "",
-        "search_count": 1840
+        "type": "bool",
+        "default": "None",
+        "description": "True = Write video metadata to a .info.json file (this may contain personal information). False = Do not write video metadata (default)",
+        "search_count": 21,
+        "add": "True"
     },
     "writeannotations": {
         "category": "filesystem",
-        "type": "str",
-        "default": null,
+        "type": "bool",
+        "default": "False",
         "description": "",
-        "search_count": 1420
+        "search_count": 13,
+        "add": "True"
     },
     "allow_playlist_files": {
         "category": "filesystem",
-        "type": "str",
-        "default": null,
-        "description": "'Do not write playlist metadata when using --write-info-json",
-        "search_count": 331
+        "type": "bool",
+        "default": "None",
+        "description": "True = Write playlist metadata in addition to the video metadata when using --write-info-json, --write-description etc. (default). False = Do not write playlist metadata when using --write-info-json, --write-description etc",
+        "search_count": 16,
+        "add": "True"
     },
     "clean_infojson": {
         "category": "filesystem",
-        "type": "str",
-        "default": null,
-        "description": "",
-        "search_count": 66
+        "type": "bool",
+        "default": "None",
+        "description": "True = Remove some private fields such as filenames from the infojson. Note that it could still contain some personal information (default). False = Write all fields to the infojson",
+        "search_count": 66,
+        "add": "True"
     },
     "getcomments": {
         "category": "filesystem",
-        "type": "str",
-        "default": null,
-        "description": "",
-        "search_count": 492
+        "type": "bool",
+        "default": "False",
+        "description": "True = Retrieve video comments to be placed in the infojson. The comments are fetched even without this option if the extraction is known to be quick (Alias: --get-comments). False = Do not retrieve video comments unless the extraction is known to be quick (Alias: --no-get-comments)",
+        "search_count": 13,
+        "add": "True"
     },
     "load_info_filename": {
         "category": "filesystem",
-        "type": "str",
-        "default": null,
-        "description": "",
-        "search_count": 535
+        "type": "filepath",
+        "default": "None",
+        "description": "JSON file containing the video information (created with the --write-info-json option)",
+        "search_count": 11,
+        "add": "True"
     },
     "cookiefile": {
         "category": "filesystem",
-        "type": "str",
-        "default": null,
-        "description": "",
-        "search_count": 1650
+        "type": "filepath",
+        "default": "None",
+        "description": "Do not read/dump cookies from/to file (default)",
+        "search_count": 29,
+        "add": "True"
     },
     "cookiesfrombrowser": {
         "category": "filesystem",
         "type": "str",
-        "default": null,
-        "description": "",
-        "search_count": 1720
+        "default": "None",
+        "description": "None = Do not load cookies from browser (default). BROWSER[+KEYRING][:PROFILE][::CONTAINER] = The name of the browser to load cookies from. 'Currently supported browsers are: {, .join(sorted(SUPPORTED_BROWSERS))}. Optionally, the KEYRING used for decrypting Chromium cookies on Linux, the name/path of the PROFILE to load cookies from, and the CONTAINER name (if Firefox) (none for no container) can be given with their respective seperators. By default, all containers of the most recently accessed profile are used. Currently supported keyrings are: {, .join(map(str.lower, sorted(SUPPORTED_KEYRINGS)))",
+        "search_count": 12,
+        "add": "True"
     },
     "cachedir": {
         "category": "filesystem",
-        "type": "str",
-        "default": null,
-        "description": "",
-        "search_count": 2970
+        "type": "dirpath",
+        "default": "None",
+        "description": "Location in the filesystem where yt-dlp can store some downloaded information (such as client ids and signatures) permanently. By default $XDG_CACHE_HOME/yt-dlp or ~/.cache/yt-dlp",
+        "search_count": 32,
+        "add": "True"
     },
     "rm_cachedir": {
         "category": "filesystem",
-        "type": "str",
-        "default": null,
-        "description": "",
-        "search_count": 419
+        "type": "bool",
+        "default": "True",
+        "description": "Delete all filesystem cache files",
+        "search_count": 9,
+        "add": "True"
     },
     "writethumbnail": {
         "category": "thumbnail",
-        "type": "str",
-        "default": null,
-        "description": "",
-        "search_count": 2250
+        "type": "dropdown",
+        "values": ["True", "False", "all"],
+        "default": "False",
+        "description": "True = Write thumbnail image to disk. False = Do not write thumbnail image to disk (default). All = Write all thumbnail image formats to disk'",
+        "search_count": 41,
+        "add": "True"
     },
     "list_thumbnails": {
         "category": "thumbnail",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 630
+        "description": "True = List available thumbnails of each video. Simulate unless --no-simulate is used",
+        "search_count": 27,
+        "add": "False"
     },
     "writelink": {
         "category": "link",
         "type": "bool",
         "default": "False",
-        "description": "'Write an internet shortcut file",
-        "search_count": 2000
+        "description": "True = Write an internet shortcut file, depending on the current platform (.url, .webloc or .desktop). The URL may be cached by the OS",
+        "search_count": 8,
+        "add": "True"
     },
     "writeurllink": {
         "category": "link",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 79
+        "description": "True = Write a .url Windows internet shortcut. The OS caches the URL based on the file path",
+        "search_count": 9,
+        "add": "True"
     },
     "writewebloclink": {
         "category": "link",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 49
+        "description": "True = Write a .webloc macOS internet shortcut",
+        "search_count": 8,
+        "add": "True"
     },
     "writedesktoplink": {
         "category": "link",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 54
+        "description": "True = Write a .desktop Linux internet shortcut",
+        "search_count": 9,
+        "add": "True"
     },
     "extractaudio": {
         "category": "postproc",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 21400
+        "description": "True = Convert video files to audio-only files (requires ffmpeg and ffprobe)",
+        "search_count": 45,
+        "add": "True"
     },
     "audioformat": {
         "category": "postproc",
-        "type": "str",
-        "default": "'best'",
-        "description": "",
-        "search_count": 569
+        "type": "dropdown",
+        "values": ["best", "aac", "flac", "mp3", "m4a", "opus", "vorbis", "wav"],
+        "default": "best",
+        "description": "Format to convert the audio to when -x is used. (currently supported: best (default), {, .join(sorted(FFmpegExtractAudioPP.SUPPORTED_EXTS))}). You can specify multiple rules using similar syntax as --remux-video",
+        "search_count": 25,
+        "add": "True"
     },
     "audioquality": {
         "category": "postproc",
-        "type": "str",
-        "default": "'5'",
-        "description": "",
-        "search_count": 1080
+        "type": "dropdown",
+        "values": ["0", "1", "2", "3", "4", "5", "6", "7", "8", "9", "10"],
+        "default": "5",
+        "description": "Specify ffmpeg audio quality to use when converting the audio with -x. Insert a value between 0 (best) and 10 (worst) for VBR or a specific bitrate like 128K (default %default)",
+        "search_count": 64,
+        "add": "True"
     },
     "remuxvideo": {
         "category": "postproc",
         "type": "str",
         "default": "None",
-        "description": "(            'Remux the video into another container if necessary '            f'(currently supported: {\"",
-        "search_count": 3250
+        "description": "Remux the video into another container if necessary (currently supported: {, .join(FFmpegVideoRemuxerPP.SUPPORTED_EXTS)}). If target container does not support the video/audio codec, remuxing will fail. You can specify multiple rules; e.g. aac>m4a/mov>mp4/mkv will remux aac to m4a, mov to mp4 and anything else to mkv",
+        "search_count": 45,
+        "add": "True"
     },
     "recodevideo": {
         "category": "postproc",
         "type": "str",
         "default": "None",
-        "description": "",
-        "search_count": 834
+        "description": "Re-encode the video into another format if necessary. The syntax and supported formats are the same as --remux-video",
+        "search_count": 10,
+        "add": "True"
     },
     "postprocessor_args": {
         "category": "postproc",
         "type": "'str'",
         "default": "{}",
-        "description": "",
-        "search_count": 4060
+        "description": "Give these arguments to the postprocessors. Specify the postprocessor/executable name and the arguments separated by a colon : to give the argument to the specified postprocessor/executable. Supported PP are: Merger, ModifyChapters, SplitChapters, ExtractAudio, VideoRemuxer, VideoConvertor, Metadata, EmbedSubtitle, EmbedThumbnail, SubtitlesConvertor, ThumbnailsConvertor, FixupStretched, FixupM4a, FixupM3u8, FixupTimestamp and FixupDuration. The supported executables are: AtomicParsley, FFmpeg and FFprobe. You can also specify PP+EXE:ARGS to give the arguments to the specified executable only when being used by the specified postprocessor. Additionally, for ffmpeg/ffprobe, _i/_o can be appended to the prefix optionally followed by a number to pass the argument before the specified input/output file, e.g. --ppa Merger+ffmpeg_i1:-v quiet. You can use this option multiple times to give different arguments to different postprocessors. (Alias: --ppa)",
+        "search_count": 45,
+        "add": "True"
     },
     "keepvideo": {
         "category": "postproc",
-        "type": "str",
-        "default": null,
-        "description": "",
-        "search_count": 23400
+        "type": "bool",
+        "default": "False",
+        "description": "True = Keep the intermediate video file on disk after post-processing. False = Delete the intermediate video file after post-processing (default)",
+        "search_count": 26,
+        "add": "True"
     },
     "nopostoverwrites": {
         "category": "postproc",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 744
+        "description": "True = Do not overwrite post-processed files. False = Overwrite post-processed files (default)",
+        "search_count": 13,
+        "add": "True"
     },
     "embedsubtitles": {
         "category": "postproc",
-        "type": "str",
-        "default": null,
-        "description": "",
-        "search_count": 28000
+        "type": "bool",
+        "default": "False",
+        "description": "True = Embed subtitles in the video (only for mp4, webm and mkv videos). False = Do not embed subtitles (default)",
+        "search_count": 36,
+        "add": "True"
     },
     "embedthumbnail": {
         "category": "postproc",
-        "type": "str",
-        "default": null,
-        "description": "",
-        "search_count": 3690
+        "type": "bool",
+        "default": "False",
+        "description": "True = Embed thumbnail in the video as cover art. False = Do not embed thumbnail (default).",
+        "search_count": 79,
+        "add": "True"
     },
     "addmetadata": {
         "category": "postproc",
-        "type": "str",
-        "default": null,
-        "description": "",
-        "search_count": 705
+        "type": "bool",
+        "default": "False",
+        "description": "True = Embed metadata to the video file. Also embeds chapters/infojson if present unless --no-embed-chapters/--no-embed-info-json are used (Alias: --add-metadata). False = Do not add metadata to file (default) (Alias: --no-add-metadata)",
+        "search_count": 12,
+        "add": "True"
     },
     "addchapters": {
         "category": "postproc",
-        "type": "str",
-        "default": null,
-        "description": "",
-        "search_count": 2090
+        "type": "bool",
+        "default": "None",
+        "description": "True = Add chapter markers to the video file (Alias: --add-chapters). False = Do not add chapter markers to file (default) (Alias: --no-add-chapters)",
+        "search_count": 33,
+        "add": "True"
     },
     "embed_infojson": {
         "category": "postproc",
-        "type": "str",
-        "default": null,
-        "description": "",
-        "search_count": 2
+        "type": "bool",
+        "default": "None",
+        "description": "True = Embed the infojson as an attachment to mkv/mka video files. False = Do not embed the infojson as an attachment to the video file",
+        "search_count": 2,
+        "add": "True"
     },
     "metafromtitle": {
         "category": "postproc",
         "type": "str",
-        "default": null,
-        "description": "",
-        "search_count": 345
+        "default": "None",
+        "description": "Parse additional metadata like title/artist from other fields; see MODIFYING METADATA for details",
+        "search_count": 6,
+        "add": "Maybe"
     },
     "parse_metadata": {
         "category": "postproc",
         "type": "str",
-        "default": null,
-        "description": "",
-        "search_count": 2390
+        "default": "None",
+        "description": "Replace text in a metadata field using the given regex. This option can be used multiple times",
+        "search_count": 40,
+        "add": "Maybe"
     },
     "xattrs": {
         "category": "postproc",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 22900
+        "description": "True = Write metadata to the video file's xattrs (using dublin core and xdg standards)",
+        "search_count": 17,
+        "add": "True"
     },
     "concat_playlist": {
         "category": "postproc",
-        "type": "str",
-        "default": "'multi_video'",
-        "description": "",
-        "search_count": 411
+        "type": "dropdown",
+        "values": ["never", "always", "multi_video"],
+        "default": "multi_video",
+        "description": "Concatenate videos in a playlist. One of never, always, or multi_video (default; only when the videos form a single show). All the video files must have same codecs and number of streams to be concatable. The pl_video: prefix can be used with --paths and --output to set the output filename for the concatenated files. See OUTPUT TEMPLATE for details",
+        "search_count": 4,
+        "add": "True"
     },
     "fixup": {
         "category": "postproc",
-        "type": "str",
+        "type": "dropdown",
         "default": "None",
-        "description": "",
-        "search_count": 1800
+        "values": ["never", "ignore", "warn", "detect_or_warn", "force"],
+        "description": "Automatically correct known faults of the file. One of never (do nothing), warn (only emit a warning), detect_or_warn (the default; fix file if we can, warn otherwise), force (try fixing even if file already exists)",
+        "search_count": 96,
+        "add": "True"
     },
     "prefer_ffmpeg": {
         "category": "postproc",
         "type": "bool",
         "default": "True",
         "description": "",
-        "search_count": 1910
+        "search_count": 66,
+        "add": "True"
     },
     "ffmpeg_location": {
         "category": "postproc",
-        "type": "str",
-        "default": null,
-        "description": "",
-        "search_count": 1520
+        "type": "filepath",
+        "default": "None",
+        "description": "Location of the ffmpeg binary; either the path to the binary or its containing directory",
+        "search_count": 9480,
+        "add": "True"
     },
     "exec_cmd": {
         "category": "postproc",
         "type": "str",
-        "default": null,
-        "description": "",
-        "search_count": 840
+        "default": "None",
+        "description": "Execute a command, optionally prefixed with when to execute it (after_move if unspecified), separated by a :. Supported values of WHEN are the same as that of --use-postprocessor. Same syntax as the output template can be used to pass any field as arguments to the command. After download, an additional field filepath that contains the final path of the downloaded file is also available, and if no fields are passed, %(filepath)q is appended to the end of the command. This option can be used multiple times",
+        "search_count": 49,
+        "add": "True"
     },
     "exec_before_dl_cmd": {
         "category": "postproc",
         "type": "str",
-        "default": null,
+        "default": "None",
         "description": "",
-        "search_count": 67
+        "search_count": 2,
+        "add": "True"
     },
     "convertsubtitles": {
         "category": "postproc",
         "type": "str",
         "default": "None",
-        "description": "",
-        "search_count": 544
+        "description": "Convert the subtitles to another format (currently supported: %s) (Alias: --convert-subtitles)' % ', '.join(sorted(FFmpegSubtitlesConvertorPP.SUPPORTED_EXTS)))",
+        "search_count": 59,
+        "add": "True"
     },
     "convertthumbnails": {
         "category": "postproc",
         "type": "str",
         "default": "None",
-        "description": "(            'Convert the thumbnails to another format '            f'(currently supported: {\"",
-        "search_count": 1560
+        "description": "Convert the thumbnails to another format (currently supported: {, .join(sorted(FFmpegThumbnailsConvertorPP.SUPPORTED_EXTS))}). You can specify multiple rules using similar syntax as --remux-video'",
+        "search_count": 55,
+        "add": "True"
     },
     "split_chapters": {
         "category": "postproc",
-        "type": "str",
-        "default": null,
-        "description": "",
-        "search_count": 1280
+        "type": "bool",
+        "default": "False",
+        "description": "True = Split video into multiple files based on internal chapters. The chapter: prefix can be used with --paths and --output to set the output filename for the split files. See OUTPUT TEMPLATE for details. False = Do not split video based on chapters (default)",
+        "search_count": 70,
+        "add": "True"
     },
     "remove_chapters": {
         "category": "postproc",
         "type": "str",
-        "default": null,
-        "description": "",
-        "search_count": 85
+        "default": "None",
+        "description": "REGEX: Remove chapters whose title matches the given regular expression. The syntax is the same as --download-sections. This option can be used multiple times. None = Do not remove any chapters (default)",
+        "search_count": 9,
+        "add": "True"
     },
     "force_keyframes_at_cuts": {
         "category": "postproc",
-        "type": "str",
-        "default": null,
-        "description": "",
-        "search_count": 54
+        "type": "bool",
+        "default": "False",
+        "description": "True = Force keyframes at cuts when downloading/splitting/removing sections. This is slow due to needing a re-encode, but the resulting video may have fewer artifacts around the cuts. False = Do not force keyframes around the chapters when cutting/splitting (default)",
+        "search_count": 8,
+        "add": "True"
     },
     "add_postprocessors": {
         "category": "postproc",
-        "type": "'str'",
+        "type": "str",
         "default": "[]",
-        "description": "",
-        "search_count": 2
+        "description": "The (case sensitive) name of plugin postprocessors to be enabled, and (optionally) arguments to be passed to it, separated by a colon :. ARGS are a semicolon ; delimited list of NAME=VALUE. The when argument determines when the postprocessor is invoked. It can be one of pre_process (after video extraction), after_filter (after video passes filter), before_dl (before each video download), post_process (after each video download; default), after_move (after moving video file to it's final locations), after_video (after downloading and processing all formats of a video), or playlist (at end of playlist). This option can be used multiple times to add different postprocessors",
+        "search_count": 2,
+        "add": "True"
     },
     "sponsorblock_mark": {
         "category": "sponsorblock",
         "type": "str",
-        "default": null,
-        "description": "",
-        "search_count": 9
+        "default": "None",
+        "description": "SponsorBlock categories to create chapters for, separated by commas. Available categories are {, .join(SponsorBlockPP.CATEGORIES.keys())}, all and default (=all). 'You can prefix the category with a - to exclude it. See [1] for description of the categories. E.g. --sponsorblock-mark all,-preview [1] https://wiki.sponsor.ajay.app/w/Segment_Categories'",
+        "search_count": 9,
+        "add": "True"
     },
     "sponsorblock_remove": {
         "category": "sponsorblock",
         "type": "str",
-        "default": null,
-        "description": "",
-        "search_count": 10
+        "default": "None",
+        "description": "SponsorBlock categories to be removed from the video file, separated by commas. If a category is present in both mark and remove, remove takes precedence. The syntax and available categories are the same as for --sponsorblock-mark except that default refers to all,-filler",
+        "search_count": 39,
+        "add": "True"
     },
     "sponsorblock_chapter_title": {
         "category": "sponsorblock",
         "type": "str",
         "default": "DEFAULT_SPONSORBLOCK_CHAPTER_TITLE",
-        "description": "(            'An output template for the title of the SponsorBlock chapters created by --sponsorblock-mark. '            'The only available fields are start_time",
-        "search_count": 9
+        "description": "An output template for the title of the SponsorBlock chapters created by --sponsorblock-mark. The only available fields are start_time, end_time, category, categories, name, category_names. Defaults to %default",
+        "search_count": 3,
+        "add": "True"
     },
     "no_sponsorblock": {
         "category": "sponsorblock",
         "type": "bool",
         "default": "False",
-        "description": "",
-        "search_count": 9
+        "description": "Disable both --sponsorblock-mark and --sponsorblock-remove",
+        "search_count": 12,
+        "add": "True"
     },
     "sponsorblock_api": {
         "category": "sponsorblock",
         "type": "str",
-        "default": "'https://sponsor.ajay.app'",
-        "description": "'SponsorBlock API location",
-        "search_count": 8
+        "default": "https://sponsor.ajay.app'",
+        "description": "SponsorBlock API location",
+        "search_count": 8,
+        "add": "True"
     },
     "sponskrub": {
         "category": "sponsorblock",
-        "type": "str",
-        "default": null,
+        "type": "bool",
+        "default": "False",
         "description": "",
-        "search_count": 5000
+        "search_count": 5000,
+        "add": "True"
     },
     "sponskrub_cut": {
         "category": "sponsorblock",
-        "type": "str",
-        "default": null,
+        "type": "bool",
+        "default": "False",
         "description": "",
-        "search_count": 103
+        "search_count": 103,
+        "add": "True"
     },
     "sponskrub_force": {
         "category": "sponsorblock",
         "type": "str",
-        "default": null,
+        "default": "False",
         "description": "",
-        "search_count": 69
+        "search_count": 69,
+        "add": "True"
     },
     "sponskrub_path": {
         "category": "sponsorblock",
-        "type": "str",
-        "default": "''",
+        "type": "filepath",
+        "default": "",
         "description": "",
-        "search_count": 51
+        "search_count": 51,
+        "add": "True"
     },
     "sponskrub_args": {
         "category": "sponsorblock",
         "type": "str",
-        "default": null,
+        "default": "None",
         "description": "",
-        "search_count": 52
+        "search_count": 52,
+        "add": "True"
     },
     "extractor_retries": {
         "category": "extractor",
         "type": "str",
         "default": "3",
-        "description": "",
-        "search_count": 67
+        "description": "Number of retries for known extractor errors (default is %default), or infinite",
+        "search_count": 8,
+        "add": "True"
     },
     "dynamic_mpd": {
         "category": "extractor",
-        "type": "str",
-        "default": null,
-        "description": "",
-        "search_count": 344
+        "type": "bool",
+        "default": "True",
+        "description": "True = Process dynamic DASH manifests (default) (Alias: --no-ignore-dynamic-mpd). False = Do not process dynamic DASH manifests (Alias: --no-allow-dynamic-mpd)",
+        "search_count": 19,
+        "add": "True"
     },
     "hls_split_discontinuity": {
         "category": "extractor",
-        "type": "str",
-        "default": null,
-        "description": "",
-        "search_count": 1430
+        "type": "bool",
+        "default": "False",
+        "description": "True = Split HLS playlists to different formats at discontinuities such as ad breaks. False = Do not split HLS playlists to different formats at discontinuities such as ad breaks (default)",
+        "search_count": 22,
+        "add": "True"
     },
     "extractor_args": {
         "category": "extractor",
-        "type": "'str'",
+        "type": "str",
         "default": "{}",
-        "description": "",
-        "search_count": 242
+        "description": "Pass ARGS arguments to the IE_KEY extractor. See EXTRACTOR ARGUMENTS for details. You can use this option multiple times to give arguments for different extractors",
+        "search_count": 52,
+        "add": "True"
     },
     "youtube_include_dash_manifest": {
         "category": "extractor",
-        "type": "str",
-        "default": null,
+        "type": "bool",
+        "default": "True",
         "description": "",
-        "search_count": 2580
+        "search_count": 68,
+        "add": "True"
     },
     "youtube_include_hls_manifest": {
         "category": "extractor",
-        "type": "str",
-        "default": null,
+        "type": "bool",
+        "default": "True",
         "description": "",
-        "search_count": 82
+        "search_count": 12,
+        "add": "True"
     }
 }
