@@ -131,6 +131,7 @@ class SplitWindowYoutubeBrowser(QMainWindow):
                 "download_location": (clean_path(expanduser("~/Downloads")), True),
                 "theme": ("Dark", False),
                 "accent": ("Red", False),
+                "ffmpeg_location": ("3rd/ffmpeg.exe", True),
             }
             if not isdir("src/config"):
                 mkdir("src/config")
@@ -192,7 +193,9 @@ class SplitWindowYoutubeBrowser(QMainWindow):
     def save_settings(self):
         """save_settings
         """
-        with open("src/ytb/yt-dlp-options2.json", "r", encoding="utf-8") as _:
+        # with open("src/ytb/yt-dlp-options2.json", "r", encoding="utf-8") as _:
+        #     opt = load(_)
+        with open("src/ytb/yt-dlp_options.json", "r", encoding="utf-8") as _:
             opt = load(_)
         for key, value in opt.items():
             try:

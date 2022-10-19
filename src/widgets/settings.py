@@ -146,11 +146,16 @@ class SettingsWidget(QtWidgets.QWidget):
 
         self.settings_layout1.addWidget(self.scroll_area)
 
-        with open("src/ytb/yt-dlp-options2.json", "r", encoding="utf-8") as _:
+        # with open("src/ytb/yt-dlp-options2.json", "r", encoding="utf-8") as _:
+        #     options = load(_)
+        with open("src/ytb/yt-dlp_options.json", "r", encoding="utf-8") as _:
             options = load(_)
 
-        for index, (key, value) in enumerate(options.items()):
-            if value["search_count"] > 10000 and len(key) > 2:
+        for index, (key, value) in enumerate(sorted(options.items(), key=lambda x: x[0])):
+            if value["bae"] == "basic" and value["bae"] != "False":  # basic options
+                
+                # TODO: dropdown, filebrowse, text
+                
                 label = QtWidgets.QLabel(key)
                 label.setObjectName(f"{key}_label")
                 label.setToolTip(value["description"])
@@ -179,7 +184,7 @@ class SettingsWidget(QtWidgets.QWidget):
                         line_edit.setText(value["default"] if value["default"] not in ("None", "{}", "[]", None, "''") else "")
                 self.settings_layout1_3.addWidget(line_edit, index + 2, 2, 1, 6, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
 
-        # self.settings_layout1_3.addItem(QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding))
+        self.settings_layout1_3.addItem(QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding))
 
     def _settings_widget2(self):
         self.youtube_dl_label = QtWidgets.QLabel("Youtube-dl Options (Advanced)")
@@ -214,11 +219,13 @@ class SettingsWidget(QtWidgets.QWidget):
         # TODO: Create a dictionary with option names and descriptions, types and default values
         # TODO: Create a function to create the labels and widgets based on the dictionary
 
-        with open("src/ytb/yt-dlp-options2.json", "r", encoding="utf-8") as _:
+        # with open("src/ytb/yt-dlp-options2.json", "r", encoding="utf-8") as _:
+        #     options = load(_)
+        with open("src/ytb/yt-dlp_options.json", "r", encoding="utf-8") as _:
             options = load(_)
 
-        for index, (key, value) in enumerate(options.items()):
-            if value["search_count"] <= 10000 and value["search_count"] > 1000:
+        for index, (key, value) in enumerate(sorted(options.items(), key=lambda x: x[0])):
+            if value["bae"] == "advanced" and value["add"] != "False":  # advanced options
                 label = QtWidgets.QLabel(key)
                 label.setObjectName(f"{key}_label")
                 label.setToolTip(value["description"])
@@ -279,11 +286,13 @@ class SettingsWidget(QtWidgets.QWidget):
         # TODO: Create a dictionary with option names and descriptions, types and default values
         # TODO: Create a function to create the labels and widgets based on the dictionary
 
-        with open("src/ytb/yt-dlp-options2.json", "r", encoding="utf-8") as _:
+        # with open("src/ytb/yt-dlp-options2.json", "r", encoding="utf-8") as _:
+        #     options = load(_)
+        with open("src/ytb/yt-dlp_options.json", "r", encoding="utf-8") as _:
             options = load(_)
 
-        for index, (key, value) in enumerate(options.items()):
-            if value["search_count"] <= 1000:
+        for index, (key, value) in enumerate(sorted(options.items(), key=lambda x: x[0])):
+            if value["bae"] == "expert" and value["add"] != "False":  # expert options
                 label = QtWidgets.QLabel(key)
                 label.setObjectName(f"{key}_label")
                 label.setToolTip(value["description"])
