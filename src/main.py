@@ -21,6 +21,7 @@ from PySide6.QtWidgets import QProgressBar
 from PySide6.QtWidgets import QMainWindow
 from PySide6.QtWidgets import QHBoxLayout
 from PySide6.QtWidgets import QVBoxLayout
+from PySide6.QtWidgets import QComboBox
 from PySide6.QtWidgets import QCheckBox
 from PySide6.QtWidgets import QLineEdit
 
@@ -199,17 +200,17 @@ class SplitWindowYoutubeBrowser(QMainWindow):
             opt = load(_)
         for key, value in opt.items():
             try:
-                if value["type"] == "bool" or value["default"] in ("True", "False"):
+                if value["type"] in ("bool", "dropdown"):
                     if key not in self.config:
-                        if str(self.findChild(QCheckBox, f"{key}_line_edit").isChecked()) != value["default"]:
-                            self.update_config(key, self.findChild(QCheckBox, f"{key}_line_edit").isChecked(), True)
+                        if str(self.findChild(QComboBox, f"{key}_line_edit").currentText()) != value["default"]:
+                            self.update_config(key, self.findChild(QComboBox, f"{key}_line_edit").currentText(), True)
                     else:
-                        if str(self.findChild(QCheckBox, f"{key}_line_edit").isChecked()) != self.config[key]:
-                            self.update_config(key, self.findChild(QCheckBox, f"{key}_line_edit").isChecked(), True)
+                        if str(self.findChild(QComboBox, f"{key}_line_edit").currentText()) != self.config[key]:
+                            self.update_config(key, self.findChild(QComboBox, f"{key}_line_edit").currentText(), True)
             except AttributeError:
                 pass
             try:
-                if value["type"] != "bool" or value["default"] not in ("True", "False"):
+                if value["type"] not in ("bool", "dropdown"):
                     if key not in self.config:
                         if self.findChild(QLineEdit, f"{key}_line_edit").text() != value["default"] \
                                 and self.findChild(QLineEdit, f"{key}_line_edit").text() != "":

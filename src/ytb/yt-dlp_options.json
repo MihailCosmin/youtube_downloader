@@ -530,7 +530,7 @@
         "description": "Write automatically generated subtitle file (Alias: --write-automatic-subs)",
         "search_count": 17,
         "add": "True",
-        "bae": "basic"
+        "bae": "advanced"
     },
     "allsubtitles": {
         "category": "subtitles",
