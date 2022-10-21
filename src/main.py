@@ -116,7 +116,7 @@ class SplitWindowYoutubeBrowser(QMainWindow):
         self.app_layout.addWidget(self.left_widget)
         self.app_layout.addWidget(self.settings_widget)
         self.app_layout.addWidget(self.right_widget)
-        
+
         self.app_layout.setAlignment(Qt.AlignLeft)
 
         with open(f"themes/{self.config['theme'][0]}.qss", "r", encoding="utf-8") as _:
@@ -194,8 +194,6 @@ class SplitWindowYoutubeBrowser(QMainWindow):
     def save_settings(self):
         """save_settings
         """
-        # with open("src/ytb/yt-dlp-options2.json", "r", encoding="utf-8") as _:
-        #     opt = load(_)
         with open("src/ytb/yt-dlp_options.json", "r", encoding="utf-8") as _:
             opt = load(_)
         for key, value in opt.items():
@@ -236,13 +234,11 @@ class SplitWindowYoutubeBrowser(QMainWindow):
             self.animation.setEasingCurve(QEasingCurve.InOutQuart)
             self.animation.start()
 
-            # connect animatio finished to hide widget
             self.animation.finished.connect(self._restore_youtube1)
 
         else:
             self.settings_widget.setMinimumWidth(0)
             self.settings_widget.setMaximumWidth(0)
-
             self.animation = QPropertyAnimation(self.left_widget, b"minimumWidth")
             self.animation.setDuration(500)
             self.animation.setStartValue(0)
@@ -350,20 +346,22 @@ class SplitWindowYoutubeBrowser(QMainWindow):
                 self.progress_bar.setFormat("Done")
 
     def back_button_clicked(self):
-        self.webview.back()
+        if self.settings_widget.width() != 0:
+            self.toggle_settings()
+        elif self.left_widget.width() != 0:
+            self.toggle_downloads()
+        else:
+            self.webview.back()
 
     def clear_cache_clicked(self):
-        print("Clearing cache...")
         self.webview.page().profile().clearHttpCache()
         self.webview.page().profile().clearAllVisitedLinks()
         self.webview.page().profile().cookieStore().deleteAllCookies()
         self.webview.page().setHtml("")  
         self.webview.setUrl(QUrl("https://www.youtube.com/?theme=dark&themeRefresh=1"))
-        # force refresh page
         self.webview.reload().triggerAction(QWebEnginePage.ReloadAndBypassCache)
 
     def change_theme(self, theme: str):
-        print(f"Changing theme to {theme}")
         with open(f"themes/{theme}.qss", "r", encoding="utf-8") as _:
             stylesheet = _.read()
         self.setStyleSheet(stylesheet)

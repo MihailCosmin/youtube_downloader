@@ -6,6 +6,7 @@ from PySide6 import QtGui
 
 from utils.common import clean_path
 
+
 class SettingsWidget(QtWidgets.QWidget):
     def __init__(self, parent=None):
         super().__init__()
@@ -148,68 +149,12 @@ class SettingsWidget(QtWidgets.QWidget):
         self.search_bar.setMinimumWidth(self.settings_widget1_3.width() * 0.55)
         self.search_bar.setPlaceholderText("Filter settings...")
 
-        def _filter_options():
-            for i in range(self.settings_layout1_3.count()):
-                if self.settings_layout1_3.itemAt(i).widget() != self.ydl_options_basic:
-                    if isinstance(self.settings_layout1_3.itemAt(i).widget(), QtWidgets.QLineEdit):
-                        if self.search_bar.text().lower() in self.settings_layout1_3.itemAt(i).widget().objectName().lower():
-                            self.settings_layout1_3.itemAt(i).widget().show()
-                        elif self.settings_layout1_3.itemAt(i).widget() != self.search_bar:
-                            self.settings_layout1_3.itemAt(i).widget().hide()
-                    elif isinstance(self.settings_layout1_3.itemAt(i).widget(), QtWidgets.QComboBox):
-                        if self.search_bar.text().lower() in self.settings_layout1_3.itemAt(i).widget().objectName().lower():
-                            self.settings_layout1_3.itemAt(i).widget().show()
-                        elif self.settings_layout1_3.itemAt(i).widget() != self.search_bar:
-                            self.settings_layout1_3.itemAt(i).widget().hide()
-                    elif isinstance(self.settings_layout1_3.itemAt(i).widget(), QtWidgets.QLabel):
-                        if self.search_bar.text().lower() in self.settings_layout1_3.itemAt(i).widget().objectName().lower():
-                            self.settings_layout1_3.itemAt(i).widget().show()
-                        elif self.settings_layout1_3.itemAt(i).widget() != self.search_bar:
-                            self.settings_layout1_3.itemAt(i).widget().hide()
-
-        self.search_bar.textChanged.connect(_filter_options)
+        self.search_bar.textChanged.connect(lambda: self._filter_settings(self.settings_layout1_3, self.ydl_options_basic, self.search_bar))
         self.settings_layout1_3.addWidget(self.search_bar, 0, 2, 1, 8, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
-        
+
         for index, (key, value) in enumerate(sorted(options.items(), key=lambda x: x[0])):
             if value["bae"] == "basic" and value["bae"] != "False":  # basic options
-
-                # TODO: dropdown, filebrowse, folderbrowse, checkbox, text
-
-                label = QtWidgets.QLabel(key)
-                label.setObjectName(f"{key}_label")
-                label.setToolTip(value["description"])
-                label.setWordWrap(True)
-                label.setMinimumWidth(self.settings_widget1_3.width() * 0.3)
-
-                label.setTextInteractionFlags(QtCore.Qt.TextSelectableByMouse)
-
-                self.settings_layout1_3.addWidget(label, index + 2, 0, 1, 2, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
-
-                if value["type"] == "bool" or value["type"] == "dropdown":
-                    line_edit = QtWidgets.QComboBox()
-                    line_edit.setObjectName(f"{key}_line_edit")
-
-                    line_edit.setMinimumWidth(self.settings_widget1_3.width() * 0.55)
-                    if value["type"] == "dropdown":
-                        for option in value["values"]:
-                            line_edit.addItem(option)
-                    else:
-                        line_edit.addItem("True")
-                        line_edit.addItem("False")
-                    if key in self.parent.config:
-                        line_edit.setCurrentText(str(self.parent.config[key][0]))
-                    else:
-                        line_edit.setCurrentText(value["default"])
-                else:
-                    line_edit = QtWidgets.QLineEdit()
-                    line_edit.setObjectName(f"{key}_line_edit")
-                    line_edit.setMinimumWidth(self.settings_widget1_3.width() * 0.55)
-                    line_edit.setMaximumWidth(self.settings_widget1_3.width() * 0.8)
-                    if key in self.parent.config:
-                        line_edit.setText(self.parent.config[key][0])
-                    else:
-                        line_edit.setText(value["default"] if value["default"] not in ("None", "{}", "[]", None, "''") else "")
-                self.settings_layout1_3.addWidget(line_edit, index + 2, 2, 1, 6, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
+                self._create_setting(key, value, index, self.settings_widget1_3, self.settings_layout1_3)
 
         self.settings_layout1_3.addItem(QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding))
 
@@ -245,64 +190,12 @@ class SettingsWidget(QtWidgets.QWidget):
         self.search_bar2.setMinimumWidth(self.settings_widget2_1.width() * 0.55)
         self.search_bar2.setPlaceholderText("Filter settings...")
 
-        def _filter_options():
-            for i in range(self.settings_layout2_1.count()):
-                if self.settings_layout2_1.itemAt(i).widget() != self.youtube_dl_label1:
-                    if isinstance(self.settings_layout2_1.itemAt(i).widget(), QtWidgets.QLineEdit):
-                        if self.search_bar2.text().lower() in self.settings_layout2_1.itemAt(i).widget().objectName().lower():
-                            self.settings_layout2_1.itemAt(i).widget().show()
-                        elif self.settings_layout2_1.itemAt(i).widget() != self.search_bar2:
-                            self.settings_layout2_1.itemAt(i).widget().hide()
-                    elif isinstance(self.settings_layout2_1.itemAt(i).widget(), QtWidgets.QComboBox):
-                        if self.search_bar2.text().lower() in self.settings_layout2_1.itemAt(i).widget().objectName().lower():
-                            self.settings_layout2_1.itemAt(i).widget().show()
-                        elif self.settings_layout2_1.itemAt(i).widget() != self.search_bar2:
-                            self.settings_layout2_1.itemAt(i).widget().hide()
-                    elif isinstance(self.settings_layout2_1.itemAt(i).widget(), QtWidgets.QLabel):
-                        if self.search_bar2.text().lower() in self.settings_layout2_1.itemAt(i).widget().objectName().lower():
-                            self.settings_layout2_1.itemAt(i).widget().show()
-                        elif self.settings_layout2_1.itemAt(i).widget() != self.search_bar2:
-                            self.settings_layout2_1.itemAt(i).widget().hide()
-
-        self.search_bar2.textChanged.connect(_filter_options)
+        self.search_bar2.textChanged.connect(lambda: self._filter_settings(self.settings_layout2_1, self.youtube_dl_label1, self.search_bar2))
         self.settings_layout2_1.addWidget(self.search_bar2, 0, 2, 1, 8, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
 
         for index, (key, value) in enumerate(sorted(options.items(), key=lambda x: x[0])):
             if value["bae"] == "advanced" and value["add"] != "False":  # advanced options
-                label = QtWidgets.QLabel(key)
-                label.setObjectName(f"{key}_label")
-                label.setToolTip(value["description"])
-                label.setWordWrap(True)
-                label.setMinimumWidth(self.settings_widget2_1.width() * 0.3)
-                label.setTextInteractionFlags(QtCore.Qt.TextSelectableByMouse)
-
-                self.settings_layout2_1.addWidget(label, index + 2, 0, 1, 2, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
-
-                if value["type"] == "bool" or value["type"] == "dropdown":
-                    line_edit = QtWidgets.QComboBox()
-                    line_edit.setObjectName(f"{key}_line_edit")
-
-                    line_edit.setMinimumWidth(self.settings_widget2_1.width() * 0.55)
-                    if value["type"] == "dropdown":
-                        for option in value["values"]:
-                            line_edit.addItem(option)
-                    else:
-                        line_edit.addItem("True")
-                        line_edit.addItem("False")
-                    if key in self.parent.config:
-                        line_edit.setCurrentText(str(self.parent.config[key][0]))
-                    else:
-                        line_edit.setCurrentText(value["default"])
-                else:
-                    line_edit = QtWidgets.QLineEdit()
-                    line_edit.setObjectName(f"{key}_line_edit")
-                    line_edit.setMinimumWidth(self.settings_widget2_1.width() * 0.55)
-                    line_edit.setMaximumWidth(self.settings_widget2_1.width() * 0.8)
-                    if key in self.parent.config:
-                        line_edit.setText(self.parent.config[key][0])
-                    else:
-                        line_edit.setText(value["default"] if value["default"] not in ("None", "{}", "[]", None, "''") else "")
-                self.settings_layout2_1.addWidget(line_edit, index + 2, 2, 1, 6, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
+                self._create_setting(key, value, index, self.settings_widget2_1, self.settings_layout2_1)
 
         self.settings_layout2_1.addItem(QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding))
 
@@ -337,65 +230,13 @@ class SettingsWidget(QtWidgets.QWidget):
         self.search_bar3.setMinimumWidth(self.settings_widget3_1.width() * 0.55)
         self.search_bar3.setPlaceholderText("Filter settings...")
 
-        def _filter_options():
-            for i in range(self.settings_layout3_1.count()):
-                if self.settings_layout3_1.itemAt(i).widget() != self.youtube_dl_label:
-                    if isinstance(self.settings_layout3_1.itemAt(i).widget(), QtWidgets.QLineEdit):
-                        if self.search_bar3.text().lower() in self.settings_layout3_1.itemAt(i).widget().objectName().lower():
-                            self.settings_layout3_1.itemAt(i).widget().show()
-                        elif self.settings_layout3_1.itemAt(i).widget() != self.search_bar3:
-                            self.settings_layout3_1.itemAt(i).widget().hide()
-                    elif isinstance(self.settings_layout3_1.itemAt(i).widget(), QtWidgets.QComboBox):
-                        if self.search_bar3.text().lower() in self.settings_layout3_1.itemAt(i).widget().objectName().lower():
-                            self.settings_layout3_1.itemAt(i).widget().show()
-                        elif self.settings_layout3_1.itemAt(i).widget() != self.search_bar3:
-                            self.settings_layout3_1.itemAt(i).widget().hide()
-                    elif isinstance(self.settings_layout3_1.itemAt(i).widget(), QtWidgets.QLabel):
-                        if self.search_bar3.text().lower() in self.settings_layout3_1.itemAt(i).widget().objectName().lower():
-                            self.settings_layout3_1.itemAt(i).widget().show()
-                        elif self.settings_layout3_1.itemAt(i).widget() != self.search_bar3:
-                            self.settings_layout3_1.itemAt(i).widget().hide()
-
-        self.search_bar3.textChanged.connect(_filter_options)
+        self.search_bar3.textChanged.connect(lambda: self._filter_settings(self.settings_layout3_1, self.youtube_dl_label, self.search_bar3))
         self.settings_layout3_1.addWidget(self.search_bar3, 0, 2, 1, 8, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
 
         for index, (key, value) in enumerate(sorted(options.items(), key=lambda x: x[0])):
             if value["bae"] == "expert" and value["add"] != "False":  # expert options
-                label = QtWidgets.QLabel(key)
-                label.setObjectName(f"{key}_label")
-                label.setToolTip(value["description"])
-                label.setWordWrap(True)
-                label.setMinimumWidth(self.settings_widget3_1.width() * 0.3)
-                label.setTextInteractionFlags(QtCore.Qt.TextSelectableByMouse)
+                self._create_setting(key, value, index, self.settings_widget3_1, self.settings_layout3_1)
 
-                self.settings_layout3_1.addWidget(label, index + 2, 0, 1, 2, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
-
-                if value["type"] == "bool" or value["type"] == "dropdown":
-                    line_edit = QtWidgets.QComboBox()
-                    line_edit.setObjectName(f"{key}_line_edit")
-
-                    line_edit.setMinimumWidth(self.settings_widget3_1.width() * 0.55)
-                    if value["type"] == "dropdown":
-                        for option in value["values"]:
-                            line_edit.addItem(option)
-                    else:
-                        line_edit.addItem("True")
-                        line_edit.addItem("False")
-                    if key in self.parent.config:
-                        line_edit.setCurrentText(str(self.parent.config[key][0]))
-                    else:
-                        line_edit.setCurrentText(value["default"])
-                else:
-                    line_edit = QtWidgets.QLineEdit()
-                    line_edit.setObjectName(f"{key}_line_edit")
-                    line_edit.setMinimumWidth(self.settings_widget3_1.width() * 0.55)
-                    line_edit.setMaximumWidth(self.settings_widget3_1.width() * 0.8)
-                    if key in self.parent.config:
-                        line_edit.setText(self.parent.config[key][0])
-                    else:
-                        line_edit.setText(value["default"] if value["default"] not in ("None", "{}", "[]", None, "''") else "")
-                self.settings_layout3_1.addWidget(line_edit, index + 2, 2, 1, 6, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
-                
         self.settings_layout3_1.addItem(QtWidgets.QSpacerItem(20, 40, QtWidgets.QSizePolicy.Minimum, QtWidgets.QSizePolicy.Expanding))
 
     def _set_download_location(self):
@@ -412,6 +253,95 @@ class SettingsWidget(QtWidgets.QWidget):
     def _change_setting(self, func: str, key: str, value: str, youtube: bool = False):
         getattr(self.parent, func)(value)
         self.parent.update_config(key, value, youtube)
+
+    def _filter_settings(self, layout: any, youtube_label: any, search_bar: any):
+        for i in range(layout.count()):
+            if layout.itemAt(i).widget() != youtube_label:
+                if isinstance(layout.itemAt(i).widget(), QtWidgets.QLineEdit):
+                    if search_bar.text().lower() in layout.itemAt(i).widget().objectName().lower():
+                        layout.itemAt(i).widget().show()
+                    elif layout.itemAt(i).widget() != search_bar:
+                        layout.itemAt(i).widget().hide()
+                elif isinstance(layout.itemAt(i).widget(), QtWidgets.QComboBox):
+                    if search_bar.text().lower() in layout.itemAt(i).widget().objectName().lower():
+                        layout.itemAt(i).widget().show()
+                    elif layout.itemAt(i).widget() != search_bar:
+                        layout.itemAt(i).widget().hide()
+                elif isinstance(layout.itemAt(i).widget(), QtWidgets.QLabel):
+                    if search_bar.text().lower() in layout.itemAt(i).widget().objectName().lower():
+                        layout.itemAt(i).widget().show()
+                    elif layout.itemAt(i).widget() != search_bar:
+                        layout.itemAt(i).widget().hide()
+
+    def _create_setting(self, key: str, value: dict, index: int, widget: any, layout: any):
+        # TODO: dropdown, filebrowse, folderbrowse, checkbox, text
+        browse_button = None
+        label = QtWidgets.QLabel(key)
+        label.setObjectName(f"{key}_label")
+        label.setToolTip(value["description"])
+        label.setWordWrap(True)
+        label.setMinimumWidth(widget.width() * 0.3)
+
+        label.setTextInteractionFlags(QtCore.Qt.TextSelectableByMouse)
+
+        layout.addWidget(label, index + 2, 0, 1, 2, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
+
+        if value["type"] == "bool" or value["type"] == "dropdown":
+            line_edit = QtWidgets.QComboBox()
+            line_edit.setObjectName(f"{key}_line_edit")
+
+            line_edit.setMinimumWidth(widget.width() * 0.55)
+            if value["type"] == "dropdown":
+                for option in value["values"]:
+                    line_edit.addItem(option)
+            else:
+                line_edit.addItem("True")
+                line_edit.addItem("False")
+            if key in self.parent.config:
+                line_edit.setCurrentText(str(self.parent.config[key][0]))
+            else:
+                line_edit.setCurrentText(value["default"])
+        elif value["type"] == "filepath":
+            # line edit as a file browse
+            line_edit = QtWidgets.QLineEdit()
+            line_edit.setObjectName(f"{key}_line_edit")
+            line_edit.setMinimumWidth(widget.width() * 0.55)
+            line_edit.setMaximumWidth(widget.width() * 0.8)
+            if key in self.parent.config:
+                line_edit.setText(self.parent.config[key][0])
+            else:
+                line_edit.setText(value["default"] if value["default"] not in ("None", "{}", "[]", None, "''") else "")
+            line_edit.setReadOnly(True)
+
+            # browse_button = QtWidgets.QPushButton("Browse")
+            # browse_button.setObjectName(f"{key}_browse_button")
+            # browse_button.setMinimumWidth(widget.width() * 0.1)
+            # browse_button.setMaximumWidth(widget.width() * 0.1)
+            # browse_button.clicked.connect(lambda: self._browse_file(line_edit, key))
+            line_edit.cursorPositionChanged.connect(lambda: self._browse_file(line_edit, key))
+
+        else:
+            line_edit = QtWidgets.QLineEdit()
+            line_edit.setObjectName(f"{key}_line_edit")
+            line_edit.setMinimumWidth(widget.width() * 0.55)
+            line_edit.setMaximumWidth(widget.width() * 0.8)
+            if key in self.parent.config:
+                line_edit.setText(self.parent.config[key][0])
+            else:
+                line_edit.setText(value["default"] if value["default"] not in ("None", "{}", "[]", None, "''") else "")
+        layout.addWidget(line_edit, index + 2, 2, 1, 6, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
+        if browse_button:
+            layout.addWidget(browse_button, index + 2, 8, 1, 1, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
+        
+    def _browse_file(self, line_edit: any, key: str):
+        file = QtWidgets.QFileDialog.getOpenFileName(self, "Select File", line_edit.text(), "All Files (*)")
+        if file[0]:
+            line_edit.setText(file[0])
+            self._change_setting(
+                "change_setting",
+                key,
+                file[0]
+            )
 
 class LineWidget(QtWidgets.QFrame):
     def __init__(self, parent=None):

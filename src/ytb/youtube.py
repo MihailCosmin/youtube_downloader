@@ -81,16 +81,16 @@ class YoutubeDLP():
         self.progress_callback = progress_callback
         self.emit_bool = True
 
-        def my_hook(d):
+        def my_hook(dictionary):
             if self.emit_bool:
-                if d['status'] == 'downloading' and self.progress_callback is not None:
+                if dictionary['status'] == 'downloading' and self.progress_callback is not None:
                     self.progress_callback.emit(
                         round(
-                            float(d['downloaded_bytes']) / float(d['total_bytes']) * 100,
+                            float(dictionary['downloaded_bytes']) / float(dictionary['total_bytes']) * 100,
                             1
                         )
                     )
-            if d['status'] == 'finished':
+            if dictionary['status'] == 'finished':
                 self.emit_bool = False
 
         self._set_dl_ops(
@@ -105,6 +105,7 @@ class YoutubeDLP():
     def download_playlist(self, url, progress_callback=None):
         self.progress_callback = progress_callback
         self.emit_bool = True
+
         def my_hook(d):
             if self.emit_bool:
                 if d['status'] == 'downloading' and self.progress_callback is not None:
@@ -146,6 +147,5 @@ class YoutubeDLP():
         if key == "file_pattern":
             key = "outtmpl"
             value = join(self.dl_ops["outtmpl"].split("%")[0], value)
-        # print(f"Updating {key} to {value}")
         self.dl_ops[key] = value
-        print(self.dl_ops)
+        # print(self.dl_ops)
