@@ -2,7 +2,6 @@ from PySide6.QtWidgets import QFrame
 from PySide6.QtWidgets import QVBoxLayout
 from PySide6.QtWidgets import QPushButton
 
-
 class LeftMenu(QFrame):
     def __init__(self, parent=None):
         super().__init__(parent)
@@ -45,5 +44,5 @@ class LeftMenu(QFrame):
         self.settings_button.clicked.connect(self.parent.toggle_settings)
         self.settings_button.setToolTip("Toggle Settings Tab")
         self.left_frame_layout.addWidget(self.settings_button)
-    
+
         self.left_frame_layout.addStretch()

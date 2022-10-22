@@ -1,63 +1,11 @@
 from os.path import join
 from os.path import expanduser
 
-import json
-
 import yt_dlp
 
 class YoutubeDLP():
     """YoutubeDLP
     https://github.com/yt-dlp/yt-dlp/blob/master/yt_dlp/options.py
-    
-    Options:
-        throttled-rate: str
-        limit-rate: str
-        retries: int
-        file-access-retries: int
-        fragment-retries: int
-        retry-sleep: int
-        skip-unavailable-fragments: bool
-        abort-on-unavailable-fragment: bool
-        keep-fragments: bool
-        no-keep-fragments: bool
-        buffer-size: str
-        resize-buffer: bool
-        no-resize-buffer: bool
-        http-chunk-size: str
-        test: bool
-        playlist-reverse: bool
-        no-playlist-reverse: bool
-        playlist-random: bool
-        lazy-playlist: bool
-        no-lazy-playlist: bool
-        xattr-set-filesize: bool
-        hls-prefer-native: bool
-        hls-prefer-ffmpeg: bool
-        hls-use-mpegts: bool
-        download-sections: bool
-        downloader: dict
-        downloader-args: dict
-        
-    Workarounds:
-        encoding: str
-        legacy-server-connect: bool
-        no-check-certificates: bool
-        prefer-insecure: bool
-        user-agent: str
-        referer: str
-        add-header: str
-        bidi-workaround: bool
-        sleep-requests: bool
-        sleep-interval: int
-        sleep-interval: int
-        sleep-subtitles: int
-
-    Verbosity:
-        quiet: bool
-        no_warnings: bool
-
-    Filesystem:
-        output (outtmpl): str
     """
     def __init__(self, config: dict = None):
         self.dl_ops = {
