@@ -8,8 +8,6 @@ from os.path import realpath
 from os.path import basename
 from os.path import expanduser
 
-from time import sleep
-
 import sys
 from sys import executable
 
@@ -17,12 +15,11 @@ from json import dump
 from json import load
 
 from PySide6.QtWidgets import QApplication
-from PySide6.QtWidgets import QProgressBar
 from PySide6.QtWidgets import QMainWindow
+from PySide6.QtWidgets import QPushButton
 from PySide6.QtWidgets import QHBoxLayout
 from PySide6.QtWidgets import QVBoxLayout
 from PySide6.QtWidgets import QComboBox
-from PySide6.QtWidgets import QCheckBox
 from PySide6.QtWidgets import QLineEdit
 
 from PySide6.QtWebEngineCore import QWebEnginePage
@@ -202,20 +199,23 @@ class SplitWindowYoutubeBrowser(QMainWindow):
                     if key not in self.config:
                         if str(self.findChild(QComboBox, f"{key}_line_edit").currentText()) != value["default"]:
                             self.update_config(key, self.findChild(QComboBox, f"{key}_line_edit").currentText(), True)
-                    else:
-                        if str(self.findChild(QComboBox, f"{key}_line_edit").currentText()) != self.config[key]:
-                            self.update_config(key, self.findChild(QComboBox, f"{key}_line_edit").currentText(), True)
+                    elif str(self.findChild(QComboBox, f"{key}_line_edit").currentText()) != self.config[key]:
+                        self.update_config(key, self.findChild(QComboBox, f"{key}_line_edit").currentText(), True)
             except AttributeError:
                 pass
             try:
-                if value["type"] not in ("bool", "dropdown"):
+                if value["type"] in ("filepath", "dirpath"):
                     if key not in self.config:
-                        if self.findChild(QLineEdit, f"{key}_line_edit").text() != value["default"] \
-                                and self.findChild(QLineEdit, f"{key}_line_edit").text() != "":
+                        if self.findChild(QPushButton, f"{key}_line_edit").text() not in (value["default"], "", "Click to set location"):
+                            self.update_config(key, self.findChild(QPushButton, f"{key}_line_edit").text(), True)
+                    elif self.findChild(QPushButton, f"{key}_line_edit").text() != self.config[key]:
+                        self.update_config(key, self.findChild(QPushButton, f"{key}_line_edit").text(), True)
+                elif value["type"] not in ("bool", "dropdown"):
+                    if key not in self.config:
+                        if self.findChild(QLineEdit, f"{key}_line_edit").text() not in (value["default"], ""):
                             self.update_config(key, self.findChild(QLineEdit, f"{key}_line_edit").text(), True)
-                    else:
-                        if self.findChild(QLineEdit, f"{key}_line_edit").text() != self.config[key]:
-                            self.update_config(key, self.findChild(QLineEdit, f"{key}_line_edit").text(), True)
+                    elif self.findChild(QLineEdit, f"{key}_line_edit").text() != self.config[key]:
+                        self.update_config(key, self.findChild(QLineEdit, f"{key}_line_edit").text(), True)
             except AttributeError:
                 pass
 
@@ -357,7 +357,7 @@ class SplitWindowYoutubeBrowser(QMainWindow):
         self.webview.page().profile().clearHttpCache()
         self.webview.page().profile().clearAllVisitedLinks()
         self.webview.page().profile().cookieStore().deleteAllCookies()
-        self.webview.page().setHtml("")  
+        self.webview.page().setHtml("")
         self.webview.setUrl(QUrl("https://www.youtube.com/?theme=dark&themeRefresh=1"))
         self.webview.reload().triggerAction(QWebEnginePage.ReloadAndBypassCache)
 

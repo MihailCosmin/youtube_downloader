@@ -14,8 +14,6 @@ class LeftMenu(QFrame):
         self.setMaximumWidth(self.parent.left_bar_width)
         self.setMinimumWidth(self.parent.left_bar_width)
         
-        # self.setMaximumHeight(self.parent.height)
-        
         self.left_frame_layout = QVBoxLayout(self)
 
         self.back_button = QPushButton()
@@ -39,7 +37,6 @@ class LeftMenu(QFrame):
         self.clear_cache.setToolTip("Clear YouTube cache")
         self.left_frame_layout.addWidget(self.clear_cache)
 
-        # add a spacer
         self.left_frame_layout.addStretch(1)
 
         self.settings_button = QPushButton("")

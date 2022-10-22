@@ -1,7 +1,5 @@
-from PySide6 import QtWidgets
-from PySide6 import QtCore
-from PySide6 import QtGui
+from PySide6.QtWidgets import QWidget
 
-class CenterWidget(QtWidgets.QWidget):
+class CenterWidget(QWidget):
     def __init__(self, parent=None):
         super().__init__()

@@ -1,11 +1,11 @@
-import PySide6
+from PySide6.QtWidgets import QFileDialog
 
 
-class BrowseDirectory(PySide6.QtWidgets.QFileDialog):
+class BrowseDirectory(QFileDialog):
     def __init__(self, parent=None):
         super().__init__(parent)
         self.parent = parent
-        self.setFileMode(PySide6.QtWidgets.QFileDialog.Directory)
+        self.setFileMode(QFileDialog.Directory)
 
     def get_path(self):
         return self.getExistingDirectory(self.parent, "Select Directory")

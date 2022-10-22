@@ -2,7 +2,6 @@ from json import load
 
 from PySide6 import QtWidgets
 from PySide6 import QtCore
-from PySide6 import QtGui
 
 from utils.common import clean_path
 
@@ -254,7 +253,8 @@ class SettingsWidget(QtWidgets.QWidget):
         getattr(self.parent, func)(value)
         self.parent.update_config(key, value, youtube)
 
-    def _filter_settings(self, layout: any, youtube_label: any, search_bar: any):
+    @staticmethod
+    def _filter_settings(layout: any, youtube_label: any, search_bar: any):
         for i in range(layout.count()):
             if layout.itemAt(i).widget() != youtube_label:
                 if isinstance(layout.itemAt(i).widget(), QtWidgets.QLineEdit):
@@ -274,7 +274,6 @@ class SettingsWidget(QtWidgets.QWidget):
                         layout.itemAt(i).widget().hide()
 
     def _create_setting(self, key: str, value: dict, index: int, widget: any, layout: any):
-        # TODO: dropdown, filebrowse, folderbrowse, checkbox, text
         browse_button = None
         label = QtWidgets.QLabel(key)
         label.setObjectName(f"{key}_label")
@@ -301,25 +300,21 @@ class SettingsWidget(QtWidgets.QWidget):
                 line_edit.setCurrentText(str(self.parent.config[key][0]))
             else:
                 line_edit.setCurrentText(value["default"])
-        elif value["type"] == "filepath":
-            # line edit as a file browse
-            line_edit = QtWidgets.QLineEdit()
+        elif value["type"] in ("filepath", "dirpath"):
+            line_edit = QtWidgets.QPushButton("")
             line_edit.setObjectName(f"{key}_line_edit")
             line_edit.setMinimumWidth(widget.width() * 0.55)
             line_edit.setMaximumWidth(widget.width() * 0.8)
             if key in self.parent.config:
                 line_edit.setText(self.parent.config[key][0])
+                line_edit.setToolTip(self.parent.config[key][0])
             else:
-                line_edit.setText(value["default"] if value["default"] not in ("None", "{}", "[]", None, "''") else "")
-            line_edit.setReadOnly(True)
+                line_edit.setText(value["default"] if value["default"] not in ("None", "{}", "[]", None, "''") else "Click to set location")
+                line_edit.setToolTip(value["default"] if value["default"] not in ("None", "{}", "[]", None, "''") else "Click to set location")
 
-            # browse_button = QtWidgets.QPushButton("Browse")
-            # browse_button.setObjectName(f"{key}_browse_button")
-            # browse_button.setMinimumWidth(widget.width() * 0.1)
-            # browse_button.setMaximumWidth(widget.width() * 0.1)
-            # browse_button.clicked.connect(lambda: self._browse_file(line_edit, key))
-            line_edit.cursorPositionChanged.connect(lambda: self._browse_file(line_edit, key))
-
+            line_edit.setStyleSheet("QPushButton {background-color: rgb(30, 34, 42); border: 1px solid rgb(34, 39, 48); text-align: left; color: white;} QPushButton:hover {background-color: rgb(30, 34, 42); border: 1px solid rgb(34, 39, 48); text-align: left; color: red;}")
+            line_edit.setFixedHeight(20)
+            line_edit.clicked.connect(lambda: self._browse_file(line_edit, key))
         else:
             line_edit = QtWidgets.QLineEdit()
             line_edit.setObjectName(f"{key}_line_edit")
@@ -332,11 +327,12 @@ class SettingsWidget(QtWidgets.QWidget):
         layout.addWidget(line_edit, index + 2, 2, 1, 6, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
         if browse_button:
             layout.addWidget(browse_button, index + 2, 8, 1, 1, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
-        
+
     def _browse_file(self, line_edit: any, key: str):
         file = QtWidgets.QFileDialog.getOpenFileName(self, "Select File", line_edit.text(), "All Files (*)")
         if file[0]:
             line_edit.setText(file[0])
+            line_edit.setToolTip(file[0])
             self._change_setting(
                 "change_setting",
                 key,
