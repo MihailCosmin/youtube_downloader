@@ -50,6 +50,7 @@ from widgets.left import LeftWidget
 from widgets.right import RightWidget
 from widgets.title_bar import TitleBar
 from widgets.left_menu import LeftMenu
+from widgets.dialogs import BubbleLabel
 
 from utils.common import clean_path
 
@@ -70,6 +71,7 @@ class SplitWindowYoutubeBrowser(QMainWindow):
             0)
 
         self.dragPos = QPoint()
+        self.bubble = BubbleLabel()
 
         self.title_bar = TitleBar(self)
         self.setContentsMargins(0, 0, 0, 0)
@@ -213,7 +215,8 @@ class SplitWindowYoutubeBrowser(QMainWindow):
                 elif value["type"] not in ("bool", "dropdown"):
                     if key not in self.config:
                         if self.findChild(QLineEdit, f"{key}_line_edit").text() not in (value["default"], ""):
-                            self.update_config(key, self.findChild(QLineEdit, f"{key}_line_edit").text(), True)
+                            setting = int(self.findChild(QLineEdit, f"{key}_line_edit").text().strip()) if value["type"] == "int" else self.findChild(QLineEdit, f"{key}_line_edit").text().strip()
+                            self.update_config(key, setting, True)
                     elif self.findChild(QLineEdit, f"{key}_line_edit").text() != self.config[key]:
                         self.update_config(key, self.findChild(QLineEdit, f"{key}_line_edit").text(), True)
             except AttributeError:
@@ -263,66 +266,97 @@ class SplitWindowYoutubeBrowser(QMainWindow):
         self.right_widget.setMinimumWidth(self.right_width)
 
     def _download_queue(self, progress_bar=None):
-        self.progress_bar = progress_bar
-        self.progress_bar.show()
-        self.progress_bar.setTextVisible(True)
-        self.progress_bar.setFormat("Download starting...")
-        self.progress_bar.setValue(0)
+        if self.queue:
+            self.progress_bar = progress_bar
+            self.progress_bar.show()
+            self.progress_bar.setTextVisible(True)
+            self.progress_bar.setFormat("Download starting...")
+            self.progress_bar.setValue(0)
 
-        self.worker = Worker(
-            self._download_single_queue,
-            progress=True,
-            console=False,
-        )
-        self.worker.signals.progress.connect(self._progress_bar_update)
-        self.worker.signals.finished.connect(self._thread_complete)
-        self.threadpool.start(self.worker)
+            self.worker = Worker(
+                self._download_single_queue,
+                progress=True,
+                console=False,
+            )
+            self.worker.signals.progress.connect(self._progress_bar_update)
+            self.worker.signals.finished.connect(self._thread_complete)
+            self.threadpool.start(self.worker)
+        else:
+            self.bubble.setText("Queue is empty")
+            self.bubble.show()
 
     def _thread_complete(self):
         self.progress_bar.setValue(100)
         self.progress_bar.setTextVisible(True)
         self.progress_bar.setFormat("Done")
 
+    def _pass_config(self):
+        for key, value in self.config.items():
+            if value[1]:
+                try:
+                    self.ydl.update_dl_ops(key, int(value[0]))
+                except ValueError:
+                    self.ydl.update_dl_ops(key, value[0])
+
     def _download_single_queue(self, progress_callback):
+        self._pass_config()
         total = len(self.queue)
         for ind, url in enumerate(self.queue):
             self.ydl.download_video(url)
             progress_callback.emit(round(ind / total * 100, 0))
         progress_callback.emit(100)
 
-    def _download_single_video(self, url, progress_bar=None):
-        self.progress_bar = progress_bar
-        self.progress_bar.show()
-        self.progress_bar.setTextVisible(True)
-        self.progress_bar.setFormat("Download starting...")
-        self.progress_bar.setValue(0)
-        self.worker = Worker(
-            self.ydl.download_video,
-            url,
-            progress=True,
-            console=False
-        )
-        self.worker.signals.progress.connect(self._progress_bar_update)
+    def _download_single_video(self, progress_bar=None):
+        url = self._get_current_url()
+        if url == "https://www.youtube.com/":
+            self.bubble.setText("Please select a video")
+            self.bubble.show()
+        elif not self.ydl.check_if_url_is_playlist(url):
+            self._pass_config()
+            self.progress_bar = progress_bar
+            self.progress_bar.show()
+            self.progress_bar.setTextVisible(True)
+            self.progress_bar.setFormat("Download starting...")
+            self.progress_bar.setValue(0)
+            self.worker = Worker(
+                self.ydl.download_video,
+                url,
+                progress=True,
+                console=False
+            )
+            self.worker.signals.progress.connect(self._progress_bar_update)
 
-        self.threadpool.start(self.worker)
+            self.threadpool.start(self.worker)
+        else:
+            self.bubble.setText("URL is a playlist")
+            self.bubble.show()
 
     def _download_playlist(self, progress_bar=None):
-        self.progress_bar = progress_bar
-        self.progress_bar.show()
-        self.progress_bar.setTextVisible(True)
-        self.progress_bar.setFormat("Download starting...")
-        self.progress_bar.setValue(0)
-        self.worker = Worker(
-            self.ydl.download_playlist,
-            self._get_current_url(),
-            progress=True,
-            console=False
-        )
+        url = self._get_current_url()
+        if url == "https://www.youtube.com/":
+            self.bubble.setText("URL is not a YouTube playlist")
+            self.bubble.show()
+        elif self.ydl.check_if_url_is_playlist(url):
+            self._pass_config()
+            self.progress_bar = progress_bar
+            self.progress_bar.show()
+            self.progress_bar.setTextVisible(True)
+            self.progress_bar.setFormat("Download starting...")
+            self.progress_bar.setValue(0)
+            self.worker = Worker(
+                self.ydl.download_playlist,
+                url,
+                progress=True,
+                console=False
+            )
 
-        self.worker.signals.progress.connect(self._progress_bar_update)
-        self.worker.signals.finished.connect(self._thread_complete)
+            self.worker.signals.progress.connect(self._progress_bar_update)
+            self.worker.signals.finished.connect(self._thread_complete)
 
-        self.threadpool.start(self.worker)
+            self.threadpool.start(self.worker)
+        else:
+            self.bubble.setText("URL is not a playlist")
+            self.bubble.show()
 
     def _get_current_url(self):
         return self.webview.url().toString().strip()

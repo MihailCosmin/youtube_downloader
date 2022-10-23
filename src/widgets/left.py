@@ -62,7 +62,7 @@ class LeftWidget(QWidget):
         self.left_layout.addWidget(self.button4, 6, 0, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
         self.left_layout.addWidget(self.queue_label, 4, 0, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
 
-        self.button1.clicked.connect(lambda: self.parent._download_single_video(self.parent._get_current_url(), progress_bar=self.loading_bar_single))
+        self.button1.clicked.connect(lambda: self.parent._download_single_video(progress_bar=self.loading_bar_single))
         self.button2.clicked.connect(self._add_current_url_to_queue)
         self.button3.clicked.connect(lambda: self.parent._download_playlist(progress_bar=self.loading_bar_playlist))
         self.button4.clicked.connect(lambda: self.parent._download_queue(progress_bar=self.loading_bar_queue))

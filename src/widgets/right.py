@@ -23,19 +23,19 @@ class WebEngineUrlRequestInterceptor(QtWebEngineCore.QWebEngineUrlRequestInterce
         url = info.requestUrl().toString()
         current_time = datetime.now().strftime("%H:%M:%S")
         if rules.should_block(url):
-            print(f"1 - {current_time} - block::::::::::::::::::::::", url)
+            # print(f"1 - {current_time} - block::::::::::::::::::::::", url)
             info.block(True)
             return
         elif "adformat" in url:
-            print(f"2 - {current_time} - block::::::::::::::::::::::", url)
+            # print(f"2 - {current_time} - block::::::::::::::::::::::", url)
             info.block(True)
             return
         elif "ads" in url:
-            print(f"3 - {current_time} - block::::::::::::::::::::::", url)
+            # print(f"3 - {current_time} - block::::::::::::::::::::::", url)
             info.block(True)
             return
         elif "ad.doubleclick" in url:
-            print(f"4 - {current_time} - block::::::::::::::::::::::", url)
+            # print(f"4 - {current_time} - block::::::::::::::::::::::", url)
             info.block(True)
             return
 

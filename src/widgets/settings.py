@@ -321,7 +321,7 @@ class SettingsWidget(QtWidgets.QWidget):
             line_edit.setMinimumWidth(widget.width() * 0.55)
             line_edit.setMaximumWidth(widget.width() * 0.8)
             if key in self.parent.config:
-                line_edit.setText(self.parent.config[key][0])
+                line_edit.setText(str(self.parent.config[key][0]))
             else:
                 line_edit.setText(value["default"] if value["default"] not in ("None", "{}", "[]", None, "''") else "")
         layout.addWidget(line_edit, index + 2, 2, 1, 6, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)

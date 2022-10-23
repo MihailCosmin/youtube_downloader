@@ -3,6 +3,8 @@ from os.path import expanduser
 
 import yt_dlp
 
+from tqdm import tqdm
+
 class YoutubeDLP():
     """YoutubeDLP
     https://github.com/yt-dlp/yt-dlp/blob/master/yt_dlp/options.py
@@ -15,6 +17,7 @@ class YoutubeDLP():
             'throttled-rate': '100K'
         }
         self.ydl = yt_dlp.YoutubeDL(self.dl_ops)
+        self.ydl2 = yt_dlp.YoutubeDL({'quiet': True, 'no_warnings': True})
         self.progress_callback = None
         self.emit_bool = None
         self.batch_count = 0
@@ -22,8 +25,11 @@ class YoutubeDLP():
         self.batch_number = 1
 
     def _set_dl_ops(self, dl_ops):
-        for key in dl_ops:
-            self.dl_ops[key] = dl_ops[key]
+        for key in tqdm(dl_ops, colour="green"):
+            try:
+                self.dl_ops[key] = int(dl_ops[key])
+            except ValueError:
+                self.dl_ops[key] = dl_ops[key]
 
     def download_video(self, url, progress_callback=None):
         self.progress_callback = progress_callback
@@ -83,10 +89,10 @@ class YoutubeDLP():
             self.ydl.download([url])
 
     def get_number_of_videos_in_playlist(self, url):
-        return len(self.ydl.extract_info(url, download=False).get('entries'))
+        return len(self.ydl2.extract_info(url, download=False).get('entries'))
 
     def check_if_url_is_playlist(self, url):
-        return self.ydl.extract_info(url, download=False).get('entries') is not None
+        return self.ydl2.extract_info(url, download=False).get('entries') is not None
 
     def update_dl_ops(self, key: str, value: str):
         if key == "download_location":
