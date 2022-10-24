@@ -29,14 +29,29 @@ class LeftMenu(QFrame):
         self.downloads_button.setToolTip("Toggle Download Tab")
         self.left_frame_layout.addWidget(self.downloads_button)
 
+        self.reload_button = QPushButton("")
+        self.reload_button.setObjectName(u"reload_button")
+        self.reload_button.setIconSize(self.reload_button.iconSize() * 2)
+        self.reload_button.clicked.connect(self.parent.reload_page)
+        self.reload_button.setToolTip("Reload Current Page")
+        self.left_frame_layout.addWidget(self.reload_button)
+
+
+        self.left_frame_layout.addStretch(1)
+
+        self.dark_mode = QPushButton()
+        self.dark_mode.setObjectName(u"dark_mode")
+        self.dark_mode.setIconSize(self.dark_mode.iconSize() * 2)
+        self.dark_mode.clicked.connect(self.parent.set_dark_mode)
+        self.dark_mode.setToolTip("Set Dark Mode")
+        self.left_frame_layout.addWidget(self.dark_mode)
+        
         self.clear_cache = QPushButton()
         self.clear_cache.setObjectName(u"clear_cache")
         self.clear_cache.setIconSize(self.clear_cache.iconSize() * 2)
         self.clear_cache.clicked.connect(self.parent.clear_cache_clicked)
         self.clear_cache.setToolTip("Clear YouTube cache")
         self.left_frame_layout.addWidget(self.clear_cache)
-
-        self.left_frame_layout.addStretch(1)
 
         self.settings_button = QPushButton("")
         self.settings_button.setObjectName(u"settings_button")

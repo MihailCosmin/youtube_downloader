@@ -179,6 +179,26 @@ QPushButton#clear_cache:hover {
     image: url("./src/images/icons/clear1_hover.svg");
 }
 
+QPushButton#reload_button {
+    background: transparent;
+    image: url("./src/images/icons/refresh.svg");
+}
+
+QPushButton#reload_button:hover {
+    background: transparent;
+    image: url("./src/images/icons/refresh_hover.svg");
+}
+
+QPushButton#dark_mode {
+    background: transparent;
+    image: url("./src/images/icons/dark_mode.svg");
+}
+
+QPushButton#dark_mode:hover {
+    background: transparent;
+    image: url("./src/images/icons/dark_mode_hover.svg");
+}
+
 /* /////////////////////////////////////////////////////////////////////////////////////////////////
 QMainWindow Options */
 QMainWindow {

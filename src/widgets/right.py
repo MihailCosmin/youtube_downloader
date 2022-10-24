@@ -54,15 +54,24 @@ class RightWidget(QtWidgets.QWidget):
         self.parent.webview.setObjectName = u"webview"
         self.right_layout.addWidget(self.parent.webview)
 
-
     def _youtube_browser_widget(self):
         browser = QtWebEngineWidgets.QWebEngineView()
         self.parent._profile = QtWebEngineCore.QWebEngineProfile("F_Youtube", browser)
         self.parent._profile.setPersistentCookiesPolicy(QtWebEngineCore.QWebEngineProfile.ForcePersistentCookies)
+
+        self.parent.cookie_store = self.parent._profile.cookieStore()  # for cookies
+        self.parent.cookie_store.cookieAdded.connect(self.parent.onCookieAdded)  # for cookies
+        self.parent.cookies = []  # for cookies
+
         self.parent.webpage = QWebEnginePage(self.parent._profile, browser)
         browser.setPage(self.parent.webpage)
 
         self._adblock()
+        self.dark_mode_yt(browser)
+
+        return browser
+
+    def dark_mode_yt(self, browser):
         url = QWebEngineHttpRequest()
         url.setHeader(
             QByteArray(b'cookie'),
@@ -77,9 +86,9 @@ class RightWidget(QtWidgets.QWidget):
         browser.load(url)
         url.setUrl("https://www.youtube.com/?theme=dark&themeRefresh=1")
         browser.load(url)
+        
         # browser.load(QtCore.QUrl("https://www.youtube.com/?theme=dark&themeRefresh=1"))
         # browser.load(QtCore.QUrl("https://www.yewtu.be"))
-        return browser
 
     def _adblock(self):
         # TODO: Make ads traffic filter work

@@ -24,6 +24,8 @@ from PySide6.QtWidgets import QLineEdit
 
 from PySide6.QtWebEngineCore import QWebEnginePage
 
+from PySide6.QtNetwork import QNetworkCookie
+
 from PySide6.QtCore import QPropertyAnimation
 from PySide6.QtCore import QEasingCurve
 from PySide6.QtCore import QThreadPool
@@ -387,13 +389,40 @@ class SplitWindowYoutubeBrowser(QMainWindow):
         else:
             self.webview.back()
 
+    # TODO: check if you can get youtube cache
+
+    def onCookieAdded(self, cookie):  # for cookies
+        for c in self.cookies:
+            if c.hasSameIdentifier(cookie):
+                return
+        self.cookies.append(QNetworkCookie(cookie))
+        self.toJson()
+
+    def toJson(self):  # for cookies
+        cookies_list_info = []
+        for c in self.cookies:
+            data = {"name": bytearray(c.name()).decode(), "domain": c.domain(), "value": bytearray(c.value()).decode(),
+                    "path": c.path(), "expirationDate": c.expirationDate().toString(Qt.ISODate), "secure": c.isSecure(),
+                    "httponly": c.isHttpOnly()}
+            cookies_list_info.append(data)
+        print("Cookie as list of dictionary:")
+        print(cookies_list_info)
+
     def clear_cache_clicked(self):
         self.webview.page().profile().clearHttpCache()
         self.webview.page().profile().clearAllVisitedLinks()
         self.webview.page().profile().cookieStore().deleteAllCookies()
-        self.webview.page().setHtml("")
-        self.webview.setUrl(QUrl("https://www.youtube.com/?theme=dark&themeRefresh=1"))
-        self.webview.reload().triggerAction(QWebEnginePage.ReloadAndBypassCache)
+        self.reload_page()
+        self.webview.setUrl(QUrl("https://www.youtube.com/?theme=dark&themeRefresh=0"))
+
+    def set_dark_mode(self):
+        # self.webview.setUrl(QUrl("https://www.youtube.com/?theme=dark&themeRefresh=0"))
+        # print cookies
+        print(self.webview.page().profile().cookieStore().cookiesForUrl(QUrl("https://www.youtube.com/")))
+        self.right_widget.dark_mode_yt(self.webview)
+
+    def reload_page(self):
+        self.webview.page().triggerAction(QWebEnginePage.ReloadAndBypassCache)
 
     def change_theme(self, theme: str):
         with open(f"themes/{theme}.qss", "r", encoding="utf-8") as _:

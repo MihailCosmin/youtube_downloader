@@ -92,7 +92,8 @@ class YoutubeDLP():
         return len(self.ydl2.extract_info(url, download=False).get('entries'))
 
     def check_if_url_is_playlist(self, url):
-        return self.ydl2.extract_info(url, download=False).get('entries') is not None
+        # return self.ydl2.extract_info(url, download=False).get('entries') is not None
+        return "list" in url
 
     def update_dl_ops(self, key: str, value: str):
         if key == "download_location":
