@@ -405,6 +405,7 @@ class SplitWindowYoutubeBrowser(QMainWindow):
                     "path": c.path(), "expirationDate": c.expirationDate().toString(Qt.ISODate), "secure": c.isSecure(),
                     "httponly": c.isHttpOnly()}
             cookies_list_info.append(data)
+        print(f"Cache path: {self.webview.page().profile().cachePath()}")
         print("Cookie as list of dictionary:")
         print(cookies_list_info)
 
@@ -417,8 +418,6 @@ class SplitWindowYoutubeBrowser(QMainWindow):
 
     def set_dark_mode(self):
         # self.webview.setUrl(QUrl("https://www.youtube.com/?theme=dark&themeRefresh=0"))
-        # print cookies
-        print(self.webview.page().profile().cookieStore().cookiesForUrl(QUrl("https://www.youtube.com/")))
         self.right_widget.dark_mode_yt(self.webview)
 
     def reload_page(self):

@@ -3,6 +3,8 @@ from datetime import datetime
 from PySide6 import QtWebEngineWidgets
 from PySide6 import QtWebEngineCore
 
+from PySide6.QtCore import QUrl
+
 from PySide6 import QtWidgets
 from PySide6.QtCore import QByteArray
 
@@ -18,11 +20,16 @@ with open("easylist_clean.txt", "r", encoding="utf-8") as _:
 class WebEngineUrlRequestInterceptor(QtWebEngineCore.QWebEngineUrlRequestInterceptor):
     def __init__(self, parent=None):
         super().__init__(parent)
+        self.parent = parent
 
     def interceptRequest(self, info):
         url = info.requestUrl().toString()
         current_time = datetime.now().strftime("%H:%M:%S")
-        if rules.should_block(url):
+        if "watch?" in url and "theme=dark" not in url:
+            url = url.replace("?", "?theme=dark&")
+            print(f"url: {url}")
+            self.parent.webview.setUrl(QUrl(url))
+        elif rules.should_block(url):
             # print(f"1 - {current_time} - block::::::::::::::::::::::", url)
             info.block(True)
             return
