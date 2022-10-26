@@ -48,6 +48,7 @@ class SettingsWidget(QtWidgets.QWidget):
         self.settings_layout1_2 = QtWidgets.QGridLayout(self.settings_widget1_2)
         self.ydl_options_basic = QtWidgets.QLabel("yt-dlp settings (Basic)")
         self.settings_widget1_3 = QtWidgets.QWidget()
+        self.settings_widget1_3.setObjectName("settings_widget1_3")
 
         self.settings_layout1_3 = QtWidgets.QGridLayout(self.settings_widget1_3)
 
@@ -70,6 +71,7 @@ class SettingsWidget(QtWidgets.QWidget):
 
         self.theme_combo.addItem("Dark")
         self.theme_combo.addItem("Light")
+        self.theme_combo.setCurrentText(self.parent.config['theme'][0])
 
         self.settings_layout1_1.addWidget(self.theme_label, 2, 0, 1, 1, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
         self.settings_layout1_1.addWidget(self.theme_combo, 2, 1, 1, 1, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
@@ -94,11 +96,12 @@ class SettingsWidget(QtWidgets.QWidget):
         self.accent_combo.addItem("Orange")
         self.accent_combo.addItem("Purple")
         self.accent_combo.addItem("Pink")
+        self.accent_combo.setCurrentText(self.parent.config["accent"][0])
 
         self.settings_layout1_1.addWidget(self.accent_label, 3, 0, 1, 1, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
         self.settings_layout1_1.addWidget(self.accent_combo, 3, 1, 1, 1, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
 
-        self.theme_combo.currentTextChanged.connect(
+        self.accent_combo.currentTextChanged.connect(
             lambda: self._change_setting(
                 "change_accent",
                 "accent",
@@ -160,6 +163,7 @@ class SettingsWidget(QtWidgets.QWidget):
     def _settings_widget2(self):
         self.youtube_dl_label1 = QtWidgets.QLabel("yt-dlp Options (Advanced)")
         self.settings_widget2_1 = QtWidgets.QWidget()
+        self.settings_widget2_1.setObjectName("settings_widget2_1")
 
         self.settings_widget2_1.setMaximumWidth(self.parent.right_width * 0.39)
 
@@ -201,6 +205,7 @@ class SettingsWidget(QtWidgets.QWidget):
     def _settings_widget3(self):
         self.youtube_dl_label = QtWidgets.QLabel("yt-dlp Options (Expert)")
         self.settings_widget3_1 = QtWidgets.QWidget()
+        self.settings_widget3_1.setObjectName("settings_widget3_1")
 
         self.settings_widget3_1.setMaximumWidth(self.parent.right_width * 0.39)
 
@@ -311,8 +316,6 @@ class SettingsWidget(QtWidgets.QWidget):
             else:
                 line_edit.setText(value["default"] if value["default"] not in ("None", "{}", "[]", None, "''") else "Click to set location")
                 line_edit.setToolTip(value["default"] if value["default"] not in ("None", "{}", "[]", None, "''") else "Click to set location")
-
-            line_edit.setStyleSheet("QPushButton {background-color: rgb(30, 34, 42); border: 1px solid rgb(34, 39, 48); text-align: left; color: white;} QPushButton:hover {background-color: rgb(30, 34, 42); border: 1px solid rgb(34, 39, 48); text-align: left; color: red;}")
             line_edit.setFixedHeight(20)
             line_edit.clicked.connect(lambda: self._browse_file(line_edit, key))
         else:

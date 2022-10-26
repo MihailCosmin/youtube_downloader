@@ -25,9 +25,8 @@ class WebEngineUrlRequestInterceptor(QtWebEngineCore.QWebEngineUrlRequestInterce
     def interceptRequest(self, info):
         url = info.requestUrl().toString()
         current_time = datetime.now().strftime("%H:%M:%S")
-        if "watch?" in url and "theme=dark" not in url:
-            url = url.replace("?", "?theme=dark&")
-            print(f"url: {url}")
+        if "watch?" in url and f"theme={self.parent.config['theme'][0].lower()}" not in url:
+            url = url.replace("?", f"?theme={self.parent.config['theme'][0].lower()}&")
             self.parent.webview.setUrl(QUrl(url))
         elif rules.should_block(url):
             # print(f"1 - {current_time} - block::::::::::::::::::::::", url)
@@ -63,12 +62,12 @@ class RightWidget(QtWidgets.QWidget):
 
     def _youtube_browser_widget(self):
         browser = QtWebEngineWidgets.QWebEngineView()
-        self.parent._profile = QtWebEngineCore.QWebEngineProfile("F_Youtube", browser)
+        self.parent._profile = QtWebEngineCore.QWebEngineProfile("F_Youtube", browser)  # Fuck Youtube = F_Youtube
         self.parent._profile.setPersistentCookiesPolicy(QtWebEngineCore.QWebEngineProfile.ForcePersistentCookies)
 
-        self.parent.cookie_store = self.parent._profile.cookieStore()  # for cookies
-        self.parent.cookie_store.cookieAdded.connect(self.parent.onCookieAdded)  # for cookies
-        self.parent.cookies = []  # for cookies
+        # self.parent.cookie_store = self.parent._profile.cookieStore()  # for cookies
+        # self.parent.cookie_store.cookieAdded.connect(self.parent.onCookieAdded)  # for cookies
+        # self.parent.cookies = []  # for cookies
 
         self.parent.webpage = QWebEnginePage(self.parent._profile, browser)
         browser.setPage(self.parent.webpage)
@@ -91,7 +90,7 @@ class RightWidget(QtWidgets.QWidget):
         )
         url.setUrl("https://www.youtube.com")
         browser.load(url)
-        url.setUrl("https://www.youtube.com/?theme=dark&themeRefresh=1")
+        url.setUrl(f"https://www.youtube.com/?theme={self.parent.config['theme'][0].lower()}&themeRefresh=1")
         browser.load(url)
         
         # browser.load(QtCore.QUrl("https://www.youtube.com/?theme=dark&themeRefresh=1"))

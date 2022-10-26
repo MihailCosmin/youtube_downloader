@@ -42,7 +42,7 @@ class LeftMenu(QFrame):
         self.dark_mode = QPushButton()
         self.dark_mode.setObjectName(u"dark_mode")
         self.dark_mode.setIconSize(self.dark_mode.iconSize() * 2)
-        self.dark_mode.clicked.connect(self.parent.set_dark_mode)
+        self.dark_mode.clicked.connect(self.parent.toggle_dark_mode)
         self.dark_mode.setToolTip("Set Dark Mode")
         self.left_frame_layout.addWidget(self.dark_mode)
         

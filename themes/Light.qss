@@ -1,0 +1,323 @@
+/* /////////////////////////////////////////////////////////////////////////////////////////////////
+
+SET APP STYLESHEET - FULL STYLES HERE
+DARK THEME - DRACULA COLOR BASED
+
+# BY: WANDERSON M.PIMENTA
+# PROJECT MADE WITH: Qt Designer and PySide6
+# V: 1.0.0
+#
+# This project can be used freely for all uses, as long as they maintain the
+# respective credits only in the Python scripts, any information in the visual
+# interface (GUI) can be modified without any implication.
+#
+# There are limitations on Qt licenses if you want to use your products
+# commercially, I recommend reading them on the official website:
+# https://doc.qt.io/qtforpython/licenses.html
+
+///////////////////////////////////////////////////////////////////////////////////////////////// */
+
+/* /////////////////////////////////////////////////////////////////////////////////////////////////
+Right Side - Youtube Browser */
+/* [objectName^="webview"] {	
+	border-left: 22px solid transparent;
+	background-color: rgb(40, 44, 52);
+	border: 1px solid rgb(44, 49, 58);
+	text-align: left;
+	padding-left: 44px;
+} */
+
+/* /////////////////////////////////////////////////////////////////////////////////////////////////
+Left Side - Download Options */
+[objectName^="left_widget"]  {
+	background-color: red; /* rgb(40, 44, 52); */
+	border: 1px solid rgb(2, 2, 2);
+	text-align: left;
+	padding-left: 44px;
+	color: rgb(0, 0, 0);
+}
+
+#main_window .QWidget {
+	background-color: rgb(240, 244, 252);
+	border: 1px solid rgb(244, 249, 255);
+	text-align: left;
+	padding-left: 44px;
+	color: black;
+}
+
+#left_widget .QPushButton#button1,#button2,#button3,#button4{
+	background-color: rgb(240, 244, 252);
+	border: 1px solid rgb(244, 249, 255);
+	border-radius: 5px;
+	color: black;
+}
+
+#left_widget .QPushButton#button1:hover,#button2:hover,#button3:hover,#button4:hover {
+	background-color: rgb(230, 234, 232);
+	color: blue;
+}
+
+#checklists_widget > QPushButton {
+	color: black;
+}
+
+#checklists_widget > QPushButton:hover {
+	color: blue;
+}
+
+QFrame[objectName^="left_menu_frame"] {
+	background-color: rgb(228, 228, 228);
+	border: 1px solid rgb(228, 228, 228);
+    border-radius: 0px;
+    border-top-right-radius: 20px;
+    border-bottom-right-radius: 20px;
+	text-align: left;
+	color: black;
+}
+
+QFrame[objectName^="left_menu_frame"] QPushButton {
+	background-color: rgb(228, 228, 228); /* background-color: transparent; */
+	text-align: center;
+}
+
+QFrame[objectName^="left_menu_frame"] QPushButton:hover {
+	background-color: rgb(248, 248, 248); /* background-color: transparent; */
+	text-align: center;
+	color: palette(light);
+}
+
+QFrame#title_handle_bar {
+	background-color: rgb(228, 228, 228);
+	border: 1px solid rgb(228, 228, 228);
+	text-align: left;
+	color: black;
+}
+
+QFrame#title_bar {
+	background-color: rgb(228, 228, 228);
+	border: 1px solid rgb(228, 228, 228);
+	text-align: left;
+	color: black;
+	min-height: 30px;
+	max-height: 30px;
+}
+
+QScrollArea#left_scroll_area {
+	background-color: rgb(228, 228, 228);
+	border: 1px solid rgb(228, 228, 228);
+	text-align: left;
+	color: black;
+}
+
+QPushButton#exit_button {
+    background: transparent;
+    image: url("./src/images/icons/exit_light.svg");
+}
+
+QPushButton#exit_button:hover {
+    background: transparent;
+    image: url("./src/images/icons/exit_hover.svg");
+}
+
+QPushButton#minimize_button {
+    background: transparent;
+    image: url("./src/images/icons/minimize_light.svg");
+}
+
+QPushButton#minimize_button:hover {
+    background: transparent;
+    image: url("./src/images/icons/minimize_hover.svg");
+}
+
+QPushButton#maximize_button {
+    background: transparent;
+    image: url("./src/images/icons/maximize_light.svg");
+}
+
+QPushButton#maximize_button:hover {
+    background: transparent;
+    image: url("./src/images/icons/maximize_hover.svg");
+}
+
+QPushButton#settings_button {
+    background: transparent;
+    image: url("./src/images/icons/settings2_light.svg");
+}
+
+QPushButton#settings_button:hover {
+    background: transparent;
+    image: url("./src/images/icons/settings2_hover.svg");
+}
+
+QPushButton#downloads_button {
+    background: transparent;
+    image: url("./src/images/icons/download_light.svg");
+}
+
+QPushButton#downloads_button:hover {
+    background: transparent;
+    image: url("./src/images/icons/download_hover.svg");
+}
+
+QPushButton#back_button {
+    background: transparent;
+    image: url("./src/images/icons/back2_light.svg");
+}
+
+QPushButton#back_button:hover {
+    background: transparent;
+    image: url("./src/images/icons/back2_hover.svg");
+}
+
+QPushButton#clear_cache {
+    background: transparent;
+    image: url("./src/images/icons/clear1_light.svg");
+}
+
+QPushButton#clear_cache:hover {
+    background: transparent;
+    image: url("./src/images/icons/clear1_hover.svg");
+}
+
+QPushButton#reload_button {
+    background: transparent;
+    image: url("./src/images/icons/refresh_light.svg");
+}
+
+QPushButton#reload_button:hover {
+    background: transparent;
+    image: url("./src/images/icons/refresh_hover.svg");
+}
+
+QPushButton#dark_mode {
+    background: transparent;
+    image: url("./src/images/icons/light_on.svg");
+}
+
+QPushButton#dark_mode:hover {
+    background: transparent;
+    image: url("./src/images/icons/light_on_hover.svg");
+}
+
+#settings_widget2_1 QPushButton {
+	background-color: rgb(230, 234, 242);
+	border: 1px solid rgb(234, 239, 248);
+	text-align: left;
+	color: black;
+} 
+
+#settings_widget2_1 QPushButton:hover {
+	background-color: rgb(230, 234, 242);
+	border: 1px solid rgb(234, 239, 248);
+	text-align: left;
+	color: blue;
+}
+
+#settings_widget3_1 QPushButton {
+	background-color: rgb(230, 234, 242);
+	border: 1px solid rgb(234, 239, 248);
+	text-align: left;
+	color: black;
+} 
+
+#settings_widget3_1 QPushButton:hover {
+	background-color: rgb(230, 234, 242);
+	border: 1px solid rgb(234, 239, 248);
+	text-align: left;
+	color: blue;
+}
+
+#settings_widget1_3 QPushButton {
+	background-color: rgb(230, 234, 242);
+	border: 1px solid rgb(234, 239, 248);
+	text-align: left;
+	color: black;
+} 
+
+#settings_widget1_3 QPushButton:hover {
+	background-color: rgb(230, 234, 242);
+	border: 1px solid rgb(234, 239, 248);
+	text-align: left;
+	color: blue;
+}
+
+/* /////////////////////////////////////////////////////////////////////////////////////////////////
+QMainWindow Options */
+QMainWindow {
+	background-color: rgb(253, 253, 253);
+	border: 1px solid rgb(253, 253, 253);
+	text-align: left;
+}
+
+/* /////////////////////////////////////////////////////////////////////////////////////////////////
+Settings Options */
+#settings_widget * {
+	color: black;
+}
+
+QComboBox {
+	background-color: rgb(240, 244, 252);
+	border: 1px solid rgb(244, 249, 255);
+	text-align: left;
+	color: black;
+}
+
+QComboBox QAbstractItemView::item {
+	background-color: rgb(240, 244, 252);
+	border: 1px solid rgb(244, 249, 255);
+	text-align: left;
+	color: black;
+}
+
+QComboBox QAbstractItemView::item:selected {
+	background-color: rgb(240, 244, 252);
+	border: 1px solid rgb(244, 249, 255);
+	text-align: left;
+	color: blue;
+}
+
+QLineEdit {
+	background-color: rgb(230, 234, 242);
+	border: 1px solid rgb(234, 239, 248);
+	text-align: left;
+	color: black;
+}
+
+#download_location_button {
+	background-color: rgb(230, 234, 242);
+	border: 1px solid rgb(234, 239, 248);
+	border-radius: 5px;
+	width: 50px;
+	color: black;
+}
+
+#download_location_button:hover {
+	background-color: rgb(220, 224, 232);
+	border: 1px solid rgb(234, 239, 248);
+	border-radius: 5px;
+	width: 50px;
+	color: black;
+}
+
+QToolTip {
+	background-color: rgb(240, 244, 252);
+	border: 1px solid rgb(244, 249, 255);
+	text-align: left;
+	color: black;
+}
+
+QScrollBar {
+	background-color: rgb(240, 244, 252);
+	border: 1px solid rgb(244, 249, 255);
+}
+
+/* QScrollBar::handle:hover {
+	background-color: red;
+} */
+
+QScrollBar::up-arrow:hover {
+	background-color: red;
+}
+QScrollBar::down-arrow:hover {
+	background-color: red;
+}

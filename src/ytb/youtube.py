@@ -30,6 +30,8 @@ class YoutubeDLP():
                 self.dl_ops[key] = int(dl_ops[key])
             except ValueError:
                 self.dl_ops[key] = dl_ops[key]
+            except TypeError:
+                self.dl_ops[key] = dl_ops[key]
 
     def download_video(self, url, progress_callback=None):
         self.progress_callback = progress_callback

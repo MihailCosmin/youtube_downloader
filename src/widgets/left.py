@@ -45,6 +45,8 @@ class LeftWidget(QWidget):
         self.loading_bar_single = QtWidgets.QProgressBar()
         self.loading_bar_playlist = QtWidgets.QProgressBar()
         self.loading_bar_queue = QtWidgets.QProgressBar()
+        
+        # TODO: Delete format_loading_bar function and use qss
         self.loading_bar_single = format_loading_bar(self.loading_bar_single, width=self.parent.left_width * 0.35)
         self.loading_bar_playlist = format_loading_bar(self.loading_bar_playlist, width=self.parent.left_width * 0.35)
         self.loading_bar_queue = format_loading_bar(self.loading_bar_queue, width=self.parent.left_width * 0.35)

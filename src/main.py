@@ -1,4 +1,5 @@
 from os import mkdir
+from os import listdir
 from os.path import sep
 from os.path import isdir
 from os.path import isfile
@@ -7,6 +8,9 @@ from os.path import splitext
 from os.path import realpath
 from os.path import basename
 from os.path import expanduser
+
+from re import findall
+from re import sub
 
 import sys
 from sys import executable
@@ -55,6 +59,9 @@ from widgets.left_menu import LeftMenu
 from widgets.dialogs import BubbleLabel
 
 from utils.common import clean_path
+
+ACCENT = r'	color: [a-z]+;'
+SVG_FILL = r' fill="[a-z]+" '
 
 class SplitWindowYoutubeBrowser(QMainWindow):
     def __init__(self):
@@ -113,7 +120,6 @@ class SplitWindowYoutubeBrowser(QMainWindow):
 
         self.left_menu_frame = LeftMenu(parent=self)
         self.app_layout.addWidget(self.left_menu_frame)
-
         self.app_layout.addWidget(self.left_widget)
         self.app_layout.addWidget(self.settings_widget)
         self.app_layout.addWidget(self.right_widget)
@@ -389,47 +395,72 @@ class SplitWindowYoutubeBrowser(QMainWindow):
         else:
             self.webview.back()
 
-    # TODO: check if you can get youtube cache
+    # def onCookieAdded(self, cookie):  # for cookies
+    #     for c in self.cookies:
+    #         if c.hasSameIdentifier(cookie):
+    #             return
+    #     self.cookies.append(QNetworkCookie(cookie))
+    #     self.toJson()
 
-    def onCookieAdded(self, cookie):  # for cookies
-        for c in self.cookies:
-            if c.hasSameIdentifier(cookie):
-                return
-        self.cookies.append(QNetworkCookie(cookie))
-        self.toJson()
-
-    def toJson(self):  # for cookies
-        cookies_list_info = []
-        for c in self.cookies:
-            data = {"name": bytearray(c.name()).decode(), "domain": c.domain(), "value": bytearray(c.value()).decode(),
-                    "path": c.path(), "expirationDate": c.expirationDate().toString(Qt.ISODate), "secure": c.isSecure(),
-                    "httponly": c.isHttpOnly()}
-            cookies_list_info.append(data)
-        print(f"Cache path: {self.webview.page().profile().cachePath()}")
-        print("Cookie as list of dictionary:")
-        print(cookies_list_info)
+    # def toJson(self):  # for cookies
+    #     cookies_list_info = []
+    #     for c in self.cookies:
+    #         data = {"name": bytearray(c.name()).decode(), "domain": c.domain(), "value": bytearray(c.value()).decode(),
+    #                 "path": c.path(), "expirationDate": c.expirationDate().toString(Qt.ISODate), "secure": c.isSecure(),
+    #                 "httponly": c.isHttpOnly()}
+    #         cookies_list_info.append(data)
 
     def clear_cache_clicked(self):
         self.webview.page().profile().clearHttpCache()
         self.webview.page().profile().clearAllVisitedLinks()
         self.webview.page().profile().cookieStore().deleteAllCookies()
+        self.webview.setUrl(QUrl(f"https://www.youtube.com/?theme={self.config['theme'][0].lower()}&themeRefresh=1"))
         self.reload_page()
-        self.webview.setUrl(QUrl("https://www.youtube.com/?theme=dark&themeRefresh=0"))
+        if self.config['theme'][0] == "Dark":
+            self.change_theme(self.config['theme'][0])
 
-    def set_dark_mode(self):
-        # self.webview.setUrl(QUrl("https://www.youtube.com/?theme=dark&themeRefresh=0"))
+    def toggle_dark_mode(self):
+        if self.config['theme'][0] == "Dark":
+            self.config['theme'] = ("Light", False)
+        elif self.config['theme'][0] == "Light":
+            self.config['theme'] = ("Dark", False)
+        self.change_theme(self.config['theme'][0])
         self.right_widget.dark_mode_yt(self.webview)
 
     def reload_page(self):
         self.webview.page().triggerAction(QWebEnginePage.ReloadAndBypassCache)
 
     def change_theme(self, theme: str):
+        if self.settings_widget.theme_combo is not None:
+            self.settings_widget.theme_combo.setCurrentText(theme)
         with open(f"themes/{theme}.qss", "r", encoding="utf-8") as _:
             stylesheet = _.read()
-        self.setStyleSheet(stylesheet)
+        if f"	color: {self.config['accent'][0].lower()};" not in stylesheet:
+            print(f"will switch accent {self.config['accent'][0]}")
+            print(f"	color: {self.config['accent'][0].lower()};")
+            self.config['theme'] = [theme, False]
+            self.change_accent(self.config['accent'][0])
+        else:
+            self.setStyleSheet(stylesheet)
 
     def change_accent(self, accent: str):
-        pass
+        with open(f"themes/{self.config['theme'][0]}.qss", "r", encoding="utf-8") as _:
+            stylesheet = _.read()
+
+        for acc in findall(ACCENT, stylesheet):
+            if acc not in ("	color: white;", "	color: black;", "	color: transparent;"):
+                stylesheet = stylesheet.replace(acc, f"	color: {accent.lower()};")
+                break
+        with open(f"themes/{self.config['theme'][0]}.qss", "w", encoding="utf-8") as _:
+            _.write(stylesheet)
+        for svg in listdir("src/images/icons"):
+            if svg.endswith("_hover.svg"):
+                with open(f"src/images/icons/{svg}", "r", encoding="utf-8") as _:
+                    svg_data = _.read()
+                svg_data = sub(SVG_FILL, f' fill="{accent.lower()}" ', svg_data)
+                with open(f"src/images/icons/{svg}", "w", encoding="utf-8") as _:
+                    _.write(svg_data)
+        self.setStyleSheet(stylesheet)
 
     def change_download_location(self, location: str):
         pass
