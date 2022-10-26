@@ -54,7 +54,7 @@ Left Side - Download Options */
 
 #left_widget .QPushButton#button1:hover,#button2:hover,#button3:hover,#button4:hover {
 	background-color: rgb(40, 44, 52);
-	color: blue;
+	color: green;
 }
 
 #checklists_widget > QPushButton {
@@ -62,7 +62,7 @@ Left Side - Download Options */
 }
 
 #checklists_widget > QPushButton:hover {
-	color: blue;
+	color: green;
 }
 
 QFrame[objectName^="left_menu_frame"] {
@@ -210,7 +210,7 @@ QPushButton#dark_mode:hover {
 	background-color: rgb(30, 34, 42);
 	border: 1px solid rgb(34, 39, 48);
 	text-align: left;
-	color: blue;
+	color: green;
 }
 
 #settings_widget3_1 QPushButton {
@@ -224,7 +224,7 @@ QPushButton#dark_mode:hover {
 	background-color: rgb(30, 34, 42);
 	border: 1px solid rgb(34, 39, 48);
 	text-align: left;
-	color: blue;
+	color: green;
 }
 
 /* /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -259,7 +259,7 @@ QComboBox QAbstractItemView::item:selected {
 	background-color: rgb(40, 44, 52);
 	border: 1px solid rgb(44, 49, 58);
 	text-align: left;
-	color: blue;
+	color: green;
 }
 
 QLineEdit {

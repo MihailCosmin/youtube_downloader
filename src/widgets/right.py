@@ -25,9 +25,12 @@ class WebEngineUrlRequestInterceptor(QtWebEngineCore.QWebEngineUrlRequestInterce
     def interceptRequest(self, info):
         url = info.requestUrl().toString()
         current_time = datetime.now().strftime("%H:%M:%S")
-        if "watch?" in url and f"theme={self.parent.config['theme'][0].lower()}" not in url:
+        if "watch?" in url and f"theme={self.parent.config['theme'][0].lower()}" not in url and "reel" not in url:
             url = url.replace("?", f"?theme={self.parent.config['theme'][0].lower()}&")
             self.parent.webview.setUrl(QUrl(url))
+            # TODO: Check how to apply theme to other pages: shorts, home, playlists?? etc
+        elif "shorts" in url and f"theme={self.parent.config['theme'][0].lower()}" not in url:
+            print(f"Url: {url}")
         elif rules.should_block(url):
             # print(f"1 - {current_time} - block::::::::::::::::::::::", url)
             info.block(True)
