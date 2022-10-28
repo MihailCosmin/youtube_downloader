@@ -1,3 +1,10 @@
+from regex import search
+from regex import findall
+from regex import V1
+
+from pyperclip import copy as clipboard_copy
+from pyperclip import paste as clipboard_paste
+
 from PySide6.QtWidgets import QWidget
 from PySide6 import QtWidgets
 from PySide6 import QtCore
@@ -90,26 +97,77 @@ class LeftWidget(QWidget):
         self.checklists_scroll.setFixedHeight(self.parent.height * 0.85 - 30 * 4 - 10)
         self.checklists_scroll.setFixedWidth(self.parent.left_width * 0.95)
         self.left_layout.addWidget(self.checklists_scroll, 5, 0, QtCore.Qt.AlignTop | QtCore.Qt.AlignLeft)
+        
+        # queue connect right click
+        self.checklists_scroll.setContextMenuPolicy(QtCore.Qt.CustomContextMenu)
+        self.checklists_scroll.customContextMenuRequested.connect(self._queue_right_click_menu)
 
-    def _add_current_url_to_queue(self):
-        if self.parent._get_current_url() is not None and \
+    def _queue_right_click_menu(self, pos):
+        menu = QtWidgets.QMenu()
+        paste_action = menu.addAction("Paste URL(s)")
+        action = menu.exec_(self.checklists_scroll.mapToGlobal(pos))
+        if action == paste_action:
+            paste = clipboard_paste().replace("\n", " ")
+            single_url_regex = r"https[-:/a-zA-Z0-9\.\-\?\&\=\_]*"
+            if paste.count("https") > 1:
+                print("multi")
+                for url in findall(single_url_regex, paste, V1):
+                    self._add_current_url_to_queue(url)
+            else:
+                print("single")
+                self._add_current_url_to_queue(paste)
+
+    def _add_current_url_to_queue(self, url: str = None):
+        if url in (None, False) and self.parent._get_current_url() is not None and \
                 self.parent._get_current_url() not in self.parent.queue and \
                 self.parent._get_current_url() != "about:blank" and \
                 self.parent._get_current_url() != "https://www.youtube.com/" and \
                 "https://www.youtube.com/feed/" not in self.parent._get_current_url():
-            self.parent.queue.append(self.parent._get_current_url())
-            button = QtWidgets.QPushButton(self.parent._get_current_url())
-            button.setLayoutDirection(QtCore.Qt.LeftToRight)
-            
-            button.setStyleSheet("QPushButton {background-color: transparent;}")
-            
-            button.clicked.connect(lambda: self.remove_checklist_button(button))
+            url = self.parent._get_current_url()
+        elif url in (None, False):
+            return
+        self.parent.queue.append(url)
+        button = QtWidgets.QPushButton(url)
+        button.setLayoutDirection(QtCore.Qt.LeftToRight)
 
-            self.checklists_layout.addWidget(
-                button
+        button.setStyleSheet("QPushButton {background-color: transparent;}")
+        button.clicked.connect(lambda: self.remove_checklist_button(button))
+
+        self.checklists_layout.addWidget(
+            button
+        )
+
+        # connect right click to context menu for each button
+        button.setContextMenuPolicy(QtCore.Qt.CustomContextMenu)
+        button.customContextMenuRequested.connect(self._queue_button_right_click_menu)
+
+    def _queue_button_right_click_menu(self, pos):
+        button_menu = QtWidgets.QMenu()
+        button_menu.setObjectName(u"button_menu")
+
+        # Could not figure out how to add this styling in the qss, so I did it here
+        # I think it's not even possible, because the menu is created dynamically
+        if self.parent.config["theme"][0] == "dark":
+            button_menu.setStyleSheet(
+                f"""QMenu {{background-color: rgb(38, 38, 38); border: 1px solid rgb(38, 38, 38);text-align: left;color: white;padding: 5px;padding-left: 20px;padding-right: 20px;}}
+                QMenu::item {{background-color: rgb(38, 38, 38); border: 1px solid rgb(38, 38, 38);text-align: left;color: white;}}
+                QMenu::item:selected {{background-color: rgb(38, 38, 38); border: 1px solid rgb(38, 38, 38);text-align: left;color: {self.parent.config['accent'][0]};}}
+                """
             )
-
-            self.checklists_layout.setAlignment(button, QtCore.Qt.AlignLeft)
+        else:
+            button_menu.setStyleSheet(
+                f"""QMenu {{background-color: rgb(255, 255, 255); border: 1px solid rgb(255, 255, 255);text-align: left;color: black;padding: 5px;padding-left: 20px;padding-right: 20px;}}
+                QMenu::item {{background-color: rgb(255, 255, 255); border: 1px solid rgb(255, 255, 255);text-align: left;color: black;}}
+                QMenu::item:selected {{background-color: rgb(255, 255, 255); border: 1px solid rgb(255, 255, 255);text-align: left;color: {self.parent.config['accent'][0]};}}
+                """
+            )
+        remove_action = button_menu.addAction("Remove")
+        copy_action = button_menu.addAction("Copy URL")
+        action = button_menu.exec_(self.sender().mapToGlobal(pos))
+        if action == remove_action:
+            self.remove_checklist_button(self.sender())
+        elif action == copy_action:
+            clipboard_copy(self.sender().text())
 
     def remove_checklist_button(self, button):
         self.checklists_layout.removeWidget(button)

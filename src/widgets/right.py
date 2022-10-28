@@ -29,8 +29,8 @@ class WebEngineUrlRequestInterceptor(QtWebEngineCore.QWebEngineUrlRequestInterce
             url = url.replace("?", f"?theme={self.parent.config['theme'][0].lower()}&")
             self.parent.webview.setUrl(QUrl(url))
             # TODO: Check how to apply theme to other pages: shorts, home, playlists?? etc
-        elif "shorts" in url and f"theme={self.parent.config['theme'][0].lower()}" not in url:
-            print(f"Url: {url}")
+        elif url == "https://www.youtube.com/":
+            self.parent.webview.setUrl(QUrl(url[:-1] + "?theme=" + self.parent.config['theme'][0].lower()))
         elif rules.should_block(url):
             # print(f"1 - {current_time} - block::::::::::::::::::::::", url)
             info.block(True)

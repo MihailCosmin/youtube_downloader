@@ -1,33 +1,4 @@
 /* /////////////////////////////////////////////////////////////////////////////////////////////////
-
-SET APP STYLESHEET - FULL STYLES HERE
-DARK THEME - DRACULA COLOR BASED
-
-# BY: WANDERSON M.PIMENTA
-# PROJECT MADE WITH: Qt Designer and PySide6
-# V: 1.0.0
-#
-# This project can be used freely for all uses, as long as they maintain the
-# respective credits only in the Python scripts, any information in the visual
-# interface (GUI) can be modified without any implication.
-#
-# There are limitations on Qt licenses if you want to use your products
-# commercially, I recommend reading them on the official website:
-# https://doc.qt.io/qtforpython/licenses.html
-
-///////////////////////////////////////////////////////////////////////////////////////////////// */
-
-/* /////////////////////////////////////////////////////////////////////////////////////////////////
-Right Side - Youtube Browser */
-/* [objectName^="webview"] {	
-	border-left: 22px solid transparent;
-	background-color: rgb(40, 44, 52);
-	border: 1px solid rgb(44, 49, 58);
-	text-align: left;
-	padding-left: 44px;
-} */
-
-/* /////////////////////////////////////////////////////////////////////////////////////////////////
 Left Side - Download Options */
 [objectName^="left_widget"]  {
 	background-color: red; /* rgb(40, 44, 52); */
@@ -54,7 +25,7 @@ Left Side - Download Options */
 
 #left_widget .QPushButton#button1:hover,#button2:hover,#button3:hover,#button4:hover {
 	background-color: rgb(40, 44, 52);
-	color: green;
+	color: red;
 }
 
 #checklists_widget > QPushButton {
@@ -62,7 +33,7 @@ Left Side - Download Options */
 }
 
 #checklists_widget > QPushButton:hover {
-	color: green;
+	color: red;
 }
 
 QFrame[objectName^="left_menu_frame"] {
@@ -83,7 +54,7 @@ QFrame[objectName^="left_menu_frame"] QPushButton {
 QFrame[objectName^="left_menu_frame"] QPushButton:hover {
 	background-color: rgb(48, 48, 48); /* background-color: transparent; */
 	text-align: center;
-	color: palette(light);
+	color: red;
 }
 
 QFrame#title_handle_bar {
@@ -210,7 +181,7 @@ QPushButton#dark_mode:hover {
 	background-color: rgb(30, 34, 42);
 	border: 1px solid rgb(34, 39, 48);
 	text-align: left;
-	color: green;
+	color: red;
 }
 
 #settings_widget3_1 QPushButton {
@@ -224,7 +195,7 @@ QPushButton#dark_mode:hover {
 	background-color: rgb(30, 34, 42);
 	border: 1px solid rgb(34, 39, 48);
 	text-align: left;
-	color: green;
+	color: red;
 }
 
 /* /////////////////////////////////////////////////////////////////////////////////////////////////
@@ -259,7 +230,7 @@ QComboBox QAbstractItemView::item:selected {
 	background-color: rgb(40, 44, 52);
 	border: 1px solid rgb(44, 49, 58);
 	text-align: left;
-	color: green;
+	color: red;
 }
 
 QLineEdit {

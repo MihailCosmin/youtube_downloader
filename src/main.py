@@ -25,6 +25,7 @@ from PySide6.QtWidgets import QHBoxLayout
 from PySide6.QtWidgets import QVBoxLayout
 from PySide6.QtWidgets import QComboBox
 from PySide6.QtWidgets import QLineEdit
+from PySide6.QtWidgets import QMenu
 
 from PySide6.QtWebEngineCore import QWebEnginePage
 
@@ -436,8 +437,6 @@ class SplitWindowYoutubeBrowser(QMainWindow):
         with open(f"themes/{theme}.qss", "r", encoding="utf-8") as _:
             stylesheet = _.read()
         if f"	color: {self.config['accent'][0].lower()};" not in stylesheet:
-            print(f"will switch accent {self.config['accent'][0]}")
-            print(f"	color: {self.config['accent'][0].lower()};")
             self.config['theme'] = [theme, False]
             self.change_accent(self.config['accent'][0])
         else:

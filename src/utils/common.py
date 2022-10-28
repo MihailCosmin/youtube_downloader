@@ -10,3 +10,4 @@ def clean_path(path: str) -> str:
         str: cleaned path
     """
     return path.replace("\\\\", sep).replace("\\", sep).replace("/", sep)
+
