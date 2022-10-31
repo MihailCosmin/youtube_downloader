@@ -267,12 +267,17 @@ class SettingsWidget(QtWidgets.QWidget):
                         layout.itemAt(i).widget().show()
                     elif layout.itemAt(i).widget() != search_bar:
                         layout.itemAt(i).widget().hide()
-                elif isinstance(layout.itemAt(i).widget(), QtWidgets.QComboBox):
+                if isinstance(layout.itemAt(i).widget(), QtWidgets.QComboBox):
                     if search_bar.text().lower() in layout.itemAt(i).widget().objectName().lower():
                         layout.itemAt(i).widget().show()
                     elif layout.itemAt(i).widget() != search_bar:
                         layout.itemAt(i).widget().hide()
-                elif isinstance(layout.itemAt(i).widget(), QtWidgets.QLabel):
+                if isinstance(layout.itemAt(i).widget(), QtWidgets.QLabel):
+                    if search_bar.text().lower() in layout.itemAt(i).widget().objectName().lower():
+                        layout.itemAt(i).widget().show()
+                    elif layout.itemAt(i).widget() != search_bar:
+                        layout.itemAt(i).widget().hide()
+                if isinstance(layout.itemAt(i).widget(), QtWidgets.QPushButton):
                     if search_bar.text().lower() in layout.itemAt(i).widget().objectName().lower():
                         layout.itemAt(i).widget().show()
                     elif layout.itemAt(i).widget() != search_bar:

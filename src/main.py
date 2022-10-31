@@ -275,6 +275,9 @@ class SplitWindowYoutubeBrowser(QMainWindow):
         self.right_widget.setMinimumWidth(self.right_width)
 
     def _download_queue(self, progress_bar=None):
+        # TODO: Check progress bar 
+        if self.progress_bar is not None:
+            self.progress_bar.hide()
         if self.queue:
             self.progress_bar = progress_bar
             self.progress_bar.show()
@@ -316,6 +319,8 @@ class SplitWindowYoutubeBrowser(QMainWindow):
         progress_callback.emit(100)
 
     def _download_single_video(self, progress_bar=None):
+        if self.progress_bar is not None:
+            self.progress_bar.hide()
         url = self._get_current_url()
         if url == "https://www.youtube.com/":
             self.bubble.setText("Please select a video")
@@ -341,6 +346,8 @@ class SplitWindowYoutubeBrowser(QMainWindow):
             self.bubble.show()
 
     def _download_playlist(self, progress_bar=None):
+        if self.progress_bar is not None:
+            self.progress_bar.hide()
         url = self._get_current_url()
         if url == "https://www.youtube.com/":
             self.bubble.setText("URL is not a YouTube playlist")

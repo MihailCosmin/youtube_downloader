@@ -27,7 +27,10 @@ class YoutubeDLP():
     def _set_dl_ops(self, dl_ops):
         for key in tqdm(dl_ops, colour="green"):
             try:
-                self.dl_ops[key] = int(dl_ops[key])
+                if dl_ops[key] == "":
+                    self.dl_ops[key] = 0
+                else:
+                    self.dl_ops[key] = int(dl_ops[key])
             except ValueError:
                 self.dl_ops[key] = dl_ops[key]
             except TypeError:
@@ -104,5 +107,13 @@ class YoutubeDLP():
         if key == "file_pattern":
             key = "outtmpl"
             value = join(self.dl_ops["outtmpl"].split("%")[0], value)
-        self.dl_ops[key] = value
+        try:
+            if value == "":
+                self.dl_ops[key] = 0
+            else:
+                self.dl_ops[key] = int(value)
+        except ValueError:
+            self.dl_ops[key] = value
+        except TypeError:
+            self.dl_ops[key] = value
         # print(self.dl_ops)
