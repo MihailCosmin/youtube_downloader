@@ -275,7 +275,6 @@ class SplitWindowYoutubeBrowser(QMainWindow):
         self.right_widget.setMinimumWidth(self.right_width)
 
     def _download_queue(self, progress_bar=None):
-        # TODO: Check progress bar 
         if self.progress_bar is not None:
             self.progress_bar.hide()
         if self.queue:
@@ -313,7 +312,8 @@ class SplitWindowYoutubeBrowser(QMainWindow):
     def _download_single_queue(self, progress_callback):
         self._pass_config()
         total = len(self.queue)
-        for ind, url in enumerate(self.queue):
+        progress_callback.emit(1)
+        for ind, url in enumerate(self.queue, start=1):
             self.ydl.download_video(url)
             progress_callback.emit(round(ind / total * 100, 0))
         progress_callback.emit(100)
