@@ -1,7 +1,5 @@
-import re
 from PySide6 import QtWidgets
 from PySide6 import QtCore
-from PySide6 import QtGui
 
 def format_button(button, width: int = 80, height: int = 30):
     button.setFixedHeight(height)
@@ -9,7 +7,6 @@ def format_button(button, width: int = 80, height: int = 30):
     button.move(0, 0)
     button.raise_()
     button.setFlat(True)
-    # button.setStyleSheet("QPushButton {background-color: #000000; color: #ffffff; border: 1px solid #ffffff; border-radius: 5px;}")
     button.setGraphicsEffect(QtWidgets.QGraphicsDropShadowEffect(blurRadius=5, xOffset=2, yOffset=2))
     button.setWindowFlags(QtCore.Qt.FramelessWindowHint)
     button.setWindowOpacity(0.5)
@@ -19,9 +16,6 @@ def format_button(button, width: int = 80, height: int = 30):
     button.enterEvent = lambda event: button.setWindowOpacity(1)
     button.leaveEvent = lambda event: button.setWindowOpacity(0.5)
 
-    # on hover make text green
-    #button.enterEvent = lambda event: button.setStyleSheet("QPushButton {background-color: #000000; color: #00ff00; border: 1px solid #ffffff; border-radius: 5px;}")
-    #button.leaveEvent = lambda event: button.setStyleSheet("QPushButton {background-color: #000000; color: #ffffff; border: 1px solid #ffffff; border-radius: 5px;}")
     return button
 
 def format_button_transparent(button):

@@ -13,7 +13,7 @@ from PySide6.QtWebEngineCore import QWebEnginePage
 
 from adblockparser import AdblockRules
 
-with open("easylist_clean.txt", "r", encoding="utf-8") as _:
+with open("src/ytb/easylist.txt", "r", encoding="utf-8") as _:
     raw_rules = _.readlines()
     rules = AdblockRules(raw_rules)
 

@@ -127,7 +127,7 @@ class SplitWindowYoutubeBrowser(QMainWindow):
 
         self.app_layout.setAlignment(Qt.AlignLeft)
 
-        with open(f"themes/{self.config['theme'][0]}.qss", "r", encoding="utf-8") as _:
+        with open(f"src/themes/{self.config['theme'][0]}.qss", "r", encoding="utf-8") as _:
             stylesheet = _.read()
         self.setStyleSheet(stylesheet)
         self.setWindowFlags(Qt.FramelessWindowHint)
@@ -441,7 +441,7 @@ class SplitWindowYoutubeBrowser(QMainWindow):
     def change_theme(self, theme: str):
         if self.settings_widget.theme_combo is not None:
             self.settings_widget.theme_combo.setCurrentText(theme)
-        with open(f"themes/{theme}.qss", "r", encoding="utf-8") as _:
+        with open(f"src/themes/{theme}.qss", "r", encoding="utf-8") as _:
             stylesheet = _.read()
         if f"	color: {self.config['accent'][0].lower()};" not in stylesheet:
             self.config['theme'] = [theme, False]
@@ -450,14 +450,14 @@ class SplitWindowYoutubeBrowser(QMainWindow):
             self.setStyleSheet(stylesheet)
 
     def change_accent(self, accent: str):
-        with open(f"themes/{self.config['theme'][0]}.qss", "r", encoding="utf-8") as _:
+        with open(f"src/themes/{self.config['theme'][0]}.qss", "r", encoding="utf-8") as _:
             stylesheet = _.read()
 
         for acc in findall(ACCENT, stylesheet):
             if acc not in ("	color: white;", "	color: black;", "	color: transparent;"):
                 stylesheet = stylesheet.replace(acc, f"	color: {accent.lower()};")
                 break
-        with open(f"themes/{self.config['theme'][0]}.qss", "w", encoding="utf-8") as _:
+        with open(f"src/themes/{self.config['theme'][0]}.qss", "w", encoding="utf-8") as _:
             _.write(stylesheet)
         for svg in listdir("src/images/icons"):
             if svg.endswith("_hover.svg"):

@@ -3,8 +3,6 @@ from os.path import expanduser
 
 import yt_dlp
 
-from tqdm import tqdm
-
 class YoutubeDLP():
     """YoutubeDLP
     https://github.com/yt-dlp/yt-dlp/blob/master/yt_dlp/options.py
@@ -25,7 +23,7 @@ class YoutubeDLP():
         self.batch_number = 1
 
     def _set_dl_ops(self, dl_ops):
-        for key in tqdm(dl_ops, colour="green"):
+        for key in dl_ops:
             try:
                 if dl_ops[key] == "":
                     self.dl_ops[key] = 0

@@ -1,4 +1,7 @@
 PySide2
 yt_dlp
-pyinstaller
-cx_freeze
+PyInstaller
+cx_Freeze
+pyperclip
+regex
+adblockparser
