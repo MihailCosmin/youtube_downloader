@@ -38,6 +38,8 @@ from PySide6.QtCore import QPoint
 from PySide6.QtCore import QUrl
 from PySide6.QtCore import Qt
 
+from PySide6.QtGui import QIcon
+
 exe = ''
 if splitext(basename(__file__))[1] == '.pyw'\
         or splitext(basename(__file__))[1] == '.py':
@@ -64,9 +66,11 @@ from utils.common import clean_path
 ACCENT = r'	color: [a-z]+;'
 SVG_FILL = r' fill="[a-z]+" '
 
-class SplitWindowYoutubeBrowser(QMainWindow):
+class YoutubeDownloader(QMainWindow):
     def __init__(self):
         super().__init__()
+
+        self.setWindowIcon(QIcon('src/images/icons/youtube_downloader_big.png'))
 
         self.config = {}
         self._init_config()
@@ -477,5 +481,5 @@ class SplitWindowYoutubeBrowser(QMainWindow):
 
 if __name__ == "__main__":
     app = QApplication([])
-    window = SplitWindowYoutubeBrowser()
+    window = YoutubeDownloader()
     app.exec()

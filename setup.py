@@ -2,14 +2,18 @@ from cx_Freeze import setup, Executable
 from sys import platform
 
 base = None
-# uncomment below lines to hide command prompt
-# tqdm prints to command prompt so it needs to be removed for the program to run
-# Important: if you hide the console, make sure your scripts don't try to print anything, otherwise they might not work as expected
 if (platform == "win32"):
     base = "Win32GUI"
 
-executables = [Executable("src/main.py", base=base, icon="src/images/icons/youtube_downloader.png")]
+executables = [
+    Executable(
+        script="src/Youtube Downloader.py",
+        base=base,
+        icon="src/images/icons/youtube_downloader.ico"
+    )
+]
 
+include_files = ["src/images/icons/youtube_downloader.ico"]
 packages = ["ctypes", "imp", "PySide6", "yt_dlp", "cx_Freeze", "PyInstaller", "pyperclip", "regex", "adblockparser"]
 excludes = [
     "PyQt5", "PyQt4", "reportlab", "matplotlib", "numba", "scipy", "sqlalchemy", "sqlite3", "soupsieve",
@@ -19,19 +23,27 @@ options = {
     'build_exe': {
         'packages': packages,
         'excludes': excludes,
+        'include_files': include_files,
     },
 }
+
+package_data = {
+    '3rd': ['*'],
+    'images': ['*', 'icons/*', 'images/*'],
+    'themes': ['*'],
+    'utils': ['*'],
+    'widgets': ['*'],
+    'ytb': ['*'],
+}
+
 setup(
-    name="<youtube_downloader>",
-    packages=['utils', 'widgets', 'ytb'],
-    package_dir={'' : 'src'},
+    name="Youtube Downloader",
+    packages=['utils', 'widgets', 'ytb', '3rd', 'images', 'themes'],
+    package_dir={'': 'src'},
+    package_data=package_data,
     options=options,
     version="0.0.1",
-    description='<Youtube Downloader is a Youtube Browser application based on PySide6 and yt-dlp.'
-                + 'And it allows you to download single videos, playlists or queues.>',
+    description='Youtube Downloader is a Youtube Browser application based on PySide6 and yt-dlp.'
+                + 'And it allows you to download single videos, playlists or queues.',
     executables=executables
 )
-# Run this to create the exe:
-# python setup.py build
-#
-# Then copy the res folder in the same folder as the .exe
