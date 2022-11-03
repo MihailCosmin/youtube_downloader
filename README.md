@@ -1,6 +1,9 @@
 Youtube Downloader GUI
 ======================
 
+Installation
+------------
+See <a href="https://github.com/MihailCosmin/youtube_downloader/releases">releases</a> for precompiled binaries.
 
 Demo
 ----
