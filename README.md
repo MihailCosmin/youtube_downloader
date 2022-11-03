@@ -5,4 +5,4 @@ Youtube Downloader GUI
 Demo
 ----
 
-<a href="demos/main.jpg"></a>
+<img width="500" height="500" src"demos/main.jpg">
