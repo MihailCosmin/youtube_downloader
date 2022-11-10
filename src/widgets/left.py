@@ -110,11 +110,10 @@ class LeftWidget(QWidget):
             paste = clipboard_paste().replace("\n", " ")
             single_url_regex = r"https[-:/a-zA-Z0-9\.\-\?\&\=\_]*"
             if paste.count("https") > 1:
-                print("multi")
                 for url in findall(single_url_regex, paste, V1):
-                    self._add_current_url_to_queue(url)
-            else:
-                print("single")
+                    if "http" in url and "youtube" in url:
+                        self._add_current_url_to_queue(url)
+            elif "http" in url and "youtube" in url:
                 self._add_current_url_to_queue(paste)
 
     def _add_current_url_to_queue(self, url: str = None):
