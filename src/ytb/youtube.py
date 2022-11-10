@@ -11,6 +11,7 @@ class YoutubeDLP():
         self.dl_ops = {
             'outtmpl': join(expanduser("~/OneDrive/Desktop"), '%(title)s-%(id)s.%(ext)s'),
             'quiet': True,
+            'noprogress': True,
             'no_warnings': True,
             'throttled-rate': '100K'
         }
