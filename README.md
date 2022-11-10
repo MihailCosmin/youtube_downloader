@@ -28,4 +28,4 @@ Demo
 History
 -------
 
-HISTORY.md
+See <a href="HISTORY.md">HISTORY.md</a>
