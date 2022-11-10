@@ -1,4 +1,4 @@
-PySide2
+PySide6
 yt_dlp
 PyInstaller
 cx_Freeze
