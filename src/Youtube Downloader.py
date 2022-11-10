@@ -282,20 +282,37 @@ class YoutubeDownloader(QMainWindow):
         if self.progress_bar is not None:
             self.progress_bar.hide()
         if self.queue:
-            self.progress_bar = progress_bar
-            self.progress_bar.show()
-            self.progress_bar.setTextVisible(True)
-            self.progress_bar.setFormat("Download starting...")
-            self.progress_bar.setValue(0)
+            if len(self.queue) > 1:
+                self.progress_bar = progress_bar
+                self.progress_bar.show()
+                self.progress_bar.setTextVisible(True)
+                self.progress_bar.setFormat("Download starting...")
+                self.progress_bar.setValue(0)
 
-            self.worker = Worker(
-                self._download_single_queue,
-                progress=True,
-                console=False,
-            )
-            self.worker.signals.progress.connect(self._progress_bar_update)
-            self.worker.signals.finished.connect(self._thread_complete)
-            self.threadpool.start(self.worker)
+                self.worker = Worker(
+                    self._download_single_queue,
+                    progress=True,
+                    console=False,
+                )
+                self.worker.signals.progress.connect(self._progress_bar_update)
+                self.worker.signals.finished.connect(self._thread_complete)
+                self.threadpool.start(self.worker)
+            else:
+                self._pass_config()
+                self.progress_bar = progress_bar
+                self.progress_bar.show()
+                self.progress_bar.setTextVisible(True)
+                self.progress_bar.setFormat("Download starting...")
+                self.progress_bar.setValue(0)
+                self.worker = Worker(
+                    self.ydl.download_video,
+                    self.queue[0],
+                    progress=True,
+                    console=False
+                )
+                self.worker.signals.progress.connect(self._progress_bar_update)
+
+                self.threadpool.start(self.worker)
         else:
             self.bubble.setText("Queue is empty")
             self.bubble.show()
