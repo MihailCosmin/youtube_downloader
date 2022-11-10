@@ -113,7 +113,7 @@ class LeftWidget(QWidget):
                 for url in findall(single_url_regex, paste, V1):
                     if "http" in url and "youtube" in url:
                         self._add_current_url_to_queue(url)
-            elif "http" in url and "youtube" in url:
+            elif "http" in paste and "youtube" in paste:
                 self._add_current_url_to_queue(paste)
 
     def _add_current_url_to_queue(self, url: str = None):
