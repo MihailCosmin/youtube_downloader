@@ -42,7 +42,7 @@ setup(
     package_dir={'': 'src'},
     package_data=package_data,
     options=options,
-    version="0.0.1",
+    version="0.0.2",
     description='Youtube Downloader is a Youtube Browser application based on PySide6 and yt-dlp.'
                 + 'And it allows you to download single videos, playlists or queues.',
     executables=executables
