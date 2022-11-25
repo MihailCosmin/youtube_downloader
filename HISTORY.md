@@ -13,4 +13,4 @@ Released 2022-11-10
 
 Released 2022-11-03
 
-* Initial Release (Buggy was hell)
+* Initial Release (Buggy as hell)
