@@ -1209,6 +1209,8 @@ lib\xml\sax\saxutils.pyc
 lib\xml\sax\xmlreader.pyc
 lib\xml\sax\_exceptions.pyc
 lib\xml\sax\__init__.pyc
+lib\yt_dlp\__init__.pyc
+lib\yt_dlp\__main__.pyc
 lib\yt_dlp\aes.pyc
 lib\yt_dlp\cache.pyc
 lib\yt_dlp\cookies.pyc
@@ -1216,6 +1218,7 @@ lib\yt_dlp\dependencies.pyc
 lib\yt_dlp\jsinterp.pyc
 lib\yt_dlp\minicurses.pyc
 lib\yt_dlp\options.pyc
+lib\yt_dlp\plugins.pyc
 lib\yt_dlp\socks.pyc
 lib\yt_dlp\update.pyc
 lib\yt_dlp\utils.pyc
@@ -2239,5 +2242,10 @@ lib\yt_dlp\postprocessor\sponskrub.pyc
 lib\yt_dlp\postprocessor\sponsorblock.pyc
 lib\yt_dlp\postprocessor\xattrpp.pyc
 lib\yt_dlp\postprocessor\__init__.pyc
+lib\yt_dlp\dependencies
+lib\yt_dlp\dependencies\__init__.py
+lib\yt_dlp\dependencies\__init__.pyc
+lib\yt_dlp\dependencies\Cryptodome.py
+lib\yt_dlp\dependencies\Cryptodome.pyc
 lib\_distutils_hack\override.pyc
 lib\_distutils_hack\__init__.pyc
